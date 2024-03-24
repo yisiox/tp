@@ -16,9 +16,9 @@ import seedu.address.model.person.fields.Prefix;
 /**
  * Edits the details of an asset in the address book.
  */
-public class EditAssetCommand extends Command {
+public class AssetCommand extends Command {
 
-    public static final String COMMAND_WORD = "edita";
+    public static final String COMMAND_WORD = "asset";
     public static final Prefix PREFIX_OLD = new Prefix("old/");
     public static final Prefix PREFIX_NEW = new Prefix("new/");
 
@@ -39,7 +39,7 @@ public class EditAssetCommand extends Command {
      * @param target Previous asset to replace.
      * @param editedAsset New asset to replace with.
      */
-    public EditAssetCommand(Asset target, Asset editedAsset) {
+    public AssetCommand(Asset target, Asset editedAsset) {
         requireNonNull(target);
         requireNonNull(editedAsset);
 
@@ -68,7 +68,7 @@ public class EditAssetCommand extends Command {
      * and returns an EditCommand object for execution.
      * @throws IllegalArgumentException if the user input does not conform the expected format
      */
-    public static EditAssetCommand of(String args) throws IllegalArgumentException {
+    public static AssetCommand of(String args) throws IllegalArgumentException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_OLD, PREFIX_NEW);
@@ -76,14 +76,14 @@ public class EditAssetCommand extends Command {
         if (!arePrefixesPresent(argMultimap, PREFIX_OLD, PREFIX_NEW)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new IllegalArgumentException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    EditAssetCommand.MESSAGE_USAGE));
+                    AssetCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_OLD, PREFIX_NEW);
         Asset target = Asset.of(argMultimap.getValue(PREFIX_OLD).get());
         Asset editedAsset = Asset.of(argMultimap.getValue(PREFIX_NEW).get());
 
-        return new EditAssetCommand(target, editedAsset);
+        return new AssetCommand(target, editedAsset);
     }
 
     /**
@@ -101,11 +101,11 @@ public class EditAssetCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditAssetCommand)) {
+        if (!(other instanceof AssetCommand)) {
             return false;
         }
 
-        EditAssetCommand otherEditCommand = (EditAssetCommand) other;
+        AssetCommand otherEditCommand = (AssetCommand) other;
         return target.equals(otherEditCommand.target)
                 && editedAsset.equals(otherEditCommand.editedAsset);
     }

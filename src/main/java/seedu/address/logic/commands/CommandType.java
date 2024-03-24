@@ -20,7 +20,7 @@ public enum CommandType {
     EDITA {
         @Override
         public Command createCommand(String arguments) throws IllegalArgumentException {
-            return EditAssetCommand.of(arguments);
+            return AssetCommand.of(arguments);
         }
     },
     DELETE {
