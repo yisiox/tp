@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public class Asset {
 
     public static final String MESSAGE_CONSTRAINTS = "Assets must be entered in the format NAME[#ID][@LOCATION]";
-    private static final String VALIDATION_REGEX = "\\S[^#@]*(#[^#@]+)?(@[^#@]+)?";
+    private static final String VALIDATION_REGEX = "[^#@\\s]+(#[^#@]+)?(@[^#@]+)?";
 
     private final String assetName;
     private final String assetId;
