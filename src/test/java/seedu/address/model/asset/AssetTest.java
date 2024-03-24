@@ -56,11 +56,20 @@ public class AssetTest {
         // same values -> returns true
         assertTrue(asset.equals(Asset.of("name#id@location")));
 
+        // same values, no id -> returns true
+        assertTrue(Asset.of("name@location").equals(Asset.of("name@location")));
+
+        // same values, no location -> returns true
+        assertTrue(Asset.of("name#id").equals(Asset.of("name#id")));
+
         // different values -> returns false
         assertFalse(asset.equals(Asset.of("NAME#ID@LOCATION")));
 
         // different number of values -> returns false
         assertFalse(asset.equals(Asset.of("name")));
+
+        // partial match -> returns false
+        assertFalse(asset.equals(Asset.of("name#id@LOCATION")));
     }
 
     @Test
