@@ -28,7 +28,14 @@ public class Asset {
 
     @JsonValue
     public String get() {
-        return toString();
+        StringBuilder res = new StringBuilder(assetName);
+        if (!assetId.isEmpty()) {
+            res.append("#").append(assetId);
+        }
+        if (!assetLocation.isEmpty()) {
+            res.append("@").append(assetLocation);
+        }
+        return res.toString();
     }
 
     /**
@@ -91,14 +98,7 @@ public class Asset {
      * Format state as text for viewing.
      */
     public String toString() {
-        StringBuilder res = new StringBuilder(assetName);
-        if (!assetId.isEmpty()) {
-            res.append("#").append(assetId);
-        }
-        if (!assetLocation.isEmpty()) {
-            res.append("@").append(assetLocation);
-        }
-        return res.toString();
+        return "[ " + get() + " ]";
     }
 
 }

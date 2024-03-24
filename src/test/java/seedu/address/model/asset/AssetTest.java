@@ -1,6 +1,9 @@
 package seedu.address.model.asset;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -41,6 +44,31 @@ public class AssetTest {
         assertDoesNotThrow(() -> Asset.of("name#id@location"));
         assertDoesNotThrow(() -> Asset.of("name@location"));
         assertDoesNotThrow(() -> Asset.of(":-)"));
+    }
+
+    @Test
+    public void equals() {
+        Asset asset = Asset.of("name#id@location");
+
+        // same object -> returns true
+        assertTrue(asset.equals(asset));
+
+        // same values -> returns true
+        assertTrue(asset.equals(Asset.of("name#id@location")));
+
+        // different values -> returns false
+        assertFalse(asset.equals(Asset.of("NAME#ID@LOCATION")));
+
+        // different number of values -> returns false
+        assertFalse(asset.equals(Asset.of("name")));
+    }
+
+    @Test
+    public void toString_correctStringRepresentation_success() {
+        assertEquals(Asset.of("name").toString(), "[ name ]");
+        assertEquals(Asset.of("name#id").toString(), "[ name#id ]");
+        assertEquals(Asset.of("name@location").toString(), "[ name@location ]");
+        assertEquals(Asset.of("name#id@location").toString(), "[ name#id@location ]");
     }
 
 }
