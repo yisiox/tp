@@ -2,6 +2,7 @@ package seedu.address.model.asset;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
@@ -19,12 +20,10 @@ public class Asset {
     private final String assetLocation;
 
     private Asset(String assetName, String assetId, String assetLocation) {
-        requireNonNull(assetName);
-        requireNonNull(assetId);
-        requireNonNull(assetLocation);
-        this.assetName = assetName.trim();
-        this.assetId = assetId.trim();
-        this.assetLocation = assetLocation.trim();
+        requireAllNonNull(assetName, assetId, assetLocation);
+        this.assetName = assetName;
+        this.assetId = assetId;
+        this.assetLocation = assetLocation;
     }
 
     @JsonValue
@@ -40,8 +39,7 @@ public class Asset {
     }
 
     /**
-     * Parses a {@code String} of format {@code <name>#<id>@<location>} into a {@code Asset}.
-     * {@code <id>} and {@code <location>} are optional.
+     * Parses a {@code String} of format {@code NAME[#ID][@LOCATION]} into a {@code Asset}.
      * Leading and trailing whitespaces of each field will be trimmed.
      *
      * @throws IllegalArgumentException if the given {@code name} is invalid.
@@ -56,13 +54,13 @@ public class Asset {
         String trimmedDescription = assetDescription.trim();
         String[] splitByAt = trimmedDescription.split("@", 2);
         if (splitByAt.length == 2) {
-            location = splitByAt[1];
+            location = splitByAt[1].trim();
         }
         String[] splitByHash = splitByAt[0].split("#", 2);
         if (splitByHash.length == 2) {
-            id = splitByHash[1];
+            id = splitByHash[1].trim();
         }
-        String name = splitByHash[0];
+        String name = splitByHash[0].trim();
 
         return new Asset(name, id, location);
     }
