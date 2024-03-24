@@ -11,26 +11,25 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public class Asset {
 
-    public static final String MESSAGE_CONSTRAINTS = "Asset names can take any values, and it should not be blank";
-    private static final String VALIDATION_REGEX = "\\S.*";
+    public static final String MESSAGE_CONSTRAINTS = "Assets must be entered in the format NAME[#ID][@LOCATION]";
+    private static final String VALIDATION_REGEX = "\\S[^#@]*(#[^#@]+)?(@[^#@]+)?";
 
     private final String assetName;
+    private final String assetId;
+    private final String assetLocation;
 
-    /**
-     * Constructs a {@code Asset}.
-     *
-     * @param assetName A valid asset name.
-     */
-    public Asset(String assetName) {
+    private Asset(String assetName, String assetId, String assetLocation) {
         requireNonNull(assetName);
-        assetName = assetName.trim();
-        checkArgument(isValid(assetName), MESSAGE_CONSTRAINTS);
-        this.assetName = assetName;
+        requireNonNull(assetId);
+        requireNonNull(assetLocation);
+        this.assetName = assetName.trim();
+        this.assetId = assetId.trim();
+        this.assetLocation = assetLocation.trim();
     }
 
     @JsonValue
     public String get() {
-        return assetName;
+        return toString();
     }
 
     /**
@@ -41,15 +40,31 @@ public class Asset {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Name}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String} of format {@code <name>#<id>@<location>} into a {@code Asset}.
+     * {@code <id>} and {@code <location>} are optional.
+     * Leading and trailing whitespaces of each field will be trimmed.
      *
      * @throws IllegalArgumentException if the given {@code name} is invalid.
      */
-    public static Asset of(String assetName) throws IllegalArgumentException {
-        requireNonNull(assetName);
-        String trimmedName = assetName.trim();
-        return new Asset(trimmedName);
+    public static Asset of(String assetDescription) throws IllegalArgumentException {
+        requireNonNull(assetDescription);
+        checkArgument(isValid(assetDescription), MESSAGE_CONSTRAINTS);
+
+        String location = "";
+        String id = "";
+
+        String trimmedDescription = assetDescription.trim();
+        String[] splitByAt = trimmedDescription.split("@", 2);
+        if (splitByAt.length == 2) {
+            location = splitByAt[1];
+        }
+        String[] splitByHash = splitByAt[0].split("#", 2);
+        if (splitByHash.length == 2) {
+            id = splitByHash[1];
+        }
+        String name = splitByHash[0];
+
+        return new Asset(name, id, location);
     }
 
     @Override
@@ -64,7 +79,9 @@ public class Asset {
         }
 
         Asset otherAsset = (Asset) other;
-        return assetName.equals(otherAsset.assetName);
+        return assetName.equals(otherAsset.assetName)
+                && assetId.equals(otherAsset.assetId)
+                && assetLocation.equals(otherAsset.assetLocation);
     }
 
     @Override
@@ -76,7 +93,14 @@ public class Asset {
      * Format state as text for viewing.
      */
     public String toString() {
-        return '[' + assetName + ']';
+        StringBuilder res = new StringBuilder(assetName);
+        if (!assetId.isEmpty()) {
+            res.append("#").append(assetId);
+        }
+        if (!assetLocation.isEmpty()) {
+            res.append("@").append(assetLocation);
+        }
+        return res.toString();
     }
 
 }

@@ -35,7 +35,7 @@ public class Assets implements Field {
      */
     public Assets(String... assetNames) {
         this.assets = Stream.of(assetNames)
-                            .map(Asset::new)
+                            .map(Asset::of)
                             .collect(Collectors.toUnmodifiableSet());
     }
 
