@@ -27,8 +27,6 @@ public class AssetTest {
         assertThrows(IllegalArgumentException.class, () -> Asset.of("na#me#id"));
         assertThrows(IllegalArgumentException.class, () -> Asset.of("name@@location")); // too many at
         assertThrows(IllegalArgumentException.class, () -> Asset.of("name#@location")); // empty id
-
-
     }
 
     @Test
