@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -164,6 +166,17 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    /**
+     * Copies string to the clipboard
+     */
+    @FXML
+    private void handleCopy(String detailsToCopy) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(detailsToCopy);
+        clipboard.setContent(content);
+    }
+
     public PersonListPanel getPersonListPanel() {
         return personListPanel;
     }
@@ -185,11 +198,14 @@ public class MainWindow extends UiPart<Stage> {
             throw e;
         }
 
-        if (commandResult == Messages.MESSAGE_SHOWING_HELP) {
+        if (commandResult.equals(Messages.MESSAGE_SHOWING_HELP)) {
             handleHelp();
         }
-        if (commandResult == Messages.MESSAGE_EXITING) {
+        if (commandResult.equals(Messages.MESSAGE_EXITING)) {
             handleExit();
+        }
+        if (commandResult.startsWith(Messages.MESSAGE_COPIED.substring(0, Messages.MESSAGE_COPIED_LEN + 1))) {
+            handleCopy(commandResult.substring(Messages.MESSAGE_COPIED_LEN).trim());
         }
         return commandResult;
     }
