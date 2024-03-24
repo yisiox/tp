@@ -17,7 +17,7 @@ public enum CommandType {
             return EditCommand.of(arguments);
         }
     },
-    EDITA {
+    ASSET {
         @Override
         public Command createCommand(String arguments) throws IllegalArgumentException {
             return AssetCommand.of(arguments);
