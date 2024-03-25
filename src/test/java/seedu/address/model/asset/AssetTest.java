@@ -19,17 +19,15 @@ public class AssetTest {
     public void of_invalidAssetDescription_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> Asset.of("")); // empty string
         assertThrows(IllegalArgumentException.class, () -> Asset.of(" ")); // spaces only
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("#@")); // empty fields
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("#"));
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("@"));
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("#id@location"));
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("name#id@"));
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("name@location#id")); // wrong order
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("name#id@location#1")); // too many hashes
+        assertThrows(IllegalArgumentException.class, () -> Asset.of("#")); // empty fields
+        assertThrows(IllegalArgumentException.class, () -> Asset.of("#id"));
+        assertThrows(IllegalArgumentException.class, () -> Asset.of(" #id"));
+        assertThrows(IllegalArgumentException.class, () -> Asset.of("name#"));
+        assertThrows(IllegalArgumentException.class, () -> Asset.of("name# "));
+        assertThrows(IllegalArgumentException.class, () -> Asset.of("name#id#")); // too many hashes
+        assertThrows(IllegalArgumentException.class, () -> Asset.of("name#id#1"));
         assertThrows(IllegalArgumentException.class, () -> Asset.of("name##id"));
         assertThrows(IllegalArgumentException.class, () -> Asset.of("na#me#id"));
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("name@@location")); // too many at
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("name#@location")); // empty id
     }
 
     @Test
@@ -41,9 +39,9 @@ public class AssetTest {
         assertDoesNotThrow(() -> Asset.of("VALIDAsset"));
         assertDoesNotThrow(() -> Asset.of("name"));
         assertDoesNotThrow(() -> Asset.of("name#id"));
-        assertDoesNotThrow(() -> Asset.of("name#id@location"));
-        assertDoesNotThrow(() -> Asset.of("name@location"));
         assertDoesNotThrow(() -> Asset.of(":-)"));
+        assertDoesNotThrow(() -> Asset.of(" name # id "));
+        assertDoesNotThrow(() -> Asset.of("na me#i d"));
     }
 
     @Test

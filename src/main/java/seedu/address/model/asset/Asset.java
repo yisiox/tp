@@ -12,18 +12,16 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public class Asset {
 
-    public static final String MESSAGE_CONSTRAINTS = "Assets must be entered in the format NAME[#ID][@LOCATION]";
-    private static final String VALIDATION_REGEX = "[^#@\\s]+(#[^#@]+)?(@[^#@]+)?";
+    public static final String MESSAGE_CONSTRAINTS = "Assets must be entered in the format NAME[#ID]";
+    private static final String VALIDATION_REGEX = "\\s*([^#\\s]+\\s*)+(#(\\s*[^#\\s]+\\s*)+)?";
 
     private final String assetName;
     private final String assetId;
-    private final String assetLocation;
 
-    private Asset(String assetName, String assetId, String assetLocation) {
-        requireAllNonNull(assetName, assetId, assetLocation);
+    private Asset(String assetName, String assetId) {
+        requireAllNonNull(assetName, assetId);
         this.assetName = assetName;
         this.assetId = assetId;
-        this.assetLocation = assetLocation;
     }
 
     @JsonValue
@@ -31,9 +29,6 @@ public class Asset {
         StringBuilder res = new StringBuilder(assetName);
         if (!assetId.isEmpty()) {
             res.append("#").append(assetId);
-        }
-        if (!assetLocation.isEmpty()) {
-            res.append("@").append(assetLocation);
         }
         return res.toString();
     }
@@ -46,7 +41,7 @@ public class Asset {
     }
 
     /**
-     * Parses a {@code String} of format {@code NAME[#ID][@LOCATION]} into a {@code Asset}.
+     * Parses a {@code String} of format {@code NAME[#ID]} into a {@code Asset}.
      * Leading and trailing whitespaces of each field will be trimmed.
      *
      * @throws IllegalArgumentException if the given {@code name} is invalid.
@@ -55,21 +50,14 @@ public class Asset {
         requireNonNull(assetDescription);
         checkArgument(isValid(assetDescription), MESSAGE_CONSTRAINTS);
 
-        String location = "";
         String id = "";
-
-        String trimmedDescription = assetDescription.trim();
-        String[] splitByAt = trimmedDescription.split("@", 2);
-        if (splitByAt.length == 2) {
-            location = splitByAt[1].trim();
-        }
-        String[] splitByHash = splitByAt[0].split("#", 2);
+        String[] splitByHash = assetDescription.split("#", 2);
         if (splitByHash.length == 2) {
             id = splitByHash[1].trim();
         }
         String name = splitByHash[0].trim();
 
-        return new Asset(name, id, location);
+        return new Asset(name, id);
     }
 
     @Override
@@ -85,8 +73,7 @@ public class Asset {
 
         Asset otherAsset = (Asset) other;
         return assetName.equals(otherAsset.assetName)
-                && assetId.equals(otherAsset.assetId)
-                && assetLocation.equals(otherAsset.assetLocation);
+                && assetId.equals(otherAsset.assetId);
     }
 
     @Override
