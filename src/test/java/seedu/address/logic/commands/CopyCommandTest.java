@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -84,11 +85,41 @@ public class CopyCommandTest {
         assertParseFailure(CopyCommand::of, "", String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         assertThrows(IllegalArgumentException.class, () -> CopyCommand.of("1"));
         assertThrows(IllegalArgumentException.class, () -> CopyCommand.of(INVALID_INDEX));
+        assertThrows(IllegalArgumentException.class, () -> CopyCommand.of(VALID_INDEX + " "));
     }
 
     @Test
     public void of_validInput_success() {
-        assertThrows(IllegalArgumentException.class, () -> CopyCommand.of(VALID_INDEX + " "));
+        assertDoesNotThrow(() -> CopyCommand.of(VALID_INDEX + " n/"));
+        assertDoesNotThrow(() -> CopyCommand.of(VALID_INDEX + " t/ A/"));
+        assertDoesNotThrow(() -> CopyCommand.of(VALID_INDEX + " p/ e/ t/ a/ A/"));
+    }
+
+    @Test
+    public void equals_sameObject_returnsTrue() {
+        Index index = Index.fromOneBased(1);
+        boolean[] info = {true, true, true, true, true, true};
+        CopyCommand copyCommand = new CopyCommand(index, info);
+
+        assertEquals(copyCommand, copyCommand);
+    }
+
+    @Test
+    public void equals_nullObject_returnsFalse() {
+        Index index = Index.fromOneBased(1);
+        boolean[] info = {true, true, true, true, true, true};
+        CopyCommand copyCommand = new CopyCommand(index, info);
+
+        assertNotEquals(copyCommand, null);
+    }
+
+    @Test
+    public void equals_differentClass_returnsFalse() {
+        Index index = Index.fromOneBased(1);
+        boolean[] info = {true, true, true, true, true, true};
+        CopyCommand copyCommand = new CopyCommand(index, info);
+
+        assertNotEquals(copyCommand, "Not a CopyCommand object");
     }
 
     @Test

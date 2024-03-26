@@ -77,7 +77,7 @@ public class CopyCommand extends Command {
      * Copies the details of {@code personToCopy} to clipboard
      */
     private static String copyToClipboard(Person personToCopy, boolean[] info) {
-        assert personToCopy != null;
+        requireNonNull(personToCopy);
 
         StringBuilder copiedMsg = new StringBuilder();
 
@@ -109,10 +109,9 @@ public class CopyCommand extends Command {
      * @throws IllegalArgumentException if the user input does not conform the expected format
      */
     public static CopyCommand of(String args) throws IllegalArgumentException {
-        System.out.println(args);
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-            ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
                 PREFIX_ADDRESS, PREFIX_TAG, PREFIX_ASSET);
 
         Index index;

@@ -198,10 +198,12 @@ public class MainWindow extends UiPart<Stage> {
             throw e;
         }
 
-        if (commandResult.equals(Messages.MESSAGE_SHOWING_HELP)) {
+        // == used to prevent an edge case where a command may somehow return this exact string,
+        // but is not actually a help or exit command.
+        if (commandResult == Messages.MESSAGE_SHOWING_HELP) {
             handleHelp();
         }
-        if (commandResult.equals(Messages.MESSAGE_EXITING)) {
+        if (commandResult == Messages.MESSAGE_EXITING) {
             handleExit();
         }
         if (commandResult.startsWith(Messages.MESSAGE_COPIED.substring(0, Messages.MESSAGE_COPIED_LEN + 1))) {
