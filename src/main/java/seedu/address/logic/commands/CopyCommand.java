@@ -119,8 +119,7 @@ public class CopyCommand extends Command {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (IllegalArgumentException ie) {
-            throw new IllegalArgumentException(
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE), ie);
+            throw new IllegalArgumentException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE), ie);
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);

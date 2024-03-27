@@ -7,6 +7,12 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.assertParseFailure;
 import static seedu.address.logic.commands.CopyCommand.MESSAGE_USAGE;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.PersonBuilder.DEFAULT_ADDRESS;
+import static seedu.address.testutil.PersonBuilder.DEFAULT_ASSETS;
+import static seedu.address.testutil.PersonBuilder.DEFAULT_EMAIL;
+import static seedu.address.testutil.PersonBuilder.DEFAULT_NAME;
+import static seedu.address.testutil.PersonBuilder.DEFAULT_PHONE;
+import static seedu.address.testutil.PersonBuilder.DEFAULT_TAGS;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +22,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.fields.Assets;
+import seedu.address.model.person.fields.Tags;
 import seedu.address.testutil.PersonBuilder;
 
 /**
@@ -29,18 +37,18 @@ public class CopyCommandTest {
 
     @Test
     public void execute_validCopy1_success() throws CommandException {
-        Person personToCopy = new PersonBuilder().withTags("Bob").withAssets("Aircon").build();
+        Person personToCopy = new PersonBuilder().build();
         model.addPerson(personToCopy);
         Index index = Index.fromOneBased(1);
         boolean[] info = {true, true, true, true, true, true};
         CopyCommand copyCommand = new CopyCommand(index, info);
 
-        String copiedDetails = "Name: Amy Bee; "
-            + "Phone: 85355255; "
-            + "Email: amy@gmail.com; "
-            + "Address: 123, Jurong West Ave 6, #08-111; "
-            + "Tags: [[Bob]]; "
-            + "Assets: [[Aircon]]";
+        String copiedDetails = "Name: " + DEFAULT_NAME + "; "
+            + "Phone: " + DEFAULT_PHONE + "; "
+            + "Email: " + DEFAULT_EMAIL + "; "
+            + "Address: " + DEFAULT_ADDRESS + "; "
+            + "Tags: " + new Tags(DEFAULT_TAGS) + "; "
+            + "Assets: " + new Assets(DEFAULT_ASSETS);
 
         String expectedMessage = String.format(Messages.MESSAGE_COPIED, copiedDetails);
         assertEquals(expectedMessage, copyCommand.execute(model));
@@ -48,16 +56,16 @@ public class CopyCommandTest {
 
     @Test
     public void execute_validCopy2_success() throws CommandException {
-        Person personToCopy = new PersonBuilder().withTags("Bob").withAssets("Aircon").build();
+        Person personToCopy = new PersonBuilder().build();
         model.addPerson(personToCopy);
         Index index = Index.fromOneBased(1);
         boolean[] info = {false, true, false, true, true, true};
         CopyCommand copyCommand = new CopyCommand(index, info);
 
-        String copiedDetails = "Phone: 85355255; "
-            + "Address: 123, Jurong West Ave 6, #08-111; "
-            + "Tags: [[Bob]]; "
-            + "Assets: [[Aircon]]";
+        String copiedDetails = "Phone: " + DEFAULT_PHONE + "; "
+                + "Address: " + DEFAULT_ADDRESS + "; "
+                + "Tags: " + new Tags(DEFAULT_TAGS) + "; "
+                + "Assets: " + new Assets(DEFAULT_ASSETS);
 
         String expectedMessage = String.format(Messages.MESSAGE_COPIED, copiedDetails);
         assertEquals(expectedMessage, copyCommand.execute(model));
