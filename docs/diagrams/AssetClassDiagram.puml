@@ -9,42 +9,24 @@ skinparam classAttributeIconSize 0
 
 show members
 
-package model {
-
-package asset {
-
 class Asset {
     -assetSerial: String
-    ==
+    --
     +{static} of(String): Asset
 }
 
-}
-
-package person {
-
-class Person {
-    -assets: Assets
-    ==
-}
-
-package Fields {
+hide empty attributes
+hide empty methods
+class Person
 
 class Assets {
-    -assets: Set<Asset>
-    ==
+    --
     +{static} of(String[]): Assets
     +{static} edit(Asset, Asset): Assets
 }
 
-}
+Assets "1..*" -down-> "*" Asset
 
-}
-
-}
-
-Assets "1..*" *-left- "*" Asset : > contain
-
-Person o-right- Assets : > has
+Person -right->"1" Assets
 
 @enduml

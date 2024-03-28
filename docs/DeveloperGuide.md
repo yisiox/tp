@@ -155,7 +155,7 @@ This section describes some noteworthy details on how certain features are imple
 
 Asset related functionality is supported by an `Asset` and `Assets` objects.
 
-The following class diagram details the relationship between classes involved under the model package.
+The following class diagram details the relationship between classes involved under the model component.
 
 <puml src="diagrams/AssetClassDiagram.puml" alt="Asset Model Class Diagram" />
 
