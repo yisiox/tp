@@ -28,7 +28,7 @@ public class CopyCommand extends Command {
 
     public static final String COMMAND_WORD = "copy";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Copies the details of the prefix identified\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Copies one detail of the prefix identified\n"
         + "Parameters: "
         + "[" + PREFIX_NAME + "] "
         + "[" + PREFIX_PHONE + "] "
@@ -37,12 +37,10 @@ public class CopyCommand extends Command {
         + "[" + PREFIX_TAG + "] "
         + "[" + PREFIX_ASSET + "]\n"
         + "Example: " + COMMAND_WORD + " 1 "
-        + PREFIX_NAME + " "
-        + PREFIX_PHONE + " "
-        + PREFIX_TAG + " "
-        + PREFIX_ASSET + " ";
+        + PREFIX_NAME + " ";
 
-    public static final String MESSAGE_NO_PARAM = "At least one field to copy must be provided.";
+    public static final String MESSAGE_NO_PARAM = "One field to copy must be provided.";
+    public static final String MESSAGE_EXTRA_PARAM = "Only one field can be copied.";
 
     private final Index index;
     private final boolean[] info;
@@ -79,28 +77,26 @@ public class CopyCommand extends Command {
     private static String copyToClipboard(Person personToCopy, boolean[] info) {
         requireNonNull(personToCopy);
 
-        StringBuilder copiedMsg = new StringBuilder();
-
         if (info[0]) {
-            copiedMsg.append("Name: ").append(personToCopy.getName()).append("; ");
+            return personToCopy.getName().toString();
         }
         if (info[1]) {
-            copiedMsg.append("Phone: ").append(personToCopy.getPhone()).append("; ");
+            return personToCopy.getPhone().toString();
         }
         if (info[2]) {
-            copiedMsg.append("Email: ").append(personToCopy.getEmail()).append("; ");
+            return personToCopy.getEmail().toString();
         }
         if (info[3]) {
-            copiedMsg.append("Address: ").append(personToCopy.getAddress()).append("; ");
+            return personToCopy.getAddress().toString();
         }
         if (info[4]) {
-            copiedMsg.append("Tags: ").append(personToCopy.getTags()).append("; ");
+            return personToCopy.getTags().toString();
         }
         if (info[5]) {
-            copiedMsg.append("Assets: ").append(personToCopy.getAssets()).append("; ");
+            return personToCopy.getAssets().toString();
         }
 
-        return copiedMsg.substring(0, copiedMsg.length() - 2);
+        throw new IllegalArgumentException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
     }
 
     /**
@@ -125,33 +121,40 @@ public class CopyCommand extends Command {
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);
 
         boolean[] info = new boolean[6];
+        int totalParams = 0;
 
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
             info[0] = true;
+            totalParams++;
         }
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
             info[1] = true;
+            totalParams++;
         }
         if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
             info[2] = true;
+            totalParams++;
         }
         if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
             info[3] = true;
+            totalParams++;
         }
         if (argMultimap.getValue(PREFIX_TAG).isPresent()) {
             info[4] = true;
+            totalParams++;
         }
         if (argMultimap.getValue(PREFIX_ASSET).isPresent()) {
             info[5] = true;
+            totalParams++;
         }
 
-        for (boolean b: info) {
-            if (b) {
-                return new CopyCommand(index, info);
-            }
+        if (totalParams == 0) {
+            throw new IllegalArgumentException(MESSAGE_NO_PARAM);
+        } else if (totalParams > 1) {
+            throw new IllegalArgumentException(MESSAGE_EXTRA_PARAM);
         }
 
-        throw new IllegalArgumentException(MESSAGE_NO_PARAM);
+        return new CopyCommand(index, info);
     }
 
     @Override
