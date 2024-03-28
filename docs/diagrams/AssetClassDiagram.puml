@@ -9,6 +9,7 @@ skinparam classAttributeIconSize 0
 
 show members
 
+package Model {
 class Asset {
     -assetSerial: String
     --
@@ -23,6 +24,7 @@ class Assets {
     --
     +{static} of(String[]): Assets
     +{static} edit(Asset, Asset): Assets
+}
 }
 
 Assets "1..*" -down-> "*" Asset
