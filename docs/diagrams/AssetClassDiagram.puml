@@ -1,0 +1,50 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+skinparam DefaultTextAlignment left
+skinparam classAttributeFontColor white
+skinparam classAttributeIconSize 0
+
+show members
+
+package model {
+
+package asset {
+
+class Asset {
+    -assetSerial: String
+    ==
+    +{static} of(String): Asset
+}
+
+}
+
+package person {
+
+class Person {
+    -assets: Assets
+    ==
+}
+
+package Fields {
+
+class Assets {
+    -assets: Set<Asset>
+    ==
+    +{static} of(String[]): Assets
+    +{static} edit(Asset, Asset): Assets
+}
+
+}
+
+}
+
+}
+
+Assets "1..*" *-left- "*" Asset : > contain
+
+Person o-right- Assets : > has
+
+@enduml

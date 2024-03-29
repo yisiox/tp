@@ -28,10 +28,10 @@ create CommandType
 CommandTypeClass -> CommandType
 activate CommandType
 
-CommandType -> CommandTypeClass : t
+CommandType --> CommandTypeClass : t
 deactivate CommandType
 
-CommandTypeClass -> AddressBookParser : t
+CommandTypeClass --> AddressBookParser : t
 deactivate CommandTypeClass
 
 AddressBookParser -> CommandType : createCommand()

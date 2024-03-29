@@ -151,6 +151,63 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Asset feature
+
+Asset related functionality is supported by an `Asset` and `Assets` objects.
+
+The following class diagram details the relationship between classes involved under the model package.
+
+<puml src="diagrams/AssetClassDiagram.puml" alt="Asset Model Class Diagram" />
+
+`Assets` and `Asset` objects are immutable and expose a static factory `of` method which parses `String` objects to
+return the respective class. The `Assets` class has a static `edit` method which facilitates creating a new `Assets`
+object with a specified `Asset` object replaced.
+
+Assets are created when the user invokes the `add`, `edit` or `asset` commands specifying an asset is to be
+associated with person.
+
+#### Design Considerations
+
+**Aspect: How users create and update assets**
+* **Alternative 1 (selected choice)**: The user specifies only the serial no. of the asset in `add`.
+  The user uses the `asset` command to add or edit details to each asset.
+  * Pros:
+    * Each asset is unambiguously and uniquely identified on creation.
+    * The user cannot make mistakes such as creating the same asset twice with different details.
+  * Cons:
+    * The user must use two separate commands to add an asset with details.
+* **Alternative 2**: The user specifies all details of the asset in `add`.
+  * Pros:
+    * Advanced users save time as only a single command is required to specify all details of multiple assets.
+  * Cons:
+    * There is a lot of room for users to make mistakes such as creating the same asset twice with different details.
+      This leads to the need to decide how best to handle each error. Throwing errors may frustrate the user while 
+      making a guess of the user's intention may result in unintended changes made to the contacts.
+* **Alternative 3**: Have a dedicated set of commands to create and edit assets.
+  * Pros:
+    * The person related commands are not overloaded with the functionality to control assets.
+    * The user is less likely to make a mistake as there is a clear distinction between persons and assets.
+  * Cons:
+    * Harder to implement, a second set of commands is essentially required.
+    * Not the focus of the application, which is contact management.
+
+**Aspect: How asset update is implemented**
+* **Alternative 1 (selected choice)**: All `Assets` and `Asset` objects are immutable; a linear search and replace
+  is performed to update the `UniquePersonList` whenever a change to any is required.
+  * Pros:
+    * Undo is easy to implement and unlikely to have bugs.
+  * Cons:
+    * More work is required per operation to update assets. This is offset by the fact that considerable time by
+      proportion is already invested in saving after each operation, so this extra time per operation is not as
+      significant.
+    * More likely to have data inconsistency bugs.
+* **Alternative 2**: `Asset` has a static hash table with some primary key.
+  * Pros:
+    * All persons sharing an asset will have it represented by the same object in memory, making it easy to update.
+    * Less likelihood of data inconsistency bugs.
+  * Cons:
+    * This design is not immutable, meaning undo is excessively difficult to implement.
+
 ### Find feature
 
 The following sequence diagram shows how a `find David` command is executed.
