@@ -86,7 +86,7 @@ public class CommandBox extends UiPart<Region> {
      * @param event the KeyEvent when a key is pressed.
      */
     private void handleKeyPressed(KeyEvent event) {
-        String commandText = "";
+        String commandText = null;
         if (event.getCode() == KeyCode.UP) {
             // go up the command history
             logger.info("UP key pressed");
@@ -97,7 +97,7 @@ public class CommandBox extends UiPart<Region> {
             commandText = commandExecutor.getNextCommandText();
         }
 
-        if (!commandText.isEmpty()) {
+        if (commandText != null) {
             commandTextField.setText(commandText);
             commandTextField.positionCaret(commandTextField.getLength());
             logger.info("commandTextField set to \"" + commandText + "\"");
