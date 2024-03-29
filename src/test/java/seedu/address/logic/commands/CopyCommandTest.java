@@ -7,8 +7,12 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.assertParseFailure;
 import static seedu.address.logic.commands.CopyCommand.MESSAGE_USAGE;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.PersonBuilder.DEFAULT_ADDRESS;
 import static seedu.address.testutil.PersonBuilder.DEFAULT_ASSETS;
+import static seedu.address.testutil.PersonBuilder.DEFAULT_EMAIL;
 import static seedu.address.testutil.PersonBuilder.DEFAULT_NAME;
+import static seedu.address.testutil.PersonBuilder.DEFAULT_PHONE;
+import static seedu.address.testutil.PersonBuilder.DEFAULT_TAGS;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +23,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.fields.Assets;
+import seedu.address.model.person.fields.Tags;
 import seedu.address.testutil.PersonBuilder;
 
 /**
@@ -52,6 +57,58 @@ public class CopyCommandTest {
 
 
         String expectedMessage = String.format(Messages.MESSAGE_COPIED, new Assets(DEFAULT_ASSETS));
+        assertEquals(expectedMessage, copyCommand.execute(model));
+    }
+
+    @Test
+    public void execute_validCopy3_success() throws CommandException {
+        Person personToCopy = new PersonBuilder().build();
+        model.addPerson(personToCopy);
+        Index index = Index.fromOneBased(1);
+        boolean[] info = {false, true, false, false, false, false};
+        CopyCommand copyCommand = new CopyCommand(index, info);
+
+
+        String expectedMessage = String.format(Messages.MESSAGE_COPIED, DEFAULT_PHONE);
+        assertEquals(expectedMessage, copyCommand.execute(model));
+    }
+
+    @Test
+    public void execute_validCopy4_success() throws CommandException {
+        Person personToCopy = new PersonBuilder().build();
+        model.addPerson(personToCopy);
+        Index index = Index.fromOneBased(1);
+        boolean[] info = {false, false, true, false, false, false};
+        CopyCommand copyCommand = new CopyCommand(index, info);
+
+
+        String expectedMessage = String.format(Messages.MESSAGE_COPIED, DEFAULT_EMAIL);
+        assertEquals(expectedMessage, copyCommand.execute(model));
+    }
+
+    @Test
+    public void execute_validCopy5_success() throws CommandException {
+        Person personToCopy = new PersonBuilder().build();
+        model.addPerson(personToCopy);
+        Index index = Index.fromOneBased(1);
+        boolean[] info = {false, false, false, true, false, false};
+        CopyCommand copyCommand = new CopyCommand(index, info);
+
+
+        String expectedMessage = String.format(Messages.MESSAGE_COPIED, DEFAULT_ADDRESS);
+        assertEquals(expectedMessage, copyCommand.execute(model));
+    }
+
+    @Test
+    public void execute_validCopy6_success() throws CommandException {
+        Person personToCopy = new PersonBuilder().build();
+        model.addPerson(personToCopy);
+        Index index = Index.fromOneBased(1);
+        boolean[] info = {false, false, false, false, true, false};
+        CopyCommand copyCommand = new CopyCommand(index, info);
+
+
+        String expectedMessage = String.format(Messages.MESSAGE_COPIED, new Tags(DEFAULT_TAGS));
         assertEquals(expectedMessage, copyCommand.execute(model));
     }
 
