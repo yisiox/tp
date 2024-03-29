@@ -25,7 +25,7 @@ public class LogicManager implements Logic {
     private final Model model;
     private final Storage storage;
 
-    private final CommandHistory commandHistory;
+    private final CommandHistory commandHistory = new CommandHistory();
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -33,7 +33,6 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        this.commandHistory = new CommandHistory();
     }
 
     @Override
