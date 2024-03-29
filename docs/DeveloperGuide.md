@@ -158,6 +158,21 @@ The following sequence diagram shows how a `find David` command is executed.
 <puml src="diagrams/FindSequenceDiagram.puml" alt="Interactions between components for the `find David` Command" />
 <br><br>
 
+### Edit Asset feature
+
+The following sequence diagram shows how a `edita old/Aircon new/Hammer` command is executed.
+
+<puml src="diagrams/EditAssetSequenceDiagram.puml" alt="Interactions between components for the `edita old/Aircon new/Hammer` Command" />
+<br><br>
+
+The edit asset mechanism is implemented by the following operations:
+
+1. Search through the entire `persons` list.
+2. Look through the `asset` list in each `person`.
+3. If the `asset` name names the `asset` name in the `old/` prefix, then change it to the `asset` name specified in the `new/` prefix. If the `asset` name does not match, do nothing.
+
+**Note:** If the `asset` name specified in the `old/` prefix does not exist within the application, the application will throw an error to inform the user that the command is invalid.
+
 ### Undo/Redo feature
 
 The undo/redo mechanism is implemented within `AddressBook.java` by saving the entire `persons` list. It uses an undo and a redo stack to maintain the history. Additionally, it implements the following operations:
