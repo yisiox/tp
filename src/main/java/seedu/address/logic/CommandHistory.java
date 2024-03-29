@@ -16,11 +16,18 @@ public class CommandHistory {
      * @return the previous command text.
      */
     public String getPrevious() {
-        if (index <= 0) {
+        assert -1 <= index && index <= commandHistory.size();
+
+        if (index < 0) {
             return "";
         }
 
         index -= 1;
+
+        if (index < 0) {
+            return "";
+        }
+
         return commandHistory.get(index);
     }
 
@@ -30,11 +37,18 @@ public class CommandHistory {
      * @return the next command text.
      */
     public String getNext() {
-        if (index >= commandHistory.size() - 1) {
+        assert -1 <= index && index <= commandHistory.size();
+
+        if (index >= commandHistory.size()) {
             return "";
         }
 
         index += 1;
+
+        if (index >= commandHistory.size()) {
+            return "";
+        }
+
         return commandHistory.get(index);
     }
 
