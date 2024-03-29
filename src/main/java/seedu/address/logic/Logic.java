@@ -13,6 +13,7 @@ import seedu.address.storage.exceptions.StorageException;
  * API of the Logic component
  */
 public interface Logic {
+
     /**
      * Executes the command and returns the result.
      * @param commandText The command as entered by the user.
@@ -20,8 +21,21 @@ public interface Logic {
      * @throws CommandException If an error occurs during command execution.
      * @throws ParseException If an error occurs during parsing.
      */
-
     String execute(String commandText) throws CommandException, ParseException, StorageException;
+
+    /**
+     * Gets the previous command's text.
+     *
+     * @return the previous command's text.
+     */
+    String getPreviousCommandText();
+
+    /**
+     * Gets the next command's text.
+     *
+     * @return the next command's text.
+     */
+    String getNextCommandText();
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
@@ -40,4 +54,5 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
 }

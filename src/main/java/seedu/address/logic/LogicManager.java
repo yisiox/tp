@@ -1,6 +1,7 @@
 package seedu.address.logic;
 
 import java.nio.file.Path;
+import java.util.Stack;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -25,6 +26,9 @@ public class LogicManager implements Logic {
     private final Model model;
     private final Storage storage;
 
+    private final Stack<String> commandTextHistory = new Stack<>();
+    private final Stack<String> commandTextFuture = new Stack<>();
+
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
@@ -41,7 +45,34 @@ public class LogicManager implements Logic {
         String commandResult = command.execute(model);
         storage.saveAddressBook(model.getAddressBook());
 
+        // keep track of valid commands
+        commandTextHistory.push(commandText);
+        commandTextFuture.clear();
+        logger.info("\"" + commandText + "\" pushed to stack, commandTextFuture stack cleared");
+
         return commandResult;
+    }
+
+    @Override
+    public String getPreviousCommandText() {
+        if (commandTextHistory.empty()) {
+            return "";
+        }
+
+        String commandText = commandTextHistory.pop();
+        commandTextFuture.push(commandText);
+        return commandText;
+    }
+
+    @Override
+    public String getNextCommandText() {
+        if (commandTextFuture.empty()) {
+            return "";
+        }
+
+        String commandText = commandTextFuture.pop();
+        commandTextHistory.push(commandText);
+        return commandText;
     }
 
     @Override

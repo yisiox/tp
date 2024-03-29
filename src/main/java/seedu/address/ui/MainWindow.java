@@ -123,7 +123,7 @@ public class MainWindow extends UiPart<Stage> {
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
-        CommandBox commandBox = new CommandBox(this::executeCommand);
+        CommandBox commandBox = new CommandBox(new CommandExecutorInator());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
@@ -174,39 +174,50 @@ public class MainWindow extends UiPart<Stage> {
         clipboard.setContent(content);
     }
 
-    /**
-     * Executes the command and returns the result.
-     *
-     * @see seedu.address.logic.Logic#execute(String)
-     */
-    private String executeCommand(String commandText) throws CommandException, ParseException, StorageException {
-        String commandResult;
-        try {
-            commandResult = logic.execute(commandText);
-            logger.info("Result: " + commandResult);
-            showMessage(commandResult);
-        } catch (CommandException | ParseException | StorageException e) {
-            logger.info("An error occurred while executing command: " + commandText);
-            showMessage(e.getMessage());
-            throw e;
-        }
-
-        // == used to prevent an edge case where a command may somehow return this exact string,
-        // but is not actually a help or exit command.
-        if (commandResult == Messages.MESSAGE_SHOWING_HELP) {
-            handleHelp();
-        }
-        if (commandResult == Messages.MESSAGE_EXITING) {
-            handleExit();
-        }
-        if (commandResult.startsWith(Messages.MESSAGE_COPIED.substring(0, Messages.MESSAGE_COPIED_LEN + 1))) {
-            handleCopy(commandResult.substring(Messages.MESSAGE_COPIED_LEN).trim());
-        }
-        return commandResult;
-    }
-
     public void showMessage(String msg) {
         resultDisplay.setFeedbackToUser(msg);
+    }
+
+    private class CommandExecutorInator implements CommandExecutor {
+
+        @Override
+        public String execute(String commandText) throws CommandException, ParseException, StorageException {
+            String commandResult;
+            try {
+                commandResult = logic.execute(commandText);
+                logger.info("Result: " + commandResult);
+                showMessage(commandResult);
+            } catch (CommandException | ParseException | StorageException e) {
+                logger.info("An error occurred while executing command: " + commandText);
+                showMessage(e.getMessage());
+                throw e;
+            }
+
+            // == used to prevent an edge case where a command may somehow return this exact string,
+            // but is not actually a help or exit command.
+            if (commandResult == Messages.MESSAGE_SHOWING_HELP) {
+                handleHelp();
+            }
+            if (commandResult == Messages.MESSAGE_EXITING) {
+                handleExit();
+            }
+            if (commandResult.startsWith(Messages.MESSAGE_COPIED.substring(0, Messages.MESSAGE_COPIED_LEN + 1))) {
+                handleCopy(commandResult.substring(Messages.MESSAGE_COPIED_LEN).trim());
+            }
+
+            return commandResult;
+        }
+
+        @Override
+        public String getPreviousCommandText() {
+            return logic.getPreviousCommandText();
+        }
+
+        @Override
+        public String getNextCommandText() {
+            return logic.getNextCommandText();
+        }
+
     }
 
 }
