@@ -9,17 +9,17 @@ class CommandHistoryTest {
     private final CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    void getPrevious_emptyHistory_returnsEmptyString() {
+    public void getPrevious_emptyHistory_returnsEmptyString() {
         assertEquals("", commandHistory.getPrevious());
     }
 
     @Test
-    void getNext_emptyHistory_returnsEmptyString() {
+    public void getNext_emptyHistory_returnsEmptyString() {
         assertEquals("", commandHistory.getNext());
     }
 
     @Test
-    void getPreviousAndGetNext_multipleStrings_returnsCorrectStrings() {
+    public void getPreviousAndGetNext_multipleStrings_returnsCorrectStrings() {
         // tests the simple case of cycling through the history
 
         String text1 = "text1";
@@ -44,7 +44,7 @@ class CommandHistoryTest {
     }
 
     @Test
-    void addAtMiddleOfHistory_multipleStrings_returnsCorrectStrings() {
+    public void addAtMiddleOfHistory_multipleStrings_returnsCorrectStrings() {
         // tests the case where a string is added while the pointer is at the middle of the history.
 
         String text1 = "text1";
@@ -74,7 +74,7 @@ class CommandHistoryTest {
     }
 
     @Test
-    void rightCornerAdd_anyText_success() {
+    public void rightCornerAdd_anyText_success() {
         // tests the corner case on the right side of the history
 
         String text = "list";
@@ -94,7 +94,7 @@ class CommandHistoryTest {
     }
 
     @Test
-    void leftCornerAdd_anyText_success() {
+    public void leftCornerAdd_anyText_success() {
         // tests the corner case on the left side of the history
 
         String text = "list";
@@ -104,13 +104,17 @@ class CommandHistoryTest {
         assertEquals(text, commandHistory.getPrevious());
 
         // getPrevious() should return an empty string
-        assertEquals("", commandHistory.getNext());
+        assertEquals("", commandHistory.getPrevious());
+        assertEquals("", commandHistory.getPrevious());
 
-        // getNext() should return the correct string again
-        assertEquals(text, commandHistory.getPrevious());
+        // getNext() should return the correct string
+        assertEquals(text, commandHistory.getNext());
 
         // getPrevious() should return an empty string again
-        assertEquals("", commandHistory.getNext());
+        assertEquals("", commandHistory.getPrevious());
+
+        // getNext() should return the correct string again
+        assertEquals(text, commandHistory.getNext());
     }
 
 }
