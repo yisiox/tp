@@ -106,8 +106,7 @@ public class CopyCommand extends Command {
      */
     public static CopyCommand of(String args) throws IllegalArgumentException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
                 PREFIX_ADDRESS, PREFIX_TAG, PREFIX_ASSET);
 
         Index index;
