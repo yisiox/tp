@@ -19,8 +19,10 @@ public class PersonMatchesKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         return keywords.stream()
-                .anyMatch(keyword -> fuzzyMatch(person.getName().toString(), keyword) ||
-                        person.getTags().stream().anyMatch(tag -> fuzzyMatch(tag.get(), keyword)) ||
+                .anyMatch(keyword -> fuzzyMatch(person.getName().toString(), keyword)
+                        ||
+                        person.getTags().stream().anyMatch(tag -> fuzzyMatch(tag.get(), keyword))
+                        ||
                         person.getAssets().stream().anyMatch(asset -> fuzzyMatch(asset.get(), keyword)));
     }
 
@@ -39,7 +41,8 @@ public class PersonMatchesKeywordsPredicate implements Predicate<Person> {
             int nw = i - 1;
 
             for (int j = 1; j <= b.length(); j++) {
-                int cj = Math.min(1 + Math.min(costs[j], costs[j - 1]), a.charAt(i - 1) == b.charAt(j - 1) ? nw : nw + 1);
+                int cj = Math.min(1 + Math.min(costs[j], costs[j - 1]),
+                        a.charAt(i - 1) == b.charAt(j - 1) ? nw : nw + 1);
                 nw = costs[j];
                 costs[j] = cj;
             }
