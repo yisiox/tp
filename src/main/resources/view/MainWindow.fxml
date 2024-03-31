@@ -14,7 +14,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-         title="AssetBook-3" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
+         title="AssetBook" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/icon_title.png" />
   </icons>
@@ -41,7 +41,7 @@
           </padding>
           <children>
             <ImageView fx:id="iconImageView" preserveRatio="true" fitWidth="50" fitHeight="50"/>
-            <Label fx:id="iconName" text="AssetBook-3" styleClass="title_label" HBox.hgrow="ALWAYS">
+            <Label fx:id="iconName" text="AssetBook" styleClass="title_label" HBox.hgrow="ALWAYS">
               <padding>
                 <Insets left="12" top="5"/>
               </padding>
