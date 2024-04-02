@@ -77,6 +77,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         primaryStage.show(); // This should be called before creating other UI parts
+        primaryStage.requestFocus();
 
         fillInnerParts();
     }
@@ -141,8 +142,12 @@ public class MainWindow extends UiPart<Stage> {
      * Sets the default size based on {@code guiSettings}.
      */
     private void setWindowDefaultSize(GuiSettings guiSettings) {
-        primaryStage.setHeight(guiSettings.getWindowHeight());
-        primaryStage.setWidth(guiSettings.getWindowWidth());
+        if (guiSettings.getIsMaximized()) {
+            primaryStage.setMaximized(true);
+        } else {
+            primaryStage.setHeight(guiSettings.getWindowHeight());
+            primaryStage.setWidth(guiSettings.getWindowWidth());
+        }
         if (guiSettings.getWindowCoordinates() != null) {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
@@ -167,7 +172,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY());
+                (int) primaryStage.getX(), (int) primaryStage.getY(), primaryStage.isMaximized());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
