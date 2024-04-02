@@ -84,7 +84,6 @@
 
 .split-pane-divider {
     -fx-background-color: transparent;
-    -fx-border-color: transparent transparent transparent transparent;
 }
 
 .split-pane {
