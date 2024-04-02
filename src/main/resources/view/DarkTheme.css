@@ -83,7 +83,6 @@
 }
 
 .split-pane-divider {
-    -fx-padding: 1;
     -fx-background-color: transparent;
     -fx-border-color: transparent transparent transparent transparent;
 }
