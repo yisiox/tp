@@ -1,6 +1,5 @@
 package seedu.address.ui;
 
-import java.io.File;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -40,7 +39,7 @@ public class MainWindow extends UiPart<Stage> {
     private final PersonListPanel personListPanel;
     private final ResultDisplay resultDisplay = new ResultDisplay();
     private final HelpWindow helpWindow = new HelpWindow();
-    private final String iconPath = "src/main/resources/images/icon.png";
+    private final String iconPath = "/images/icon.png";
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -133,8 +132,7 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        File iconFile = new File(iconPath);
-        Image iconImage = new Image(iconFile.toURI().toString());
+        Image iconImage = new Image(iconPath);
         iconImageView.setImage(iconImage);
     }
 
