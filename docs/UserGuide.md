@@ -74,6 +74,7 @@ or skip to the [command summary](#command-summary).
   + [Editing an Asset](#editing-an-asset-asset)
   + [Finding Contacts](#finding-contacts-find)
   + [Undoing Commands](#undoing-commands-undo)
+  + [Navigating command history](#navigating-command-history-and)
   + [Exiting the Application](#exiting-the-application-exit)
 + [Frequently Asked Questions](#faq)
 + [Known Issues](#known-issues)
