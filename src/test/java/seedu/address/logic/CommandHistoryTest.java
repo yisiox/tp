@@ -1,25 +1,28 @@
 package seedu.address.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+
+import seedu.address.commons.exceptions.CommandHistoryException;
 
 class CommandHistoryTest {
 
     private final CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    public void getPrevious_emptyHistory_returnsEmptyString() {
-        assertEquals("", commandHistory.getPrevious());
+    public void getPrevious_emptyHistory_throwsCommandException() {
+        assertThrows(CommandHistoryException.class, commandHistory::getPrevious, CommandHistory.MESSAGE_HISTORY_EMPTY);
     }
 
     @Test
-    public void getNext_emptyHistory_returnsEmptyString() {
-        assertEquals("", commandHistory.getNext());
+    public void getNext_emptyHistory_throwsCommandException() {
+        assertThrows(CommandHistoryException.class, commandHistory::getNext, CommandHistory.MESSAGE_HISTORY_EMPTY);
     }
 
     @Test
-    public void getPreviousAndGetNext_multipleStrings_returnsCorrectStrings() {
+    public void getPreviousAndGetNext_multipleStrings_success() throws CommandHistoryException {
         // tests the simple case of cycling through the history
 
         String text1 = "text1";
@@ -34,18 +37,18 @@ class CommandHistoryTest {
         assertEquals(text3, commandHistory.getPrevious());
         assertEquals(text2, commandHistory.getPrevious());
         assertEquals(text1, commandHistory.getPrevious());
-        assertEquals("", commandHistory.getPrevious());
+        assertThrows(CommandHistoryException.class, commandHistory::getPrevious, CommandHistory.MESSAGE_INDEX_START);
 
         // loop back to the front of the history
-        assertEquals(text1, commandHistory.getNext());
         assertEquals(text2, commandHistory.getNext());
         assertEquals(text3, commandHistory.getNext());
         assertEquals("", commandHistory.getNext());
+        assertThrows(CommandHistoryException.class, commandHistory::getNext, CommandHistory.MESSAGE_INDEX_END);
     }
 
     @Test
-    public void addAtMiddleOfHistory_multipleStrings_returnsCorrectStrings() {
-        // tests the case where a string is added while the pointer is at the middle of the history.
+    public void addAtMiddleOfHistory_multipleStrings_success() throws CommandHistoryException {
+        // tests the case where a string is added while the index is at the middle of the history.
 
         String text1 = "text1";
         String text2 = "text2";
@@ -58,7 +61,7 @@ class CommandHistoryTest {
         commandHistory.add(text3);
         commandHistory.add(text4);
 
-        // move pointer to middle
+        // move index to middle
         assertEquals(text4, commandHistory.getPrevious());
         assertEquals(text3, commandHistory.getPrevious());
 
@@ -70,12 +73,12 @@ class CommandHistoryTest {
         assertEquals(text3, commandHistory.getPrevious());
         assertEquals(text2, commandHistory.getPrevious());
         assertEquals(text1, commandHistory.getPrevious());
-        assertEquals("", commandHistory.getPrevious());
+        assertThrows(CommandHistoryException.class, commandHistory::getPrevious, CommandHistory.MESSAGE_INDEX_START);
     }
 
     @Test
-    public void rightCornerAdd_anyText_success() {
-        // tests the corner case on the right side of the history
+    public void rightBoundaryGet_anyText_success() throws CommandHistoryException {
+        // tests the right boundary of the command history
 
         String text = "list";
         commandHistory.add(text);
@@ -94,8 +97,8 @@ class CommandHistoryTest {
     }
 
     @Test
-    public void leftCornerAdd_anyText_success() {
-        // tests the corner case on the left side of the history
+    public void leftBoundaryGet_anyText_success() throws CommandHistoryException {
+        // tests the left boundary of the command history
 
         String text = "list";
         commandHistory.add(text);
@@ -103,18 +106,17 @@ class CommandHistoryTest {
         // getPrevious() should return the correct string
         assertEquals(text, commandHistory.getPrevious());
 
-        // getPrevious() should return an empty string
-        assertEquals("", commandHistory.getPrevious());
-        assertEquals("", commandHistory.getPrevious());
+        // getPrevious() should throw an exception
+        assertThrows(CommandHistoryException.class, commandHistory::getPrevious, CommandHistory.MESSAGE_INDEX_START);
 
-        // getNext() should return the correct string
-        assertEquals(text, commandHistory.getNext());
+        // getNext() should return an empty string
+        assertEquals("", commandHistory.getNext());
 
-        // getPrevious() should return an empty string again
-        assertEquals("", commandHistory.getPrevious());
+        // getPrevious() should return the correct string
+        assertEquals(text, commandHistory.getPrevious());
 
-        // getNext() should return the correct string again
-        assertEquals(text, commandHistory.getNext());
+        // getPrevious() should throw an exception again
+        assertThrows(CommandHistoryException.class, commandHistory::getPrevious, CommandHistory.MESSAGE_INDEX_START);
     }
 
 }

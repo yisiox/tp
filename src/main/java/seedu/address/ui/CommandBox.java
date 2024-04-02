@@ -9,6 +9,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.exceptions.CommandHistoryException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.util.exceptions.ParseException;
 import seedu.address.storage.exceptions.StorageException;
@@ -87,14 +88,20 @@ public class CommandBox extends UiPart<Region> {
      */
     private void handleKeyPressed(KeyEvent event) {
         String commandText = null;
-        if (event.getCode() == KeyCode.UP) {
-            // go up the command history
-            logger.info("UP key pressed");
-            commandText = commandExecutor.getPreviousCommandText();
-        } else if (event.getCode() == KeyCode.DOWN) {
-            // go down the command history
-            logger.info("DOWN key pressed");
-            commandText = commandExecutor.getNextCommandText();
+        try {
+            if (event.getCode() == KeyCode.UP) {
+                // go up the command history
+                logger.info("UP key pressed");
+                commandText = commandExecutor.getPreviousCommandText();
+            } else if (event.getCode() == KeyCode.DOWN) {
+                // go down the command history
+                logger.info("DOWN key pressed");
+                commandText = commandExecutor.getNextCommandText();
+            }
+        } catch (CommandHistoryException che) {
+            logger.info(che.getMessage());
+            event.consume();
+            return;
         }
 
         if (commandText != null) {

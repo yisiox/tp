@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import seedu.address.commons.exceptions.CommandHistoryException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.util.exceptions.ParseException;
 import seedu.address.storage.exceptions.StorageException;
@@ -21,13 +22,13 @@ public interface CommandExecutor {
      *
      * @return the previous command's text.
      */
-    String getPreviousCommandText();
+    String getPreviousCommandText() throws CommandHistoryException;
 
     /**
      * Gets the next command's text.
      *
      * @return the next command's text.
      */
-    String getNextCommandText();
+    String getNextCommandText() throws CommandHistoryException;
 
 }

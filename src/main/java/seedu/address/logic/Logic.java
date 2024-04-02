@@ -4,6 +4,7 @@ import java.nio.file.Path;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.exceptions.CommandHistoryException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.util.exceptions.ParseException;
 import seedu.address.model.person.Person;
@@ -28,14 +29,14 @@ public interface Logic {
      *
      * @return the previous command's text.
      */
-    String getPreviousCommandText();
+    String getPreviousCommandText() throws CommandHistoryException;
 
     /**
      * Gets the next command's text.
      *
      * @return the next command's text.
      */
-    String getNextCommandText();
+    String getNextCommandText() throws CommandHistoryException;
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();

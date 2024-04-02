@@ -14,6 +14,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.exceptions.CommandHistoryException;
 import seedu.address.logic.Logic;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -123,7 +124,7 @@ public class MainWindow extends UiPart<Stage> {
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
-        CommandBox commandBox = new CommandBox(new CommandExecutorInator());
+        CommandBox commandBox = new CommandBox(new RecordedCommandExecutor());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
@@ -178,7 +179,7 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay.setFeedbackToUser(msg);
     }
 
-    private class CommandExecutorInator implements CommandExecutor {
+    private class RecordedCommandExecutor implements CommandExecutor {
 
         @Override
         public String execute(String commandText) throws CommandException, ParseException, StorageException {
@@ -209,12 +210,12 @@ public class MainWindow extends UiPart<Stage> {
         }
 
         @Override
-        public String getPreviousCommandText() {
+        public String getPreviousCommandText() throws CommandHistoryException {
             return logic.getPreviousCommandText();
         }
 
         @Override
-        public String getNextCommandText() {
+        public String getNextCommandText() throws CommandHistoryException {
             return logic.getNextCommandText();
         }
 
