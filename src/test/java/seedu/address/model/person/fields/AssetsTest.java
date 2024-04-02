@@ -57,7 +57,7 @@ class AssetsTest {
     }
 
     @Test
-    void equals_null_false() {
+    public void equals_null_false() {
         assertFalse(new Assets(emptyAssetArray).equals(null));
     }
 
