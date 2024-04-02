@@ -14,7 +14,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-         title="AssetBook" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
+         title="AssetBook" minWidth="600" minHeight="800" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/icon_title.png" />
   </icons>
