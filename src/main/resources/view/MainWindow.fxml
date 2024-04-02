@@ -51,15 +51,15 @@
 
         <!--Wrap personList and resultDisplayPlaceholder in a SplitPane which allows the user to resize them-->
         <SplitPane orientation="VERTICAL" VBox.vgrow="ALWAYS">
-          <VBox fx:id="personList" styleClass="pane-with-border" VBox.vgrow="ALWAYS" minHeight="100">
+          <VBox fx:id="personList" styleClass="pane-without-border" VBox.vgrow="ALWAYS" minHeight="100">
             <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
 
-          <StackPane VBox.vgrow="ALWAYS" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
+          <StackPane VBox.vgrow="ALWAYS" fx:id="resultDisplayPlaceholder" styleClass="pane-without-border"
                      minHeight="50" prefHeight="70"/>
         </SplitPane>
 
-        <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER" />
+        <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-without-border" VBox.vgrow="NEVER" />
 
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
