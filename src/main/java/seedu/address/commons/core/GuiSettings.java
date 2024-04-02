@@ -70,12 +70,13 @@ public class GuiSettings implements Serializable {
         GuiSettings otherGuiSettings = (GuiSettings) other;
         return windowWidth == otherGuiSettings.windowWidth
                 && windowHeight == otherGuiSettings.windowHeight
-                && Objects.equals(windowCoordinates, otherGuiSettings.windowCoordinates);
+                && Objects.equals(windowCoordinates, otherGuiSettings.windowCoordinates)
+                && isMaximized == otherGuiSettings.isMaximized;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(windowWidth, windowHeight, windowCoordinates);
+        return Objects.hash(windowWidth, windowHeight, windowCoordinates, isMaximized);
     }
 
     @Override
@@ -84,6 +85,7 @@ public class GuiSettings implements Serializable {
                 .add("windowWidth", windowWidth)
                 .add("windowHeight", windowHeight)
                 .add("windowCoordinates", windowCoordinates)
+                .add("isMaximized", isMaximized)
                 .toString();
     }
 
