@@ -20,10 +20,8 @@ public class PersonMatchesKeywordsPredicate implements Predicate<Person> {
     public boolean test(Person person) {
         return keywords.stream()
                 .anyMatch(keyword -> fuzzyMatch(person.getName().toString(), keyword)
-                        ||
-                        person.getTags().stream().anyMatch(tag -> fuzzyMatch(tag.get(), keyword))
-                        ||
-                        person.getAssets().stream().anyMatch(asset -> fuzzyMatch(asset.get(), keyword)));
+                        || person.getTags().stream().anyMatch(tag -> fuzzyMatch(tag.get(), keyword))
+                        || person.getAssets().stream().anyMatch(asset -> fuzzyMatch(asset.get(), keyword)));
     }
 
 

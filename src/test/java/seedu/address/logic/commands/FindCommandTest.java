@@ -96,6 +96,28 @@ public class FindCommandTest {
     }
 
     @Test
+    public void execute_fuzzyMatching_partialMatchPersonFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        // Assuming "Carl Kurz" is in the address book and "Karl" is a fuzzy match for "Carl"
+        PersonMatchesKeywordsPredicate predicate = preparePredicate("Karl");
+        FindCommand command = new FindCommand(predicate);
+        expectedModel.updateFilteredPersonList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(List.of(CARL), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_fuzzyMatching_misspelledKeywordPersonFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        // Assuming "Elle Meyer" is in the address book and "Elee" is a fuzzy match for "Elle"
+        PersonMatchesKeywordsPredicate predicate = preparePredicate("Elee");
+        FindCommand command = new FindCommand(predicate);
+        expectedModel.updateFilteredPersonList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(List.of(ELLE), model.getFilteredPersonList());
+    }
+
+    @Test
     public void toStringMethod() {
         PersonMatchesKeywordsPredicate predicate = new PersonMatchesKeywordsPredicate(List.of("keyword"));
         FindCommand findCommand = new FindCommand(predicate);
