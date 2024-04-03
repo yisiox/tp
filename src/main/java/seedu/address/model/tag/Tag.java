@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Represents a Tag in the address book.
- * Guarantees: immutable; name is valid as declared in {@link #isValidTagName(String)}
+ * Guarantees: immutable; name is valid as declared in {@link #isValid(String)}
  */
 public class Tag {
 

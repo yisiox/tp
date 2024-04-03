@@ -1,5 +1,7 @@
 package seedu.address.model.person;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.function.Predicate;
 
 /**
@@ -14,7 +16,15 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
 
     private final String query;
 
+    /**
+     * Processes the query string and constructs the object.
+     * @param query the query string.
+     * @throws NullPointerException if the query string is null.
+     * @throws AssertionError if the query string is empty.
+     */
     public PersonMatchesQueryPredicate(String query) {
+        requireNonNull(query);
+        assert !query.isEmpty();
         this.query = processString(query);
     }
 

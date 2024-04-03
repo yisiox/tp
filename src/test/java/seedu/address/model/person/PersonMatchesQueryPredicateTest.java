@@ -2,7 +2,10 @@ package seedu.address.model.person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,22 +13,21 @@ import seedu.address.testutil.PersonBuilder;
 
 public class PersonMatchesQueryPredicateTest {
 
+    private Predicate<Person> predicate;
+
     @Test
     public void equals() {
         String firstPredicateQuery = "first";
-        String secondPredicateQuery = "first second";
+        String secondPredicateQuery = "second";
 
-        PersonMatchesQueryPredicate firstPredicate =
-                new PersonMatchesQueryPredicate(firstPredicateQuery);
-        PersonMatchesQueryPredicate secondPredicate =
-                new PersonMatchesQueryPredicate(secondPredicateQuery);
+        Predicate<Person> firstPredicate = new PersonMatchesQueryPredicate(firstPredicateQuery);
+        Predicate<Person> secondPredicate = new PersonMatchesQueryPredicate(secondPredicateQuery);
 
         // same object -> returns true
         assertEquals(firstPredicate, firstPredicate);
 
         // same values -> returns true
-        PersonMatchesQueryPredicate firstPredicateCopy =
-                new PersonMatchesQueryPredicate(firstPredicateQuery);
+        Predicate<Person> firstPredicateCopy = new PersonMatchesQueryPredicate(firstPredicateQuery);
         assertEquals(firstPredicate, firstPredicateCopy);
 
         // different types -> returns false
@@ -39,21 +41,16 @@ public class PersonMatchesQueryPredicateTest {
     }
 
     @Test
-    public void test_nameContainsKeywords_returnsTrue() {
-        // One keyword
-        PersonMatchesQueryPredicate predicate =
-                new PersonMatchesQueryPredicate("Alice");
+    public void test_nameMatchesQuery_returnsTrue() {
+        // Partial match
+        predicate = new PersonMatchesQueryPredicate("Ali");
         assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
 
-        // Multiple keywords
+        // Exact string match
         predicate = new PersonMatchesQueryPredicate("Alice Bob");
         assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
 
-        // Only one matching keyword
-        predicate = new PersonMatchesQueryPredicate("Bob Carol");
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice Carol").build()));
-
-        // Mixed-case keywords
+        // Mixed-case string match
         predicate = new PersonMatchesQueryPredicate("aLIce bOB");
         assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
 
@@ -62,39 +59,62 @@ public class PersonMatchesQueryPredicateTest {
         assertTrue(predicate.test(new PersonBuilder().withName("Alex Yeoh The Fifth").build()));
 
         // Query without whitespace
-        predicate = new PersonMatchesQueryPredicate("AlexYeoh");
+        predicate = new PersonMatchesQueryPredicate("xy");
         assertTrue(predicate.test(new PersonBuilder().withName("Alex Yeoh").build()));
     }
 
     @Test
-    public void test_nameDoesNotContainKeywords_returnsFalse() {
-        // Zero keywords
-        PersonMatchesQueryPredicate predicate = new PersonMatchesQueryPredicate("");
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice").build()));
+    public void test_invalidString_throwsException() {
+        // Empty string should throw an exception
+        assertThrows(AssertionError.class, () -> new PersonMatchesQueryPredicate(""));
 
-        // Non-matching keyword
-        predicate = new PersonMatchesQueryPredicate("Carol");
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
-
-        // Keywords match phone, email and address, but does not match name, tags or assets
-        predicate = new PersonMatchesQueryPredicate("12345 alice@email.com Main Street");
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
-                .withEmail("alice@email.com").withAddress("Main Street").build()));
+        // Null input should throw an exception
+        assertThrows(NullPointerException.class, () -> new PersonMatchesQueryPredicate(null));
     }
 
     @Test
-    public void test_tagContainsKeywords_returnsTrue() {
-        // One keyword
-        PersonMatchesQueryPredicate predicate =
-                new PersonMatchesQueryPredicate("friends");
+    public void test_fieldsDoNotMatchQuery_returnsFalse() {
+        // Query matches email and address, but does not match name, tags or assets
+        predicate = new PersonMatchesQueryPredicate("a");
+        assertFalse(predicate.test(new PersonBuilder().withName("Zed")
+                                                      .withEmail("alice@email.com")
+                                                      .withAddress("Main Street")
+                                                      .withTags("friends")
+                                                      .withAssets("screwdriver")
+                                                      .build()));
+
+        // Query matches phone, but does not match name, tags or assets
+        predicate = new PersonMatchesQueryPredicate("1");
+        assertFalse(predicate.test(new PersonBuilder().withName("Zed")
+                                                      .withPhone("12345")
+                                                      .withTags("friends")
+                                                      .withAssets("screwdriver")
+                                                      .build()));
+    }
+
+    @Test
+    public void test_nameDoesNotMatchQuery_returnsFalse() {
+        // Only one matching word
+        predicate = new PersonMatchesQueryPredicate("Bob Carol");
+        assertFalse(predicate.test(new PersonBuilder().withName("Alice Carol").build()));
+
+        // Non-matching word
+        predicate = new PersonMatchesQueryPredicate("Carol");
+        assertFalse(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
+    }
+
+    @Test
+    public void test_tagMatchesQuery_returnsTrue() {
+        // Exact string match
+        predicate = new PersonMatchesQueryPredicate("friends");
         assertTrue(predicate.test(new PersonBuilder().withTags("friends").build()));
 
-        // Multiple keywords
-        predicate = new PersonMatchesQueryPredicate("friends colleagues");
+        // Partial match
+        predicate = new PersonMatchesQueryPredicate("coll");
         assertTrue(predicate.test(new PersonBuilder().withTags("colleagues").build()));
 
-        // Mixed-case keywords
-        predicate = new PersonMatchesQueryPredicate("fRieNdS cOllEaGuEs");
+        // Mixed-case match
+        predicate = new PersonMatchesQueryPredicate("cOllEaGuEs");
         assertTrue(predicate.test(new PersonBuilder().withTags("colleagues").build()));
 
         // Short query, long tag
@@ -103,60 +123,44 @@ public class PersonMatchesQueryPredicateTest {
     }
 
     @Test
-    public void test_tagDoesNotContainKeywords_returnsFalse() {
-        // Zero keywords
-        PersonMatchesQueryPredicate predicate = new PersonMatchesQueryPredicate("");
-        assertFalse(predicate.test(new PersonBuilder().withTags("friends").build()));
-
-        // Non-matching keyword
-        predicate = new PersonMatchesQueryPredicate("friends colleagues");
+    public void test_tagDoesNotMatchQuery_returnsFalse() {
+        // Non-matching string
+        predicate = new PersonMatchesQueryPredicate("femily");
         assertFalse(predicate.test(new PersonBuilder().withTags("family").build()));
-
-        // Keywords match phone, email and address, but does not match name, tags or assets
-        predicate = new PersonMatchesQueryPredicate("12345 alice@email.com Main Street");
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
-                .withEmail("alice@email.com").withAddress("Main Street").withTags("friends").build()));
     }
 
     @Test
-    public void test_assetContainsKeywords_returnsTrue() {
-        // One keyword
-        PersonMatchesQueryPredicate predicate =
-                new PersonMatchesQueryPredicate("hammer");
+    public void test_assetMatchesQuery_returnsTrue() {
+        // Exact string match
+        predicate = new PersonMatchesQueryPredicate("hammer");
         assertTrue(predicate.test(new PersonBuilder().withAssets("hammer").build()));
 
-        // Multiple keywords
-        predicate = new PersonMatchesQueryPredicate("hammer screwdriver");
+        // Partial string match
+        predicate = new PersonMatchesQueryPredicate("driver");
         assertTrue(predicate.test(new PersonBuilder().withAssets("screwdriver").build()));
 
-        // Mixed-case keywords
-        predicate = new PersonMatchesQueryPredicate("hAmMeR sCrEwDriVer");
+        // Mixed-case match
+        predicate = new PersonMatchesQueryPredicate("sCrEwDriVer");
         assertTrue(predicate.test(new PersonBuilder().withAssets("screwdriver").build()));
 
         // Short query, long asset
         predicate = new PersonMatchesQueryPredicate("a");
         assertTrue(predicate.test(new PersonBuilder().withAssets("hammer").build()));
+
+        // Query without whitespace
+        predicate = new PersonMatchesQueryPredicate("rsc");
+        assertTrue(predicate.test(new PersonBuilder().withAssets("hammer screw").build()));
     }
 
     @Test
-    public void test_assetDoesNotContainKeywords_returnsFalse() {
-        // Zero keywords
-        PersonMatchesQueryPredicate predicate = new PersonMatchesQueryPredicate("");
-        assertFalse(predicate.test(new PersonBuilder().withAssets("hammer").build()));
+    public void test_assetDoesNotMatchQuery_returnsFalse() {
+        // Non-matching query
+        predicate = new PersonMatchesQueryPredicate("halmet");
+        assertFalse(predicate.test(new PersonBuilder().withAssets("helmet").build()));
 
-        // Non-matching keyword
-        predicate = new PersonMatchesQueryPredicate("helmet gloves");
-        assertFalse(predicate.test(new PersonBuilder().withAssets("hammer").build()));
-
-        // Keywords match phone, email and address, but does not match name, tags or assets
-        predicate = new PersonMatchesQueryPredicate("12345 alice@email.com Main Street");
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice")
-                                   .withPhone("12345")
-                                   .withEmail("alice@email.com")
-                                   .withAddress("Main Street")
-                                   .withTags("friends")
-                                   .withAssets("hammer")
-                                   .build()));
+        // Search query longer than field size
+        predicate = new PersonMatchesQueryPredicate("helmet screwdriver");
+        assertFalse(predicate.test(new PersonBuilder().withAssets("helmet").build()));
     }
 
 }

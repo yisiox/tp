@@ -68,10 +68,11 @@ public class FindCommandTest {
 
     @Test
     public void execute_stubThatReturnsTrue_allPersonsFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, personsList.size());
         PersonPredicateStub predicate = new PersonPredicateStub(true);
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
+
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, personsList.size());
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(personsList, model.getFilteredPersonList());
     }
@@ -84,18 +85,19 @@ public class FindCommandTest {
 
     @Test
     public void of_validArgs_returnsFindCommand() {
+        // this test depends on the PersonMatchesQueryPredicate class in order to test the factory constructor of()
+
         // no leading and trailing whitespaces
-        FindCommand expectedFindCommand =
-                new FindCommand(new PersonMatchesQueryPredicate("Alice Bob"));
+        FindCommand expectedFindCommand = new FindCommand(new PersonMatchesQueryPredicate("Alice Bob"));
         assertParseSuccess(FindCommand::of, "Alice Bob", expectedFindCommand);
 
         // multiple whitespaces between keywords
         assertParseSuccess(FindCommand::of, " \n Alice \n \t Bob  \t", expectedFindCommand);
     }
 
-
     /**
-     * A predicate stub class for testing the FindCommand class.
+     * Represents a predicate stub class for testing the FindCommand class.
+     * Removes the dependency on the PersonMatchesQueryPredicate class.
      */
     private static class PersonPredicateStub implements Predicate<Person> {
 
