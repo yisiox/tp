@@ -140,13 +140,13 @@ For detailed documentation of all available commands, refer to the [features](#f
 **Notes about the command format**
 
 * Items in square brackets are optional.<br>
-  e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g. `n\NAME [t\TAG]` can be used as `n\John Doe t\friend` or as `n\John Doe`.
 
 * Items followed by `...` indicates that it can be entered multiple times (or zero times).<br>
-  e.g. `[t/TAG]...` can be used as `t/friend`, `t/friend t/colleague` etc.
+  e.g. `[t\TAG]...` can be used as `t\friend`, `t\friend t\colleague` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE`, `p/PHONE n/NAME` is also acceptable.
+  e.g. if the command specifies `n\NAME p\PHONE`, `p\PHONE n\NAME` is also acceptable.
 
 * Extraneous parameters for commands that do not take in parameters (such as `exit`) will be ignored.<br>
   e.g. if the command specifies `exit 123`, it will be interpreted as `exit`.
@@ -165,14 +165,14 @@ For detailed documentation of all available commands, refer to the [features](#f
 
 Adds a new contact to the system, with 0 or more assets associated with the contact.
 
-Format: `add n/NAME p/PHONE e/EMAIL o/OFFICE [t/TAG]... [a/ASSET]...`
+Format: `add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`
 
 <box type="tip" seamless>
 A person can have any number of tags and assets (including 0)
 </box>
 
 #### Examples
-* Add a new contact associated with the asset `L293D`: `add n/John Doe e/johndoe@example.com o/574 Ang Mo Kio Ave 10 p/12345678 a/L293D`
+* Add a new contact associated with the asset `L293D`: `add n\John Doe e\johndoe@example.com o\574 Ang Mo Kio Ave 10 p\12345678 a\L293D`
 
 #### Options
 `NAME`
@@ -201,7 +201,7 @@ A person can have any number of tags and assets (including 0)
 * Contact can be created first without assets, then assets can be added later using the Edit command.
 * Case sensitive, i.e. NUS ≠ nus.
 * Assets must have unique names. If the asset already exists in the database, the existing asset will be linked instead of a new asset.
-* Multiple assets can be specified. For example, a valid option is `a/asset1 a/asset2 a/asset3`.
+* Multiple assets can be specified. For example, a valid option is `a\asset1 a\asset2 a\asset3`.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -222,16 +222,16 @@ Format: `delete INDEX`
 
 Edit existing contacts without recreating them.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [o/OFFICE] [t/TAG]... [a/ASSET]...`
+Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [o\OFFICE] [t\TAG]... [a\ASSET]...`
 
-Example: `edit 1 e/newemail@example.com` edits the contact with id `1`, changing its email to `newemail@example.com`.
+Example: `edit 1 e\newemail@example.com` edits the contact with id `1`, changing its email to `newemail@example.com`.
 
 * Edits the contact with the specified `INDEX`. `INDEX` refers to the unique contact index shown in the GUI.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing assets, the existing assets of the person will be removed i.e adding of assets is not cumulative.
-* You can remove all the person’s tags by typing `t/` without specifying any tags after it.
-* You can remove all the person’s assets by typing `a/` without specifying any assets after it.
+* You can remove all the person’s tags by typing `t\` without specifying any tags after it.
+* You can remove all the person’s assets by typing `a\` without specifying any assets after it.
 
 ### Editing an Asset: `asset`
 
@@ -308,15 +308,15 @@ Furthermore, certain edits can cause the AssetBook to behave in unexpected ways 
 
 ## Command summary
 
-Action           | Format                                                                        | Example
------------------|-------------------------------------------------------------------------------|--- 
-**Add**          | `add n/NAME p/PHONE e/EMAIL o/OFFICE [t/TAG]... [a/ASSET]...`                 | `add n/John Doe e/johndoe@example.com p/+12345678 a/L293D`
-**Delete**       | `delete INDEX`                                                                | `delete 1`
-**Edit contact** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [o/OFFICE] [t/TAG]... [a/ASSET]...`  | `edit 1 e/newemail@example.com`
-**Edit asset**   | `asset old/OLD_ASSET_NAME new/NEW_ASSET_NAME`                                 | `asset old/hammer new/screwdriver`
-**Find**         | `find KEYWORD [KEYWORD]...`                                                   | `find John`
-**Undo**         | `undo`                                                                        | `undo`
-**Exit**         | `exit`                                                                        | `exit`
+Action           | Format                                                                       | Example
+-----------------|------------------------------------------------------------------------------|--- 
+**Add**          | `add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`                | `add n\John Doe e\johndoe@example.com p\+12345678 a\L293D`
+**Delete**       | `delete INDEX`                                                               | `delete 1`
+**Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [o\OFFICE] [t\TAG]... [a\ASSET]...` | `edit 1 e\newemail@example.com`
+**Edit asset**   | `asset old\OLD_ASSET_NAME new\NEW_ASSET_NAME`                                | `asset old\hammer new\screwdriver`
+**Find**         | `find KEYWORD [KEYWORD]...`                                                  | `find John`
+**Undo**         | `undo`                                                                       | `undo`
+**Exit**         | `exit`                                                                       | `exit`
 
 ---{.double}
 
