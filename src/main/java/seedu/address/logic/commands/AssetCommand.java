@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.util.stream.Stream;
@@ -40,8 +41,7 @@ public class AssetCommand extends Command {
      * @param editedAsset New asset to replace with.
      */
     public AssetCommand(Asset target, Asset editedAsset) {
-        requireNonNull(target);
-        requireNonNull(editedAsset);
+        requireAllNonNull(target, editedAsset);
 
         this.target = target;
         this.editedAsset = editedAsset;
