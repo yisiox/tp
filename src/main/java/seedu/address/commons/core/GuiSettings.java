@@ -27,7 +27,7 @@ public class GuiSettings implements Serializable {
         windowWidth = DEFAULT_WIDTH;
         windowHeight = DEFAULT_HEIGHT;
         windowCoordinates = null; // null represent no coordinates
-        isMaximized = true;
+        isMaximized = false;
     }
 
     /**
