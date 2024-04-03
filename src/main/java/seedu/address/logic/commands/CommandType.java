@@ -11,6 +11,12 @@ public enum CommandType {
             return AddCommand.of(arguments);
         }
     },
+    COPY {
+        @Override
+        public Command createCommand(String arguments) throws IllegalArgumentException {
+            return CopyCommand.of(arguments);
+        }
+    },
     EDIT {
         @Override
         public Command createCommand(String arguments) throws IllegalArgumentException {
