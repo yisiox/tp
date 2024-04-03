@@ -247,14 +247,17 @@ Example: `asset old/hammer new/screwdriver` edits the asset `hammer`, changing i
 
 ### Finding Contacts: `find`
 
-Finds contacts whose names, tags or assets contain any of the given keywords.
+Finds contacts by names, tags or assets.
 
-Format: `find KEYWORD [KEYWORD]...`
+Format: `find QUERY`
 
-Example: `find John` searches all contact names, tags and assets for the keyword `John`.
+Example: `find John` searches all contact names, tags and assets for the query `John`.
 
-* At least one keyword must be provided.
-* Keywords are case-insensitive.
+* The query is case-insensitive.
+* Any whitespaces in the query will be removed.
+* Any whitespaces in the fields will be removed.
+* Each field is individually checked against the query.
+* If the query is a substring of the field, then a match is found.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -308,17 +311,16 @@ Furthermore, certain edits can cause the AssetBook-3 to behave in unexpected way
 
 ## Command summary
 
-Action           | Format                                                                        | Example
------------------|-------------------------------------------------------------------------------|--- 
-**Add**          | `add n/NAME p/PHONE e/EMAIL o/OFFICE [t/TAG]... [a/ASSET]...`                 | `add n/John Doe e/johndoe@example.com p/+12345678 a/L293D`
-**Delete**       | `delete INDEX`                                                                | `delete 1`
-**Edit contact** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [o/OFFICE] [t/TAG]... [a/ASSET]...`  | `edit 1 e/newemail@example.com`
-**Edit asset**   | `asset old/OLD_ASSET_NAME new/NEW_ASSET_NAME`                                 | `asset old/hammer new/screwdriver`
-**Find**         | `find KEYWORD [KEYWORD]...`                                                   | `find John`
-**Undo**         | `undo`                                                                        | `undo`
-**Exit**         | `exit`                                                                        | `exit`
+Action           | Format                                                                       | Example
+-----------------|------------------------------------------------------------------------------|--- 
+**Add**          | `add n/NAME p/PHONE e/EMAIL o/OFFICE [t/TAG]... [a/ASSET]...`                | `add n/John Doe e/johndoe@example.com p/+12345678 a/L293D`
+**Delete**       | `delete INDEX`                                                               | `delete 1`
+**Edit contact** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [o/OFFICE] [t/TAG]... [a/ASSET]...` | `edit 1 e/newemail@example.com`
+**Edit asset**   | `asset old/OLD_ASSET_NAME new/NEW_ASSET_NAME`                                | `asset old/hammer new/screwdriver`
+**Find**         | `find QUERY`                                                                 | `find John`
+**Undo**         | `undo`                                                                       | `undo`
+**Exit**         | `exit`                                                                       | `exit`
 
 ---{.double}
 
 ## Glossary
-

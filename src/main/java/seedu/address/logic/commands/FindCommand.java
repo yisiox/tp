@@ -3,12 +3,10 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import java.util.Arrays;
-
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.PersonMatchesSearchPredicate;
+import seedu.address.model.person.PersonMatchesQueryPredicate;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
@@ -24,9 +22,9 @@ public class FindCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
-    private final PersonMatchesSearchPredicate predicate;
+    private final PersonMatchesQueryPredicate predicate;
 
-    public FindCommand(PersonMatchesSearchPredicate predicate) {
+    public FindCommand(PersonMatchesQueryPredicate predicate) {
         this.predicate = predicate;
     }
 
@@ -49,9 +47,7 @@ public class FindCommand extends Command {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        String[] nameKeywords = trimmedArgs.split("\\s+");
-
-        return new FindCommand(new PersonMatchesSearchPredicate(Arrays.asList(nameKeywords)));
+        return new FindCommand(new PersonMatchesQueryPredicate(trimmedArgs));
     }
 
     @Override

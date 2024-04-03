@@ -1,6 +1,5 @@
 package seedu.address.model.person;
 
-import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -10,21 +9,20 @@ import seedu.address.commons.util.ToStringBuilder;
  * The algorithm removes all whitespaces and checks if the query is a substring of a field.
  * The substring matching is case-insensitive.
  */
-public class PersonMatchesSearchPredicate implements Predicate<Person> {
+public class PersonMatchesQueryPredicate implements Predicate<Person> {
 
-    private final List<String> keywords;
+    private final String query;
 
-    public PersonMatchesSearchPredicate(List<String> keywords) {
-        this.keywords = keywords;
+    public PersonMatchesQueryPredicate(String query) {
+        this.query = query;
     }
 
     //@@author rizkidelta
     @Override
     public boolean test(Person person) {
-        return keywords.stream()
-                .anyMatch(keyword -> substringMatch(person.getName().toString(), keyword)
-                        || person.getTags().stream().anyMatch(tag -> substringMatch(tag.get(), keyword))
-                        || person.getAssets().stream().anyMatch(asset -> substringMatch(asset.get(), keyword)));
+        return substringMatch(person.getName().toString(), query)
+               || person.getTags().stream().anyMatch(tag -> substringMatch(tag.get(), query)
+               || person.getAssets().stream().anyMatch(asset -> substringMatch(asset.get(), query)));
     }
 
     //@@author rizkidelta
@@ -46,17 +44,17 @@ public class PersonMatchesSearchPredicate implements Predicate<Person> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof PersonMatchesSearchPredicate)) {
+        if (!(other instanceof PersonMatchesQueryPredicate)) {
             return false;
         }
 
-        PersonMatchesSearchPredicate otherPersonMatchesSearchPredicate = (PersonMatchesSearchPredicate) other;
-        return keywords.equals(otherPersonMatchesSearchPredicate.keywords);
+        PersonMatchesQueryPredicate otherPersonMatchesQueryPredicate = (PersonMatchesQueryPredicate) other;
+        return query.equals(otherPersonMatchesQueryPredicate.query);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("keywords", keywords).toString();
+        return new ToStringBuilder(this).add("keywords", query).toString();
     }
 
 }
