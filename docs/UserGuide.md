@@ -82,6 +82,7 @@ or skip to the [command summary](#command-summary).
   + [Editing an Asset](#editing-an-asset-asset)
   + [Finding Contacts](#finding-contacts-find)
   + [Undoing Commands](#undoing-commands-undo)
+  + [Navigating command history](#navigating-command-history-and)
   + [Exiting the Application](#exiting-the-application-exit)
 + [Frequently Asked Questions](#faq)
 + [Known Issues](#known-issues)
@@ -243,6 +244,8 @@ Example: `edit 1 e/newemail@example.com` edits the contact with id `1`, changing
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 * You can remove all the person’s assets by typing `a/` without specifying any assets after it.
 
+--------------------------------------------------------------------------------------------------------------------
+
 ### Editing an Asset: `asset`
 
 Edit existing assets without recreating them.
@@ -276,6 +279,20 @@ Format: `undo`
 
 --------------------------------------------------------------------------------------------------------------------
 
+### Navigating command history: `↑` and `↓`
+
+Use keyboard shortcuts to navigate the command history.
+
+Press the `↑` arrow key to view the previous command.
+
+Press the `↓` arrow key to view the next command.
+
+<box type="warning" seamless>
+Only successfully executed commands are saved in the command history.
+</box>
+
+--------------------------------------------------------------------------------------------------------------------
+
 ### Exiting the Application: `exit`
 
 Exits the application. Equivalent to pressing the cross in the top right corner.
@@ -292,7 +309,8 @@ Format: `exit`
 
 ### Editing the data file
 
-*AssetBook*'s data are saved automatically as a JSON file `[JAR file location]/data/assetbook.json`.<br>Advanced users are welcome to update data directly by editing that data file.
+*AssetBook*'s data are saved automatically as a JSON file `[JAR file location]/data/assetbook.json`.<br>
+Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
@@ -334,4 +352,3 @@ Action           | Format                                                       
 ---{.double}
 
 ## Glossary
-
