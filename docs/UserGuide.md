@@ -61,7 +61,7 @@ After which, you can have a look at the [features](#features) of *AssetBook*, or
 
 #### Experienced Users
 
-If you are not a new user, and just looking to refresh your memory, you can utilise the [table of contents](#table-of-contents) 
+If you are not a new user, and are just looking to refresh your memory, you can utilise the [table of contents](#table-of-contents) 
 or skip to the [command summary](#command-summary).
 
 ---
@@ -76,16 +76,18 @@ or skip to the [command summary](#command-summary).
   + [Navigating the GUI](#navigating-the-gui)
   + [Tutorials](#tutorials)
 + [Features](#features)
-  + [Adding a Contact](#adding-a-contact-add)
-  + [Deleting a Contact](#deleting-a-contact-delete)
-  + [Editing a Contact](#editing-a-contact-edit)
-  + [Editing an Asset](#editing-an-asset-asset)
-  + [Finding Contacts](#finding-contacts-find)
-  + [Undoing Commands](#undoing-commands-undo)
-  + [Navigating command history](#navigating-command-history-and)
-  + [Exiting the Application](#exiting-the-application-exit)
+  + [Modifying Contact Data](#adding-a-contact-add)
+    + [Adding a Contact](#adding-a-contact-add)
+    + [Deleting a Contact](#deleting-a-contact-delete)
+    + [Editing a Contact](#editing-a-contact-edit)
+    + [Editing an Asset](#editing-an-asset-asset)
+  + [Miscellaneous Shortcuts](#finding-contacts-find)
+    + [Finding Contacts](#finding-contacts-find)
+    + [Undoing Commands](#undoing-commands-undo)
+    + [Navigating Command History](#navigating-command-history--and-)
+    + [Exiting the Application](#exiting-the-application-exit)
 + [Frequently Asked Questions](#faq)
-+ [Known Issues](#known-issues)
++ [Known Issues and Future Features](#known-issues-and-future-features)
 + [Command Summary](#command-summary)
 + [Glossary](#glossary)
 
@@ -95,20 +97,26 @@ or skip to the [command summary](#command-summary).
 
 ### Setting Up
 
-1. Ensure you have [Java 11](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html) installed on your Computer.
+<box type="info" seamless>
 
-2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
+The following instructions are for **Windows**, **MacOS** or **Linux**.
+
+</box>
+
+1. Ensure you have [Java 11](https://www.oracle.com/sg/java\technologies/javase\jdk11-archive-downloads.html) installed on your Computer.
+
+2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp\releases).
 
 3. Move the file into the folder where you want *AssetBook* to store the contact information. New users may simply
    create a folder on their desktop, then drag and drop `assetbook.jar` inside.
 
 > Placeholder image for assetbook.jar inside a folder on the desktop
 
-4. Double-click on the `jar` file and a GUI as shown in the following section should appear. 
-   Note that the app contains some sample data when launched for the first time. 
+4. To launch the application, double-click on the `assetbook.jar` file and a GUI as shown in the following section should appear. 
+   Note that the application contains some sample data when launched for the first time. 
 
 <box type="tip" seamless>
-    Having trouble? Check the <a href="{{ baseUrl }}/UserGuide.html#faq">FAQ</a> section for resolutions to common problems.
+    Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#faq">FAQ</a> useful.
 </box>
 
 ### Navigating the GUI
@@ -129,8 +137,9 @@ Here are the components of the GUI.
 ### Tutorials
 
 This section provides a walkthrough of common actions performed in *AssetBook*.
-All actions are performed through typing a command into the **command input box**.
-For detailed documentation of all available commands, refer to the [features](#features) section.
+
+All actions are performed through typing specific text into the [command input box](#navigating-the-gui).
+For detailed documentation of all available features, please refer to the [features](#features) section.
 
 #### Adding your first Contact
 
@@ -146,23 +155,49 @@ For detailed documentation of all available commands, refer to the [features](#f
 
 ## Features
 
+This section documents in detail all the features of *AssetBook*.
+
+Most features of *AssetBook* come in the form of *commands*, which are *specific text inputs* that the user enters to
+perform an action in the application. Features fall into two broad categories: those that allow the user to **modify
+contact data** and those that are **miscellaneous shortcuts** for convenience.
+
+Colored text that look like the following describe the format of a command.
+
+`add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`
+
+A valid input by the user corresponding to the above will be
+
+`add n\John Doe e\johndoe@example.com o\574 Ang Mo Kio Ave 10 p\12345678 a\L293D`
+
 <box type="info" seamless>
 
-**Notes about the command format**
+**Notes about the notation used to describe commands**
+
+* Here, `add` is the *command word*, signifying that this adds a new contact to the list of contacts.
+
+* `n\`, `p\`, `e\`, etc. are *prefixes* of *parameters*, signifying the text after them is some data field of the contact.
+  They are included in the text that the user should input.
+
+* Text in bold like `NAME` are descriptions of what kind of text should be entered in its place.<br>
+  e.g. `n\John Doe` should be entered in place of `n\NAME`.
 
 * Items in square brackets are optional.<br>
-  e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g. `n\NAME [t\TAG]` can represent `n\John Doe t\friend` or simply `n\John Doe`.
 
-* Items followed by `...` indicates that it can be entered multiple times (or zero times).<br>
-  e.g. `[t/TAG]...` can be used as `t/friend`, `t/friend t/colleague` etc.
+* Items followed by `...` indicates that it can be entered multiple times.<br>
+  e.g. `[t\TAG]...` can represent `t\friend`, `t\friend t\colleague`, etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE`, `p/PHONE n/NAME` is also acceptable.
+  e.g. if the command specifies `n\NAME p\PHONE`, `p\PHONE n\NAME` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `exit`) will be ignored.<br>
-  e.g. if the command specifies `exit 123`, it will be interpreted as `exit`.
+* Parameters not specified by the command format by entered by the user will be ignored.<br>
+  e.g. The format is `exit`, but the user enters `exit 123`. This will still be interpreted as `exit`.
 
 </box>
+
+After successful execution of a command, some feedback will appear in the [command output box](#navigating-the-gui).
+If you enter something that the application did not expect or does not understand, often an *error* message will show
+up instead.
 
 <box type="warning" seamless>
 
@@ -176,16 +211,17 @@ For detailed documentation of all available commands, refer to the [features](#f
 
 Adds a new contact to the system, with 0 or more assets associated with the contact.
 
-Format: `add n/NAME p/PHONE e/EMAIL o/OFFICE [t/TAG]... [a/ASSET]...`
+Format: `add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`
 
 <box type="tip" seamless>
-A person can have any number of tags and assets (including 0)
+A person can have any number of tags and assets (including 0).
 </box>
 
 #### Examples
-* Add a new contact associated with the asset `L293D`: `add n/John Doe e/johndoe@example.com o/574 Ang Mo Kio Ave 10 p/12345678 a/L293D`
+* Add a new contact associated with the asset `L293D`:<br> 
+  `add n\John Doe e\johndoe@example.com o\574 Ang Mo Kio Ave 10 p\12345678 a\L293D`
 
-#### Options
+#### Parameters
 `NAME`
 * Name of the contact.
 * Case sensitive, i.e. john doe ≠ John Doe.
@@ -212,7 +248,7 @@ A person can have any number of tags and assets (including 0)
 * Contact can be created first without assets, then assets can be added later using the Edit command.
 * Case sensitive, i.e. NUS ≠ nus.
 * Assets must have unique names. If the asset already exists in the database, the existing asset will be linked instead of a new asset.
-* Multiple assets can be specified. For example, a valid option is `a/asset1 a/asset2 a/asset3`.
+* Multiple assets can be specified. For example, a valid option is `a\asset1 a\asset2 a\asset3`.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -233,16 +269,16 @@ Format: `delete INDEX`
 
 Edit existing contacts without recreating them.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [o/OFFICE] [t/TAG]... [a/ASSET]...`
+Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [o\OFFICE] [t\TAG]... [a\ASSET]...`
 
-Example: `edit 1 e/newemail@example.com` edits the contact with id `1`, changing its email to `newemail@example.com`.
+Example: `edit 1 e\newemail@example.com` edits the contact with id `1`, changing its email to `newemail@example.com`.
 
 * Edits the contact with the specified `INDEX`. `INDEX` refers to the unique contact index shown in the GUI.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing assets, the existing assets of the person will be removed i.e adding of assets is not cumulative.
-* You can remove all the person’s tags by typing `t/` without specifying any tags after it.
-* You can remove all the person’s assets by typing `a/` without specifying any assets after it.
+* You can remove all the person’s tags by typing `t\` without specifying any tags after it.
+* You can remove all the person’s assets by typing `a\` without specifying any assets after it.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -309,7 +345,7 @@ Format: `exit`
 
 ### Editing the data file
 
-*AssetBook*'s data are saved automatically as a JSON file `[JAR file location]/data/assetbook.json`.<br>
+*AssetBook*'s data are saved automatically as a JSON file `[JAR file location]/data\assetbook.json`.<br>
 Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
@@ -323,6 +359,9 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 
 ## FAQ
 
+**Q**: What if my device does not run a mainstream operating system (not Windows, MacOS or Linux)?<br>
+**A**: *AssetBook* will work so long as Java 11 can be installed on your device.
+
 **Q**: Must I specifically use Java 11?<br>
 **A**: While it may work on other versions, *AssetBook* is meant to work on Java 11. We cannot guarantee that it works on versions other than Java 11.
 
@@ -331,7 +370,7 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Known Issues
+## Known Issues and Future Features
 
 + **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
@@ -341,9 +380,9 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 
 Action           | Format                                                                        | Example
 -----------------|-------------------------------------------------------------------------------|--- 
-**Add**          | `add n/NAME p/PHONE e/EMAIL o/OFFICE [t/TAG]... [a/ASSET]...`                 | `add n/John Doe e/johndoe@example.com p/+12345678 a/L293D`
+**Add**          | `add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`                 | `add n\John Doe e\johndoe@example.com p\+12345678 a\L293D`
 **Delete**       | `delete INDEX`                                                                | `delete 1`
-**Edit contact** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [o/OFFICE] [t/TAG]... [a/ASSET]...`  | `edit 1 e/newemail@example.com`
+**Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [o\OFFICE] [t\TAG]... [a\ASSET]...`  | `edit 1 e\newemail@example.com`
 **Edit asset**   | `asset old/OLD_ASSET_NAME new/NEW_ASSET_NAME`                                 | `asset old/hammer new/screwdriver`
 **Find**         | `find KEYWORD [KEYWORD]...`                                                   | `find John`
 **Undo**         | `undo`                                                                        | `undo`
@@ -352,3 +391,12 @@ Action           | Format                                                       
 ---{.double}
 
 ## Glossary
+
+#### Asset
+An item or amenity of logistical significance.
+
+#### Command
+A specific text input entered into the command input box to interact with *AssetBook*.
+
+#### Parameter
+An item of data that a command expects to be entered by the user. For example, name is a parameter of the `add` command.
