@@ -254,10 +254,9 @@ Format: `find QUERY`
 Example: `find John` searches all contact names, tags and assets for the query `John`.
 
 * The query is case-insensitive.
-* Any whitespaces in the query will be removed.
-* Any whitespaces in the fields will be removed.
+* All whitespaces in both the query and fields will be ignored.
 * Each field is individually checked against the query.
-* If the query is a substring of the field, then a match is found.
+* A match is found if the query is a substring of the field being checked.
 
 --------------------------------------------------------------------------------------------------------------------
 
