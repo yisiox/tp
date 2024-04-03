@@ -42,6 +42,8 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
 
     //@@author rizkidelta
     private static boolean doesStringMatchQuery(String text, String query) {
+        requireNonNull(text);
+
         // only need to process text, as query is already processed in the constructor
         text = processString(text);
         return text.contains(query);
