@@ -372,7 +372,19 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 
 ## Known Issues and Future Features
 
-+ **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+#### Multiple Screens
+When using multiple screens, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen.
+The remedy is to delete the `preferences.json` file created by the application before running the application again.
+
+#### Name Validation
+At present, names allow any special character except `\`. This is to allow the user flexibility to include uncommon names
+that may include symbols such as `/`, `'` and `-`. As such, the application may accept all manner of gibberish for names.
+A remedy is planned for the future to perform more robust checks on names.
+
+#### Scrolling
+The astute user will notice that ability to scroll with keyboard is missing from the application's features. This feature
+will be implemented in an upcoming release as soon as possible.
+
 
 ---{.double}
 
