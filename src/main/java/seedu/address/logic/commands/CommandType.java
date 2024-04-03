@@ -11,6 +11,12 @@ public enum CommandType {
             return AddCommand.of(arguments);
         }
     },
+    COPY {
+        @Override
+        public Command createCommand(String arguments) throws IllegalArgumentException {
+            return CopyCommand.of(arguments);
+        }
+    },
     EDIT {
         @Override
         public Command createCommand(String arguments) throws IllegalArgumentException {
@@ -63,6 +69,12 @@ public enum CommandType {
         @Override
         public Command createCommand(String arguments) {
             return new UndoCommand();
+        }
+    },
+    REDO {
+        @Override
+        public Command createCommand(String arguments) {
+            return new RedoCommand();
         }
     };
 

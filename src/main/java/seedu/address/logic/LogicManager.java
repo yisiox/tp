@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.exceptions.CommandHistoryException;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.util.AddressBookParser;
@@ -19,10 +20,13 @@ import seedu.address.storage.exceptions.StorageException;
  * The main LogicManager of the app.
  */
 public class LogicManager implements Logic {
+
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
 
     private final Model model;
     private final Storage storage;
+
+    private final CommandHistory commandHistory = new CommandHistory();
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -40,7 +44,21 @@ public class LogicManager implements Logic {
         String commandResult = command.execute(model);
         storage.saveAddressBook(model.getAddressBook());
 
+        // keep track of valid commands
+        commandHistory.add(commandText);
+        logger.info("\"" + commandText + "\" added to commandHistory");
+
         return commandResult;
+    }
+
+    @Override
+    public String getPreviousCommandText() throws CommandHistoryException {
+        return commandHistory.getPrevious();
+    }
+
+    @Override
+    public String getNextCommandText() throws CommandHistoryException {
+        return commandHistory.getNext();
     }
 
     @Override
@@ -62,4 +80,5 @@ public class LogicManager implements Logic {
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
+
 }

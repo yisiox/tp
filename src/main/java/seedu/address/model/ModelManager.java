@@ -18,6 +18,7 @@ import seedu.address.model.person.Person;
  * Represents the in-memory model of the address book data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
@@ -45,7 +46,6 @@ public class ModelManager implements Model {
 
     @Override
     public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-        requireNonNull(userPrefs);
         this.userPrefs.resetData(userPrefs);
     }
 
@@ -61,7 +61,6 @@ public class ModelManager implements Model {
 
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
-        requireNonNull(guiSettings);
         userPrefs.setGuiSettings(guiSettings);
     }
 
@@ -99,8 +98,17 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean canRedo() {
+        return addressBook.canRedo();
+    }
+
+    @Override
+    public void redo() {
+        addressBook.redo();
+    }
+
+    @Override
     public boolean hasPerson(Person person) {
-        requireNonNull(person);
         return addressBook.hasPerson(person);
     }
 
@@ -117,22 +125,16 @@ public class ModelManager implements Model {
 
     @Override
     public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
-
         addressBook.setPerson(target, editedPerson);
     }
 
     @Override
     public boolean hasAsset(Asset asset) {
-        requireNonNull(asset);
         return addressBook.hasAsset(asset);
     }
 
     @Override
     public void editAsset(Asset target, Asset editedAsset) {
-        requireNonNull(target);
-        requireNonNull(editedAsset);
-
         addressBook.editAsset(target, editedAsset);
     }
 

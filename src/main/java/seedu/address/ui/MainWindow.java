@@ -6,12 +6,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.exceptions.CommandHistoryException;
 import seedu.address.logic.Logic;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -28,13 +33,14 @@ public class MainWindow extends UiPart<Stage> {
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
-    private Stage primaryStage;
-    private Logic logic;
+    private final Stage primaryStage;
+    private final Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
-    private ResultDisplay resultDisplay;
-    private HelpWindow helpWindow;
+    private final PersonListPanel personListPanel;
+    private final ResultDisplay resultDisplay = new ResultDisplay();
+    private final HelpWindow helpWindow = new HelpWindow();
+    private final String iconPath = "/images/icon.png";
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -51,6 +57,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane statusbarPlaceholder;
 
+    @FXML
+    private ImageView iconImageView;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -60,13 +69,16 @@ public class MainWindow extends UiPart<Stage> {
         // Set dependencies
         this.primaryStage = primaryStage;
         this.logic = logic;
+        this.personListPanel = new PersonListPanel(logic.getFilteredPersonList());
 
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
 
         setAccelerators();
 
-        helpWindow = new HelpWindow();
+        primaryStage.show(); // This should be called before creating other UI parts
+
+        fillInnerParts();
     }
 
     public Stage getPrimaryStage() {
@@ -110,18 +122,19 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Fills up all the placeholders of this window.
      */
-    void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+    private void fillInnerParts() {
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
-        CommandBox commandBox = new CommandBox(this::executeCommand);
+        CommandBox commandBox = new CommandBox(new RecordedCommandExecutor());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        Image iconImage = new Image(iconPath);
+        iconImageView.setImage(iconImage);
     }
 
     /**
@@ -148,10 +161,6 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    void show() {
-        primaryStage.show();
-    }
-
     /**
      * Closes the application.
      */
@@ -164,33 +173,61 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
-    }
-
     /**
-     * Executes the command and returns the result.
-     *
-     * @see seedu.address.logic.Logic#execute(String)
+     * Copies string to the clipboard
      */
-    private String executeCommand(String commandText) throws CommandException, ParseException, StorageException {
-        String commandResult;
-        try {
-            commandResult = logic.execute(commandText);
-            logger.info("Result: " + commandResult);
-            resultDisplay.setFeedbackToUser(commandResult);
-        } catch (CommandException | ParseException | StorageException e) {
-            logger.info("An error occurred while executing command: " + commandText);
-            resultDisplay.setFeedbackToUser(e.getMessage());
-            throw e;
+    @FXML
+    private void handleCopy(String detailsToCopy) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(detailsToCopy);
+        clipboard.setContent(content);
+    }
+
+    public void showMessage(String msg) {
+        resultDisplay.setFeedbackToUser(msg);
+    }
+
+    private class RecordedCommandExecutor implements CommandExecutor {
+
+        @Override
+        public String execute(String commandText) throws CommandException, ParseException, StorageException {
+            String commandResult;
+            try {
+                commandResult = logic.execute(commandText);
+                logger.info("Result: " + commandResult);
+                showMessage(commandResult);
+            } catch (CommandException | ParseException | StorageException e) {
+                logger.info("An error occurred while executing command: " + commandText);
+                showMessage(e.getMessage());
+                throw e;
+            }
+
+            // == used to prevent an edge case where a command may somehow return this exact string,
+            // but is not actually a help or exit command.
+            if (commandResult == Messages.MESSAGE_SHOWING_HELP) {
+                handleHelp();
+            }
+            if (commandResult == Messages.MESSAGE_EXITING) {
+                handleExit();
+            }
+            if (commandResult.startsWith(Messages.MESSAGE_COPIED.substring(0, Messages.MESSAGE_COPIED_LEN + 1))) {
+                handleCopy(commandResult.substring(Messages.MESSAGE_COPIED_LEN).trim());
+            }
+
+            return commandResult;
         }
 
-        if (commandResult == Messages.MESSAGE_SHOWING_HELP) {
-            handleHelp();
+        @Override
+        public String getPreviousCommandText() throws CommandHistoryException {
+            return logic.getPreviousCommandText();
         }
-        if (commandResult == Messages.MESSAGE_EXITING) {
-            handleExit();
+
+        @Override
+        public String getNextCommandText() throws CommandHistoryException {
+            return logic.getNextCommandText();
         }
-        return commandResult;
+
     }
+
 }
