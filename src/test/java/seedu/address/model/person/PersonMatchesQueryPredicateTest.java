@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.PersonBuilder;
@@ -159,15 +157,6 @@ public class PersonMatchesQueryPredicateTest {
                                    .withTags("friends")
                                    .withAssets("hammer")
                                    .build()));
-    }
-
-    @Test
-    public void toStringMethod() {
-        List<String> keywords = List.of("keyword1", "keyword2");
-        PersonMatchesQueryPredicate predicate = new PersonMatchesQueryPredicate("");
-
-        String expected = PersonMatchesQueryPredicate.class.getCanonicalName() + "{keywords=" + keywords + "}";
-        assertEquals(expected, predicate.toString());
     }
 
 }

@@ -8,19 +8,18 @@ import static seedu.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.assertParseFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalPersons.CARL;
-import static seedu.address.testutil.TypicalPersons.ELLE;
-import static seedu.address.testutil.TypicalPersons.FIONA;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPersons.getTypicalPersons;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonMatchesQueryPredicate;
 
 /**
@@ -30,13 +29,12 @@ public class FindCommandTest {
 
     private final Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private final Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private final List<Person> personsList = getTypicalPersons();
 
     @Test
     public void equals() {
-        PersonMatchesQueryPredicate firstPredicate =
-                new PersonMatchesQueryPredicate("first");
-        PersonMatchesQueryPredicate secondPredicate =
-                new PersonMatchesQueryPredicate("second");
+        Predicate<Person> firstPredicate = new PersonPredicateStub(false);
+        Predicate<Person> secondPredicate = new PersonPredicateStub(true);
 
         FindCommand findFirstCommand = new FindCommand(firstPredicate);
         FindCommand findSecondCommand = new FindCommand(secondPredicate);
@@ -59,23 +57,23 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_zeroKeywords_noPersonFound() {
+    public void execute_stubThatReturnsFalse_noPersonFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
-        PersonMatchesQueryPredicate predicate = preparePredicate(" ");
+        Predicate<Person> predicate = new PersonPredicateStub(false);
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Collections.emptyList(), model.getFilteredPersonList());
+        assertEquals(List.of(), model.getFilteredPersonList());
     }
 
     @Test
-    public void execute_multipleKeywords_multiplePersonsFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
-        PersonMatchesQueryPredicate predicate = preparePredicate("Kurz Elle Kunz");
+    public void execute_stubThatReturnsTrue_allPersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, personsList.size());
+        PersonPredicateStub predicate = new PersonPredicateStub(true);
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(List.of(CARL, ELLE, FIONA), model.getFilteredPersonList());
+        assertEquals(personsList, model.getFilteredPersonList());
     }
 
     @Test
@@ -95,19 +93,38 @@ public class FindCommandTest {
         assertParseSuccess(FindCommand::of, " \n Alice \n \t Bob  \t", expectedFindCommand);
     }
 
-    @Test
-    public void toStringMethod() {
-        PersonMatchesQueryPredicate predicate = new PersonMatchesQueryPredicate("keyword");
-        FindCommand findCommand = new FindCommand(predicate);
-        String expected = FindCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
-        assertEquals(expected, findCommand.toString());
-    }
 
     /**
-     * Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}.
+     * A predicate stub class for testing the FindCommand class.
      */
-    private PersonMatchesQueryPredicate preparePredicate(String userInput) {
-        return new PersonMatchesQueryPredicate(userInput);
+    private static class PersonPredicateStub implements Predicate<Person> {
+
+        private final boolean returnValue;
+
+        public PersonPredicateStub(boolean returnValue) {
+            this.returnValue = returnValue;
+        }
+
+        @Override
+        public boolean test(Person person) {
+            return returnValue;
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            if (other == this) {
+                return true;
+            }
+
+            // instanceof handles nulls
+            if (!(other instanceof PersonPredicateStub)) {
+                return false;
+            }
+
+            PersonPredicateStub otherFindCommand = (PersonPredicateStub) other;
+            return returnValue == otherFindCommand.returnValue;
+        }
+
     }
 
 }

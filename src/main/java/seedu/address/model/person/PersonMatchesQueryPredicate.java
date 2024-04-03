@@ -2,8 +2,6 @@ package seedu.address.model.person;
 
 import java.util.function.Predicate;
 
-import seedu.address.commons.util.ToStringBuilder;
-
 /**
  * Tests that a {@code Person}'s {@code Name}, {@code Tags} or {@code Assets} matches the search query.
  * The algorithm removes all whitespaces and checks if the query is a substring of a field.
@@ -11,10 +9,17 @@ import seedu.address.commons.util.ToStringBuilder;
  */
 public class PersonMatchesQueryPredicate implements Predicate<Person> {
 
+    private static final String whitespaceRegex = "\\s+";
+    private static final String emptyString = "";
+
     private final String query;
 
     public PersonMatchesQueryPredicate(String query) {
-        this.query = query;
+        this.query = processString(query);
+    }
+
+    private static String processString(String str) {
+        return str.toLowerCase().replaceAll(whitespaceRegex, emptyString);
     }
 
     //@@author rizkidelta
@@ -26,14 +31,9 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
     }
 
     //@@author rizkidelta
-    private boolean substringMatch(String text, String query) {
-        final String whitespaceRegex = "\\s+";
-        final String emptyString = "";
-
-        // remove all whitespaces from strings
-        text = text.toLowerCase().replaceAll(whitespaceRegex, emptyString);
-        query = query.toLowerCase().replaceAll(whitespaceRegex, emptyString);
-
+    private static boolean substringMatch(String text, String query) {
+        // only need to process text, as query is already processed in the constructor
+        text = processString(text);
         return text.contains(query);
     }
 
@@ -50,11 +50,6 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
 
         PersonMatchesQueryPredicate otherPersonMatchesQueryPredicate = (PersonMatchesQueryPredicate) other;
         return query.equals(otherPersonMatchesQueryPredicate.query);
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this).add("keywords", query).toString();
     }
 
 }
