@@ -60,6 +60,10 @@ public class PersonMatchesKeywordsPredicateTest {
         // Mixed-case keywords
         predicate = new PersonMatchesKeywordsPredicate(List.of("aLIce", "bOB"));
         assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
+
+        // Short query, long name
+        predicate = new PersonMatchesKeywordsPredicate(List.of("y"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Alex Yeoh The Fifth").build()));
     }
 
     @Test
@@ -91,6 +95,10 @@ public class PersonMatchesKeywordsPredicateTest {
 
         // Mixed-case keywords
         predicate = new PersonMatchesKeywordsPredicate(List.of("fRieNdS", "cOllEaGuEs"));
+        assertTrue(predicate.test(new PersonBuilder().withTags("colleagues").build()));
+
+        // Short query, long tag
+        predicate = new PersonMatchesKeywordsPredicate(List.of("a"));
         assertTrue(predicate.test(new PersonBuilder().withTags("colleagues").build()));
     }
 
@@ -124,6 +132,10 @@ public class PersonMatchesKeywordsPredicateTest {
         // Mixed-case keywords
         predicate = new PersonMatchesKeywordsPredicate(List.of("hAmMeR", "sCrEwDriVer"));
         assertTrue(predicate.test(new PersonBuilder().withAssets("screwdriver").build()));
+
+        // Short query, long asset
+        predicate = new PersonMatchesKeywordsPredicate(List.of("a"));
+        assertTrue(predicate.test(new PersonBuilder().withAssets("hammer").build()));
     }
 
     @Test

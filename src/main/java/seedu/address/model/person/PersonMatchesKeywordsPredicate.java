@@ -24,7 +24,6 @@ public class PersonMatchesKeywordsPredicate implements Predicate<Person> {
                         || person.getAssets().stream().anyMatch(asset -> fuzzyMatch(asset.get(), keyword)));
     }
 
-
     private int calculateLevenshteinDistance(String a, String b) {
         a = a.toLowerCase();
         b = b.toLowerCase();
