@@ -116,13 +116,13 @@ public class AssetCommandTest {
 
     @Test
     public void equals_sameObject_returnsTrue() {
-        EditAssetCommand editCommand = new EditAssetCommand(asset1, asset2);
+        AssetCommand editCommand = new AssetCommand(asset1, asset2);
         assertTrue(editCommand.equals(editCommand));
     }
 
     @Test
     public void equals_null_returnsFalse() {
-        EditAssetCommand editCommand = new EditAssetCommand(asset1, asset2);
+        AssetCommand editCommand = new AssetCommand(asset1, asset2);
         assertFalse(editCommand.equals(null));
     }
 

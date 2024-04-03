@@ -12,25 +12,19 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public class Asset {
 
-    public static final String MESSAGE_CONSTRAINTS = "Assets must be entered in the format NAME[#ID]";
-    private static final String VALIDATION_REGEX = "\\s*([^#\\s]+\\s*)+(#(\\s*[^#\\s]+\\s*)+)?";
+    public static final String MESSAGE_CONSTRAINTS = "Asset name must not be blank";
+    private static final String VALIDATION_REGEX = "\\s*\\S.*";
 
     private final String assetName;
-    private final String assetId;
 
-    private Asset(String assetName, String assetId) {
-        requireAllNonNull(assetName, assetId);
+    private Asset(String assetName) {
+        requireAllNonNull(assetName);
         this.assetName = assetName;
-        this.assetId = assetId;
     }
 
     @JsonValue
     public String get() {
-        StringBuilder res = new StringBuilder(assetName);
-        if (!assetId.isEmpty()) {
-            res.append("#").append(assetId);
-        }
-        return res.toString();
+        return assetName;
     }
 
     /**
@@ -49,15 +43,8 @@ public class Asset {
     public static Asset of(String assetDescription) throws IllegalArgumentException {
         requireNonNull(assetDescription);
         checkArgument(isValid(assetDescription), MESSAGE_CONSTRAINTS);
-
-        String id = "";
-        String[] splitByHash = assetDescription.split("#", 2);
-        if (splitByHash.length == 2) {
-            id = splitByHash[1].trim();
-        }
-        String name = splitByHash[0].trim();
-
-        return new Asset(name, id);
+        String trimmedName = assetDescription.trim();
+        return new Asset(trimmedName);
     }
 
     @Override
@@ -72,8 +59,7 @@ public class Asset {
         }
 
         Asset otherAsset = (Asset) other;
-        return assetName.equals(otherAsset.assetName)
-                && assetId.equals(otherAsset.assetId);
+        return assetName.equals(otherAsset.assetName);
     }
 
     @Override

@@ -19,15 +19,6 @@ public class AssetTest {
     public void of_invalidAssetDescription_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> Asset.of("")); // empty string
         assertThrows(IllegalArgumentException.class, () -> Asset.of(" ")); // spaces only
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("#")); // empty fields
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("#id"));
-        assertThrows(IllegalArgumentException.class, () -> Asset.of(" #id"));
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("name#"));
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("name# "));
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("name#id#")); // too many hashes
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("name#id#1"));
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("name##id"));
-        assertThrows(IllegalArgumentException.class, () -> Asset.of("na#me#id"));
     }
 
     @Test
@@ -37,11 +28,8 @@ public class AssetTest {
         assertDoesNotThrow(() -> Asset.of("validAsset"));
         assertDoesNotThrow(() -> Asset.of("ValidAsset"));
         assertDoesNotThrow(() -> Asset.of("VALIDAsset"));
-        assertDoesNotThrow(() -> Asset.of("name"));
-        assertDoesNotThrow(() -> Asset.of("name#id"));
-        assertDoesNotThrow(() -> Asset.of(":-)"));
-        assertDoesNotThrow(() -> Asset.of(" name # id "));
-        assertDoesNotThrow(() -> Asset.of("na me#i d"));
+        assertDoesNotThrow(() -> Asset.of("valid asset"));
+        assertDoesNotThrow(() -> Asset.of(" valid asset "));
     }
 
     @Test
