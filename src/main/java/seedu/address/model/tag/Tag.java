@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Represents a Tag in the address book.
- * Guarantees: immutable; name is valid as declared in {@link #isValidTagName(String)}
+ * Guarantees: immutable; name is valid as declared in {@link #isValid(String)}.
  */
 public class Tag {
 
-    private static final String MESSAGE_CONSTRAINTS = "Tags names should be alphanumeric";
+    private static final String MESSAGE_CONSTRAINTS = "Tags cannot contain '\\', and should not be blank";
     private static final String VALIDATION_REGEX = "\\p{Alnum}+";
 
     private final String tagName;

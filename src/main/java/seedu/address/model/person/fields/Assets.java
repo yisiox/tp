@@ -17,7 +17,7 @@ import seedu.address.model.asset.Asset;
  */
 public class Assets implements Field {
 
-    public static final Prefix PREFIX_ASSET = new Prefix("A/");
+    public static final Prefix PREFIX_ASSET = new Prefix("A\\");
     private final Set<Asset> assets;
 
     /**

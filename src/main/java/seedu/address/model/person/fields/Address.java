@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public class Address implements Field {
 
-    public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
-    private static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
+    public static final Prefix PREFIX_ADDRESS = new Prefix("a\\");
+    private static final String MESSAGE_CONSTRAINTS = "Addresses cannot contain '\\', and should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    private static final String VALIDATION_REGEX = "[^\\s].*";
+    private static final String VALIDATION_REGEX = "\\s*[^\\s\\\\][^\\\\]*";
 
     private final String address;
 

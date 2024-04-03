@@ -8,12 +8,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Represents an asset in the address book.
- * Guarantees: immutable.
+ * Guarantees: immutable; name is valid as declared in {@link #isValid(String)}.
  */
 public class Asset {
 
     public static final String MESSAGE_CONSTRAINTS = "Asset name must not be blank";
-    private static final String VALIDATION_REGEX = "\\s*\\S.*";
+    private static final String VALIDATION_REGEX = "\\s*[^\\s\\\\][^\\\\]*";
 
     private final String assetName;
 
