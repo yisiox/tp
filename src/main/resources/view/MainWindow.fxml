@@ -37,18 +37,6 @@
           </Menu>
         </MenuBar>
 
-        <HBox styleClass="pane-with-border" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-          <padding>
-            <Insets top="10" right="15" bottom="10" left="15"/>
-          </padding>
-          <ImageView fx:id="iconImageView" preserveRatio="true" fitWidth="50" fitHeight="50"/>
-          <Label fx:id="iconName" text="AssetBook" styleClass="title_label" HBox.hgrow="ALWAYS">
-            <padding>
-              <Insets left="12" top="5"/>
-            </padding>
-          </Label>
-        </HBox>
-
         <!--Wrap personList and resultDisplayPlaceholder in a SplitPane which allows the user to resize them-->
         <SplitPane orientation="VERTICAL" VBox.vgrow="ALWAYS">
           <VBox VBox.vgrow="ALWAYS" minHeight="150" maxHeight="Infinity" fx:id="personList" styleClass="pane-without-border">
