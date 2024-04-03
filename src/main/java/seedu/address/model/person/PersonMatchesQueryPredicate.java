@@ -35,13 +35,13 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
     //@@author rizkidelta
     @Override
     public boolean test(Person person) {
-        return substringMatch(person.getName().toString(), query)
-               || person.getTags().stream().anyMatch(tag -> substringMatch(tag.get(), query)
-               || person.getAssets().stream().anyMatch(asset -> substringMatch(asset.get(), query)));
+        return doesStringMatchQuery(person.getName().toString(), query)
+               || person.getTags().stream().anyMatch(tag -> doesStringMatchQuery(tag.get(), query)
+               || person.getAssets().stream().anyMatch(asset -> doesStringMatchQuery(asset.get(), query)));
     }
 
     //@@author rizkidelta
-    private static boolean substringMatch(String text, String query) {
+    private static boolean doesStringMatchQuery(String text, String query) {
         // only need to process text, as query is already processed in the constructor
         text = processString(text);
         return text.contains(query);
