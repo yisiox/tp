@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AssetBook-3 User Guide
+# AssetBook User Guide
 
 ---
 
@@ -12,40 +12,34 @@
 
 Welcome **logistics managers**! If you are someone who 
 
-1. Manages logistics and inventory in a professional capacity,
++ **Manages logistics and inventory** in a professional capacity,
 
-2. Is a fast typist, tired of shuffling back and forth between your mouse and keyboard,
++ Is a **fast typist**, tired of shuffling back and forth between your mouse and keyboard,
 
-3. Is feeling swamped by the tedium of contact management on traditional office software...
++ Is feeling **swamped by the tedium of contact management** on traditional office software...
 
-*Rejoice because AssetBook-3 is here!*<br><br> 
-AssetBook-3 helps to streamline the task of **tracking contacts and which logistical assets they are in charge of**, 
+Rejoice because *AssetBook* is here!
+
+*AssetBook* helps to streamline the task of **tracking contacts and which logistical assets they are in charge of**, 
 making your management tasks smoother than ever.
 
-AssetBook-3 is designed to:
+*AssetBook* is designed to:
 
 + **Digitally Organize Your Contacts**<br> Say goodbye to scattered contacts; now, have them all organized and accessible in one place.
 
 + **Effortlessly Track All Your Assets**<br> Keep tabs on who is responsible for every piece of equipment and every item in your inventory.
 
-+ **Maximize Your Operational Efficiency**<br> Our application, combined with your swift keyboard skills, turns the chore of contact management into a seamless and satisfying process!
++ **Maximize Your Operational Efficiency**<br> Our application, combined with your swift keyboard skills, turns the chore of contact management into a seamless and satisfying process
+  with convenient commands and shortcuts.
 
 ---
 
 ## Using this Guide
 
-This user guide contains all information needed to use AssetBook-3.
+This user guide is meant to provide guide users to use *AssetBook* and comprehensively document its features.
+You can click on blue-colored hyperlinks like this link to the [table of contents](#table-of-contents) to jump to the 
+referenced section immediately.
 A [glossary](#glossary) is provided in case you encounter any unfamiliar terms.
-
-#### New Users
-
-If this your first time using AssetBook-3, head over to the [quick start](#quick-start) to learn how to set up the application. 
-After which, you can have a look at the [features](#features) of AssetBook-3, or simply follow this guide in order.
-
-#### Experienced Users
-
-If you are looking to refresh your memory, you can utilise the [table of contents](#table-of-contents) 
-or skip to the [command summary](#command-summary).
 
 <box type="info" seamless>
     Look out for icons like this, which may contain addition information, tips and warnings.
@@ -54,6 +48,21 @@ or skip to the [command summary](#command-summary).
 <box type="tip" seamless>
     Use the sidebar to the right to immediately jump to any section from anywhere on this page.
 </box>
+
+#### New Users
+
+If this your first time using *AssetBook*, head over to the [quick start](#quick-start) to learn how to set up the 
+application and get started.
+After which, you can have a look at the [features](#features) of *AssetBook*, or simply follow this guide in order.
+
+<box type="info" seamless>
+    If you do not have much technical know-how, not to worry! We will guide you through step-by-step.
+</box>
+
+#### Experienced Users
+
+If you are not a new user, and just looking to refresh your memory, you can utilise the [table of contents](#table-of-contents) 
+or skip to the [command summary](#command-summary).
 
 ---
 
@@ -66,7 +75,6 @@ or skip to the [command summary](#command-summary).
   + [Setting Up](#setting-up)
   + [Navigating the GUI](#navigating-the-gui)
   + [Tutorials](#tutorials)
-+ [Navigating the GUI](#navigating-the-gui)
 + [Features](#features)
   + [Adding a Contact](#adding-a-contact-add)
   + [Deleting a Contact](#deleting-a-contact-delete)
@@ -88,10 +96,12 @@ or skip to the [command summary](#command-summary).
 
 1. Ensure you have [Java 11](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html) installed on your Computer.
 
-2. Download the latest `assetbook-3.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
+2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
 
-3. Move the file into the folder where you want AssetBook-3 to store the contact information. New users may simply
-   create a folder on their desktop, then drag and drop `assetbook-3.jar` inside.
+3. Move the file into the folder where you want *AssetBook* to store the contact information. New users may simply
+   create a folder on their desktop, then drag and drop `assetbook.jar` inside.
+
+> Placeholder image for assetbook.jar inside a folder on the desktop
 
 4. Double-click on the `jar` file and a GUI as shown in the following section should appear. 
    Note that the app contains some sample data when launched for the first time. 
@@ -117,7 +127,7 @@ Here are the components of the GUI.
 
 ### Tutorials
 
-This section provides a walkthrough of common actions performed in AssetBook-3.
+This section provides a walkthrough of common actions performed in *AssetBook*.
 All actions are performed through typing a command into the **command input box**.
 For detailed documentation of all available commands, refer to the [features](#features) section.
 
@@ -276,27 +286,30 @@ Format: `exit`
 
 ### Saving the data file
 
-AssetBook-3's data is saved automatically after any command that changes the data. There is no need to save manually.
+*AssetBook*'s data is saved automatically after any command that changes the data. There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ### Editing the data file
 
-AssetBook-3's data are saved automatically as a JSON file `[JAR file location]/data/assetbook.json`.<br>Advanced users are welcome to update data directly by editing that data file.
+*AssetBook*'s data are saved automatically as a JSON file `[JAR file location]/data/assetbook.json`.<br>Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, AssetBook-3 will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AssetBook-3 to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+If your changes to the data file makes its format invalid, *AssetBook* will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the *AssetBook* to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
 ---{.double}
 
 ## FAQ
 
+**Q**: Must I specifically use Java 11?<br>
+**A**: While it may work on other versions, *AssetBook* is meant to work on Java 11. We cannot guarantee that it works on versions other than Java 11.
+
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and replace the JSON data file it creates with the JSON file from your previous AssetBook-3 home folder.
+**A**: Install the app in the other computer and replace the JSON data file it creates with the JSON file from your previous *AssetBook* home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
