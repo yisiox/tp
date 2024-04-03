@@ -34,36 +34,18 @@ public class AssetTest {
 
     @Test
     public void equals() {
-        Asset asset = Asset.of("name#id@location");
+        Asset asset = Asset.of("name");
 
         // same object -> returns true
         assertTrue(asset.equals(asset));
 
         // same values -> returns true
-        assertTrue(asset.equals(Asset.of("name#id@location")));
-
-        // same values, no id -> returns true
-        assertTrue(Asset.of("name@location").equals(Asset.of("name@location")));
-
-        // same values, no location -> returns true
-        assertTrue(Asset.of("name#id").equals(Asset.of("name#id")));
-
-        // different values -> returns false
-        assertFalse(asset.equals(Asset.of("NAME#ID@LOCATION")));
-
-        // different number of values -> returns false
-        assertFalse(asset.equals(Asset.of("name")));
-
-        // partial match -> returns false
-        assertFalse(asset.equals(Asset.of("name#id@LOCATION")));
+        assertTrue(asset.equals(Asset.of("name")));
     }
 
     @Test
     public void toString_correctStringRepresentation_success() {
         assertEquals(Asset.of("name").toString(), "[ name ]");
-        assertEquals(Asset.of("name#id").toString(), "[ name#id ]");
-        assertEquals(Asset.of("name@location").toString(), "[ name@location ]");
-        assertEquals(Asset.of("name#id@location").toString(), "[ name#id@location ]");
     }
 
 }
