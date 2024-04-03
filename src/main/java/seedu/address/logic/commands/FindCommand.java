@@ -8,7 +8,7 @@ import java.util.Arrays;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.PersonMatchesKeywordsPredicate;
+import seedu.address.model.person.PersonMatchesSearchPredicate;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
@@ -24,9 +24,9 @@ public class FindCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
-    private final PersonMatchesKeywordsPredicate predicate;
+    private final PersonMatchesSearchPredicate predicate;
 
-    public FindCommand(PersonMatchesKeywordsPredicate predicate) {
+    public FindCommand(PersonMatchesSearchPredicate predicate) {
         this.predicate = predicate;
     }
 
@@ -51,7 +51,7 @@ public class FindCommand extends Command {
 
         String[] nameKeywords = trimmedArgs.split("\\s+");
 
-        return new FindCommand(new PersonMatchesKeywordsPredicate(Arrays.asList(nameKeywords)));
+        return new FindCommand(new PersonMatchesSearchPredicate(Arrays.asList(nameKeywords)));
     }
 
     @Override
