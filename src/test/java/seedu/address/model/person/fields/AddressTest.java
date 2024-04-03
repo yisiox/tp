@@ -42,6 +42,7 @@ public class AddressTest {
     @Test
     public void of_invalidValue_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> Address.of(INVALID_ADDRESS));
+        assertThrows(IllegalArgumentException.class, () -> Address.of("wall\\street")); // contains '\'
     }
 
     @Test
