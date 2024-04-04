@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -46,6 +47,9 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
+    private SplitPane splitPane;
+
+    @FXML
     private StackPane personListPanelPlaceholder;
 
     @FXML
@@ -65,15 +69,18 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
         this.personListPanel = new PersonListPanel(logic.getFilteredPersonList());
 
+        GuiSettings guiSettings = logic.getGuiSettings();
+
         // Configure the UI
-        setWindowDefaultSize(logic.getGuiSettings());
+        setWindowDefaultSize(guiSettings);
 
         setAccelerators();
 
         primaryStage.show(); // This should be called before creating other UI parts
         primaryStage.requestFocus();
 
-        fillInnerParts();
+        // Configure the inner components of the UI
+        fillInnerParts(guiSettings);
     }
 
     public Stage getPrimaryStage() {
@@ -117,10 +124,12 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Fills up all the placeholders of this window.
      */
-    private void fillInnerParts() {
+    private void fillInnerParts(GuiSettings guiSettings) {
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
+
+        splitPane.setDividerPositions(guiSettings.getSplitPaneDividerPosition());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -164,7 +173,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY(), primaryStage.isMaximized());
+                (int) primaryStage.getX(), (int) primaryStage.getY(),
+                primaryStage.isMaximized(), splitPane.getDividerPositions()[0]);
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
