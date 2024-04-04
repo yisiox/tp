@@ -11,8 +11,8 @@ import java.util.function.Predicate;
  */
 public class PersonMatchesQueryPredicate implements Predicate<Person> {
 
-    private static final String whitespaceRegex = "\\s+";
-    private static final String emptyString = "";
+    private static final String STRIP_WHITESPACE_REGEX = "\\s+";
+    private static final String EMPTY_STRING = "";
 
     private final String query;
 
@@ -29,7 +29,7 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
     }
 
     private static String processString(String str) {
-        return str.toLowerCase().replaceAll(whitespaceRegex, emptyString);
+        return str.toLowerCase().replaceAll(STRIP_WHITESPACE_REGEX, EMPTY_STRING);
     }
 
     //@@author rizkidelta

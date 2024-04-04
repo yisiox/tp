@@ -11,7 +11,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonMatchesQueryPredicate;
 
 /**
- * Finds and lists all persons in the address book such that certain fields match the predicate,
+ * Finds and lists all persons in the address book such that certain fields match the predicate.
  * See {@code PersonMatchesQueryPredicate}.
  */
 public class FindCommand extends Command {
