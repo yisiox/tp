@@ -419,6 +419,9 @@ A remedy is planned for the future to perform more robust checks on names.
 The astute user will notice that ability to scroll with keyboard is missing from the application's features. This feature
 will be implemented in an upcoming release as soon as possible.
 
+#### More Asset Details
+Some users may require greater detail about the assets to be recorded. We plan to add features to support adding more
+details to assets such as serial number, location, etc.
 
 ---{.double}
 
@@ -443,6 +446,12 @@ An item or amenity of logistical significance.
 
 #### Command
 A specific text input entered into the command input box to interact with *AssetBook*.
+
+#### GUI
+Graphical User Interface. The window that appears when an application is launched.
+
+#### Operating System
+Windows, MacOS and Linux are examples of operating systems.
 
 #### Parameter
 An item of data that a command expects to be entered by the user. For example, name is a parameter of the `add` command.
