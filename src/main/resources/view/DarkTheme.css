@@ -82,9 +82,8 @@
     -fx-background-color: -fx-focus-color;
 }
 
-.split-pane:horizontal .split-pane-divider {
-    -fx-background-color: derive(#1d1d1d, 20%);
-    -fx-border-color: transparent transparent transparent #4d4d4d;
+.split-pane-divider {
+    -fx-background-color: transparent;
 }
 
 .split-pane {
@@ -139,13 +138,15 @@
 }
 
 .stack-pane {
-     -fx-background-color: derive(#1d1d1d, 20%);
+     -fx-background-color: transparent;
 }
 
 .pane-with-border {
+     -fx-background-color: derive(#1d1d1d, 10%);
+}
+
+.pane-without-border {
      -fx-background-color: derive(#1d1d1d, 20%);
-     -fx-border-color: derive(#1d1d1d, 10%);
-     -fx-border-top-width: 1px;
 }
 
 .status-bar {
@@ -324,14 +325,14 @@
 }
 
 #commandTextField {
-    -fx-background-color: transparent #383838 transparent #383838;
+    -fx-background-color: transparent;
     -fx-background-insets: 0;
-    -fx-border-color: #383838 #383838 #ffffff #383838;
     -fx-border-insets: 0;
     -fx-border-width: 1;
     -fx-font-family: "Segoe UI Light";
     -fx-font-size: 13pt;
     -fx-text-fill: white;
+    -fx-pref-height: 50px;
 }
 
 #filterField, #personListPanel, #personWebpage {
