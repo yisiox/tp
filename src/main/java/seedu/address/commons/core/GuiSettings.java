@@ -12,6 +12,7 @@ import javafx.stage.Screen;
  * Guarantees: immutable.
  */
 public class GuiSettings implements Serializable {
+    
     private static final double DEFAULT_SPLIT_PANE_DIVIDER_POSITION = 0.75;
 
     private final double windowWidth;
