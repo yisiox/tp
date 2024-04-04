@@ -12,7 +12,7 @@
 <?import javafx.scene.Scene?>
 <?import javafx.stage.Stage?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-         title="AssetBook" minWidth="450" minHeight="400" onCloseRequest="#handleExit">
+         title="AssetBook" minWidth="350" minHeight="400" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/icon_title.png" />
   </icons>

@@ -4,13 +4,14 @@ import java.awt.Point;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
+
 /**
  * A Serializable class that contains the GUI settings.
  * Guarantees: immutable.
  */
 public class GuiSettings implements Serializable {
-    private static final double DEFAULT_HEIGHT = 600;
-    private static final double DEFAULT_WIDTH = 740;
     private static final double DEFAULT_SPLIT_PANE_DIVIDER_POSITION = 0.75;
 
     private final double windowWidth;
@@ -23,8 +24,9 @@ public class GuiSettings implements Serializable {
      * Constructs a {@code GuiSettings} with the default parameters.
      */
     public GuiSettings() {
-        windowWidth = DEFAULT_WIDTH;
-        windowHeight = DEFAULT_HEIGHT;
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        windowWidth = primaryScreenBounds.getWidth() * 0.5;
+        windowHeight = primaryScreenBounds.getHeight() * 0.9;
         windowCoordinates = null; // null represent no coordinates
         isMaximized = false;
         splitPaneDividerPosition = DEFAULT_SPLIT_PANE_DIVIDER_POSITION;
