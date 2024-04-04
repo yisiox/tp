@@ -81,11 +81,16 @@ or skip to the [command summary](#command-summary).
     + [Deleting a Contact](#deleting-a-contact-delete)
     + [Editing a Contact](#editing-a-contact-edit)
     + [Editing an Asset](#editing-an-asset-asset)
-  + [Miscellaneous Shortcuts](#finding-contacts-find)
+  + [Miscellaneous Shortcuts](#list-all-contacts-list)
+    + [Listing all Contacts](#list-all-contacts-list)
     + [Finding Contacts](#finding-contacts-find)
     + [Undoing Commands](#undoing-commands-undo)
+    + [Redoing Commands](#redoing-commands-redo)
+    + [Clear all Contacts](#clear-all-contacts-clear)
     + [Navigating Command History](#navigating-command-history--and-)
+    + [Copy a Field from a Contact](#copy-a-field-from-a-contact-copy)
     + [Exiting the Application](#exiting-the-application-exit)
+  + [Saving Data](#saving-the-data-file)
 + [Frequently Asked Questions](#faq)
 + [Known Issues and Future Features](#known-issues-and-future-features)
 + [Command Summary](#command-summary)
@@ -232,7 +237,7 @@ Format: `add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`
 A person can have any number of tags and assets (including 0).
 </box>
 
-#### Examples
+#### Example
 * Add a new contact associated with the asset `L293D`:<br> 
   `add n/John Doe e/johndoe@example.com a/574 Ang Mo Kio Ave 10 p/12345678 A/L293D`
 
@@ -294,11 +299,11 @@ If the example was not executed successfully, the proper syntax of the `add` com
 Delete a contact from the system by specifying its index.
 
 Format: `delete INDEX`
-* `INDEX` refers to the unique contact index shown in the GUI.
-* The asset(s) associated with the contact will not be deleted.
 
-#### Examples
+#### Example
 `delete 1` deletes the contact with index `1`.
+
+* `INDEX` refers to the numbering of the currently displayed contacts.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -308,7 +313,8 @@ Edit existing contacts without recreating them.
 
 Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET]...`
 
-Example: `edit 1 e\newemail@example.com` edits the contact with id `1`, changing its email to `newemail@example.com`.
+#### Example
+`edit 1 e\newemail@example.com` edits the contact with id `1`, changing its email to `newemail@example.com`.
 
 * Edits the contact with the specified `INDEX`. `INDEX` refers to the unique contact index shown in the GUI.
 * At least one of the optional fields must be provided.
@@ -325,9 +331,18 @@ Edit existing assets without recreating them.
 
 Format: `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`
 
-Example: `asset o\hammer n\screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
+#### Example
+`asset o\hammer n\screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
 
 * The asset will be renamed for all contacts linked to it.
+
+---
+
+### List All Contacts: `list`
+
+Displays all contacts.
+
+Format: `list`
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -337,7 +352,8 @@ Finds contacts by names, tags or assets.
 
 Format: `find QUERY`
 
-Example: `find John` searches all contact names, tags and assets for the query `John`.
+#### Example
+`find John` searches all contact names, tags and assets for the query `John`.
 
 * The query is case-insensitive.
 * All whitespaces in both the query and fields will be ignored.
@@ -358,11 +374,29 @@ Format: `undo`
 
 Reverses the latest undo command.
 
-After executing an `undo` command, if another modifying command was executed, `redo` does not reverse.
+<box type="warning" seamless>
+
+After executing an `undo` command, you cannot `redo` if another modifying command was executed.
+
+</box>
 
 Format: `redo`
 
 --------------------------------------------------------------------------------------------------------------------
+
+### Clear All Contacts: `clear`
+
+Deletes all contacts.
+
+Format: `clear`
+
+<box type="tip" seamless>
+
+If you unintentionally deleted all contacts, you can use the `undo` command to revert clear.
+
+</box>
+
+---
 
 ### Navigating command history: `↑` and `↓`
 
@@ -375,6 +409,19 @@ Press the `↓` arrow key to view the next command.
 <box type="warning" seamless>
 Only successfully executed commands are saved in the command history.
 </box>
+
+---
+
+### Copy a Field from a Contact: `copy`
+
+Copies a specific field to your computer clipboard for ease of pasting elsewhere.
+
+Format: `copy INDEX PREFIX`
+
+#### Example
+`copy 1 p\` copies the phone number of the first contact displayed onto the clipboard.
+
+* `INDEX` refers to the numbering of the currently displayed contacts.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -448,9 +495,12 @@ Action           | Format                                                       
 **Delete**       | `delete INDEX`                                                                | `delete 1`
 **Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET]...` | `edit 1 e\newemail@example.com`
 **Edit asset**   | `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`                                     | `asset o\hammer n\screwdriver`
+**List**         | `list`                                                                        | `list`
 **Find**         | `find KEYWORD [KEYWORD]...`                                                   | `find John`
 **Undo**         | `undo`                                                                        | `undo`
 **Redo**         | `redo`                                                                        | `redo`
+**Clear**        | `clear`                                                                       | `clear`
+**Copy**         | `copy INDEX PREFIX`                                                           | `copy 1 p\`
 **Exit**         | `exit`                                                                        | `exit`
 
 ---{.double}
@@ -459,6 +509,9 @@ Action           | Format                                                       
 
 #### Asset
 An item or amenity of logistical significance.
+
+#### Clipboard
+Storage location of data that will be pasted typically by `ctrl + v` or `right click + paste`.
 
 #### Command
 A specific text input entered into the command input box to interact with *AssetBook*.
