@@ -105,15 +105,26 @@ The following instructions are for **Windows**, **MacOS** or **Linux**.
 
 1. Ensure you have [Java 11](https://www.oracle.com/sg/java\technologies/javase\jdk11-archive-downloads.html) installed on your Computer.
 
-2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp\releases).
+2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
+
+<p align="center">
+<img src="images/setup-1.png" width="400px">
+</p>
 
 3. Move the file into the folder where you want *AssetBook* to store the contact information. New users may simply
    create a folder on their desktop, then drag and drop `assetbook.jar` inside.
 
-> Placeholder image for assetbook.jar inside a folder on the desktop
+<p align="center">
+<img src="images/setup-2.png" width="100px">
+<img src="images/setup-3.png" width="200px">
+</p>
 
 4. To launch the application, double-click on the `assetbook.jar` file and a GUI as shown in the following section should appear. 
    Note that the application contains some sample data when launched for the first time. 
+
+<p align="center">
+<img src="images/setup-4.png" width="200px">
+</p>
 
 <box type="tip" seamless>
     Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#faq">FAQ</a> useful.
