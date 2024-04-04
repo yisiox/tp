@@ -47,7 +47,7 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private SplitPane resultDisplaySplitPane;
+    private SplitPane splitPane;
 
     @FXML
     private StackPane personListPanelPlaceholder;
@@ -69,17 +69,18 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
         this.personListPanel = new PersonListPanel(logic.getFilteredPersonList());
 
+        GuiSettings guiSettings = logic.getGuiSettings();
+
         // Configure the UI
-        setWindowDefaultSize(logic.getGuiSettings());
+        setWindowDefaultSize(guiSettings);
 
         setAccelerators();
 
         primaryStage.show(); // This should be called before creating other UI parts
         primaryStage.requestFocus();
 
-        // This has to be called after primaryStage elements are initialized and .show() is called.
-        setSplitPosition(logic.getGuiSettings());
-        fillInnerParts();
+        // Configure the inner components of the UI
+        fillInnerParts(guiSettings);
     }
 
     public Stage getPrimaryStage() {
@@ -123,10 +124,12 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Fills up all the placeholders of this window.
      */
-    private void fillInnerParts() {
+    private void fillInnerParts(GuiSettings guiSettings) {
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
+
+        splitPane.setDividerPositions(guiSettings.getSplitPaneDividerPosition());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -153,13 +156,6 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Sets the default divider split position based on {@code guiSettings}.
-     */
-    private void setSplitPosition(GuiSettings guiSettings) {
-        resultDisplaySplitPane.setDividerPosition(0, guiSettings.getSplitPosition());
-    }
-
-    /**
      * Opens the help window or focuses on it if it's already opened.
      */
     @FXML
@@ -177,8 +173,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY(), resultDisplaySplitPane.getDividerPositions()[0],
-                primaryStage.isMaximized());
+                (int) primaryStage.getX(), (int) primaryStage.getY(),
+                primaryStage.isMaximized(), splitPane.getDividerPositions()[0]);
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
