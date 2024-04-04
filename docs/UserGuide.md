@@ -1,6 +1,6 @@
 ---
   layout: default.md
-  title: "User Guide"
+  title: "AssetBook User Guide"
   pageNav: 3
 ---
 
@@ -89,10 +89,10 @@ or skip to the [command summary](#command-summary).
 
 1. Ensure you have [Java 11](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html) installed on your Computer.
 
-2. Download the latest `AssetBook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
+2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
 
 3. Move the file into the folder where you want AssetBook to store the contact information. New users may simply
-   create a folder on their desktop, then drag and drop `AssetBook.jar` inside.
+   create a folder on their desktop, then drag and drop `assetbook.jar` inside.
 
 4. Double-click on the `jar` file and a GUI as shown in the following section should appear. 
    Note that the app contains some sample data when launched for the first time. 
@@ -240,9 +240,9 @@ Example: `edit 1 e\newemail@example.com` edits the contact with id `1`, changing
 
 Edit existing assets without recreating them.
 
-Format: `asset old/OLD_ASSET_NAME new/NEW_ASSET_NAME`
+Format: `asset o/OLD_ASSET_NAME n/NEW_ASSET_NAME`
 
-Example: `asset old/hammer new/screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
+Example: `asset o/hammer n/screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
 
 * The asset will be renamed for all contacts linked to it.
 
@@ -333,7 +333,7 @@ Action           | Format                                                       
 **Add**          | `add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`                | `add n\John Doe e\johndoe@example.com p\+12345678 a\L293D`
 **Delete**       | `delete INDEX`                                                               | `delete 1`
 **Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [o\OFFICE] [t\TAG]... [a\ASSET]...` | `edit 1 e\newemail@example.com`
-**Edit asset**   | `asset old\OLD_ASSET_NAME new\NEW_ASSET_NAME`                                | `asset old\hammer new\screwdriver`
+**Edit asset**   | `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`                                    | `asset o\hammer n\screwdriver`
 **Find**         | `find QUERY`                                                                 | `find John`
 **Undo**         | `undo`                                                                       | `undo`
 **Exit**         | `exit`                                                                       | `exit`

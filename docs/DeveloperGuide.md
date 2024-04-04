@@ -595,7 +595,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. The target user should understand how to use the product easily by reading the User Guide.
 1. User Guide should have higher overall quality compared to AddressBook-Level3 (AB3).
 1. A new team member should understand the product's internal design easily by reading the Developer Guide.
-1. Developer Guide should have higher overall quality compared to AB.
+1. Developer Guide should have higher overall quality compared to AB3.
 
 #### Project Management
 1. Project should be done iteratively and incrementally.
