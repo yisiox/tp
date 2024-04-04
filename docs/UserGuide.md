@@ -100,7 +100,7 @@ or skip to the [command summary](#command-summary).
 + [Command Summary](#command-summary)
 + [Glossary](#glossary)
 
----{.double}
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -119,7 +119,7 @@ The following instructions are for **Windows**, **MacOS** or **Linux**.
 2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
 
 <p align="center">
-    <img src="images/setup-1.png" style="width: 95%;">
+    <img src="images/setup-1.png" style="width: 90%;">
 </p>
 
 3. Move the file into the folder where you want *AssetBook* to store the contact information. New users may simply
@@ -134,7 +134,7 @@ The following instructions are for **Windows**, **MacOS** or **Linux**.
    Note that the application contains some sample data when launched for the first time. 
 
 <p align="center">
-    <img src="images/setup-4.png" style="width: 95%;">
+    <img src="images/setup-4.png" style="width: 90%;">
 </p>
 
 <box type="tip" seamless>
@@ -148,7 +148,7 @@ The following instructions are for **Windows**, **MacOS** or **Linux**.
 Here are the components of the GUI.
 
 <p align="center">
-   <img src="images/navigating-gui.png" style="width: 60%;">
+   <img src="images/navigating-gui.png" style="width: 85%;">
 </p>
 
 1. **Command Input Box**
@@ -163,8 +163,6 @@ You can resize the command output box by dragging the top edge.
 </box>
 
 ---
-
-<div style="page-break-after: always;"></div>
 
 ### Tutorials
 
@@ -190,24 +188,28 @@ Let's get started by adding our first contact, John Doe, into AssetBook.
 1. **Click on the Command Input Box**:
    Begin by locating and clicking into the [command input box](#navigating-the-gui) at the bottom of your application's interface.
 <p align="center">
-  <img src="images/tutorial-add-1.png" style="width: 60%;">
+  <img src="images/tutorial-add-1.png" style="width: 90%;">
 </p>
+
+<div style="page-break-after: always;"></div>
 
 2. **Adding Our First Contact, John**:
    Let's add your first contact, John, by copying the following command into the command input box:
 
    `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`
 <p align="center">
-   <img src="images/tutorial-add-2.png" style="width: 60%;">
+   <img src="images/tutorial-add-2.png" style="width: 90%;">
 </p>
 
 3. **Execute the Command**:
    After typing the command, simply press `Enter` to add the contact to AssetBook.
 
+<div style="page-break-after: always;"></div>
+
 4. **Confirmation**:
    Check for a confirmation message in the application to verify that John Doe has been added successfully.
 <p align="center">
-   <img src="images/tutorial-add-3.png" style="width: 60%;">
+   <img src="images/tutorial-add-3.png" style="width: 90%;">
 </p>
 
 <div style="page-break-after: always;"></div>
@@ -221,7 +223,7 @@ Now that you've successfully added John Doe to AssetBook, let's go through the s
    Let's now find the contact, John, we just added by copying the following command:
    `find John`
 <p align="center">
-    <img src="images/tutorial-find-1.png" style="width: 60%;">
+    <img src="images/tutorial-find-1.png" style="width: 90%;">
 </p>
 
 3. **Execute the Command**:
@@ -230,7 +232,7 @@ Now that you've successfully added John Doe to AssetBook, let's go through the s
 4. **View the Results**:
    The application will display John Doe in the search results, along with the total count of entries matching 'John' found in the system.
 <p align="center">
-   <img src="images/tutorial-find-2.png" style="width: 60%;">
+   <img src="images/tutorial-find-2.png" style="width: 90%;">
 </p>
 
 <div style="page-break-after: always;"></div>
@@ -245,24 +247,28 @@ Lets update the email of our first contact added John.
    Firstly, using the previous command Find, we can find out what index John contact is by seeing the number beside his contact. 
 In our case he is located index 1.
 <p align="center">
-  <img src="images/tutorial-edit-1.png" style="width: 60%;">
+  <img src="images/tutorial-edit-1.png" style="width: 90%;">
 </p>
+
+<div style="page-break-after: always;"></div>
 
 3. **Enter the Edit Command**: 
 Let's say we want to edit John's email, thus we can do so by copying the following command:
 `edit 1 e\newemail@example.com`
 
 <p align="center">
-  <img src="images/tutorial-edit-2.png" style="width: 60%;">
+  <img src="images/tutorial-edit-2.png" style="width: 90%;">
 </p>
 
 4. **Execute the Command**
    Press `Enter` after typing in the command. This will update John's contact details in AssetBook.
 
+<div style="page-break-after: always;"></div>
+
 5. **Confirmation**
    Look for a confirmation message in AssetBook, indicating that John's email address has been successfully updated.
 <p align="center">
-   <img src="images/tutorial-edit-3.png" style="width: 60%;">
+   <img src="images/tutorial-edit-3.png" style="width: 90%;">
 </p>
 
 <div style="page-break-after: always;"></div>
@@ -279,7 +285,7 @@ Let's update the assets already in our system.
    `asset o\screwdriver n\screw`
 
 <p align="center">
-   <img src="images/tutorial-editA-1.png" style="width: 60%;">
+   <img src="images/tutorial-editA-1.png" style="width: 90%;">
 </p>
 
 3. **Execute the Command**:
@@ -288,10 +294,10 @@ Let's update the assets already in our system.
 4. **Confirmation**:
    Wait for a confirmation message in AssetBook to ensure that the asset has been successfully updated.
 <p align="center">
-   <img src="images/tutorial-editA-2.png" style="width: 60%;">
+   <img src="images/tutorial-editA-2.png" style="width: 90%;">
 </p>
 
----{.double}
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -310,6 +316,8 @@ Colored text that look like the following describe the format of a command.
 A valid input by the user corresponding to the above will be
 
 `add n\John Doe e\johndoe@example.com o\574 Ang Mo Kio Ave 10 p\12345678 a\L293D`
+
+<div style="page-break-after: always;"></div>
 
 <box type="info" seamless>
 
@@ -347,7 +355,7 @@ up instead.
 
 </box>
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -366,8 +374,10 @@ A person can have any number of tags and assets (including 0).
   `add n/John Doe e/johndoe@example.com a/574 Ang Mo Kio Ave 10 p/12345678 A/L293D`
 
 <p align="center">
-    <img src="images/example-add-before.png" style="width: 60%;">
+    <img src="images/example-add-before.png" style="width: 90%;">
 </p>
+
+<div style="page-break-after: always;"></div>
 
 #### Success
 
@@ -375,16 +385,20 @@ If the example was executed successfully, the following message will appear:
 `New person added: John Doe; Phone: 12345678; Email: johndoe@example.com; Address: 574 Ang Mo Kio Ave 10; Tags: []; Assets: [[L293D]]`
 
 <p align="center">
-    <img src="images/example-add-after.png" style="width: 60%;">
+    <img src="images/example-add-after.png" style="width: 90%;">
 </p>
+
+<div style="page-break-after: always;"></div>
 
 #### Failure
 
 If the example was not executed successfully, the proper syntax of the `add` command will be shown to you instead.
 
 <p align="center">
-    <img src="images/example-add-after-fail.png" style="width: 60%;">
+    <img src="images/example-add-after-fail.png" style="width: 90%;">
 </p>
+
+<div style="page-break-after: always;"></div>
 
 #### Parameters
 `NAME`
@@ -416,7 +430,7 @@ If the example was not executed successfully, the proper syntax of the `add` com
 * Assets must have unique names. If the asset already exists in the database, the existing asset will be linked instead of a new asset.
 * Multiple assets can be specified. For example, a valid option is `a\asset1 a\asset2 a\asset3`.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -431,9 +445,7 @@ Format: `delete INDEX`
 
 * `INDEX` refers to the numbering of the currently displayed contacts.
 
---------------------------------------------------------------------------------------------------------------------
-
-<div style="page-break-after: always;"></div>
+---
 
 ### Editing a Contact: `edit`
 
@@ -451,7 +463,7 @@ Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET
 * You can remove all the person’s tags by typing `t\` without specifying any tags after it.
 * You can remove all the person’s assets by typing `a\` without specifying any assets after it.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -474,7 +486,7 @@ Displays all contacts.
 
 Format: `list`
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ### Finding Contacts: `find`
 
@@ -490,7 +502,7 @@ Format: `find QUERY`
 * Each field is individually checked against the query.
 * A match is found if the query is a substring of the field being checked.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -500,7 +512,7 @@ Undoes the last modifying command.
 
 Format: `undo`
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ### Redoing Commands: `redo`
 
@@ -514,7 +526,7 @@ After executing an `undo` command, you cannot `redo` if another modifying comman
 
 Format: `redo`
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -557,7 +569,7 @@ Format: `copy INDEX PREFIX`
 
 * `INDEX` refers to the numbering of the currently displayed contacts.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -567,13 +579,13 @@ Exits the application. Equivalent to pressing the cross in the top right corner.
 
 Format: `exit`
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ### Saving the data file
 
 *AssetBook*'s data is saved automatically after any command that changes the data. There is no need to save manually.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ### Editing the data file
 
@@ -587,7 +599,7 @@ If your changes to the data file makes its format invalid, *AssetBook* will disc
 Furthermore, certain edits can cause the *AssetBook* to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
----{.double}
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -602,7 +614,7 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and replace the JSON data file it creates with the JSON file from your previous *AssetBook* home folder.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -625,7 +637,7 @@ will be implemented in an upcoming release as soon as possible.
 Some users may require greater detail about the assets to be recorded. We plan to add features to support adding more
 details to assets such as serial number, location, etc.
 
----{.double}
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -645,7 +657,7 @@ Action           | Format                                                       
 **Copy**         | `copy INDEX PREFIX`                                                           | `copy 1 p\`
 **Exit**         | `exit`                                                                        | `exit`
 
----{.double}
+---
 
 <div style="page-break-after: always;"></div>
 

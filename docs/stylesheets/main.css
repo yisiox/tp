@@ -156,9 +156,6 @@ mark {
   .btn {
       font-size: 0.65rem !important;
   }
-  img {
-      zoom: 0.8;  /* might not work on some browsers */
-  }
 }
 
 h1,
