@@ -44,7 +44,7 @@ public class AssetTest {
 
     @Test
     public void toString_correctStringRepresentation_success() {
-        assertEquals(Asset.of("name").toString(), "[ name ]");
+        assertEquals(Asset.of("name").toString(), "[name]");
     }
 
 }
