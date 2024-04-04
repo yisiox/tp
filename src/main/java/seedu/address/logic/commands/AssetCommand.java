@@ -20,8 +20,8 @@ import seedu.address.model.person.fields.Prefix;
 public class AssetCommand extends Command {
 
     public static final String COMMAND_WORD = "asset";
-    public static final Prefix PREFIX_OLD = new Prefix("old/");
-    public static final Prefix PREFIX_NEW = new Prefix("new/");
+    public static final Prefix PREFIX_OLD = new Prefix("old\\");
+    public static final Prefix PREFIX_NEW = new Prefix("new\\");
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the asset identified "
             + "Existing values will be overwritten by the input values.\n"

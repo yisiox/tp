@@ -91,7 +91,7 @@ public class AssetCommandTest {
 
     @Test
     public void of_validInput_success() {
-        assertDoesNotThrow(() -> AssetCommand.of(" old/aircon new/desktop"));
+        assertDoesNotThrow(() -> AssetCommand.of(" old\\aircon new\\desktop"));
     }
 
     @Test
