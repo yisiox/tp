@@ -189,15 +189,14 @@ For detailed documentation of all available features, please refer to the [featu
 Let's get started by adding our first contact, John Doe, into AssetBook.
 1. **Click on the Command Input Box**:
    Begin by locating and clicking into the [command input box](#navigating-the-gui) at the bottom of your application's interface.
-   <p align="center">
-      <img src="images/tutorial-add-1.png" style="width: 60%;">
-   </p>
+<p align="center">
+  <img src="images/tutorial-add-1.png" style="width: 60%;">
+</p>
 
 2. **Adding Our First Contact, John**:
    Let's add your first contact, John, by copying the following command into the command input box:
 
    `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`
-
 <p align="center">
    <img src="images/tutorial-add-2.png" style="width: 60%;">
 </p>
@@ -221,9 +220,9 @@ Now that you've successfully added John Doe to AssetBook, let's go through the s
 2. **Enter the Find Command**:
    Let's now find the contact, John, we just added by copying the following command:
    `find John`
-     <p align="center">
-   <img src="images/tutorial-find-1.png" style="width: 60%;">
- </p>
+<p align="center">
+    <img src="images/tutorial-find-1.png" style="width: 60%;">
+</p>
 
 3. **Execute the Command**:
    After typing the command, simply press `Enter` to find the contact in AssetBook.
