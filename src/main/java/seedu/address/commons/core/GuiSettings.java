@@ -12,11 +12,13 @@ import javafx.stage.Screen;
  * Guarantees: immutable.
  */
 public class GuiSettings implements Serializable {
-    
+
+    private static final double DEFAULT_HEIGHT = 600;
+    private static final double DEFAULT_WIDTH = 740;
     private static final double DEFAULT_SPLIT_PANE_DIVIDER_POSITION = 0.75;
 
-    private final double windowWidth;
-    private final double windowHeight;
+    private double windowWidth;
+    private double windowHeight;
     private final Point windowCoordinates;
     private final boolean isMaximized;
     private final double splitPaneDividerPosition;
@@ -25,9 +27,14 @@ public class GuiSettings implements Serializable {
      * Constructs a {@code GuiSettings} with the default parameters.
      */
     public GuiSettings() {
-        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-        windowWidth = primaryScreenBounds.getWidth() * 0.5;
-        windowHeight = primaryScreenBounds.getHeight() * 0.9;
+        try {
+            Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+            windowWidth = primaryScreenBounds.getWidth() * 0.5;
+            windowHeight = primaryScreenBounds.getHeight() * 0.9;
+        } catch (ExceptionInInitializerError | NoClassDefFoundError e) { // No screen found
+            windowWidth = DEFAULT_WIDTH;
+            windowHeight = DEFAULT_HEIGHT;
+        }
         windowCoordinates = null; // null represent no coordinates
         isMaximized = false;
         splitPaneDividerPosition = DEFAULT_SPLIT_PANE_DIVIDER_POSITION;
