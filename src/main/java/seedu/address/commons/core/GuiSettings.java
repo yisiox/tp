@@ -13,14 +13,16 @@ import javafx.stage.Screen;
  */
 public class GuiSettings implements Serializable {
 
+    private static final double DEFAULT_SCREEN_HEIGHT_SCALE = 0.9;
+    private static final double DEFAULT_SCREEN_WIDTH_SCALE = 0.5;
     private static final double DEFAULT_HEIGHT = 600;
     private static final double DEFAULT_WIDTH = 740;
     private static final double DEFAULT_SPLIT_PANE_DIVIDER_POSITION = 0.75;
 
     private double windowWidth;
     private double windowHeight;
-    private final Point windowCoordinates;
-    private final boolean isMaximized;
+    private Point windowCoordinates = null; //null represent no coordinates
+    private boolean isMaximized = false;
     private final double splitPaneDividerPosition;
 
     /**
@@ -29,14 +31,12 @@ public class GuiSettings implements Serializable {
     public GuiSettings() {
         try {
             Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-            windowWidth = primaryScreenBounds.getWidth() * 0.5;
-            windowHeight = primaryScreenBounds.getHeight() * 0.9;
+            windowHeight = primaryScreenBounds.getHeight() * DEFAULT_SCREEN_HEIGHT_SCALE;
+            windowWidth = primaryScreenBounds.getWidth() * DEFAULT_SCREEN_WIDTH_SCALE;
         } catch (ExceptionInInitializerError | NoClassDefFoundError e) { // No screen found
             windowWidth = DEFAULT_WIDTH;
             windowHeight = DEFAULT_HEIGHT;
         }
-        windowCoordinates = null; // null represent no coordinates
-        isMaximized = false;
         splitPaneDividerPosition = DEFAULT_SPLIT_PANE_DIVIDER_POSITION;
     }
 
