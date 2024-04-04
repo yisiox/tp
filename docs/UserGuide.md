@@ -105,15 +105,26 @@ The following instructions are for **Windows**, **MacOS** or **Linux**.
 
 1. Ensure you have [Java 11](https://www.oracle.com/sg/java\technologies/javase\jdk11-archive-downloads.html) installed on your Computer.
 
-2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp\releases).
+2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
+
+<p align="center">
+<img src="images/setup-1.png" width="400px">
+</p>
 
 3. Move the file into the folder where you want *AssetBook* to store the contact information. New users may simply
    create a folder on their desktop, then drag and drop `assetbook.jar` inside.
 
-> Placeholder image for assetbook.jar inside a folder on the desktop
+<p align="center">
+<img src="images/setup-2.png" width="100px">
+<img src="images/setup-3.png" width="200px">
+</p>
 
 4. To launch the application, double-click on the `assetbook.jar` file and a GUI as shown in the following section should appear. 
    Note that the application contains some sample data when launched for the first time. 
+
+<p align="center">
+<img src="images/setup-4.png" width="200px">
+</p>
 
 <box type="tip" seamless>
     Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#faq">FAQ</a> useful.
@@ -219,7 +230,28 @@ A person can have any number of tags and assets (including 0).
 
 #### Examples
 * Add a new contact associated with the asset `L293D`:<br> 
-  `add n\John Doe e\johndoe@example.com o\574 Ang Mo Kio Ave 10 p\12345678 a\L293D`
+  `add n/John Doe e/johndoe@example.com a/574 Ang Mo Kio Ave 10 p/12345678 A/L293D`
+
+<p align="center">
+<img src="images/example-add-before.png" width="200px">
+</p>
+
+#### Success
+
+If the example was executed successfully, the following message will appear:
+`New person added: John Doe; Phone: 12345678; Email: johndoe@example.com; Address: 574 Ang Mo Kio Ave 10; Tags: []; Assets: [[L293D]]`
+
+<p align="center">
+<img src="images/example-add-after.png" width="200px">
+</p>
+
+#### Failure
+
+If the example was not executed successfully, the proper syntax of the `add` command will be shown to you instead.
+
+<p align="center">
+<img src="images/example-add-after-fail.png" width="200px">
+</p>
 
 #### Parameters
 `NAME`
