@@ -134,7 +134,9 @@ The following instructions are for **Windows**, **MacOS** or **Linux**.
 
 Here are the components of the GUI.
 
-> Placeholder for annotated screenshot of the GUI
+<p align="center">
+   <img src="images/navigating-gui.png" style="width: 60%;">
+</p>
 
 1. **Command Input Box**
 2. **Command Output Box**
@@ -152,15 +154,126 @@ This section provides a walkthrough of common actions performed in *AssetBook*.
 All actions are performed through typing specific text into the [command input box](#navigating-the-gui).
 For detailed documentation of all available features, please refer to the [features](#features) section.
 
-#### Adding your first Contact
+<box type="tip" seamless>
 
-#### Editing your Contact 
+**Tips for Beginners**
 
-#### Editing Assets
+- Always double-check the details you enter.
+- If an action doesn’t work as expected, review the command format and your input.
+- Practice makes perfect. Try adding a few contacts and assets to get comfortable with the commands.
+
+</box>
+
+#### Adding Your First Contact
+Let's get started by adding our first contact, John Doe, into AssetBook.
+1. **Click on the Command Input Box**:
+   Begin by locating and clicking into the [command input box](#navigating-the-gui) at the bottom of your application's interface.
+   <p align="center">
+      <img src="images/tutorial-add-1.png" style="width: 60%;">
+   </p>
+
+2. **Adding Our First Contact, John**:
+   Let's add your first contact, John, by copying the following command into the command input box:
+
+   `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`
+
+   <p align="center">
+   <img src="images/tutorial-add-2.png" style="width: 60%;">
+</p>
+
+3. **Execute the Command**:
+   After typing the command, simply press `Enter` to add the contact to AssetBook.
+
+4. **Confirmation**:
+   Check for a confirmation message in the application to verify that John Doe has been added successfully.
+<p align="center">
+   <img src="images/tutorial-add-3.png" style="width: 60%;">
+</p>
 
 #### Searching for Contacts
+Now that you've successfully added John Doe to AssetBook, let's go through the steps to find him in the system.
+1. **Click the Command Input Box**:
+   First, click into the command input box in the AssetBook interface. This is where you'll enter your find command.
 
-#### Deleting Contacts
+2. **Enter the Find Command**:
+   Let's now find the contact, John, we just added by copying the following command:
+   `find John`
+     <p align="center">
+   <img src="images/tutorial-find-1.png" style="width: 60%;">
+ </p>
+
+3. **Execute the Command**:
+   After typing the command, simply press `Enter` to find the contact in AssetBook.
+
+4. **View the Results**:
+   The application will display John Doe in the search results, along with the total count of entries matching 'John' found in the system.
+<p align="center">
+   <img src="images/tutorial-find-2.png" style="width: 60%;">
+</p>
+
+
+
+
+#### Editing your Contact 
+Lets update the email of our first contact added John.
+
+1. **Click on the Command Input Box**: 
+   Begin by locating and clicking into the command input box within the AssetBook interface.
+
+2. **Find out what is John's Index**:
+   Firstly, using the previous command Find, we can find out what index John contact is by seeing the number beside his contact. 
+In our case he is located index 1.
+<p align="center">
+  <img src="images/tutorial-edit-1.png" style="width: 60%;">
+</p>
+
+3. **Enter the Edit Command**: 
+Let's say we want to edit John's email, thus we can do so by copying the following command:
+`edit 1 e\newemail@example.com`
+
+<p align="center">
+  <img src="images/tutorial-edit-2.png" style="width: 60%;">
+</p>
+
+4. **Execute the Command**
+   Press `Enter` after typing in the command. This will update John's contact details in AssetBook.
+
+5. **Confirmation**
+   Look for a confirmation message in AssetBook, indicating that John's email address has been successfully updated.
+<p align="center">
+   <img src="images/tutorial-edit-3.png" style="width: 60%;">
+</p>
+
+
+
+#### Editing Assets
+Let's update the assets already in our system.
+
+1. **Click on the Command Input Box**:
+   Start by clicking into the command input box located within the AssetBook interface.
+
+2. **Enter the Edit Asset Command**:
+   If you need to rename an asset, for example, changing "screwdriver" to "screw", use the following format for your command:
+
+   `asset o\screwdriver n\screw`
+
+<p align="center">
+   <img src="images/tutorial-editA-1.png" style="width: 60%;">
+</p>
+
+3. **Execute the Command**:
+   After entering the command, press `Enter`. This action will update the asset's details in AssetBook.
+
+4. **Confirmation**:
+   Wait for a confirmation message in AssetBook to ensure that the asset has been successfully updated.
+<p align="center">
+   <img src="images/tutorial-editA-2.png" style="width: 60%;">
+</p>
+
+
+
+
+
 
 ---{.double}
 
