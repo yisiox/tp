@@ -143,15 +143,15 @@ public class CopyCommandTest {
         assertThrows(IllegalArgumentException.class, () -> CopyCommand.of("1"));
         assertThrows(IllegalArgumentException.class, () -> CopyCommand.of(INVALID_INDEX));
         assertThrows(IllegalArgumentException.class, () -> CopyCommand.of(VALID_INDEX + " "));
-        assertThrows(IllegalArgumentException.class, () -> CopyCommand.of(INVALID_INDEX + " n/ a/"));
-        assertThrows(IllegalArgumentException.class, () -> CopyCommand.of(VALID_INDEX + " A/ t/ p/"));
+        assertThrows(IllegalArgumentException.class, () -> CopyCommand.of(INVALID_INDEX + " n\\ a\\"));
+        assertThrows(IllegalArgumentException.class, () -> CopyCommand.of(VALID_INDEX + " A\\ t\\ p\\"));
     }
 
     @Test
     public void of_validInput_success() {
-        assertDoesNotThrow(() -> CopyCommand.of(VALID_INDEX + " n/"));
-        assertDoesNotThrow(() -> CopyCommand.of(VALID_INDEX + " A/"));
-        assertDoesNotThrow(() -> CopyCommand.of(VALID_INDEX + " a/"));
+        assertDoesNotThrow(() -> CopyCommand.of(VALID_INDEX + " n\\"));
+        assertDoesNotThrow(() -> CopyCommand.of(VALID_INDEX + " A\\"));
+        assertDoesNotThrow(() -> CopyCommand.of(VALID_INDEX + " a\\"));
     }
 
     @Test

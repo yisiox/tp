@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Represents a Person's phone number in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValid(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValid(String)}.
  */
 public class Phone implements Field {
 
-    public static final Prefix PREFIX_PHONE = new Prefix("p/");
+    public static final Prefix PREFIX_PHONE = new Prefix("p\\");
     private static final String MESSAGE_CONSTRAINTS =
             "Phone numbers should only contain numbers, and it should be at least 3 digits long";
     private static final String VALIDATION_REGEX = "\\d{3,}";

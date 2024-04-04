@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class NameTest {
 
     private static final String WHITESPACE = " \t\r\n";
-    private static final String INVALID_NAME = "R@chel";
+    private static final String INVALID_NAME = " ";
     private static final String VALID_NAME = "Rachel Walker";
 
     @Test
@@ -23,8 +23,8 @@ public class NameTest {
     public void constructor_invalidName_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> new Name("")); // empty string
         assertThrows(IllegalArgumentException.class, () -> new Name(" ")); // spaces only
-        assertThrows(IllegalArgumentException.class, () -> new Name("^")); // only non-alphanumeric characters
-        assertThrows(IllegalArgumentException.class, () -> new Name("peter*")); // contains non-alphanumeric characters
+        assertThrows(IllegalArgumentException.class, () -> new Name("\\")); // contains '\'
+        assertThrows(IllegalArgumentException.class, () -> new Name("peter\\")); // contains '\'
     }
 
     @Test
@@ -34,6 +34,8 @@ public class NameTest {
         assertDoesNotThrow(() -> new Name("peter the 2nd")); // alphanumeric characters
         assertDoesNotThrow(() -> new Name("Capital Tan")); // with capital letters
         assertDoesNotThrow(() -> new Name("David Roger Jackson Ray Jr 2nd")); // long names
+        assertDoesNotThrow(() -> new Name("Tan Ah Kow, Aaron")); // contains special characters
+        assertDoesNotThrow(() -> new Name("Muthu s/o Magesh")); // contains special characters
     }
 
     @Test
