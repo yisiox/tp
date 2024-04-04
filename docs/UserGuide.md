@@ -230,7 +230,28 @@ A person can have any number of tags and assets (including 0).
 
 #### Examples
 * Add a new contact associated with the asset `L293D`:<br> 
-  `add n\John Doe e\johndoe@example.com o\574 Ang Mo Kio Ave 10 p\12345678 a\L293D`
+  `add n/John Doe e/johndoe@example.com a/574 Ang Mo Kio Ave 10 p/12345678 A/L293D`
+
+<p align="center">
+<img src="images/example-add-before.png" width="200px">
+</p>
+
+#### Success
+
+If the example was executed successfully, the following message will appear:
+`New person added: John Doe; Phone: 12345678; Email: johndoe@example.com; Address: 574 Ang Mo Kio Ave 10; Tags: []; Assets: [[L293D]]`
+
+<p align="center">
+<img src="images/example-add-after.png" width="200px">
+</p>
+
+#### Failure
+
+If the example was not executed successfully, the proper syntax of the `add` command will be shown to you instead.
+
+<p align="center">
+<img src="images/example-add-after-fail.png" width="200px">
+</p>
 
 #### Parameters
 `NAME`
