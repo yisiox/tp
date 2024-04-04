@@ -34,6 +34,8 @@ making your management tasks smoother than ever.
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## Using this Guide
 
 This user guide is meant to provide guide users to use *AssetBook* and comprehensively document its features.
@@ -66,6 +68,8 @@ or skip to the [command summary](#command-summary).
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 <!-- * Table of Contents -->
 ## Table of Contents
 + [Introduction](#assetbook-user-guide)
@@ -97,6 +101,8 @@ or skip to the [command summary](#command-summary).
 + [Glossary](#glossary)
 
 ---{.double}
+
+<div style="page-break-after: always;"></div>
 
 ## Quick Start
 
@@ -135,6 +141,8 @@ The following instructions are for **Windows**, **MacOS** or **Linux**.
     Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#faq">FAQ</a> useful.
 </box>
 
+<div style="page-break-after: always;"></div>
+
 ### Navigating the GUI
 
 Here are the components of the GUI.
@@ -156,6 +164,8 @@ You can resize the command output box by dragging the top edge.
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ### Tutorials
 
 This section provides a walkthrough of common actions performed in *AssetBook*.
@@ -172,6 +182,8 @@ For detailed documentation of all available features, please refer to the [featu
 - Practice makes perfect. Try adding a few contacts and assets to get comfortable with the commands.
 
 </box>
+
+<div style="page-break-after: always;"></div>
 
 #### Adding Your First Contact
 Let's get started by adding our first contact, John Doe, into AssetBook.
@@ -199,6 +211,8 @@ Let's get started by adding our first contact, John Doe, into AssetBook.
    <img src="images/tutorial-add-3.png" style="width: 60%;">
 </p>
 
+<div style="page-break-after: always;"></div>
+
 #### Searching for Contacts
 Now that you've successfully added John Doe to AssetBook, let's go through the steps to find him in the system.
 1. **Click the Command Input Box**:
@@ -220,8 +234,7 @@ Now that you've successfully added John Doe to AssetBook, let's go through the s
    <img src="images/tutorial-find-2.png" style="width: 60%;">
 </p>
 
-
-
+<div style="page-break-after: always;"></div>
 
 #### Editing your Contact 
 Lets update the email of our first contact added John.
@@ -253,7 +266,7 @@ Let's say we want to edit John's email, thus we can do so by copying the followi
    <img src="images/tutorial-edit-3.png" style="width: 60%;">
 </p>
 
-
+<div style="page-break-after: always;"></div>
 
 #### Editing Assets
 Let's update the assets already in our system.
@@ -279,12 +292,9 @@ Let's update the assets already in our system.
    <img src="images/tutorial-editA-2.png" style="width: 60%;">
 </p>
 
-
-
-
-
-
 ---{.double}
+
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -339,6 +349,8 @@ up instead.
 </box>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Adding a Contact: `add`
 
@@ -407,6 +419,8 @@ If the example was not executed successfully, the proper syntax of the `add` com
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Deleting a Contact: `delete`
 
 Delete a contact from the system by specifying its index.
@@ -419,6 +433,8 @@ Format: `delete INDEX`
 * `INDEX` refers to the numbering of the currently displayed contacts.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Editing a Contact: `edit`
 
@@ -437,6 +453,8 @@ Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET
 * You can remove all the person’s assets by typing `a\` without specifying any assets after it.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Editing an Asset: `asset`
 
@@ -475,6 +493,8 @@ Format: `find QUERY`
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Undoing Commands: `undo`
 
 Undoes the last modifying command.
@@ -496,6 +516,8 @@ After executing an `undo` command, you cannot `redo` if another modifying comman
 Format: `redo`
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Clear All Contacts: `clear`
 
@@ -538,6 +560,8 @@ Format: `copy INDEX PREFIX`
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Exiting the Application: `exit`
 
 Exits the application. Equivalent to pressing the cross in the top right corner.
@@ -566,6 +590,8 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 
 ---{.double}
 
+<div style="page-break-after: always;"></div>
+
 ## FAQ
 
 **Q**: What if my device does not run a mainstream operating system (not Windows, MacOS or Linux)?<br>
@@ -578,6 +604,8 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 **A**: Install the app in the other computer and replace the JSON data file it creates with the JSON file from your previous *AssetBook* home folder.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Known Issues and Future Features
 
@@ -600,6 +628,8 @@ details to assets such as serial number, location, etc.
 
 ---{.double}
 
+<div style="page-break-after: always;"></div>
+
 ## Command summary
 
 Action           | Format                                                                        | Example
@@ -617,6 +647,8 @@ Action           | Format                                                       
 **Exit**         | `exit`                                                                        | `exit`
 
 ---{.double}
+
+<div style="page-break-after: always;"></div>
 
 ## Glossary
 
