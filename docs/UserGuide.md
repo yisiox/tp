@@ -81,11 +81,16 @@ or skip to the [command summary](#command-summary).
     + [Deleting a Contact](#deleting-a-contact-delete)
     + [Editing a Contact](#editing-a-contact-edit)
     + [Editing an Asset](#editing-an-asset-asset)
-  + [Miscellaneous Shortcuts](#finding-contacts-find)
+  + [Miscellaneous Shortcuts](#list-all-contacts-list)
+    + [Listing all Contacts](#list-all-contacts-list)
     + [Finding Contacts](#finding-contacts-find)
     + [Undoing Commands](#undoing-commands-undo)
+    + [Redoing Commands](#redoing-commands-redo)
+    + [Clear all Contacts](#clear-all-contacts-clear)
     + [Navigating Command History](#navigating-command-history--and-)
+    + [Copy a Field from a Contact](#copy-a-field-from-a-contact-copy)
     + [Exiting the Application](#exiting-the-application-exit)
+  + [Saving Data](#saving-the-data-file)
 + [Frequently Asked Questions](#faq)
 + [Known Issues and Future Features](#known-issues-and-future-features)
 + [Command Summary](#command-summary)
@@ -144,6 +149,10 @@ Here are the components of the GUI.
 4. **Contact Details**
 5. **Tags**
 6. **Assets**
+
+<box type="tip" seamless>
+You can resize the command output box by dragging the top edge.
+</box>
 
 ---
 
@@ -287,7 +296,7 @@ contact data** and those that are **miscellaneous shortcuts** for convenience.
 
 Colored text that look like the following describe the format of a command.
 
-`add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`
+`add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`
 
 A valid input by the user corresponding to the above will be
 
@@ -335,13 +344,13 @@ up instead.
 
 Adds a new contact to the system, with 0 or more assets associated with the contact.
 
-Format: `add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`
+Format: `add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`
 
 <box type="tip" seamless>
 A person can have any number of tags and assets (including 0).
 </box>
 
-#### Examples
+#### Example
 * Add a new contact associated with the asset `L293D`:<br> 
   `add n/John Doe e/johndoe@example.com a/574 Ang Mo Kio Ave 10 p/12345678 A/L293D`
 
@@ -371,22 +380,23 @@ If the example was not executed successfully, the proper syntax of the `add` com
 * Name of the contact.
 * Case sensitive, i.e. john doe ≠ John Doe.
 * Leading and trailing spaces are automatically removed.
-* Multiple people with the same name are allowed.
+* Multiple people with the same name are not allowed.
 
 `PHONE`
 * Phone number of the contact.
-* Only digits are allowed.
-* Any number of digits are allowed.
+* Only digits, '+', '-', ',' and spaces are allowed.
+* Any number of these characters are allowed.
 * 
 `EMAIL`
 * Email of the contact.
-* Must have ‘@’.
+* Must be in the format ‘local-part@domain’, and must be in a valid email format.
 
-`OFFICE`
-* Office address of the contact.
+`ADDRESS`
+* Address of the contact.
 
 `TAG`
 * Tag(s) to categorize the contact into.
+* Only digits and alphabets are allowed.
 
 `ASSET`
 * Asset(s) associated with contact.
@@ -402,11 +412,11 @@ If the example was not executed successfully, the proper syntax of the `add` com
 Delete a contact from the system by specifying its index.
 
 Format: `delete INDEX`
-* `INDEX` refers to the unique contact index shown in the GUI.
-* The asset(s) associated with the contact will not be deleted.
 
-#### Examples
+#### Example
 `delete 1` deletes the contact with index `1`.
+
+* `INDEX` refers to the numbering of the currently displayed contacts.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -414,9 +424,10 @@ Format: `delete INDEX`
 
 Edit existing contacts without recreating them.
 
-Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [o\OFFICE] [t\TAG]... [a\ASSET]...`
+Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET]...`
 
-Example: `edit 1 e\newemail@example.com` edits the contact with id `1`, changing its email to `newemail@example.com`.
+#### Example
+`edit 1 e\newemail@example.com` edits the contact with id `1`, changing its email to `newemail@example.com`.
 
 * Edits the contact with the specified `INDEX`. `INDEX` refers to the unique contact index shown in the GUI.
 * At least one of the optional fields must be provided.
@@ -431,11 +442,20 @@ Example: `edit 1 e\newemail@example.com` edits the contact with id `1`, changing
 
 Edit existing assets without recreating them.
 
-Format: `asset o/OLD_ASSET_NAME n/NEW_ASSET_NAME`
+Format: `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`
 
-Example: `asset o/hammer n/screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
+#### Example
+`asset o\hammer n\screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
 
 * The asset will be renamed for all contacts linked to it.
+
+---
+
+### List All Contacts: `list`
+
+Displays all contacts.
+
+Format: `list`
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -445,7 +465,8 @@ Finds contacts by names, tags or assets.
 
 Format: `find QUERY`
 
-Example: `find John` searches all contact names, tags and assets for the query `John`.
+#### Example
+`find John` searches all contact names, tags and assets for the query `John`.
 
 * The query is case-insensitive.
 * All whitespaces in both the query and fields will be ignored.
@@ -462,6 +483,34 @@ Format: `undo`
 
 --------------------------------------------------------------------------------------------------------------------
 
+### Redoing Commands: `redo`
+
+Reverses the latest undo command.
+
+<box type="warning" seamless>
+
+After executing an `undo` command, you cannot `redo` if another modifying command was executed.
+
+</box>
+
+Format: `redo`
+
+--------------------------------------------------------------------------------------------------------------------
+
+### Clear All Contacts: `clear`
+
+Deletes all contacts.
+
+Format: `clear`
+
+<box type="tip" seamless>
+
+If you unintentionally deleted all contacts, you can use the `undo` command to revert clear.
+
+</box>
+
+---
+
 ### Navigating command history: `↑` and `↓`
 
 Use keyboard shortcuts to navigate the command history.
@@ -473,6 +522,19 @@ Press the `↓` arrow key to view the next command.
 <box type="warning" seamless>
 Only successfully executed commands are saved in the command history.
 </box>
+
+---
+
+### Copy a Field from a Contact: `copy`
+
+Copies a specific field to your computer clipboard for ease of pasting elsewhere.
+
+Format: `copy INDEX PREFIX`
+
+#### Example
+`copy 1 p\` copies the phone number of the first contact displayed onto the clipboard.
+
+* `INDEX` refers to the numbering of the currently displayed contacts.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -492,7 +554,7 @@ Format: `exit`
 
 ### Editing the data file
 
-*AssetBook*'s data are saved automatically as a JSON file `[JAR file location]/data\assetbook.json`.<br>
+*AssetBook*'s data are saved automatically as a JSON file `[JAR file location]/data/assetbook.json`.<br>
 Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
@@ -532,6 +594,9 @@ A remedy is planned for the future to perform more robust checks on names.
 The astute user will notice that ability to scroll with keyboard is missing from the application's features. This feature
 will be implemented in an upcoming release as soon as possible.
 
+#### More Asset Details
+Some users may require greater detail about the assets to be recorded. We plan to add features to support adding more
+details to assets such as serial number, location, etc.
 
 ---{.double}
 
@@ -539,12 +604,16 @@ will be implemented in an upcoming release as soon as possible.
 
 Action           | Format                                                                        | Example
 -----------------|-------------------------------------------------------------------------------|--- 
-**Add**          | `add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`                 | `add n\John Doe e\johndoe@example.com p\+12345678 a\L293D`
+**Add**          | `add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`                | `add n\John Doe e\johndoe@example.com p\+12345678 a\L293D`
 **Delete**       | `delete INDEX`                                                                | `delete 1`
-**Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [o\OFFICE] [t\TAG]... [a\ASSET]...`  | `edit 1 e\newemail@example.com`
-**Edit asset**   | `asset old/OLD_ASSET_NAME new/NEW_ASSET_NAME`                                 | `asset old/hammer new/screwdriver`
+**Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET]...` | `edit 1 e\newemail@example.com`
+**Edit asset**   | `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`                                     | `asset o\hammer n\screwdriver`
+**List**         | `list`                                                                        | `list`
 **Find**         | `find KEYWORD [KEYWORD]...`                                                   | `find John`
 **Undo**         | `undo`                                                                        | `undo`
+**Redo**         | `redo`                                                                        | `redo`
+**Clear**        | `clear`                                                                       | `clear`
+**Copy**         | `copy INDEX PREFIX`                                                           | `copy 1 p\`
 **Exit**         | `exit`                                                                        | `exit`
 
 ---{.double}
@@ -554,8 +623,17 @@ Action           | Format                                                       
 #### Asset
 An item or amenity of logistical significance.
 
+#### Clipboard
+Storage location of data that will be pasted typically by `ctrl + v` or `right click + paste`.
+
 #### Command
 A specific text input entered into the command input box to interact with *AssetBook*.
+
+#### GUI
+Graphical User Interface. The window that appears when an application is launched.
+
+#### Operating System
+Windows, MacOS and Linux are examples of operating systems.
 
 #### Parameter
 An item of data that a command expects to be entered by the user. For example, name is a parameter of the `add` command.

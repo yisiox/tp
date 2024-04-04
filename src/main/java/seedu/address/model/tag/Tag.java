@@ -11,7 +11,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public class Tag {
 
-    private static final String MESSAGE_CONSTRAINTS = "Tags cannot contain '\\', and should not be blank";
+    private static final String MESSAGE_CONSTRAINTS = "Tags cannot contain '\\', can only consist of"
+            + "alphabets and numbers, and should not be blank";
     private static final String VALIDATION_REGEX = "\\p{Alnum}+";
 
     private final String tagName;
