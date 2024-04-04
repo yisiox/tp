@@ -5,9 +5,8 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextInputControl;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyCombination;
@@ -40,13 +39,15 @@ public class MainWindow extends UiPart<Stage> {
     private final PersonListPanel personListPanel;
     private final ResultDisplay resultDisplay = new ResultDisplay();
     private final HelpWindow helpWindow = new HelpWindow();
-    private final String iconPath = "/images/icon.png";
 
     @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
     private MenuItem helpMenuItem;
+
+    @FXML
+    private SplitPane splitPane;
 
     @FXML
     private StackPane personListPanelPlaceholder;
@@ -56,9 +57,6 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
-
-    @FXML
-    private ImageView iconImageView;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -71,14 +69,18 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
         this.personListPanel = new PersonListPanel(logic.getFilteredPersonList());
 
+        GuiSettings guiSettings = logic.getGuiSettings();
+
         // Configure the UI
-        setWindowDefaultSize(logic.getGuiSettings());
+        setWindowDefaultSize(guiSettings);
 
         setAccelerators();
 
         primaryStage.show(); // This should be called before creating other UI parts
+        primaryStage.requestFocus();
 
-        fillInnerParts();
+        // Configure the inner components of the UI
+        fillInnerParts(guiSettings);
     }
 
     public Stage getPrimaryStage() {
@@ -122,19 +124,18 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Fills up all the placeholders of this window.
      */
-    private void fillInnerParts() {
+    private void fillInnerParts(GuiSettings guiSettings) {
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
+
+        splitPane.setDividerPositions(guiSettings.getSplitPaneDividerPosition());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(new RecordedCommandExecutor());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
-
-        Image iconImage = new Image(iconPath);
-        iconImageView.setImage(iconImage);
     }
 
     /**
@@ -143,6 +144,8 @@ public class MainWindow extends UiPart<Stage> {
     private void setWindowDefaultSize(GuiSettings guiSettings) {
         primaryStage.setHeight(guiSettings.getWindowHeight());
         primaryStage.setWidth(guiSettings.getWindowWidth());
+        primaryStage.setMaximized(guiSettings.getIsMaximized());
+
         if (guiSettings.getWindowCoordinates() != null) {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
@@ -167,7 +170,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY());
+                (int) primaryStage.getX(), (int) primaryStage.getY(),
+                primaryStage.isMaximized(), splitPane.getDividerPositions()[0]);
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();

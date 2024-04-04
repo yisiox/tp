@@ -4,7 +4,8 @@ import java.awt.Point;
 import java.io.Serializable;
 import java.util.Objects;
 
-import seedu.address.commons.util.ToStringBuilder;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 
 /**
  * A Serializable class that contains the GUI settings.
@@ -12,29 +13,50 @@ import seedu.address.commons.util.ToStringBuilder;
  */
 public class GuiSettings implements Serializable {
 
+    private static final double DEFAULT_SCREEN_HEIGHT_SCALE = 0.9;
+    private static final double DEFAULT_SCREEN_WIDTH_SCALE = 0.5;
     private static final double DEFAULT_HEIGHT = 600;
     private static final double DEFAULT_WIDTH = 740;
+    private static final double DEFAULT_SPLIT_PANE_DIVIDER_POSITION = 0.75;
 
-    private final double windowWidth;
-    private final double windowHeight;
-    private final Point windowCoordinates;
+    private double windowWidth;
+    private double windowHeight;
+    private Point windowCoordinates = null; //null represent no coordinates
+    private boolean isMaximized = false;
+    private final double splitPaneDividerPosition;
 
     /**
-     * Constructs a {@code GuiSettings} with the default height, width and position.
+     * Constructs a {@code GuiSettings} with the default parameters.
      */
     public GuiSettings() {
-        windowWidth = DEFAULT_WIDTH;
-        windowHeight = DEFAULT_HEIGHT;
-        windowCoordinates = null; // null represent no coordinates
+        try {
+            Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+            windowHeight = primaryScreenBounds.getHeight() * DEFAULT_SCREEN_HEIGHT_SCALE;
+            windowWidth = primaryScreenBounds.getWidth() * DEFAULT_SCREEN_WIDTH_SCALE;
+        } catch (ExceptionInInitializerError | NoClassDefFoundError e) { // No screen found
+            windowWidth = DEFAULT_WIDTH;
+            windowHeight = DEFAULT_HEIGHT;
+        }
+        splitPaneDividerPosition = DEFAULT_SPLIT_PANE_DIVIDER_POSITION;
     }
 
     /**
-     * Constructs a {@code GuiSettings} with the specified height, width and position.
+     * Constructs a {@code GuiSettings} with the specified parameters.
+     *
+     * @param windowWidth the window's width.
+     * @param windowHeight the window's height.
+     * @param xPosition the window's x-coordinate on the screen.
+     * @param yPosition the window's y-coordinate on the screen.
+     * @param isMaximized whether the window is maximized.
+     * @param splitPaneDividerPosition the height of the TextArea resultDisplay.
      */
-    public GuiSettings(double windowWidth, double windowHeight, int xPosition, int yPosition) {
+    public GuiSettings(double windowWidth, double windowHeight, int xPosition, int yPosition,
+                       boolean isMaximized, double splitPaneDividerPosition) {
         this.windowWidth = windowWidth;
         this.windowHeight = windowHeight;
         windowCoordinates = new Point(xPosition, yPosition);
+        this.isMaximized = isMaximized;
+        this.splitPaneDividerPosition = splitPaneDividerPosition;
     }
 
     public double getWindowWidth() {
@@ -47,6 +69,14 @@ public class GuiSettings implements Serializable {
 
     public Point getWindowCoordinates() {
         return windowCoordinates != null ? new Point(windowCoordinates) : null;
+    }
+
+    public boolean getIsMaximized() {
+        return isMaximized;
+    }
+
+    public double getSplitPaneDividerPosition() {
+        return splitPaneDividerPosition;
     }
 
     @Override
@@ -63,21 +93,14 @@ public class GuiSettings implements Serializable {
         GuiSettings otherGuiSettings = (GuiSettings) other;
         return windowWidth == otherGuiSettings.windowWidth
                 && windowHeight == otherGuiSettings.windowHeight
-                && Objects.equals(windowCoordinates, otherGuiSettings.windowCoordinates);
+                && Objects.equals(windowCoordinates, otherGuiSettings.windowCoordinates)
+                && isMaximized == otherGuiSettings.isMaximized
+                && splitPaneDividerPosition == otherGuiSettings.splitPaneDividerPosition;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(windowWidth, windowHeight, windowCoordinates);
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .add("windowWidth", windowWidth)
-                .add("windowHeight", windowHeight)
-                .add("windowCoordinates", windowCoordinates)
-                .toString();
+        return Objects.hash(windowWidth, windowHeight, windowCoordinates, isMaximized, splitPaneDividerPosition);
     }
 
 }
