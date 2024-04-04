@@ -59,7 +59,7 @@ or skip to the [command summary](#command-summary).
 
 <!-- * Table of Contents -->
 ## Table of Contents
-+ [Introduction](#AssetBook-user-guide)
++ [Introduction](#assetbook-user-guide)
 + [Using this Guide](#using-this-guide)
 + [Table of Contents](#table-of-contents)
 + [Quick Start](#quick-start)
