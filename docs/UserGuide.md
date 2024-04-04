@@ -91,7 +91,7 @@ or skip to the [command summary](#command-summary).
     + [Undoing Commands](#undoing-commands-undo)
     + [Redoing Commands](#redoing-commands-redo)
     + [Clear all Contacts](#clear-all-contacts-clear)
-    + [Navigating Command History](#navigating-command-history--and-)
+    + [Navigating Command History](#navigating-command-history-and)
     + [Copy a Field from a Contact](#copy-a-field-from-a-contact-copy)
     + [Exiting the Application](#exiting-the-application-exit)
   + [Saving Data](#saving-the-data-file)
@@ -533,7 +533,7 @@ If you unintentionally deleted all contacts, you can use the `undo` command to r
 
 ---
 
-### Navigating command history: `↑` and `↓`
+### Navigating Command History: `↑` and `↓`
 
 Use keyboard shortcuts to navigate the command history.
 
