@@ -33,8 +33,7 @@ public class GuiSettings implements Serializable {
     }
 
     /**
-     * Constructs a {@code GuiSettings} with the specified height, width, position, isMaximized,
-     * resultDisplayHeight and splitPaneDividerPosition.
+     * Constructs a {@code GuiSettings} with the specified parameters.
      *
      * @param windowWidth the window's width.
      * @param windowHeight the window's height.
