@@ -397,7 +397,7 @@ If the example was not executed successfully, the proper syntax of the `add` com
 * Phone number of the contact.
 * Only digits, '+', '-', ',' and spaces are allowed.
 * Any number of these characters are allowed.
-* 
+
 `EMAIL`
 * Email of the contact.
 * Must be in the format ‘local-part@domain’, and must be in a valid email format.
