@@ -143,6 +143,10 @@ Here are the components of the GUI.
 5. **Tags**
 6. **Assets**
 
+<box type="tip" seamless>
+You can resize the command output box by dragging the top edge.
+</box>
+
 ---
 
 ### Tutorials
@@ -174,7 +178,7 @@ contact data** and those that are **miscellaneous shortcuts** for convenience.
 
 Colored text that look like the following describe the format of a command.
 
-`add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`
+`add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`
 
 A valid input by the user corresponding to the above will be
 
@@ -222,7 +226,7 @@ up instead.
 
 Adds a new contact to the system, with 0 or more assets associated with the contact.
 
-Format: `add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`
+Format: `add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`
 
 <box type="tip" seamless>
 A person can have any number of tags and assets (including 0).
@@ -258,22 +262,23 @@ If the example was not executed successfully, the proper syntax of the `add` com
 * Name of the contact.
 * Case sensitive, i.e. john doe ≠ John Doe.
 * Leading and trailing spaces are automatically removed.
-* Multiple people with the same name are allowed.
+* Multiple people with the same name are not allowed.
 
 `PHONE`
 * Phone number of the contact.
-* Only digits are allowed.
-* Any number of digits are allowed.
+* Only digits, '+', '-', ',' and spaces are allowed.
+* Any number of these characters are allowed.
 * 
 `EMAIL`
 * Email of the contact.
-* Must have ‘@’.
+* Must be in the format ‘local-part@domain’, and must be in a valid email format.
 
-`OFFICE`
-* Office address of the contact.
+`ADDRESS`
+* Address of the contact.
 
 `TAG`
 * Tag(s) to categorize the contact into.
+* Only digits and alphabets are allowed.
 
 `ASSET`
 * Asset(s) associated with contact.
@@ -301,7 +306,7 @@ Format: `delete INDEX`
 
 Edit existing contacts without recreating them.
 
-Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [o\OFFICE] [t\TAG]... [a\ASSET]...`
+Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET]...`
 
 Example: `edit 1 e\newemail@example.com` edits the contact with id `1`, changing its email to `newemail@example.com`.
 
@@ -318,9 +323,9 @@ Example: `edit 1 e\newemail@example.com` edits the contact with id `1`, changing
 
 Edit existing assets without recreating them.
 
-Format: `asset o/OLD_ASSET_NAME n/NEW_ASSET_NAME`
+Format: `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`
 
-Example: `asset o/hammer n/screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
+Example: `asset o\hammer n\screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
 
 * The asset will be renamed for all contacts linked to it.
 
@@ -346,6 +351,16 @@ Example: `find John` searches all contact names, tags and assets for the query `
 Undoes the last modifying command.
 
 Format: `undo`
+
+--------------------------------------------------------------------------------------------------------------------
+
+### Redoing Commands: `redo`
+
+Reverses the latest undo command.
+
+After executing an `undo` command, if another modifying command was executed, `redo` does not reverse.
+
+Format: `redo`
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -379,7 +394,7 @@ Format: `exit`
 
 ### Editing the data file
 
-*AssetBook*'s data are saved automatically as a JSON file `[JAR file location]/data\assetbook.json`.<br>
+*AssetBook*'s data are saved automatically as a JSON file `[JAR file location]/data/assetbook.json`.<br>
 Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
@@ -426,12 +441,13 @@ will be implemented in an upcoming release as soon as possible.
 
 Action           | Format                                                                        | Example
 -----------------|-------------------------------------------------------------------------------|--- 
-**Add**          | `add n\NAME p\PHONE e\EMAIL o\OFFICE [t\TAG]... [a\ASSET]...`                 | `add n\John Doe e\johndoe@example.com p\+12345678 a\L293D`
+**Add**          | `add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`                | `add n\John Doe e\johndoe@example.com p\+12345678 a\L293D`
 **Delete**       | `delete INDEX`                                                                | `delete 1`
-**Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [o\OFFICE] [t\TAG]... [a\ASSET]...`  | `edit 1 e\newemail@example.com`
-**Edit asset**   | `asset old/OLD_ASSET_NAME new/NEW_ASSET_NAME`                                 | `asset old/hammer new/screwdriver`
+**Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET]...` | `edit 1 e\newemail@example.com`
+**Edit asset**   | `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`                                     | `asset o\hammer n\screwdriver`
 **Find**         | `find KEYWORD [KEYWORD]...`                                                   | `find John`
 **Undo**         | `undo`                                                                        | `undo`
+**Redo**         | `redo`                                                                        | `redo`
 **Exit**         | `exit`                                                                        | `exit`
 
 ---{.double}
