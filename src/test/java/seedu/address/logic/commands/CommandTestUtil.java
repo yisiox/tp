@@ -11,7 +11,6 @@ import static seedu.address.model.person.fields.Tags.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -19,7 +18,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.PersonMatchesKeywordsPredicate;
+import seedu.address.model.person.PersonMatchesQueryPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -118,7 +117,7 @@ public class CommandTestUtil {
 
         Person person = model.getFilteredPersonList().get(targetIndex.getZeroBased());
         final String[] splitName = person.getName().toString().split("\\s+");
-        model.updateFilteredPersonList(new PersonMatchesKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredPersonList(new PersonMatchesQueryPredicate(splitName[0]));
 
         assertEquals(1, model.getFilteredPersonList().size());
     }

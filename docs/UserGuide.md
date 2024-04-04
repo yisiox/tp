@@ -74,6 +74,7 @@ or skip to the [command summary](#command-summary).
   + [Editing an Asset](#editing-an-asset-asset)
   + [Finding Contacts](#finding-contacts-find)
   + [Undoing Commands](#undoing-commands-undo)
+  + [Navigating command history](#navigating-command-history-and)
   + [Exiting the Application](#exiting-the-application-exit)
 + [Frequently Asked Questions](#faq)
 + [Known Issues](#known-issues)
@@ -233,6 +234,8 @@ Example: `edit 1 e\newemail@example.com` edits the contact with id `1`, changing
 * You can remove all the person’s tags by typing `t\` without specifying any tags after it.
 * You can remove all the person’s assets by typing `a\` without specifying any assets after it.
 
+--------------------------------------------------------------------------------------------------------------------
+
 ### Editing an Asset: `asset`
 
 Edit existing assets without recreating them.
@@ -247,14 +250,16 @@ Example: `asset old/hammer new/screwdriver` edits the asset `hammer`, changing i
 
 ### Finding Contacts: `find`
 
-Finds contacts whose names, tags or assets contain any of the given keywords.
+Finds contacts by names, tags or assets.
 
-Format: `find KEYWORD [KEYWORD]...`
+Format: `find QUERY`
 
-Example: `find John` searches all contact names, tags and assets for the keyword `John`.
+Example: `find John` searches all contact names, tags and assets for the query `John`.
 
-* At least one keyword must be provided.
-* Keywords are case-insensitive.
+* The query is case-insensitive.
+* All whitespaces in both the query and fields will be ignored.
+* Each field is individually checked against the query.
+* A match is found if the query is a substring of the field being checked.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -263,6 +268,20 @@ Example: `find John` searches all contact names, tags and assets for the keyword
 Undoes the last modifying command.
 
 Format: `undo`
+
+--------------------------------------------------------------------------------------------------------------------
+
+### Navigating command history: `↑` and `↓`
+
+Use keyboard shortcuts to navigate the command history.
+
+Press the `↑` arrow key to view the previous command.
+
+Press the `↓` arrow key to view the next command.
+
+<box type="warning" seamless>
+Only successfully executed commands are saved in the command history.
+</box>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -282,7 +301,8 @@ AssetBook's data is saved automatically after any command that changes the data.
 
 ### Editing the data file
 
-AssetBook's data are saved automatically as a JSON file `[JAR file location]/data/assetbook.json`.<br>Advanced users are welcome to update data directly by editing that data file.
+AssetBook's data are saved automatically as a JSON file `[JAR file location]/data/assetbook.json`.<br>
+Advanced users are welcome to update the data directly by editing that data file.
 
 <box type="warning" seamless>
 
@@ -314,7 +334,7 @@ Action           | Format                                                       
 **Delete**       | `delete INDEX`                                                               | `delete 1`
 **Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [o\OFFICE] [t\TAG]... [a\ASSET]...` | `edit 1 e\newemail@example.com`
 **Edit asset**   | `asset old\OLD_ASSET_NAME new\NEW_ASSET_NAME`                                | `asset old\hammer new\screwdriver`
-**Find**         | `find KEYWORD [KEYWORD]...`                                                  | `find John`
+**Find**         | `find QUERY`                                                                 | `find John`
 **Undo**         | `undo`                                                                       | `undo`
 **Exit**         | `exit`                                                                       | `exit`
 
