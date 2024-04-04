@@ -1,10 +1,10 @@
 ---
   layout: default.md
-  title: "Developer Guide"
+  title: "AssetBook Developer Guide"
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# AssetBook Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -593,7 +593,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Documentation
 1. The target user should understand how to use the product easily by reading the User Guide.
-1. User Guide should have higher overall quality compared to AddressBook-Level3 (AB).
+1. User Guide should have higher overall quality compared to AddressBook-Level3 (AB3).
 1. A new team member should understand the product's internal design easily by reading the Developer Guide.
 1. Developer Guide should have higher overall quality compared to AB.
 
