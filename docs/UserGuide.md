@@ -119,22 +119,22 @@ The following instructions are for **Windows**, **MacOS** or **Linux**.
 2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
 
 <p align="center">
-<img src="images/setup-1.png" width="400px">
+    <img src="images/setup-1.png" style="width: 95%;">
 </p>
 
 3. Move the file into the folder where you want *AssetBook* to store the contact information. New users may simply
    create a folder on their desktop, then drag and drop `assetbook.jar` inside.
 
 <p align="center">
-<img src="images/setup-2.png" width="100px">
-<img src="images/setup-3.png" width="200px">
+    <img src="images/setup-2.png" style="width: 15%;">
+    <img src="images/setup-3.png" style="width: 80%;">
 </p>
 
 4. To launch the application, double-click on the `assetbook.jar` file and a GUI as shown in the following section should appear. 
    Note that the application contains some sample data when launched for the first time. 
 
 <p align="center">
-<img src="images/setup-4.png" width="200px">
+    <img src="images/setup-4.png" style="width: 95%;">
 </p>
 
 <box type="tip" seamless>
@@ -189,16 +189,15 @@ For detailed documentation of all available features, please refer to the [featu
 Let's get started by adding our first contact, John Doe, into AssetBook.
 1. **Click on the Command Input Box**:
    Begin by locating and clicking into the [command input box](#navigating-the-gui) at the bottom of your application's interface.
-   <p align="center">
-      <img src="images/tutorial-add-1.png" style="width: 60%;">
-   </p>
+<p align="center">
+  <img src="images/tutorial-add-1.png" style="width: 60%;">
+</p>
 
 2. **Adding Our First Contact, John**:
    Let's add your first contact, John, by copying the following command into the command input box:
 
    `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`
-
-   <p align="center">
+<p align="center">
    <img src="images/tutorial-add-2.png" style="width: 60%;">
 </p>
 
@@ -221,9 +220,9 @@ Now that you've successfully added John Doe to AssetBook, let's go through the s
 2. **Enter the Find Command**:
    Let's now find the contact, John, we just added by copying the following command:
    `find John`
-     <p align="center">
-   <img src="images/tutorial-find-1.png" style="width: 60%;">
- </p>
+<p align="center">
+    <img src="images/tutorial-find-1.png" style="width: 60%;">
+</p>
 
 3. **Execute the Command**:
    After typing the command, simply press `Enter` to find the contact in AssetBook.
@@ -367,7 +366,7 @@ A person can have any number of tags and assets (including 0).
   `add n/John Doe e/johndoe@example.com a/574 Ang Mo Kio Ave 10 p/12345678 A/L293D`
 
 <p align="center">
-<img src="images/example-add-before.png" width="200px">
+    <img src="images/example-add-before.png" style="width: 60%;">
 </p>
 
 #### Success
@@ -376,7 +375,7 @@ If the example was executed successfully, the following message will appear:
 `New person added: John Doe; Phone: 12345678; Email: johndoe@example.com; Address: 574 Ang Mo Kio Ave 10; Tags: []; Assets: [[L293D]]`
 
 <p align="center">
-<img src="images/example-add-after.png" width="200px">
+    <img src="images/example-add-after.png" style="width: 60%;">
 </p>
 
 #### Failure
@@ -384,7 +383,7 @@ If the example was executed successfully, the following message will appear:
 If the example was not executed successfully, the proper syntax of the `add` command will be shown to you instead.
 
 <p align="center">
-<img src="images/example-add-after-fail.png" width="200px">
+    <img src="images/example-add-after-fail.png" style="width: 60%;">
 </p>
 
 #### Parameters
