@@ -38,7 +38,7 @@
         </MenuBar>
 
         <!--Wrap personList and resultDisplayPlaceholder in a SplitPane which allows the user to resize them-->
-        <SplitPane orientation="VERTICAL" VBox.vgrow="ALWAYS">
+        <SplitPane fx:id="resultDisplaySplitPane" orientation="VERTICAL">
           <VBox VBox.vgrow="ALWAYS" minHeight="150" maxHeight="Infinity" fx:id="personList" styleClass="pane-without-border">
             <StackPane VBox.vgrow="ALWAYS" fx:id="personListPanelPlaceholder"/>
           </VBox>

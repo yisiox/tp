@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -46,6 +47,9 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
+    private SplitPane resultDisplaySplitPane;
+
+    @FXML
     private StackPane personListPanelPlaceholder;
 
     @FXML
@@ -73,6 +77,8 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.show(); // This should be called before creating other UI parts
         primaryStage.requestFocus();
 
+        // This has to be called after primaryStage elements are initialized and .show() is called.
+        setSplitPosition(logic.getGuiSettings());
         fillInnerParts();
     }
 
@@ -147,6 +153,13 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Sets the default divider split position based on {@code guiSettings}.
+     */
+    private void setSplitPosition(GuiSettings guiSettings) {
+        resultDisplaySplitPane.setDividerPosition(0, guiSettings.getSplitPosition());
+    }
+
+    /**
      * Opens the help window or focuses on it if it's already opened.
      */
     @FXML
@@ -164,7 +177,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY(), primaryStage.isMaximized());
+                (int) primaryStage.getX(), (int) primaryStage.getY(), resultDisplaySplitPane.getDividerPositions()[0],
+                primaryStage.isMaximized());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
