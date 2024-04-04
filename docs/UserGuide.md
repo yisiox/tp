@@ -1,6 +1,6 @@
 ---
   layout: default.md
-  title: "User Guide"
+  title: "AssetBook User Guide"
   pageNav: 3
 ---
 
@@ -68,7 +68,7 @@ or skip to the [command summary](#command-summary).
 
 <!-- * Table of Contents -->
 ## Table of Contents
-+ [Introduction](#assetbook-3-user-guide)
++ [Introduction](#assetbook-user-guide)
 + [Using this Guide](#using-this-guide)
 + [Table of Contents](#table-of-contents)
 + [Quick Start](#quick-start)
@@ -286,9 +286,9 @@ Example: `edit 1 e\newemail@example.com` edits the contact with id `1`, changing
 
 Edit existing assets without recreating them.
 
-Format: `asset old/OLD_ASSET_NAME new/NEW_ASSET_NAME`
+Format: `asset o/OLD_ASSET_NAME n/NEW_ASSET_NAME`
 
-Example: `asset old/hammer new/screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
+Example: `asset o/hammer n/screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
 
 * The asset will be renamed for all contacts linked to it.
 
@@ -296,14 +296,16 @@ Example: `asset old/hammer new/screwdriver` edits the asset `hammer`, changing i
 
 ### Finding Contacts: `find`
 
-Finds contacts whose names, tags or assets contain any of the given keywords.
+Finds contacts by names, tags or assets.
 
-Format: `find KEYWORD [KEYWORD]...`
+Format: `find QUERY`
 
-Example: `find John` searches all contact names, tags and assets for the keyword `John`.
+Example: `find John` searches all contact names, tags and assets for the query `John`.
 
-* At least one keyword must be provided.
-* Keywords are case-insensitive.
+* The query is case-insensitive.
+* All whitespaces in both the query and fields will be ignored.
+* Each field is individually checked against the query.
+* A match is found if the query is a substring of the field being checked.
 
 --------------------------------------------------------------------------------------------------------------------
 

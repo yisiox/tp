@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Represents a Person's email in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValid(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValid(String)}.
  */
 public class Email implements Field {
 
-    public static final Prefix PREFIX_EMAIL = new Prefix("e/");
+    public static final Prefix PREFIX_EMAIL = new Prefix("e\\");
     private static final String SPECIAL_CHARACTERS = "+_.-";
     private static final String MESSAGE_CONSTRAINTS = "Emails should be of the format local-part@domain "
             + "and adhere to the following constraints:\n"
