@@ -1,4 +1,5 @@
 ﻿Some code adapted from http://code.makery.ch/library/javafx-8-tutorial/ by Marco Jakob
+AssetBook icon designed using icons from UXWing - https://uxwing.com/
 
 Copyright by The JetBrains Mono Project Authors - https://github.com/JetBrains/JetBrainsMono
 - JetBrainsMono-SemiBold.ttf
