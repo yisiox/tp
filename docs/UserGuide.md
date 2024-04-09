@@ -695,7 +695,7 @@ Action           | Format                                                       
 An item or amenity of logistical significance.
 
 #### Clipboard
-Storage location of data that will be pasted typically by `ctrl + v` or `right click + paste`.
+Storage location of data that will be pasted typically by `ctrl + v`, `right click + paste` or `command + v`.
 
 #### Command
 A specific text input entered into the command input box to interact with *AssetBook*.
