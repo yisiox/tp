@@ -321,6 +321,12 @@ A valid input by the user corresponding to the above will be
 
 <div style="page-break-after: always;"></div>
 
+<box type="tip" seamless>
+
+Command words are not case-sensitive.
+
+</box>
+
 <box type="info" seamless>
 
 **Notes about the notation used to describe commands**
