@@ -197,9 +197,7 @@ Let's get started by adding our first contact, John Doe, into AssetBook.
 <div style="page-break-after: always;"></div>
 
 2. **Adding Our First Contact, John**:
-   Let's add your first contact, John, by copying the following command into the command input box:
-
-   `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`
+   Let's add your first contact, John, by copying the following command into the command input box: `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`
 <p align="center">
    <img src="images/tutorial-add-2.png" style="width: 90%;">
 </p>
@@ -223,8 +221,7 @@ Now that you've successfully added John Doe to AssetBook, let's go through the s
    First, click into the command input box in the AssetBook interface. This is where you'll enter your find command.
 
 2. **Enter the Find Command**:
-   Let's now find the contact, John, we just added by copying the following command:
-   `find John`
+   Let's now find the contact, John, we just added by copying the following command: `find John`
 <p align="center">
     <img src="images/tutorial-find-1.png" style="width: 90%;">
 </p>
@@ -256,8 +253,7 @@ In our case he is located index 1.
 <div style="page-break-after: always;"></div>
 
 3. **Enter the Edit Command**: 
-Let's say we want to edit John's email, thus we can do so by copying the following command:
-`edit 1 e\newemail@example.com`
+Let's say we want to edit John's email, thus we can do so by copying the following command: `edit 1 e\newemail@example.com`
 
 <p align="center">
   <img src="images/tutorial-edit-2.png" style="width: 90%;">
@@ -283,9 +279,7 @@ Let's update the assets already in our system.
    Start by clicking into the command input box located within the AssetBook interface.
 
 2. **Enter the Edit Asset Command**:
-   If you need to rename an asset, for example, changing "screwdriver" to "screw", use the following format for your command:
-
-   `asset o\screwdriver n\screw`
+   If you need to rename an asset, for example, changing "screwdriver" to "screw", use the following command: `asset o\screwdriver n\screw`
 
 <p align="center">
    <img src="images/tutorial-editA-1.png" style="width: 90%;">
@@ -681,7 +675,7 @@ details to assets such as serial number, location, etc.
 
 Action           | Format                                                                        | Example
 -----------------|-------------------------------------------------------------------------------|--- 
-**Add**          | `add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`                | `add n\John Doe e\johndoe@example.com p\+12345678 a\L293D`
+**Add**          | `add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`                | `add n\John Doe e\johndoe@example.com p\+12345678 A\L293D`
 **Delete**       | `delete INDEX`                                                                | `delete 1`
 **Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET]...` | `edit 1 e\newemail@example.com`
 **Edit asset**   | `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`                                     | `asset o\hammer n\screwdriver`
