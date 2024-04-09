@@ -93,6 +93,7 @@ or skip to the [command summary](#command-summary).
     + [Clear all Contacts](#clear-all-contacts-clear)
     + [Navigating Command History](#navigating-command-history-and)
     + [Copy a Field from a Contact](#copy-a-field-from-a-contact-copy)
+    + [Getting Help](#getting-help-help)
     + [Exiting the Application](#exiting-the-application-exit)
   + [Saving Data](#saving-the-data-file)
   + [Editing the Data File](#editing-the-data-file)
@@ -584,6 +585,14 @@ Format: `copy INDEX PREFIX`
 ---
 
 <div style="page-break-after: always;"></div>
+
+### Getting Help: `help`
+
+Displays a link to this user guide.
+
+Format: `help`
+
+---
 
 ### Exiting the Application: `exit`
 
