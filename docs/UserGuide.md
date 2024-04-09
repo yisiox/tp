@@ -38,7 +38,7 @@ making your management tasks smoother than ever.
 
 ## Using this Guide
 
-This user guide is meant to provide guide users to use *AssetBook* and comprehensively document its features.
+This user guide is meant to guide users to use *AssetBook* and comprehensively document its features.
 You can click on blue-colored hyperlinks like this link to the [table of contents](#table-of-contents) to jump to the 
 referenced section immediately.
 A [glossary](#glossary) is provided in case you encounter any unfamiliar terms.
@@ -186,6 +186,7 @@ For detailed documentation of all available features, please refer to the [featu
 <div style="page-break-after: always;"></div>
 
 #### Adding Your First Contact
+
 Let's get started by adding our first contact, John Doe, into AssetBook.
 1. **Click on the Command Input Box**:
    Begin by locating and clicking into the [command input box](#navigating-the-gui) at the bottom of your application's interface.
