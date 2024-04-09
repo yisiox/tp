@@ -342,7 +342,7 @@ A valid input by the user corresponding to the above will be
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n\NAME p\PHONE`, `p\PHONE n\NAME` is also acceptable.
 
-* Parameters not specified by the command format by entered by the user will be ignored.<br>
+* Parameters not specified by the command format entered by the user will be ignored.<br>
   e.g. The format is `exit`, but the user enters `exit 123`. This will still be interpreted as `exit`.
 
 </box>
