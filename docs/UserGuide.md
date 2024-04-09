@@ -427,10 +427,10 @@ If the example was not executed successfully, the proper syntax of the `add` com
 
 `ASSET`
 * Asset(s) associated with contact.
-* Contact can be created first without assets, then assets can be added later using the Edit command.
+* Contact may be created first without assets, then have assets added later using the `edit` command.
 * Case sensitive, i.e. NUS ≠ nus.
-* Assets must have unique names. If the asset already exists in the database, the existing asset will be linked instead of a new asset.
-* Multiple assets can be specified. For example, a valid option is `a\asset1 a\asset2 a\asset3`.
+* Assets must have unique names. If the asset already exists, the existing asset will be linked instead of a new asset.
+* Multiple assets can be specified at once. For example, a valid option is `a\asset1 a\asset2 a\asset3`.
 
 ---
 
