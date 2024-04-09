@@ -97,7 +97,7 @@ or skip to the [command summary](#command-summary).
     + [Exiting the Application](#exiting-the-application-exit)
   + [Saving the data file](#saving-the-data-file)
   + [Editing the data file](#editing-the-data-file)
-+ [Frequently Asked Questions](#faq)
++ [Frequently Asked Questions](#frequently-asked-questions)
 + [Known Issues and Future Features](#known-issues-and-future-features)
 + [Command Summary](#command-summary)
 + [Glossary](#glossary)
