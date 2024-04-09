@@ -492,6 +492,7 @@ Format: `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`
 #### Example
 `asset o\hammer n\screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
 
+* `o\` refers to the old asset, while `n\` refers to the new asset.
 * The asset will be renamed for all contacts linked to it.
 
 ---
@@ -685,7 +686,7 @@ Action           | Format                                                       
 **Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET]...` | `edit 1 e\newemail@example.com`
 **Edit asset**   | `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`                                     | `asset o\hammer n\screwdriver`
 **List**         | `list`                                                                        | `list`
-**Find**         | `find KEYWORD [KEYWORD]...`                                                   | `find John`
+**Find**         | `find QUERY`                                                                  | `find John`
 **Undo**         | `undo`                                                                        | `undo`
 **Redo**         | `redo`                                                                        | `redo`
 **Clear**        | `clear`                                                                       | `clear`
@@ -715,3 +716,5 @@ Windows, MacOS and Linux are examples of operating systems.
 
 #### Parameter
 An item of data that a command expects to be entered by the user. For example, name is a parameter of the `add` command.
+
+#### Substring
