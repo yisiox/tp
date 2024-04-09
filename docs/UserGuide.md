@@ -282,7 +282,7 @@ Let's update the assets already in our system.
    If you need to rename an asset, for example, changing "screwdriver" to "screw", use the following command: `asset o\screwdriver n\screw`
 
 <p align="center">
-   <img src="images/tutorial-editA-1.png" style="width: 90%;">
+   <img src="images/tutorial-asset-1.png" style="width: 90%;">
 </p>
 
 3. **Execute the Command**:
@@ -291,7 +291,7 @@ Let's update the assets already in our system.
 4. **Confirmation**:
    Wait for a confirmation message in AssetBook to ensure that the asset has been successfully updated.
 <p align="center">
-   <img src="images/tutorial-editA-2.png" style="width: 90%;">
+   <img src="images/tutorial-asset-2.png" style="width: 90%;">
 </p>
 
 ---
