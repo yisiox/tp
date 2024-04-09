@@ -570,6 +570,17 @@ Format: `copy INDEX PREFIX`
 
 * `INDEX` refers to the numbering of the currently displayed contacts.
 
+#### Prefix Reference
+
+| Prefix | Field   |
+|--------|---------|
+| `n\`   | Name    |
+| `p\`   | Phone   |
+| `e\`   | Email   |
+| `a\`   | Address |
+| `t\`   | Tags    |
+| `A\`   | Assets  |
+
 ---
 
 <div style="page-break-after: always;"></div>
