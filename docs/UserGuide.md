@@ -435,7 +435,7 @@ If the example was not executed successfully, the proper syntax of the `add` com
 * Asset(s) associated with contact.
 * Contact may be created first without assets, then have assets added later using the `edit` command.
 * Case sensitive, i.e. NUS ≠ nus.
-* Multiple assets can be specified at once. For example, a valid option is `a\asset1 a\asset2 a\asset3`.
+* Multiple assets can be specified at once. For example, a valid option is `A\asset1 A\asset2 A\asset3`.
 
 <box type="info" seamless>
 
