@@ -80,13 +80,13 @@ or skip to the [command summary](#command-summary).
   + [Navigating the GUI](#navigating-the-gui)
   + [Tutorials](#tutorials)
 + [Features](#features)
-  + [Modifying Contact Data](#adding-a-contact-add)
+  + [Modifying Contact Data](#modifying-contact-data)
     + [Adding a Contact](#adding-a-contact-add)
     + [Deleting a Contact](#deleting-a-contact-delete)
     + [Editing a Contact](#editing-a-contact-edit)
     + [Editing an Asset](#editing-an-asset-asset)
-  + [Miscellaneous Shortcuts](#list-all-contacts-list)
-    + [Listing all Contacts](#list-all-contacts-list)
+  + [Miscellaneous Shortcuts](#miscellaneous-shortcuts)
+    + [Listing all Contacts](#listing-all-contacts-list)
     + [Finding Contacts](#finding-contacts-find)
     + [Undoing Commands](#undoing-commands-undo)
     + [Redoing Commands](#redoing-commands-redo)
@@ -95,8 +95,8 @@ or skip to the [command summary](#command-summary).
     + [Copy a Field from a Contact](#copy-a-field-from-a-contact-copy)
     + [Getting Help](#getting-help-help)
     + [Exiting the Application](#exiting-the-application-exit)
-  + [Saving Data](#saving-the-data-file)
-  + [Editing the Data File](#editing-the-data-file)
+  + [Saving the data file](#saving-the-data-file)
+  + [Editing the data file](#editing-the-data-file)
 + [Frequently Asked Questions](#faq)
 + [Known Issues and Future Features](#known-issues-and-future-features)
 + [Command Summary](#command-summary)
@@ -362,6 +362,10 @@ up instead.
 
 <div style="page-break-after: always;"></div>
 
+## Modifying Contact Data
+
+This section contains the details for **modifying commands**, which will modify the asset book.
+
 ### Adding a Contact: `add`
 
 Adds a new contact to the system, with 0 or more assets associated with the contact.
@@ -491,7 +495,11 @@ Format: `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`
 
 ---
 
-### List All Contacts: `list`
+## Miscellaneous Shortcuts
+
+This section contains the details for **non-modifying commands** and other useful shortcuts.
+
+### Listing all Contacts: `list`
 
 Displays all contacts.
 
@@ -541,7 +549,7 @@ Format: `redo`
 
 <div style="page-break-after: always;"></div>
 
-### Clear All Contacts: `clear`
+### Clear all Contacts: `clear`
 
 Deletes all contacts.
 
@@ -633,7 +641,7 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 
 <div style="page-break-after: always;"></div>
 
-## FAQ
+## Frequently Asked Questions
 
 **Q**: What if my device does not run a mainstream operating system (not Windows, MacOS or Linux)?<br>
 **A**: *AssetBook* will work so long as Java 11 can be installed on your device.
@@ -671,7 +679,7 @@ details to assets such as serial number, location, etc.
 
 <div style="page-break-after: always;"></div>
 
-## Command summary
+## Command Summary
 
 Action           | Format                                                                        | Example
 -----------------|-------------------------------------------------------------------------------|--- 
