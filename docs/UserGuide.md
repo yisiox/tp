@@ -413,7 +413,7 @@ If the example was not executed successfully, the proper syntax of the `add` com
 `PHONE`
 * Phone number of the contact.
 * Only digits, '+', '-', ',' and spaces are allowed.
-* Any number of these characters are allowed.
+* The phone number must contain at least 3 characters.
 
 `EMAIL`
 * Email of the contact.
