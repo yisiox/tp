@@ -379,7 +379,7 @@ A person can have any number of tags and assets (including 0).
 
 #### Example
 * Add a new contact associated with the asset `L293D`:<br> 
-  `add n/John Doe e/johndoe@example.com a/574 Ang Mo Kio Ave 10 p/12345678 A/L293D`
+  `add n\John Doe e\johndoe@example.com a\574 Ang Mo Kio Ave 10 p\12345678 A\L293D`
 
 <p align="center">
     <img src="images/example-add-before.png" style="width: 90%;">
