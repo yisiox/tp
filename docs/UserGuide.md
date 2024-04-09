@@ -429,8 +429,14 @@ If the example was not executed successfully, the proper syntax of the `add` com
 * Asset(s) associated with contact.
 * Contact may be created first without assets, then have assets added later using the `edit` command.
 * Case sensitive, i.e. NUS ≠ nus.
-* Assets must have unique names. If the asset already exists, the existing asset will be linked instead of a new asset.
 * Multiple assets can be specified at once. For example, a valid option is `a\asset1 a\asset2 a\asset3`.
+
+<box type="info" seamless>
+
+You can assign multiple contacts to the same asset, but take care to uniquely name assets if you do not intend
+to assign multiple contacts to the same asset.
+
+</box>
 
 ---
 
@@ -443,6 +449,7 @@ Delete a contact from the system by specifying its index.
 Format: `delete INDEX`
 
 #### Example
+
 `delete 1` deletes the contact with index `1`.
 
 * `INDEX` refers to the numbering of the currently displayed contacts.
