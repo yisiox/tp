@@ -95,6 +95,7 @@ or skip to the [command summary](#command-summary).
     + [Copy a Field from a Contact](#copy-a-field-from-a-contact-copy)
     + [Exiting the Application](#exiting-the-application-exit)
   + [Saving Data](#saving-the-data-file)
+  + [Editing the Data File](#editing-the-data-file)
 + [Frequently Asked Questions](#faq)
 + [Known Issues and Future Features](#known-issues-and-future-features)
 + [Command Summary](#command-summary)
