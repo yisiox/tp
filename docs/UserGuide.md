@@ -318,7 +318,7 @@ Colored text that look like the following describe the format of a command.
 
 A valid input by the user corresponding to the above will be
 
-`add n\John Doe e\johndoe@example.com o\574 Ang Mo Kio Ave 10 p\12345678 a\L293D`
+`add n\John Doe e\johndoe@example.com a\574 Ang Mo Kio Ave 10 p\12345678 A\L293D`
 
 <div style="page-break-after: always;"></div>
 
