@@ -438,7 +438,7 @@ If the example was not executed successfully, the proper syntax of the `add` com
 
 <box type="info" seamless>
 
-You can assign multiple contacts to the same asset, but take care to uniquely name assets if you do not intend
+You may assign multiple contacts to the same asset, but remember to uniquely name assets if you do not intend
 to assign multiple contacts to the same asset.
 
 </box>
