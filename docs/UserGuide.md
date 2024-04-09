@@ -459,7 +459,7 @@ Format: `delete INDEX`
 
 `delete 1` deletes the contact with index `1`.
 
-* `INDEX` refers to the numbering of the currently displayed contacts.
+* `INDEX` refers to the unique contact index shown in the GUI.
 
 ---
 
@@ -583,7 +583,7 @@ Format: `copy INDEX PREFIX`
 #### Example
 `copy 1 p\` copies the phone number of the first contact displayed onto the clipboard.
 
-* `INDEX` refers to the numbering of the currently displayed contacts.
+* `INDEX` refers to the unique contact index shown in the GUI.
 
 #### Prefix Reference
 
