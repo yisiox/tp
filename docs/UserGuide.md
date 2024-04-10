@@ -38,7 +38,7 @@ making your management tasks smoother than ever.
 
 ## Using this Guide
 
-This user guide is meant to guide users to use *AssetBook* and comprehensively document its features.
+This user guide is meant to provide guidance for using *AssetBook* and comprehensively document its features.
 You can click on blue-colored hyperlinks like this link to the [table of contents](#table-of-contents) to jump to the 
 referenced section immediately.
 A [glossary](#glossary) is provided in case you encounter any unfamiliar terms.
@@ -197,7 +197,8 @@ Let's get started by adding our first contact, John Doe, into AssetBook.
 <div style="page-break-after: always;"></div>
 
 2. **Adding Our First Contact, John**:
-   Let's add your first contact, John, by copying the following command into the command input box: `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`
+   Let's add your first contact, John, by copying the following command into the command input box:<br>
+   `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`
 <p align="center">
    <img src="images/tutorial-add-2.png" style="width: 90%;">
 </p>
@@ -221,7 +222,8 @@ Now that you've successfully added John Doe to AssetBook, let's go through the s
    First, click into the command input box in the AssetBook interface. This is where you'll enter your find command.
 
 2. **Enter the Find Command**:
-   Let's now find the contact, John, we just added by copying the following command: `find John`
+   Let's now find the contact, John, we just added by copying the following command:<br>
+   `find John`
 <p align="center">
     <img src="images/tutorial-find-1.png" style="width: 90%;">
 </p>
@@ -253,7 +255,8 @@ In our case he is located index 1.
 <div style="page-break-after: always;"></div>
 
 3. **Enter the Edit Command**: 
-Let's say we want to edit John's email, thus we can do so by copying the following command: `edit 1 e\newemail@example.com`
+Let's say we want to edit John's email, thus we can do so by copying the following command:<br>
+`edit 1 e\newemail@example.com`
 
 <p align="center">
   <img src="images/tutorial-edit-2.png" style="width: 90%;">
@@ -279,7 +282,8 @@ Let's update the assets already in our system.
    Start by clicking into the command input box located within the AssetBook interface.
 
 2. **Enter the Edit Asset Command**:
-   If you need to rename an asset, for example, changing "screwdriver" to "screw", use the following command: `asset o\screwdriver n\screw`
+   If you need to rename an asset, for example, changing "screwdriver" to "screw", use the following command:<br>
+   `asset o\screwdriver n\screw`
 
 <p align="center">
    <img src="images/tutorial-asset-1.png" style="width: 90%;">
@@ -318,7 +322,7 @@ A valid input by the user corresponding to the above will be
 
 <box type="tip" seamless>
 
-Command words are not case-sensitive.
+Command words are not case-sensitive, i.e. add = Add = ADD.
 
 </box>
 
@@ -388,7 +392,7 @@ A person can have any number of tags and assets (including 0).
 
 #### Success
 
-If the example was executed successfully, the following message will appear:
+If the example was executed successfully, the following message will appear:<br>
 `New person added: John Doe; Phone: 12345678; Email: johndoe@example.com; Address: 574 Ang Mo Kio Ave 10; Tags: []; Assets: [[L293D]]`
 
 <p align="center">
@@ -438,8 +442,7 @@ If the example was not executed successfully, the proper syntax of the `add` com
 
 <box type="info" seamless>
 
-You may assign multiple contacts to the same asset, but remember to uniquely name assets if you do not intend
-to assign multiple contacts to the same asset.
+You may assign the same asset to multiple contacts, so remember to name different assets with unique names.
 
 </box>
 
@@ -491,7 +494,7 @@ Format: `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`
 `asset o\hammer n\screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
 
 * `o\` refers to the old asset, while `n\` refers to the new asset.
-* The asset will be renamed for all contacts linked to it.
+* The asset will be renamed for all contacts with this asset.
 
 ---
 
@@ -705,7 +708,7 @@ Action           | Format                                                       
 An item or amenity of logistical significance.
 
 #### Clipboard
-Storage location of data that will be pasted typically by `Ctrl+V`, `right click and paste` or `Command+V`.
+A place where text is stored in the computer, and can be typically retrieved with `right click -> paste`, `Ctrl+V`, or `Command+V`.
 
 #### Command
 A specific text input entered into the command input box to interact with *AssetBook*.
@@ -717,6 +720,6 @@ Graphical User Interface. The window that appears when an application is launche
 Windows, MacOS and Linux are examples of operating systems.
 
 #### Parameter
-An item of data that a command expects to be entered by the user. For example, name is a parameter of the `add` command.
+A detail that a command expects to be entered by the user. For example, name is a parameter of the `add` command.
 
 #### Substring
