@@ -527,7 +527,7 @@ Format: `find QUERY`
 * The query is case-insensitive.
 * All whitespaces in both the query and fields will be ignored.
 * Each field is individually checked against the query.
-* A match is found if the query is a substring of the field being checked.
+* A match is found if the field contains the entire query, i.e. the field `assets` contains `set`, but does not contain `settings`.
 
 ---
 
@@ -735,5 +735,3 @@ Windows, MacOS and Linux are examples of operating systems.
 
 #### Parameter
 A detail that a command expects to be entered by the user. For example, name is a parameter of the `add` command.
-
-#### Substring
