@@ -84,7 +84,7 @@ or skip to the [command summary](#command-summary).
     + [Adding a Contact](#adding-a-contact-add)
     + [Deleting a Contact](#deleting-a-contact-delete)
     + [Editing a Contact](#editing-a-contact-edit)
-    + [Editing an Asset](#editing-an-asset-asset)
+    + [Renaming an Asset](#renaming-an-asset-asset)
   + [Miscellaneous Shortcuts](#miscellaneous-shortcuts)
     + [Listing all Contacts](#listing-all-contacts-list)
     + [Finding Contacts](#finding-contacts-find)
@@ -484,17 +484,17 @@ Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET
 
 <div style="page-break-after: always;"></div>
 
-### Editing an Asset: `asset`
+### Renaming an Asset: `asset`
 
-Edit existing assets without recreating them.
+Renames existing assets.
 
 Format: `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`
 
 #### Example
-`asset o\hammer n\screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
+`asset o\hammer n\screwdriver` renames the asset `hammer` into `screwdriver`.
 
-* `o\` refers to the old asset, while `n\` refers to the new asset.
-* The asset will be renamed for all contacts with this asset.
+* `o\` refers to the old asset name, while `n\` refers to the new asset name.
+* The asset will be renamed for all contacts that have this asset.
 
 ---
 
