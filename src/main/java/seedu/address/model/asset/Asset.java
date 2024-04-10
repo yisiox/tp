@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public class Asset {
 
-    public static final String MESSAGE_CONSTRAINTS = "Asset name must not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Asset name cannot contain '\\', and should not be blank";
     private static final String VALIDATION_REGEX = "\\s*[^\\s\\\\][^\\\\]*";
 
     private final String assetName;
