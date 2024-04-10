@@ -322,7 +322,7 @@ A valid input by the user corresponding to the above will be
 
 <box type="tip" seamless>
 
-Command words are not case-sensitive, i.e. add = Add = ADD.
+Command words are not case-sensitive, i.e. `add`, `Add`, `ADD`, etc. are all valid.
 
 </box>
 
