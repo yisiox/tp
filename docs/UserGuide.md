@@ -542,7 +542,7 @@ Format: `undo`
 #### Example
 After incorrectly deleting the first contact with `delete 1`, it can be restored with `undo`.
 
-* Modifying commands include: `add`, `delete`, `edit`, `asset`.
+* Modifying commands include: `add`, `delete`, `edit`, `asset`, `clear`.
 * All other commands are non-modifying.
 
 ---
