@@ -2,7 +2,7 @@
   "baseUrl": "",
   "titlePrefix": "",
   "titleSuffix": "AssetBook",
-  "faviconPath": "images/SeEduLogo.png",
+  "faviconPath": "images/AssetBookLogo.png",
   "style": {
     "codeTheme": "light"
   },
