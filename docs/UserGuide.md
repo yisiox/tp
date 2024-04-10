@@ -476,9 +476,14 @@ Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET
 * Edits the contact with the specified `INDEX`. `INDEX` refers to the unique contact index shown in the GUI.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing assets, the existing assets of the person will be removed i.e adding of assets is not cumulative.
-* You can remove all the person’s tags by typing `t\` without specifying any tags after it.
-* You can remove all the person’s assets by typing `A\` without specifying any assets after it.
+* You can remove all tags associated to the contact by typing `t\` without specifying any tags after it.
+* You can remove all assets associated to the contact by typing `A\` without specifying any assets after it.
+
+<box type="warning" seamless>
+
+Edit **replaces** the current assets associated to a contact. It does **not** add to the list of associated assets.
+
+</box>
 
 ---
 
