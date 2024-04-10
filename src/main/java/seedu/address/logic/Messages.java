@@ -21,8 +21,8 @@ public class Messages {
 
     public static final String MESSAGE_SHOWING_HELP = "Opened help window.";
     public static final String MESSAGE_EXITING = "Exiting Address Book as requested ...";
-    public static final String MESSAGE_COPIED = "Copied detail to clipboard: %1$s";
-    public static final int MESSAGE_COPIED_LEN = "Copied detail to clipboard:".length();
+    public static final String MESSAGE_COPIED = "Copied detail(s) to clipboard: %1$s";
+    public static final int MESSAGE_COPIED_LEN = "Copied detail(s) to clipboard:".length();
 
     /**
      * Returns an error message indicating the duplicate prefixes.
