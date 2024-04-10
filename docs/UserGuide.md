@@ -534,19 +534,28 @@ Undoes the last modifying command.
 
 Format: `undo`
 
+#### Example
+After incorrectly deleting the first contact with `delete 1`, it can be restored with `undo`.
+
+* Modifying commands include: `add`, `delete`, `edit`, `asset`.
+* All other commands are non-modifying.
+
 ---
 
 ### Redoing Commands: `redo`
 
-Reverses the latest undo command.
+Reverses the latest `undo` command.
+
+Format: `redo`
+
+#### Example
+If an asset name was changed, after `undo` was executed to verify what the previous asset name was, `redo` can be used to revert to the new asset name.
 
 <box type="warning" seamless>
 
-After executing an `undo` command, you cannot `redo` if another modifying command was executed.
+After executing an `undo` command, you cannot `redo` this if another modifying command was executed.
 
 </box>
-
-Format: `redo`
 
 ---
 
@@ -560,7 +569,7 @@ Format: `clear`
 
 <box type="tip" seamless>
 
-If you unintentionally deleted all contacts, you can use the `undo` command to revert clear.
+If you unintentionally deleted all contacts, you can use the `undo` command to revert this.
 
 </box>
 
