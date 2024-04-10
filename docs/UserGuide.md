@@ -422,6 +422,7 @@ If the example was not executed successfully, the proper syntax of the `add` com
 * Phone number of the contact.
 * Only digits, '+', '-', ',' and spaces are allowed.
 * The phone number must contain at least 3 characters.
+* Example: `+65-8765-4321, +97 6223 5555`.
 
 `EMAIL`
 * Email of the contact.
