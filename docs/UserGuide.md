@@ -285,7 +285,7 @@ Let's update the assets already in our system.
    `asset o\screwdriver n\screw`
 
 <p align="center">
-   <img src="images/tutorial-editA-1.png" style="width: 90%;">
+   <img src="images/tutorial-asset-1.png" style="width: 90%;">
 </p>
 
 3. **Execute the Command**:
@@ -294,7 +294,7 @@ Let's update the assets already in our system.
 4. **Confirmation**:
    Wait for a confirmation message in AssetBook to ensure that the asset has been successfully updated.
 <p align="center">
-   <img src="images/tutorial-editA-2.png" style="width: 90%;">
+   <img src="images/tutorial-asset-2.png" style="width: 90%;">
 </p>
 
 ---
@@ -371,7 +371,7 @@ A person can have any number of tags and assets (including 0).
 
 #### Example
 * Add a new contact associated with the asset `L293D`:<br> 
-  `add n/John Doe e/johndoe@example.com a/574 Ang Mo Kio Ave 10 p/12345678 A/L293D`
+  `add n\John Doe e\johndoe@example.com a\574 Ang Mo Kio Ave 10 p\12345678 A\L293D`
 
 <p align="center">
     <img src="images/example-add-before.png" style="width: 90%;">
