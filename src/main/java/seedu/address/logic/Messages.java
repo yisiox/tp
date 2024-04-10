@@ -15,14 +15,14 @@ public class Messages {
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
-    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
+    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d person(s) listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
 
     public static final String MESSAGE_SHOWING_HELP = "Opened help window.";
     public static final String MESSAGE_EXITING = "Exiting Address Book as requested ...";
-    public static final String MESSAGE_COPIED = "Copied details to clipboard: %1$s";
-    public static final int MESSAGE_COPIED_LEN = "Copied details to clipboard:".length();
+    public static final String MESSAGE_COPIED = "Copied detail to clipboard: %1$s";
+    public static final int MESSAGE_COPIED_LEN = "Copied detail to clipboard:".length();
 
     /**
      * Returns an error message indicating the duplicate prefixes.
