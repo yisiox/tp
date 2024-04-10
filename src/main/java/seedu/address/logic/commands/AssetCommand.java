@@ -26,7 +26,7 @@ public class AssetCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the asset identified. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: " + PREFIX_OLD + "OLDNAME " + PREFIX_NEW + "NEWNAME\n"
-            + "OLDNAME must be an existing asset name."
+            + "OLDNAME must be an existing asset name.\n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_OLD + "Aircon " + PREFIX_NEW + "Hammer";
 
     public static final String MESSAGE_SUCCESS = "Edited Asset: %1$s";
