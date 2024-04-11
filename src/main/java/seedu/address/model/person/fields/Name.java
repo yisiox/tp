@@ -44,7 +44,7 @@ public class Name implements Field {
      * Parses a {@code String name} into a {@code Name}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws IllegalArgumentException if the given {@code name} is invalid.
+     * @throws IllegalArgumentException If the given {@code name} is invalid.
      */
     public static Name of(String name) throws IllegalArgumentException {
         requireNonNull(name);

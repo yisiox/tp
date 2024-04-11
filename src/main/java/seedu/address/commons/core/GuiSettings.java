@@ -43,12 +43,12 @@ public class GuiSettings implements Serializable {
     /**
      * Constructs a {@code GuiSettings} with the specified parameters.
      *
-     * @param windowWidth the window's width.
-     * @param windowHeight the window's height.
-     * @param xPosition the window's x-coordinate on the screen.
-     * @param yPosition the window's y-coordinate on the screen.
-     * @param isMaximized whether the window is maximized.
-     * @param splitPaneDividerPosition the height of the TextArea resultDisplay.
+     * @param windowWidth The window's width.
+     * @param windowHeight The window's height.
+     * @param xPosition The window's x-coordinate on the screen.
+     * @param yPosition The window's y-coordinate on the screen.
+     * @param isMaximized Whether the window is maximized.
+     * @param splitPaneDividerPosition The height of the TextArea resultDisplay.
      */
     public GuiSettings(double windowWidth, double windowHeight, int xPosition, int yPosition,
                        boolean isMaximized, double splitPaneDividerPosition) {

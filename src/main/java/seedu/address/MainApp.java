@@ -148,8 +148,8 @@ public class MainApp extends Application {
     /**
      * Reads the filepath stored within a {@code Storage} object and returns a {@code ReadOnlyAddressBook}.
      *
-     * @param storage the storage object.
-     * @return a read-only address book.
+     * @param storage The storage object.
+     * @return A read-only address book.
      */
     private ReadOnlyAddressBook initAddressBook(Storage storage) {
         ReadOnlyAddressBook initialAddressBook;

@@ -18,9 +18,9 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
 
     /**
      * Processes the query string and constructs the object.
-     * @param query the query string.
-     * @throws NullPointerException if the query string is null.
-     * @throws AssertionError if the query string is empty.
+     * @param query The query string.
+     * @throws NullPointerException If the query string is null.
+     * @throws AssertionError If the query string is empty.
      */
     public PersonMatchesQueryPredicate(String query) {
         requireNonNull(query);

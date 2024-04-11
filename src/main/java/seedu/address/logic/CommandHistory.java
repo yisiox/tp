@@ -19,8 +19,8 @@ public class CommandHistory {
     /**
      * Get the previous command text.
      *
-     * @return the previous command text.
-     * @throws CommandHistoryException if the message history is empty or the index is already at the start.
+     * @return The previous command text.
+     * @throws CommandHistoryException If the message history is empty or the index is already at the start.
      */
     public String getPrevious() throws CommandHistoryException {
         assert 0 <= index && index <= commandHistory.size();
@@ -40,8 +40,8 @@ public class CommandHistory {
     /**
      * Get the next command text.
      *
-     * @return the next command text.
-     * @throws CommandHistoryException if the index is already at the end.
+     * @return The next command text.
+     * @throws CommandHistoryException If the index is already at the end.
      */
     public String getNext() throws CommandHistoryException {
         assert 0 <= index && index <= commandHistory.size();
@@ -62,7 +62,7 @@ public class CommandHistory {
     /**
      * Add a valid command text to the command history.
      *
-     * @param commandText the command text string.
+     * @param commandText The command text string.
      */
     public void add(String commandText) {
         commandHistory.add(commandText);
