@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
@@ -20,7 +21,7 @@ public class UiManager implements Ui {
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
 
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
-    private static final String ICON_APPLICATION = "/images/address_book_32.png";
+    private static final String ICON_APPLICATION = "/images/icon_title.png";
 
     private final Logic logic;
     private MainWindow mainWindow;
@@ -36,12 +37,14 @@ public class UiManager implements Ui {
     public void start(Stage primaryStage) {
         logger.info("Starting UI...");
 
-        //Set the application icon.
+        // Set the application icon
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
+
+        // Load custom fonts
+        Font.loadFont(getClass().getResourceAsStream("/styles/JetBrainsMono-SemiBold.ttf"), 16);
 
         try {
             mainWindow = new MainWindow(primaryStage, logic);
-
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
             showFatalErrorDialogAndShutdown("Fatal error during initializing", e);

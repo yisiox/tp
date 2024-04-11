@@ -7,19 +7,18 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Represents a Person's name in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValid(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValid(String)}.
  */
 public class Name implements Field {
 
-    public static final Prefix PREFIX_NAME = new Prefix("n/");
-    private static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+    public static final Prefix PREFIX_NAME = new Prefix("n\\");
+    private static final String MESSAGE_CONSTRAINTS = "Names cannot contain '\\', and should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    private static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    private static final String VALIDATION_REGEX = "\\s*[^\\s\\\\][^\\\\]*";
 
     private final String name;
 

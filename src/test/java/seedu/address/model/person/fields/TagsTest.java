@@ -54,7 +54,7 @@ class TagsTest {
     }
 
     @Test
-    void equals_null_false() {
+    public void equals_null_false() {
         assertFalse(new Tags(emptyTagArray).equals(null));
     }
 

@@ -5,13 +5,17 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.exceptions.CommandHistoryException;
 import seedu.address.logic.Logic;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -43,6 +47,9 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
+    private SplitPane splitPane;
+
+    @FXML
     private StackPane personListPanelPlaceholder;
 
     @FXML
@@ -62,14 +69,18 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
         this.personListPanel = new PersonListPanel(logic.getFilteredPersonList());
 
+        GuiSettings guiSettings = logic.getGuiSettings();
+
         // Configure the UI
-        setWindowDefaultSize(logic.getGuiSettings());
+        setWindowDefaultSize(guiSettings);
 
         setAccelerators();
 
         primaryStage.show(); // This should be called before creating other UI parts
+        primaryStage.requestFocus();
 
-        fillInnerParts();
+        // Configure the inner components of the UI
+        fillInnerParts(guiSettings);
     }
 
     public Stage getPrimaryStage() {
@@ -113,15 +124,17 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Fills up all the placeholders of this window.
      */
-    private void fillInnerParts() {
+    private void fillInnerParts(GuiSettings guiSettings) {
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
+        splitPane.setDividerPositions(guiSettings.getSplitPaneDividerPosition());
+
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
-        CommandBox commandBox = new CommandBox(this::executeCommand);
+        CommandBox commandBox = new CommandBox(new RecordedCommandExecutor());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
@@ -131,6 +144,8 @@ public class MainWindow extends UiPart<Stage> {
     private void setWindowDefaultSize(GuiSettings guiSettings) {
         primaryStage.setHeight(guiSettings.getWindowHeight());
         primaryStage.setWidth(guiSettings.getWindowWidth());
+        primaryStage.setMaximized(guiSettings.getIsMaximized());
+
         if (guiSettings.getWindowCoordinates() != null) {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
@@ -155,40 +170,68 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY());
+                (int) primaryStage.getX(), (int) primaryStage.getY(),
+                primaryStage.isMaximized(), splitPane.getDividerPositions()[0]);
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
     }
 
     /**
-     * Executes the command and returns the result.
-     *
-     * @see seedu.address.logic.Logic#execute(String)
+     * Copies string to the clipboard
      */
-    private String executeCommand(String commandText) throws CommandException, ParseException, StorageException {
-        String commandResult;
-        try {
-            commandResult = logic.execute(commandText);
-            logger.info("Result: " + commandResult);
-            showMessage(commandResult);
-        } catch (CommandException | ParseException | StorageException e) {
-            logger.info("An error occurred while executing command: " + commandText);
-            showMessage(e.getMessage());
-            throw e;
-        }
-
-        if (commandResult == Messages.MESSAGE_SHOWING_HELP) {
-            handleHelp();
-        }
-        if (commandResult == Messages.MESSAGE_EXITING) {
-            handleExit();
-        }
-        return commandResult;
+    @FXML
+    private void handleCopy(String detailsToCopy) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(detailsToCopy);
+        clipboard.setContent(content);
     }
 
     public void showMessage(String msg) {
         resultDisplay.setFeedbackToUser(msg);
+    }
+
+    private class RecordedCommandExecutor implements CommandExecutor {
+
+        @Override
+        public String execute(String commandText) throws CommandException, ParseException, StorageException {
+            String commandResult;
+            try {
+                commandResult = logic.execute(commandText);
+                logger.info("Result: " + commandResult);
+                showMessage(commandResult);
+            } catch (CommandException | ParseException | StorageException e) {
+                logger.info("An error occurred while executing command: " + commandText);
+                showMessage(e.getMessage());
+                throw e;
+            }
+
+            // == used to prevent an edge case where a command may somehow return this exact string,
+            // but is not actually a help or exit command.
+            if (commandResult == Messages.MESSAGE_SHOWING_HELP) {
+                handleHelp();
+            }
+            if (commandResult == Messages.MESSAGE_EXITING) {
+                handleExit();
+            }
+            if (commandResult.startsWith(Messages.MESSAGE_COPIED.substring(0, Messages.MESSAGE_COPIED_LEN + 1))) {
+                handleCopy(commandResult.substring(Messages.MESSAGE_COPIED_LEN).trim());
+            }
+
+            return commandResult;
+        }
+
+        @Override
+        public String getPreviousCommandText() throws CommandHistoryException {
+            return logic.getPreviousCommandText();
+        }
+
+        @Override
+        public String getNextCommandText() throws CommandHistoryException {
+            return logic.getNextCommandText();
+        }
+
     }
 
 }

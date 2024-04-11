@@ -11,16 +11,22 @@ public enum CommandType {
             return AddCommand.of(arguments);
         }
     },
+    COPY {
+        @Override
+        public Command createCommand(String arguments) throws IllegalArgumentException {
+            return CopyCommand.of(arguments);
+        }
+    },
     EDIT {
         @Override
         public Command createCommand(String arguments) throws IllegalArgumentException {
             return EditCommand.of(arguments);
         }
     },
-    EDITA {
+    ASSET {
         @Override
         public Command createCommand(String arguments) throws IllegalArgumentException {
-            return EditAssetCommand.of(arguments);
+            return AssetCommand.of(arguments);
         }
     },
     DELETE {

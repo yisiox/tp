@@ -20,7 +20,9 @@ public class Messages {
                 "Multiple values specified for the following single-valued field(s): ";
 
     public static final String MESSAGE_SHOWING_HELP = "Opened help window.";
-    public static final String MESSAGE_EXITING = "Exiting Address Book as requested ...";
+    public static final String MESSAGE_EXITING = "Exiting AssetBook as requested ...";
+    public static final String MESSAGE_COPIED = "Copied details to clipboard: %1$s";
+    public static final int MESSAGE_COPIED_LEN = "Copied details to clipboard:".length();
 
     /**
      * Returns an error message indicating the duplicate prefixes.

@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 public class PhoneTest {
 
     private static final String WHITESPACE = " \t\r\n";
-    private static final String INVALID_PHONE = "+651234";
-    private static final String VALID_PHONE = "123456";
+    private static final String INVALID_PHONE = "+6512345678 (home)";
+    private static final String VALID_PHONE = "+65 1234 5678, +98-4321-5432-42";
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -26,7 +26,8 @@ public class PhoneTest {
         assertThrows(IllegalArgumentException.class, () -> new Phone("91")); // less than 3 numbers
         assertThrows(IllegalArgumentException.class, () -> new Phone("phone")); // non-numeric
         assertThrows(IllegalArgumentException.class, () -> new Phone("9011p041")); // alphabets within digits
-        assertThrows(IllegalArgumentException.class, () -> new Phone("9312 1534")); // spaces within digits
+        assertThrows(IllegalArgumentException.class, () -> new Phone("9312_1534")); // underscore within digits
+        assertThrows(IllegalArgumentException.class, () -> new Phone("93121534(home), 94387573(office)")); // brackets
     }
 
     @Test
