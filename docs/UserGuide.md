@@ -377,7 +377,7 @@ Adds a new contact to the system, with 0 or more assets associated with the cont
 Format: `add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`
 
 <box type="tip" seamless>
-A person can have any number of tags and assets (including 0).
+A contact can have any number of tags and assets (including 0).
 </box>
 
 #### Example
@@ -393,7 +393,7 @@ A person can have any number of tags and assets (including 0).
 #### Success
 
 If the example was executed successfully, the following message will appear:<br>
-`New person added: John Doe; Phone: 12345678; Email: johndoe@example.com; Address: 574 Ang Mo Kio Ave 10; Tags: []; Assets: [[L293D]]`
+`New contact added: John Doe; Phone: 12345678; Email: johndoe@example.com; Address: 574 Ang Mo Kio Ave 10; Tags: []; Assets: [[L293D]]`
 
 <p align="center">
     <img src="images/example-add-after.png" style="width: 90%;">
