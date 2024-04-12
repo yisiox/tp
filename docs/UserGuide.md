@@ -178,7 +178,7 @@ For detailed documentation of all available features, please refer to the [featu
 **Tips for Beginners**
 
 - Always double-check the details you enter.
-- If an action doesn’t work as expected, review the command format and your input.
+- If an action doesn't work as expected, review the command format and your input.
 - Practice makes perfect. Try adding a few contacts and assets to get comfortable with the commands.
 
 </box>
@@ -240,7 +240,7 @@ Now that you've successfully added John Doe to AssetBook, let's go through the s
 <div style="page-break-after: always;"></div>
 
 #### Editing your Contact 
-Lets update the email of our first contact added John.
+Let's update the email of our first contact added John.
 
 1. **Click on the Command Input Box**: 
    Begin by locating and clicking into the command input box within the AssetBook interface.
@@ -255,7 +255,7 @@ In our case he is located index 1.
 <div style="page-break-after: always;"></div>
 
 3. **Enter the Edit Command**: 
-Let's say we want to edit John's email, thus we can do so by copying the following command:<br>
+We can edit John's email by typing the following command:<br>
 `edit 1 e\newemail@example.com`
 
 <p align="center">
@@ -392,7 +392,7 @@ A contact can have any number of tags and assets (including 0).
 
 #### Success
 
-If the example was executed successfully, the following message will appear:<br>
+If the command was executed successfully, the following message will appear:<br>
 `New contact added: John Doe; Phone: 12345678; Email: johndoe@example.com; Address: 574 Ang Mo Kio Ave 10; Tags: []; Assets: [[L293D]]`
 
 <p align="center">
@@ -414,7 +414,7 @@ If the example was not executed successfully, the proper syntax of the `add` com
 #### Parameters
 `NAME`
 * Name of the contact.
-* Case sensitive, i.e. john doe ≠ John Doe.
+* Case sensitive, i.e. `john doe` is not the same as `John Doe`.
 * Leading and trailing spaces are automatically removed.
 * Multiple people with the same name are not allowed.
 
@@ -426,7 +426,13 @@ If the example was not executed successfully, the proper syntax of the `add` com
 
 `EMAIL`
 * Email of the contact.
-* Must be in the format ‘local-part@domain’, and must be in a valid email format.
+* Muse be of the format `local-part@domain-name` and adhere to the following constraints:
+    1. `local-part` should only contain alphanumeric characters and these special characters: `+_.-`. `local-part` should not start or end with any special characters.
+    2. This is followed by `@` and then a domain name. `domain-name` is made up of domain labels separated by periods.
+    `domain-name` must:
+        - end with a domain label at least 2 characters long
+        - have each domain label start and end with alphanumeric characters
+        - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
 
 `ADDRESS`
 * Address of the contact.
@@ -438,7 +444,7 @@ If the example was not executed successfully, the proper syntax of the `add` com
 `ASSET`
 * Asset(s) associated with contact.
 * Contact may be created first without assets, then have assets added later using the `edit` command.
-* Case sensitive, i.e. NUS ≠ nus.
+* Case sensitive, i.e. `NUS` is not the same as `nus`.
 * Multiple assets can be specified at once. For example, a valid option is `A\asset1 A\asset2 A\asset3`.
 
 <box type="info" seamless>
