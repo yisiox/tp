@@ -80,17 +80,17 @@ or skip to the [command summary](#command-summary).
   + [Navigating the GUI](#navigating-the-gui)
   + [Tutorials](#tutorials)
 + [Features](#features)
-  + [Modifying Contact Data](#modifying-contact-data)
+  + [Modifying Commands](#modifying-commands)
     + [Adding a Contact](#adding-a-contact-add)
     + [Deleting a Contact](#deleting-a-contact-delete)
     + [Editing a Contact](#editing-a-contact-edit)
     + [Editing an Asset](#editing-an-asset-asset)
+    + [Clear all Contacts](#clear-all-contacts-clear)
   + [Miscellaneous Shortcuts](#miscellaneous-shortcuts)
     + [Listing all Contacts](#listing-all-contacts-list)
     + [Finding Contacts](#finding-contacts-find)
     + [Undoing Commands](#undoing-commands-undo)
     + [Redoing Commands](#redoing-commands-redo)
-    + [Clear all Contacts](#clear-all-contacts-clear)
     + [Navigating Command History](#navigating-command-history-and)
     + [Copy a Field from a Contact](#copy-a-field-from-a-contact-copy)
     + [Getting Help](#getting-help-help)
@@ -366,7 +366,7 @@ up instead.
 
 <div style="page-break-after: always;"></div>
 
-## Modifying Contact Data
+## Modifying Commands
 
 This section contains the details for **modifying commands**, which will modify the asset book.
 
@@ -504,6 +504,20 @@ Format: `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`
 
 ---
 
+### Clear all Contacts: `clear`
+
+Deletes all contacts.
+
+Format: `clear`
+
+<box type="tip" seamless>
+
+If you unintentionally deleted all contacts, you can use the `undo` command to revert this.
+
+</box>
+
+---
+
 ## Miscellaneous Shortcuts
 
 This section contains the details for **non-modifying commands** and other useful shortcuts.
@@ -566,20 +580,6 @@ After executing an `undo` command, you cannot `redo` this if another modifying c
 ---
 
 <div style="page-break-after: always;"></div>
-
-### Clear all Contacts: `clear`
-
-Deletes all contacts.
-
-Format: `clear`
-
-<box type="tip" seamless>
-
-If you unintentionally deleted all contacts, you can use the `undo` command to revert this.
-
-</box>
-
----
 
 ### Navigating Command History: `↑` and `↓`
 
