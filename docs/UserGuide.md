@@ -112,11 +112,11 @@ or skip to the [command summary](#command-summary).
 
 <box type="info" seamless>
 
-The following instructions are for **Windows**, **MacOS** or **Linux**.
+The following instructions are for **Windows**, **MacOS** and **Linux**.
 
 </box>
 
-1. Ensure you have [Java 11](https://www.oracle.com/sg/java\technologies/javase\jdk11-archive-downloads.html) installed on your Computer.
+1. Ensure you have [Java 11](https://www.azul.com/downloads/?version=java-11-lts&package=jre#zulu) installed on your device.
 
 2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
 
@@ -282,7 +282,7 @@ Let's update the assets already in our system.
    Start by clicking into the command input box located within the AssetBook interface.
 
 2. **Enter the Edit Asset Command**:
-   If you need to rename an asset, for example, changing "screwdriver" to "screw", use the following command:<br>
+   If you need to rename an asset, for instance from "screwdriver" to "screw", use the following command:<br>
    `asset o\screwdriver n\screw`
 
 <p align="center">
@@ -506,7 +506,7 @@ Format: `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`
 `asset o\hammer n\screwdriver` edits the asset `hammer`, changing its name to `screwdriver`.
 
 * `o\` refers to the old asset name, while `n\` refers to the new asset name.
-* The asset will be renamed for all contacts that have this asset.
+* The asset will be renamed for all contacts that have it.
 
 ---
 
@@ -603,7 +603,7 @@ Only successfully executed commands are saved in the command history.
 
 ### Copy a Field from a Contact: `copy`
 
-Copies a specific field to your computer clipboard for ease of pasting elsewhere.
+Copies a specific field to your clipboard for ease of pasting elsewhere.
 
 Format: `copy INDEX PREFIX`
 
@@ -667,14 +667,14 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 
 ## Frequently Asked Questions
 
-**Q**: What if my device does not run a mainstream operating system (not Windows, MacOS or Linux)?<br>
-**A**: *AssetBook* will work so long as Java 11 can be installed on your device.
+**Q**: My device is running an operating system that is not Windows, MacOS or Linux. Can I use *AssetBook*?<br>
+**A**: *AssetBook* may work on your device, but it is not guaranteed to work. If there is high demand, we may start supporting new operating systems!
 
-**Q**: Must I specifically use Java 11?<br>
-**A**: While it may work on other versions, *AssetBook* is meant to work on Java 11. We cannot guarantee that it works on versions other than Java 11.
+**Q**: Do I have to use Java 11 specifically?<br>
+**A**: While it may work with other versions of Java, *AssetBook* is developed specifically for Java 11. We cannot guarantee that it works on versions other than Java 11.
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and replace the JSON data file it creates with the JSON file from your previous *AssetBook* home folder.
+**Q**: How do I transfer my data to a new device?<br>
+**A**: Set up AssetBook on the new device and copy the `data` folder from the old device to the new device. Ensure that the `data` folder is located in the same folder as `assetbook.jar`.
 
 ---
 
