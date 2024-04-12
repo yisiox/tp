@@ -105,6 +105,7 @@ public class CommandBox extends UiPart<Region> {
         }
 
         if (commandText != null) {
+            // update the command box and relocate the caret appropriately
             commandTextField.setText(commandText);
             commandTextField.positionCaret(commandTextField.getLength());
             logger.info("commandTextField set to \"" + commandText + "\"");

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.model.tag.Tag;
 
+//@@author aureliony
 /**
  * Represents an abstraction for a list of tags.
  */

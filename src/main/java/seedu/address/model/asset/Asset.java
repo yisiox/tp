@@ -38,7 +38,7 @@ public class Asset {
      * Parses a {@code String} of format {@code NAME[#ID]} into a {@code Asset}.
      * Leading and trailing whitespaces of each field will be trimmed.
      *
-     * @throws IllegalArgumentException if the given {@code name} is invalid.
+     * @throws IllegalArgumentException If the given {@code name} is invalid.
      */
     public static Asset of(String assetDescription) throws IllegalArgumentException {
         requireNonNull(assetDescription);
