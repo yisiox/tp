@@ -427,11 +427,11 @@ If the example was not executed successfully, the proper syntax of the `add` com
 `EMAIL`
 * Email of the contact.
 * Must be of the format `local-part@domain-name` with the following constraints:
-    1. `local-part` should only contain alphanumeric characters and these special characters: `+_.-`. `local-part` should not start or end with any special characters.
+    1. `local-part` consists of alphanumeric characters that may be separated with any one of these special characters: `+_.-`. `local-part` should not start or end with any special character.
     2. This is followed by `@` and then a `domain name`. `domain-name` is made up of 1 or more `domain-labels` separated with a period.
     3. `domain-labels` must:
         - start and end with alphanumeric characters
-        - consist of alphanumeric characters, that may be separated with a hyphen.
+        - consist of alphanumeric characters, that may be separated with a single hyphen.
     4. The last `domain-label` must be at least 2 characters long.
 
 `ADDRESS`
