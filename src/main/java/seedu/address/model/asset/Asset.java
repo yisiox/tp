@@ -2,29 +2,23 @@ package seedu.address.model.asset;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Represents an asset in the address book.
- * Guarantees: immutable.
+ * Guarantees: immutable; name is valid as declared in {@link #isValid(String)}.
  */
 public class Asset {
 
-    public static final String MESSAGE_CONSTRAINTS = "Asset names can take any values, and it should not be blank";
-    private static final String VALIDATION_REGEX = "\\S.*";
+    public static final String MESSAGE_CONSTRAINTS = "Asset name cannot contain '\\', and should not be blank";
+    private static final String VALIDATION_REGEX = "\\s*[^\\s\\\\][^\\\\]*";
 
     private final String assetName;
 
-    /**
-     * Constructs a {@code Asset}.
-     *
-     * @param assetName A valid asset name.
-     */
-    public Asset(String assetName) {
-        requireNonNull(assetName);
-        assetName = assetName.trim();
-        checkArgument(isValid(assetName), MESSAGE_CONSTRAINTS);
+    private Asset(String assetName) {
+        requireAllNonNull(assetName);
         this.assetName = assetName;
     }
 
@@ -41,14 +35,15 @@ public class Asset {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Name}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses a {@code String} of format {@code NAME[#ID]} into a {@code Asset}.
+     * Leading and trailing whitespaces of each field will be trimmed.
      *
      * @throws IllegalArgumentException if the given {@code name} is invalid.
      */
-    public static Asset of(String assetName) throws IllegalArgumentException {
-        requireNonNull(assetName);
-        String trimmedName = assetName.trim();
+    public static Asset of(String assetDescription) throws IllegalArgumentException {
+        requireNonNull(assetDescription);
+        checkArgument(isValid(assetDescription), MESSAGE_CONSTRAINTS);
+        String trimmedName = assetDescription.trim();
         return new Asset(trimmedName);
     }
 
@@ -76,7 +71,7 @@ public class Asset {
      * Format state as text for viewing.
      */
     public String toString() {
-        return '[' + assetName + ']';
+        return "[" + get() + "]";
     }
 
 }

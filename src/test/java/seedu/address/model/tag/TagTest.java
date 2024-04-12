@@ -21,6 +21,7 @@ public class TagTest {
         assertThrows(IllegalArgumentException.class, () -> new Tag("Hello@World")); // not alphanumeric
         assertThrows(IllegalArgumentException.class, () -> new Tag("Testing 123")); // contains space
         assertThrows(IllegalArgumentException.class, () -> new Tag("Café123")); // contains illegal unicode character
+        assertThrows(IllegalArgumentException.class, () -> new Tag("Kaboom\\")); // contains '\'
     }
 
     @Test

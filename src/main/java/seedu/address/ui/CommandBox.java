@@ -1,9 +1,15 @@
 package seedu.address.ui;
 
+import java.util.logging.Logger;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
+import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.exceptions.CommandHistoryException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.util.exceptions.ParseException;
 import seedu.address.storage.exceptions.StorageException;
@@ -13,7 +19,9 @@ import seedu.address.storage.exceptions.StorageException;
  */
 public class CommandBox extends UiPart<Region> {
 
-    public static final String ERROR_STYLE_CLASS = "error";
+    private static final Logger logger = LogsCenter.getLogger(CommandBox.class);
+
+    private static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
 
     private final CommandExecutor commandExecutor;
@@ -27,8 +35,12 @@ public class CommandBox extends UiPart<Region> {
     public CommandBox(CommandExecutor commandExecutor) {
         super(FXML);
         this.commandExecutor = commandExecutor;
+
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
+
+        // add listener for key presses
+        commandTextField.setOnKeyPressed(this::handleKeyPressed);
     }
 
     /**
@@ -70,16 +82,35 @@ public class CommandBox extends UiPart<Region> {
     }
 
     /**
-     * Represents a function that can execute commands.
+     * Handle the event when a key is pressed.
+     *
+     * @param event the KeyEvent when a key is pressed.
      */
-    @FunctionalInterface
-    public interface CommandExecutor {
-        /**
-         * Executes the command and returns the result.
-         *
-         * @see seedu.address.logic.Logic#execute(String)
-         */
-        String execute(String commandText) throws CommandException, ParseException, StorageException;
+    private void handleKeyPressed(KeyEvent event) {
+        String commandText = null;
+        try {
+            if (event.getCode() == KeyCode.UP) {
+                // go up the command history
+                logger.info("UP key pressed");
+                commandText = commandExecutor.getPreviousCommandText();
+            } else if (event.getCode() == KeyCode.DOWN) {
+                // go down the command history
+                logger.info("DOWN key pressed");
+                commandText = commandExecutor.getNextCommandText();
+            }
+        } catch (CommandHistoryException che) {
+            logger.info(che.getMessage());
+            event.consume();
+            return;
+        }
+
+        if (commandText != null) {
+            commandTextField.setText(commandText);
+            commandTextField.positionCaret(commandTextField.getLength());
+            logger.info("commandTextField set to \"" + commandText + "\"");
+        }
+
+        event.consume();
     }
 
 }

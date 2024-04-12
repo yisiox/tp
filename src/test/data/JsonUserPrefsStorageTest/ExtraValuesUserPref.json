@@ -7,7 +7,9 @@
       "x" : 300,
       "y" : 100,
       "z" : 99
-    }
+    },
+    "isMaximized" : false,
+    "splitPaneDividerPosition" : 0.75
   },
-  "addressBookFilePath" : "addressbook.json"
+  "addressBookFilePath" : "data\\assetbook.json"
 }

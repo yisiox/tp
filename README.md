@@ -3,9 +3,9 @@
 
 ![Ui](docs/images/Ui.png)
 
-## AssetBook-3
+## AssetBook
 
-AssetBook-3 is a specialized application built upon [AddressBook-3](https://github.com/se-edu/addressbook-level3) for logistics and inventory managers to do contact and asset management. 
+AssetBook is a specialized application built upon [AddressBook-3](https://github.com/se-edu/addressbook-level3) for logistics and inventory managers to do contact and asset management. 
 It is meant for those who wish to easily retrieve contact details based on contact or asset details.
 
 ## Getting Started
