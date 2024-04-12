@@ -473,7 +473,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 1. User requests to add a contact.
 2. User specifies details of the contact.
-3. AB adds the contact.<br>
+3. AB adds the contact.
+4. AB shows a success message and new contact details to the user.<br>
    Use case ends.
 
 **Extensions**
@@ -489,7 +490,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case: UC2 - List contacts**
 **MSS**
 1. User requests to list contacts.
-2. AB displays all contacts.<br>
+2. AB displays all contacts.
+3. AB shows a success message to the user.<br>
    Use case ends.
 
 --- {.dotted}
@@ -498,7 +500,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 1. User requests to search contacts.
 2. User specifies details to search by.
-3. AB displays all matching contacts.<br>
+3. AB displays all matching contacts.
+4. AB shows a success message and number of matching users to the user.<br>
    Use case ends.
 
 **Extensions**
@@ -516,7 +519,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. User !!lists contacts(UC2)!!.
 2. User requests to edit a contact.
 3. User specifies the index of the contact and details to edit.
-4. AB updates the contact.<br>
+4. AB updates the contact.
+5. AB shows a success message and the new contact details to the user.<br>
    Use case ends.
 
 **Extensions**
@@ -531,16 +535,37 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 --- {.dotted}
 
-**Use case: UC5 - Delete contact**
+**Use case: UC5 - Edit assets**
 **MSS**
-1. User !!lists contacts(UC2)!!.
-2. User requests to delete a contact.
-3. User specifies the index of the contact to delete.
-4. AB deletes the contact.<br>
+1. User requests to edit an asset.
+2. User specifies the old and new name for the asset.
+3. AB updates all relevant assets.
+4. AB shows a success message and the new asset details to the user.<br>
    Use case ends.
 
 **Extensions**
 
+<div class="step">2a. AB detects user input is invalid.</div>
+<div class="sub-step">2a1. AB displays an error message.</div>
+<div class="sub-step">2a2. User enters new input.</div>
+<div class="sub-step">Steps 2a1-2a2 are repeated until user input is valid.</div>
+<div class="sub-step">Use case resumes from step 3.</div>
+
+--- {.dotted}
+
+**Use case: UC6 - Delete contact**
+**MSS**
+1. User !!lists contacts(UC2)!!.
+2. User requests to delete a contact.
+3. User specifies the index of the contact to delete.
+4. AB deletes the contact.
+5. AB shows a success message and the deleted contact details to the user.<br>
+   Use case ends.
+
+**Extensions**
+
+<div class="step">1a. AB displays no contacts.</div>
+<div class="sub-step">Use case ends.</div>
 <div class="step">3a. AB detects user input is invalid.</div>
 <div class="sub-step">3a1. AB displays an error message.</div>
 <div class="sub-step">3a2. User enters new input.</div>
@@ -549,7 +574,64 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 --- {.dotted}
 
-**Use case: UC6 - Add person to json file directly**
+**Use case: UC7 - Undo command**
+**MSS**
+1. User requests to undo a command.
+2. AB undoes the previous command.
+3. AB shows a success message to the user.<br>
+   Use case ends.
+
+**Extensions**
+
+<div class="step">1a. AB detects user input is invalid.</div>
+<div class="sub-step">1a1. AB displays an error message.</div>
+<div class="sub-step">1a2. User enters new input.</div>
+<div class="sub-step">Steps 1a1-1a2 are repeated until user input is valid.</div>
+<div class="sub-step">Use case resumes from step 2.</div>
+<div class="step">1b. AB detects there is no previous command to undo.</div>
+<div class="sub-step">1b1. AB lets the user know there is no command to undo.</div>
+<div class="sub-step">Use case ends.</div>
+
+--- {.dotted}
+
+**Use case: UC8 - Redo undo command**
+**MSS**
+1. User requests to redo an undo command.
+2. AB redoes the command previously undone-ed.
+3. AB shows a success message to the user.<br>
+   Use case ends.
+
+**Extensions**
+
+<div class="step">1a. AB detects user input is invalid.</div>
+<div class="sub-step">1a1. AB displays an error message.</div>
+<div class="sub-step">1a2. User enters new input.</div>
+<div class="sub-step">Steps 1a1-1a2 are repeated until user input is valid.</div>
+<div class="sub-step">Use case resumes from step 2.</div>
+<div class="step">1b. AB detects there is no previous undo command to redo.</div>
+<div class="sub-step">1b1. AB lets the user know there is no undo command to redo.</div>
+<div class="sub-step">Use case ends.</div>
+
+--- {.dotted}
+
+**Use case: UC9 - Clear all contacts**
+**MSS**
+1. User requests to clear all contact data.
+2. AB clears all contact data.
+3. AB shows a success message to the user.<br>
+   Use case ends.
+
+**Extensions**
+
+<div class="step">1a. AB detects user input is invalid.</div>
+<div class="sub-step">1a1. AB displays an error message.</div>
+<div class="sub-step">1a2. User enters new input.</div>
+<div class="sub-step">Steps 1a1-1a2 are repeated until user input is valid.</div>
+<div class="sub-step">Use case resumes from step 2.</div>
+
+--- {.dotted}
+
+**Use case: UC10 - Add person to json file directly**
 **MSS**
 1. User adds a new person to the json file.
 2. User runs the application.
@@ -571,6 +653,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. Majority of the target users are likely to find the app worth using.
 1. Users with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 1. Features should fit together cohesively.
+1. Should be easy and intuitive for users to use, even for users with limited technical knowledge.
 
 #### Codebase
 1. Must follow CS2103/T coding standards and code quality guidelines.
@@ -623,6 +706,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Person-In-Charge(PIC)**: A contact responsible for an asset
 * **Point-of-Contact(PoC)**: A contact representing a responsible entity like a department or external business
 * **Tag**: User added information associated to a contact e.g. `retired`, `temp staff`, ...
+* **AddressBook**: The underlying system that AssetBook is built on
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -643,7 +727,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Double-click the jar file<br>
+      Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
@@ -652,11 +737,22 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases ... }_
+### Adding a contact
 
-### Deleting a person
+1. Adding a contact
 
-1. Deleting a person while all persons are being shown
+    1. Test case: `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`<br>
+       Expected: AssetBook displays a success message, and the newly added contact's details are shown
+
+    1. Test case: `add n\John Doe`<br>
+       Expected: AssetBook displays an error stating invalid command format, and no contact is added
+
+    1. Other incorrect `add` commands to try: `add n\ p\ e\ a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`, `...` <br>
+       Expected: Similar to previous.
+
+### Deleting a contact
+
+1. Deleting a contact while all contacts are being shown
 
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
@@ -666,16 +762,25 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `delete 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   1. Other incorrect `delete` commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
-
-1. _{ more test cases ... }_
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-</li>
+   1. Modify or delete data files
 
-1. _{ more test cases ... }_
+   1. Open AssetBook. If AssetBook is open, close and reopen it.<br>
+      Expected: AssetBook will detect missing/corrupted data files, and start with an empty list
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned Enchancements**
+
+1. **Feature Flaw** - Currently, `redo` and `undo` commands only display a success message without any additional information. In future versions, we will display the specific commands undone or redone.
+2. **Feature Flaw** - Currently, using the `copy` command on assets and tags will come with the square brackets associated with the list data structure, which are redundant for the users. In future versions, we will remove these square brackets when copying tags and assets.
+3. **Feature Flaw** - Currently, using the `find` command searches across all contact details, and hence searching `bell` will return contacts with the name including `bell` and contacts with assets including `bell`, which can be confusing. In future versions, we will have specific commands to find contacts and assets separately.
+4. **Feature Flaw** - Currently, additional details cannot be added to assets, such as specifications, locations and so on. In future versions, more details can be added to assets to make the app easier to use for users.
+5. **Feature Flaw** - Currently, using the `add` command for contacts with the same name is not allowed, but there can exist multiple people with the same name. In future versions, we will improve duplicate person detection and allow multiple contacts with the same name. 
+6. **Feature Flaw** - Currently, tags and assets have a very similar color scheme, which makes it hard to differentiate for users. In future versions, we will add more visual clarity tags and assets.
