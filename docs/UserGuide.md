@@ -217,7 +217,7 @@ Let's get started by adding our first contact, John Doe, into AssetBook.
 <div style="page-break-after: always;"></div>
 
 #### Searching for Contacts
-Now that you've successfully added John Doe to AssetBook, let's go through the steps to find him in the system.
+Now that you've successfully added John Doe to AssetBook, let's go through the steps to find his contact.
 1. **Click the Command Input Box**:
    First, click into the command input box in the AssetBook interface. This is where you'll enter your find command.
 
@@ -232,7 +232,7 @@ Now that you've successfully added John Doe to AssetBook, let's go through the s
    After typing the command, simply press `Enter` to find the contact in AssetBook.
 
 4. **View the Results**:
-   The application will display John Doe in the search results, along with the total count of entries matching 'John' found in the system.
+   The application will display John Doe in the contacts list, along with the total number of entries matching 'John' found.
 <p align="center">
    <img src="images/tutorial-find-2.png" style="width: 90%;">
 </p>
@@ -246,8 +246,8 @@ Let's update the email of our first contact added John.
    Begin by locating and clicking into the command input box within the AssetBook interface.
 
 2. **Find out what is John's Index**:
-   Firstly, using the previous command Find, we can find out what index John contact is by seeing the number beside his contact. 
-In our case he is located index 1.
+   Firstly, using the previous command `find`, we can find out what index John has by checking the number beside his name. 
+   In this case he has index 1.
 <p align="center">
   <img src="images/tutorial-edit-1.png" style="width: 90%;">
 </p>
@@ -276,7 +276,7 @@ We can edit John's email by typing the following command:<br>
 <div style="page-break-after: always;"></div>
 
 #### Editing Assets
-Let's update the assets already in our system.
+Let's update the assets we already have.
 
 1. **Click on the Command Input Box**:
    Start by clicking into the command input box located within the AssetBook interface.
@@ -372,7 +372,7 @@ This section contains the details for **modifying commands**, which will modify 
 
 ### Adding a Contact: `add`
 
-Adds a new contact to the system, with 0 or more assets associated with the contact.
+Adds a new contact, with 0 or more assets associated with the contact.
 
 Format: `add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`
 
@@ -459,7 +459,7 @@ You may assign the same asset to multiple contacts, so remember to name differen
 
 ### Deleting a Contact: `delete`
 
-Delete a contact from the system by specifying its index.
+Delete a contact by specifying its index.
 
 Format: `delete INDEX`
 
@@ -750,4 +750,4 @@ A detail that a command expects to be entered by the user. For example, name is 
 A single letter, number, or symbol. Examples: `a`, `1`, `&`, `-`.
 
 #### Alphanumeric
-Consists of only letters or numbers.
+Consists of only letters and numbers.
