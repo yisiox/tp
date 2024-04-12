@@ -28,6 +28,9 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
         this.query = processString(query);
     }
 
+    /**
+     * Converts the input {@code str} to lowercase and removes all whitespaces.
+    */
     private static String processString(String str) {
         return str.toLowerCase().replaceAll(STRIP_WHITESPACE_REGEX, EMPTY_STRING);
     }
