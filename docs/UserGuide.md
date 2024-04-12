@@ -745,3 +745,9 @@ Windows, MacOS and Linux are examples of operating systems.
 
 #### Parameter
 A detail that a command expects to be entered by the user. For example, name is a parameter of the `add` command.
+
+#### Character
+A single letter, number, or symbol. Examples: `a`, `1`, `&`, `-`.
+
+#### Alphanumeric
+Consists of only letters or numbers.
