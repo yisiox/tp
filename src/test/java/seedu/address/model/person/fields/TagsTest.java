@@ -2,6 +2,7 @@ package seedu.address.model.person.fields;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.Arrays;
@@ -54,8 +55,27 @@ class TagsTest {
     }
 
     @Test
-    public void equals_null_false() {
-        assertFalse(new Tags(emptyTagArray).equals(null));
+    public void equals() {
+        Tags tags = new Tags(VALID_TAG_1);
+
+        // same values -> returns true
+        Tags tags2 = new Tags(VALID_TAG_1);
+        assertTrue(tags.equals(tags2));
+        assertEquals(tags.hashCode(), tags2.hashCode());
+
+        // same object -> returns true
+        assertTrue(tags.equals(tags));
+        assertEquals(tags.hashCode(), tags.hashCode());
+
+        // null -> returns false
+        assertFalse(tags.equals(null));
+
+        // different types -> returns false
+        assertFalse(tags.equals(5.0f));
+
+        // different values -> returns false
+        Tags otherTags = new Tags(VALID_TAG_2);
+        assertFalse(tags.equals(otherTags));
     }
 
 }

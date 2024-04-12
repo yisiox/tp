@@ -18,7 +18,7 @@ public interface Logic {
     /**
      * Executes the command and returns the result.
      * @param commandText The command as entered by the user.
-     * @return the result of the command execution.
+     * @return The result of the command execution.
      * @throws CommandException If an error occurs during command execution.
      * @throws ParseException If an error occurs during parsing.
      */
@@ -27,16 +27,16 @@ public interface Logic {
     /**
      * Gets the previous command's text.
      *
-     * @return the previous command's text.
-     * @throws CommandHistoryException if the message history is empty or the index is already at the start.
+     * @return The previous command's text.
+     * @throws CommandHistoryException If the message history is empty or the index is already at the start.
      */
     String getPreviousCommandText() throws CommandHistoryException;
 
     /**
      * Gets the next command's text.
      *
-     * @return the next command's text.
-     * @throws CommandHistoryException if the index is already at the end.
+     * @return The next command's text.
+     * @throws CommandHistoryException If the index is already at the end.
      */
     String getNextCommandText() throws CommandHistoryException;
 

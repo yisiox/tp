@@ -58,7 +58,7 @@ public class Email implements Field {
      * Parses a {@code String email} into an {@code Email}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws IllegalArgumentException if the given {@code email} is invalid.
+     * @throws IllegalArgumentException If the given {@code email} is invalid.
      */
     public static Email of(String email) throws IllegalArgumentException {
         requireNonNull(email);

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
@@ -24,9 +23,12 @@ public class UniquePersonListDeserializer extends StdDeserializer<UniquePersonLi
 
     @Override
     public UniquePersonList deserialize(JsonParser parser,
-                              DeserializationContext context) throws IOException, JsonProcessingException {
+                              DeserializationContext context) throws IOException {
+        // read the JSON content and deserialize it
         List<Person> persons = context.readValue(parser,
                 context.getTypeFactory().constructCollectionType(List.class, Person.class));
+
+        // initialize and update the UniquePersonList
         UniquePersonList upl = new UniquePersonList();
         upl.setPersons(persons);
         return upl;
