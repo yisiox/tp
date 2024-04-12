@@ -116,7 +116,7 @@ The following instructions are for **Windows**, **MacOS** and **Linux**.
 
 </box>
 
-1. Ensure you have [Java 11](https://www.azul.com/downloads/?version=java-11-lts&package=jre#zulu) installed on your device.
+1. Ensure you have [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) installed on your device.
 
 2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
 
@@ -426,7 +426,7 @@ If the example was not executed successfully, the proper syntax of the `add` com
 
 `EMAIL`
 * Email of the contact.
-* Muse be of the format `local-part@domain-name` and adhere to the following constraints:
+* Must be of the format `local-part@domain-name` and adhere to the following constraints:
     1. `local-part` should only contain alphanumeric characters and these special characters: `+_.-`. `local-part` should not start or end with any special characters.
     2. This is followed by `@` and then a domain name. `domain-name` is made up of domain labels separated by periods.
     `domain-name` must:
@@ -666,6 +666,9 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 <div style="page-break-after: always;"></div>
 
 ## Frequently Asked Questions
+
+**Q**: My device is running MacOS, and the text is not displaying correctly.<br>
+**A**: Try installing [this](https://www.azul.com/downloads/?version=java-11-lts&os=macos&architecture=arm-64-bit&package=jdk-fx) Java 11 version instead.
 
 **Q**: My device is running an operating system that is not Windows, MacOS or Linux. Can I use *AssetBook*?<br>
 **A**: *AssetBook* may work on your device, but it is not guaranteed to work. If there is high demand, we may start supporting new operating systems!
