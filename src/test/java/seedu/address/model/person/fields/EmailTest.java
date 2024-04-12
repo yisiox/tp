@@ -12,7 +12,8 @@ public class EmailTest {
 
     private static final String WHITESPACE = " \t\r\n";
     private static final String INVALID_EMAIL = "example.com";
-    private static final String VALID_EMAIL = "rachel@example.com";
+    private static final String VALID_EMAIL_1 = "rachel@example.com";
+    private static final String VALID_EMAIL_2 = "other.valid@email";
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -68,7 +69,7 @@ public class EmailTest {
     }
 
     @Test
-    public void constructor_validEmail_throwsIllegalArgumentException() {
+    public void constructor_validEmail_success() {
         assertDoesNotThrow(() -> new Email("PeterJack_1190@example.com")); // underscore in local part
         assertDoesNotThrow(() -> new Email("PeterJack.1190@example.com")); // period in local part
         assertDoesNotThrow(() -> new Email("PeterJack+1190@example.com")); // '+' symbol in local part
@@ -84,33 +85,30 @@ public class EmailTest {
 
     @Test
     public void of_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> Email.of((String) null));
+        assertThrows(NullPointerException.class, () -> Email.of(null));
     }
 
     @Test
-    public void of_invalidValue_throwsIllegalArgumentException() {
+    public void of_invalidEmail_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> Email.of(INVALID_EMAIL));
     }
 
     @Test
-    public void of_validValueWithoutWhitespace_returnsEmail() throws Exception {
-        Email expectedEmail = new Email(VALID_EMAIL);
-        assertEquals(expectedEmail, Email.of(VALID_EMAIL));
+    public void of_validValueWithoutWhitespace_returnsEmail() {
+        assertEquals(new Email(VALID_EMAIL_1), Email.of(VALID_EMAIL_1));
     }
 
     @Test
-    public void of_validValueWithWhitespace_returnsTrimmedEmail() throws Exception {
-        String emailWithWhitespace = WHITESPACE + VALID_EMAIL + WHITESPACE;
-        Email expectedEmail = new Email(VALID_EMAIL);
-        assertEquals(expectedEmail, Email.of(emailWithWhitespace));
+    public void of_validValueWithWhitespace_returnsTrimmedEmail() {
+        assertEquals(new Email(VALID_EMAIL_1), Email.of(WHITESPACE + VALID_EMAIL_1 + WHITESPACE));
     }
 
     @Test
     public void equals() {
-        Email email = new Email("valid@email");
+        Email email = new Email(VALID_EMAIL_1);
 
         // same values -> returns true
-        Email email2 = new Email("valid@email");
+        Email email2 = new Email(VALID_EMAIL_1);
         assertTrue(email.equals(email2));
         assertEquals(email.hashCode(), email2.hashCode());
 
@@ -125,7 +123,7 @@ public class EmailTest {
         assertFalse(email.equals(5.0f));
 
         // different values -> returns false
-        Email otherEmail = new Email("other.valid@email");
+        Email otherEmail = new Email(VALID_EMAIL_2);
         assertFalse(email.equals(otherEmail));
     }
 

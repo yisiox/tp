@@ -11,5 +11,5 @@
     "isMaximized" : false,
     "splitPaneDividerPosition" : 0.75
   },
-  "addressBookFilePath" : "data\\assetbook.json"
+  "assetBookFilePath" : "data\\assetbook.json"
 }
