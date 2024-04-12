@@ -39,8 +39,8 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         return doesStringMatchQuery(person.getName().toString(), query)
-               || person.getTags().stream().anyMatch(tag -> doesStringMatchQuery(tag.get(), query)
-               || person.getAssets().stream().anyMatch(asset -> doesStringMatchQuery(asset.get(), query)));
+               || person.getTags().stream().anyMatch(tag -> doesStringMatchQuery(tag.get(), query))
+               || person.getAssets().stream().anyMatch(asset -> doesStringMatchQuery(asset.get(), query));
     }
 
     //@@author rizkidelta

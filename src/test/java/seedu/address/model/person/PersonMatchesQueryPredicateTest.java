@@ -61,6 +61,14 @@ public class PersonMatchesQueryPredicateTest {
         // Query without whitespace
         predicate = new PersonMatchesQueryPredicate("xy");
         assertTrue(predicate.test(new PersonBuilder().withName("Alex Yeoh").build()));
+
+        // Query without tags
+        predicate = new PersonMatchesQueryPredicate("Alice Bob");
+        assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").withTags(new String[0]).build()));
+
+        // Query without assets
+        predicate = new PersonMatchesQueryPredicate("Alice Bob");
+        assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").withAssets(new String[0]).build()));
     }
 
     @Test
@@ -120,6 +128,10 @@ public class PersonMatchesQueryPredicateTest {
         // Short query, long tag
         predicate = new PersonMatchesQueryPredicate("a");
         assertTrue(predicate.test(new PersonBuilder().withTags("colleagues").build()));
+
+        // No assets
+        predicate = new PersonMatchesQueryPredicate("friends");
+        assertTrue(predicate.test(new PersonBuilder().withTags("friends").withAssets(new String[0]).build()));
     }
 
     @Test
@@ -150,6 +162,10 @@ public class PersonMatchesQueryPredicateTest {
         // Query without whitespace
         predicate = new PersonMatchesQueryPredicate("rsc");
         assertTrue(predicate.test(new PersonBuilder().withAssets("hammer screw").build()));
+
+        // No tags
+        predicate = new PersonMatchesQueryPredicate("hammer");
+        assertTrue(predicate.test(new PersonBuilder().withAssets("hammer").withTags(new String[0]).build()));
     }
 
     @Test
