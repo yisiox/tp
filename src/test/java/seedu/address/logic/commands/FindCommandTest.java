@@ -3,8 +3,8 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.Messages.MESSAGE_CONTACTS_LISTED_OVERVIEW;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.assertParseFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertParseSuccess;
@@ -58,7 +58,7 @@ public class FindCommandTest {
 
     @Test
     public void execute_stubThatReturnsFalse_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String expectedMessage = String.format(MESSAGE_CONTACTS_LISTED_OVERVIEW, 0);
         Predicate<Person> predicate = new PersonPredicateStub(false);
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
@@ -72,7 +72,7 @@ public class FindCommandTest {
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
 
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, personsList.size());
+        String expectedMessage = String.format(MESSAGE_CONTACTS_LISTED_OVERVIEW, personsList.size());
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(personsList, model.getFilteredPersonList());
     }
