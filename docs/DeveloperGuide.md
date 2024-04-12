@@ -409,10 +409,12 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* logistics managers who have a need to manage a significant number of contacts
-responsible for logistical assets
-* prefer desktop apps over other types
-* can type fast and prefers typing to other forms of input
+* logistics managers 
+* has a need to manage a significant number of contacts and their respective logistical assets
+* has a need to organise all assets
+* prefers desktop apps over other types
+* prefers typing to other forms of input
+* can type fast
 
 **Value proposition**:
 
@@ -438,33 +440,34 @@ Therefore, the application aims to deliver the following:
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority  | As a ...        | I want to ...                                                       | So that I can ...                                                                     |
-|-----------|---------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| `* * *`   | user          | add new contacts and assets                                       | keep track of these details                                                         |
-| `* * `    | user          | add tags to contacts                                              | categorize them according to my preferences and workflow                            |
-| `* * *`   | user          | delete contacts                                                   | update the list if a contact is no longer needed                                    |
-| `* * *`   | user          | edit contacts and assets                                          | change details without recreating contacts, as there are too many details to re-add |
-| `* * *`   | user          | easily view my existing contacts from the GUI                     | visually find the contacts I'm looking for                                          |
-| `* * *`   | user          | easily list, filter and navigate contacts                         | access relevant information quickly                                                 |
-| `* * *`   | user          | search contacts by any category (e.g. name, asset, etc.)          | easily find the relevant contact                                                    |
+| Priority  | As a ...        | I want to ...                                                    | So that I can ...                                                                   |
+|-----------|---------------|------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| `* * *`   | user          | add new contacts and assets                                      | keep track of these details                                                         |
+| `* * *`   | user          | delete contacts                                                  | update the list if a contact is no longer needed                                    |
+| `* * *`   | user          | edit contacts and assets                                         | change details without recreating contacts, as there are too many details to re-add |
+| `* * *`   | user          | easily view my existing contacts from the GUI                    | visually find the contacts I'm looking for                                          |
+| `* * *`   | user          | list all contacts                                                | view all contacts at a glance                                                       |
+| `* * *`   | user          | search contacts by any category (e.g. name, asset, etc.)         | easily find the relevant contact                                                    |
+| `* * *`   | user          | see usage instructions                                           | refer to instructions and examples when I forget how to use certain commands        |
+| `* * `    | user          | add tags to contacts                                             | categorize them according to my preferences and workflow                            |
 | `* *`     | user          | quickly paste contact information (e.g. email) onto the clipboard | use the contact information immediately after finding it                            |
-| `* *`     | new user      | view a drop-down suggestion of commands                           | efficiently navigate and utilize the app without extensive prior knowledge          |
-| `* *`     | user          | see no advertisements                                             | not be distracted from my tasks                                                     |
-| `* *`     | user          | add secondary personnel associated with an asset                  | have a backup contact if the main person is unreachable                             |
-| `* *`     | user          | toggle between light/dark theme                                   | customize the app to my preferences                                                 |
-| `* *`     | user          | resize the app’s window                                           | easily use multiple apps at once                                                    |
-| `* *`     | user          | change the profile picture of each contact                        | easily identify them                                                                |
-| `* *`     | user          | easily search within the system even if I mistype a few words     | more easily locate relevant information                                             |
-| `* *`     | hurried user  | have commands even with extra whitespaces accepted                | not waste time retyping commands                                                    |
-| `* *`     | advanced user | type shorter commands                                             | type commands faster                                                                |
-| `* *`     | advanced user | use keyboard shortcuts                                            | use the app more efficiently                                                        |
-| `*`       | advanced user | add custom fields                                                 | add more information to contacts                                                    |
+| `* *`     | user          | see no advertisements                                            | not be distracted from my tasks                                                     |
+| `* *`     | user          | add secondary personnel associated with an asset                 | have a backup contact if the main person is unreachable                             |
+| `* *`     | user          | toggle between light/dark theme                                  | customize the app to my preferences                                                 |
+| `* *`     | user          | resize the app’s window                                          | easily use multiple apps at once                                                    |
+| `* *`     | user          | change the profile picture of each contact                       | easily identify them                                                                |
+| `* *`     | user          | easily search within the system even if I mistype a few words    | more easily locate relevant information                                             |
+| `* *`     | new user      | view a drop-down suggestion of commands                          | efficiently navigate and utilize the app without extensive prior knowledge          |
+| `* *`     | hurried user  | have commands even with extra whitespaces accepted               | not waste time retyping commands                                                    |
+| `* *`     | advanced user | type shorter commands                                            | type commands faster                                                                |
+| `* *`     | advanced user | use keyboard shortcuts                                           | use the app more efficiently                                                        |
+| `*`       | advanced user | add custom fields                                                | add more information to contacts                                                    |
 
 ---
 
 ### Use cases
 
-(For all use cases below, the **System** is `AssetBook-3 (AB3)` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `AssetBook (AB)` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: UC1 - Add a contact**
 **MSS**
