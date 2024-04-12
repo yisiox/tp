@@ -368,7 +368,7 @@ up instead.
 
 ## Modifying Commands
 
-This section contains the details for **modifying commands**, which modify the contacts and/or assets tracked by *AssetBook*.
+This section contains the details for **modifying commands**, which add, edit or delete data in *AssetBook*.
 
 ### Adding a Contact: `add`
 
