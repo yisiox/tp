@@ -364,7 +364,7 @@ up instead.
 
 <box type="warning" seamless>
 
-Note that the backslash `\` is **not** allowed to be inputted as part of any parameter as it is reserved to signify the prefixes.
+Note that the backslash `\` is reserved for prefixes. It is **not** allowed to be part of any inputted parameter.
 
 </box>
 
