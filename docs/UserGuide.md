@@ -44,7 +44,7 @@ referenced section immediately.
 A [glossary](#glossary) is provided in case you encounter any unfamiliar terms.
 
 <box type="info" seamless>
-    Look out for icons like this, which may contain addition information, tips and warnings.
+    Look out for icons like this, which indicate addition information, tips and warnings.
 </box>
 
 <box type="tip" seamless>
@@ -91,8 +91,8 @@ or skip to the [command summary](#command-summary).
     + [Finding Contacts](#finding-contacts-find)
     + [Undoing Commands](#undoing-commands-undo)
     + [Redoing Commands](#redoing-commands-redo)
-    + [Navigating Command History](#navigating-command-history-and)
-    + [Copy a Field from a Contact](#copy-a-field-from-a-contact-copy)
+    + [Navigating Command History](#navigating-command-history--and-)
+    + [Copying a Field from a Contact](#copying-a-field-from-a-contact-copy)
     + [Getting Help](#getting-help-help)
     + [Exiting the Application](#exiting-the-application-exit)
   + [Saving the data file](#saving-the-data-file)
@@ -140,7 +140,7 @@ The following instructions are for **Windows**, **MacOS** and **Linux**.
 </p>
 
 <box type="tip" seamless>
-    Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#faq">FAQ</a> useful.
+    Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#frequently-asked-questions">FAQ</a> useful.
 </box>
 
 <div style="page-break-after: always;"></div>
@@ -359,6 +359,12 @@ up instead.
 <box type="warning" seamless>
 
 **If you are using a PDF version of this document**, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+
+</box>
+
+<box type="warning" seamless>
+
+Note that the backslash `\` is **not** allowed to be inputted as part of any parameter as it is reserved to signify the prefixes.
 
 </box>
 
@@ -601,7 +607,7 @@ Only successfully executed commands are saved in the command history.
 
 ---
 
-### Copy a Field from a Contact: `copy`
+### Copying a Field from a Contact: `copy`
 
 Copies a specific field to your clipboard for ease of pasting elsewhere.
 
@@ -667,7 +673,7 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 
 ## Frequently Asked Questions
 
-**Q**: My device is running MacOS, and the text is not displaying correctly.<br>
+**Q**: My device is running MacOS, and the text is not displaying correctly. What should I do?<br>
 **A**: Try installing [this](https://www.azul.com/downloads/?version=java-11-lts&os=macos&architecture=arm-64-bit&package=jdk-fx) Java 11 version instead.
 
 **Q**: My device is running an operating system that is not Windows, MacOS or Linux. Can I use *AssetBook*?<br>
