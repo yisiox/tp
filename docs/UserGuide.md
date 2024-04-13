@@ -23,7 +23,7 @@ Rejoice because *AssetBook* is here!
 *AssetBook* helps to streamline the task of **tracking contacts and which logistical assets they are in charge of**, 
 making your management tasks smoother than ever.
 
-*AssetBook* is designed to:
+*AssetBook* is a **contact management application** designed to:
 
 + **Digitally Organize Your Contacts**<br> Say goodbye to scattered contacts; now, have them all organized and accessible in one place.
 
@@ -176,6 +176,8 @@ Here we show you how to add a contact associated with an asset, search for your 
 All actions are performed through typing specific text into the [command input box](#navigating-the-gui).
 For detailed documentation of all available features, please refer to the [features](#features) section.
 
+---
+
 #### Adding Your First Contact
 
 Let's get started by adding our first contact, John Doe, into AssetBook.
@@ -205,6 +207,8 @@ Let's get started by adding our first contact, John Doe, into AssetBook.
    <img src="images/tutorial-add-3.png" style="width: 90%;">
 </p>
 
+---
+
 <div style="page-break-after: always;"></div>
 
 #### Searching for Contacts
@@ -228,6 +232,8 @@ Now that you've successfully added John Doe to AssetBook, let's go through the s
    <img src="images/tutorial-find-2.png" style="width: 90%;">
 </p>
 
+---
+
 <div style="page-break-after: always;"></div>
 
 #### Editing your Contact 
@@ -242,6 +248,8 @@ Let's update the email of our first contact added John.
 <p align="center">
   <img src="images/tutorial-edit-1.png" style="width: 90%;">
 </p>
+
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -263,6 +271,8 @@ We can edit John's email by typing the following command:<br>
 <p align="center">
    <img src="images/tutorial-edit-3.png" style="width: 90%;">
 </p>
+
+---
 
 <div style="page-break-after: always;"></div>
 
@@ -666,6 +676,9 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 
 **Q**: My device is running MacOS, and the text is not displaying correctly. What should I do?<br>
 **A**: Try installing [this](https://www.azul.com/downloads/?version=java-11-lts&os=macos&architecture=arm-64-bit&package=jdk-fx) Java 11 version instead.
+
+**Q**: My device is running MacOS, and I am unable to open `assetbook.jar` by double-clicking. What should I do?
+**A**: Right click `assetbook.jar`, then select 'Open'. Select 'Open' on the pop-up to start the application.
 
 **Q**: My device is running an operating system that is not Windows, MacOS or Linux. Can I use *AssetBook*?<br>
 **A**: *AssetBook* may work on your device, but it is not guaranteed to work. If there is high demand, we may start supporting new operating systems!
