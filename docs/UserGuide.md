@@ -166,24 +166,15 @@ You can resize the command output box by dragging the top edge.
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ### Tutorials
 
 This section provides a walkthrough of common actions performed in *AssetBook*.
 
+Here we show you how to add a contact associated with an asset, search for your added contact and edit it.
 All actions are performed through typing specific text into the [command input box](#navigating-the-gui).
 For detailed documentation of all available features, please refer to the [features](#features) section.
-
-<box type="tip" seamless>
-
-**Tips for Beginners**
-
-- Always double-check the details you enter.
-- If an action doesn't work as expected, review the command format and your input.
-- Practice makes perfect. Try adding a few contacts and assets to get comfortable with the commands.
-
-</box>
-
-<div style="page-break-after: always;"></div>
 
 #### Adding Your First Contact
 
@@ -246,8 +237,8 @@ Let's update the email of our first contact added John.
    Begin by locating and clicking into the command input box within the AssetBook interface.
 
 2. **Find out what is John's Index**:
-   Firstly, using the previous command `find`, we can find out what index John has by checking the number beside his name. 
-   In this case he has index 1.
+   We can find out what index John has by checking the number beside his name. The `find` command makes this easier by
+   limiting the number of contacts displayed on the screen. Here he has index 1.
 <p align="center">
   <img src="images/tutorial-edit-1.png" style="width: 90%;">
 </p>
@@ -317,8 +308,6 @@ Colored text that look like the following describe the format of a command.
 A valid input by the user corresponding to the above will be
 
 `add n\John Doe e\johndoe@example.com a\574 Ang Mo Kio Ave 10 p\12345678 A\L293D`
-
-<div style="page-break-after: always;"></div>
 
 <box type="tip" seamless>
 
@@ -529,6 +518,8 @@ If you unintentionally deleted all contacts, you can use the `undo` command to r
 </box>
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ## Miscellaneous Shortcuts
 
