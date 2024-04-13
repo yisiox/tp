@@ -91,7 +91,7 @@ or skip to the [command summary](#command-summary).
     + [Finding Contacts](#finding-contacts-find)
     + [Undoing Commands](#undoing-commands-undo)
     + [Redoing Commands](#redoing-commands-redo)
-    + [Navigating Command History](#navigating-command-history--and-)
+    + [Navigating Command History](#navigating-command-history-and)
     + [Copying a Field from a Contact](#copying-a-field-from-a-contact-copy)
     + [Getting Help](#getting-help-help)
     + [Exiting the Application](#exiting-the-application-exit)
