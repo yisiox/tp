@@ -94,6 +94,11 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 <puml src="diagrams/DeleteSequenceDiagram.puml"/>
 
+All `Command` objects are created via the enum factory pattern. The following sequence diagram expands on the actual command
+creation process encapsulated by `createCommandUsingFactory()` in the above diagram.
+
+<puml src="diagrams/CommandFactorySequenceDiagram.puml"/>
+
 How the `Logic` component works:
 
 1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn uses an enum factory `CommandType` to create the relevant enum (e.g. `CommandType.DELETE`) with the input arguments.
@@ -167,16 +172,14 @@ method which facilitates creating a new `Assets` object with a specified `Asset`
 Assets are created when the user invokes the `add`, `edit` or `asset` commands specifying an asset is to be
 associated with person.
 
-The following sequence diagram shows how an `add` command specifying creating a contact responsible for a 'rangefinder'
+The following sequence diagram shows how an `add` command specifying creating a contact responsible for a 'pen'
 asset interacts with the classes in `Logic` and `Model`.
 
 <puml src="diagrams/AddSequenceDiagram.puml"/>
 
-The follow sequence diagram expands on the process of creating a person with assets referenced in the above sequence diagram.
+The follow sequence diagram expands on the process of creating a person with assets referenced in the above diagram.
 
 <puml src="diagrams/PersonWithAssetsSequenceDiagram.puml"/>
-
-
 
 #### Design Considerations
 

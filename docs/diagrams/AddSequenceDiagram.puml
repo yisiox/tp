@@ -15,14 +15,15 @@ participant "assets:Assets" as Assets MODEL_COLOR
 participant "model:Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("add ... A\\rangefinder")
+[-> LogicManager : execute("add ... A\\pen")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("add ... A\\rangefinder")
+LogicManager -> AddressBookParser : parseCommand("add ... A\\pen")
 activate AddressBookParser
 
 ' Abstracted factory method call
-AddressBookParser -> AddressBookParser : createCommandUsingFactory("add ... A\\rangefinder")
+AddressBookParser -> AddressBookParser : createCommandUsingFactory("add ... A\\pen")
+note right : createCommandUsingFactory() is the same \n fictitious command as explained in Logic
 activate AddressBookParser
 
 

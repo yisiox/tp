@@ -20,8 +20,8 @@ activate AddressBookParser
 
 ' Abstracted factory method call
 AddressBookParser -> AddressBookParser : createCommandUsingFactory("delete 1")
+note right: createCommandUsingFactory() is a fictitious command \n representing the command creation process for brevity
 activate AddressBookParser
-note right: createCommandUsingFactory() is a fictitious simplified representation of the command creation process.
 
 create DeleteCommand
 AddressBookParser -> DeleteCommand
