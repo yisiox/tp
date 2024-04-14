@@ -153,36 +153,50 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Asset feature
 
-Asset related functionality is supported by an `Asset` and `Assets` objects.
+Asset related functionality is supported by `Asset` and `Assets` objects. `Assets` are the actual field belonging to
+a `Person` object, and may contain zero or more `Asset` objects.
 
 The following class diagram details the relationship between classes involved under the model component.
 
 <puml src="diagrams/AssetClassDiagram.puml"/>
 
 `Assets` and `Asset` objects are immutable and expose a static factory `of` method which parses `String` objects to
-return the respective class. The `Assets` class has a static `edit` method which facilitates creating a new `Assets`
-object with a specified `Asset` object replaced.
+return the respective class. To support editing a `Person` object's `Assets`, the `Assets` class has a static `edit` 
+method which facilitates creating a new `Assets` object with a specified `Asset` object replaced.
 
 Assets are created when the user invokes the `add`, `edit` or `asset` commands specifying an asset is to be
 associated with person.
 
+The following sequence diagram shows how an `add` command specifying creating a contact responsible for a 'rangefinder'
+asset interacts with the classes in `Logic` and `Model`.
+
+<puml src="diagrams/AddSequenceDiagram.puml"/>
+
+The follow sequence diagram expands on the process of creating a person with assets referenced in the above sequence diagram.
+
+<puml src="diagrams/PersonWithAssetsSequenceDiagram.puml"/>
+
+
+
 #### Design Considerations
 
 **Aspect: How users create and update assets**
-* **Alternative 1 (selected choice)**: The user specifies only the serial no. of the asset in `add`.
+* **Alternative 1**: The user specifies only the serial no. of the asset in `add`.
   The user uses the `asset` command to add or edit details to each asset.
   * Pros:
     * Each asset is unambiguously and uniquely identified on creation.
     * The user cannot make mistakes such as creating the same asset twice with different details.
   * Cons:
     * The user must use two separate commands to add an asset with details.
-* **Alternative 2**: The user specifies all details of the asset in `add`.
+* **Alternative 2 (selected choice)**: The user specifies all details of the asset in `add`. Assets only have a name.
   * Pros:
     * Advanced users save time as only a single command is required to specify all details of multiple assets.
+    * There is no possibility of data inconsistency.
   * Cons:
-    * There is a lot of room for users to make mistakes such as creating the same asset twice with different details.
+    * There is a lot of room for users to make mistakes such as creating the same asset twice unintentionally.
       This leads to the need to decide how best to handle each error. Throwing errors may frustrate the user while 
       making a guess of the user's intention may result in unintended changes made to the contacts.
+    * The onus is on the user to uniquely name similar but distinct assets.
 * **Alternative 3**: Have a dedicated set of commands to create and edit assets.
   * Pros:
     * The person related commands are not overloaded with the functionality to control assets.
@@ -190,8 +204,15 @@ associated with person.
   * Cons:
     * Harder to implement, a second set of commands is essentially required.
     * Not the focus of the application, which is contact management.
+* **Alternative 4**: Repurpose the existing tags feature as assets.
+  * Pros:
+    * Little implementation work and lower chance of bugs.
+    * Less clutter in information presented to the user.
+  * Cons:
+    * Limited flexibility in extending the feature.
+    * Users lose the ability to tag contacts which is a natural feature to have.
 
-**Aspect: How asset update is implemented**
+**Aspect: How updating of assets is implemented**
 * **Alternative 1 (selected choice)**: All `Assets` and `Asset` objects are immutable; a linear search and replace
   is performed to update the `UniquePersonList` whenever a change to any is required.
   * Pros:
