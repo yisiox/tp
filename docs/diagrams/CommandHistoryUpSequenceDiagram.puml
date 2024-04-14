@@ -4,7 +4,7 @@ skinparam ArrowFontStyle plain
 
 box UI UI_COLOR_T1
 participant ":CommandBox" as CommandBox UI_COLOR
-participant ":CommandExecutor" as CommandExecutor UI_COLOR
+participant ":RecordedCommandExecutor" as RecordedCommandExecutor UI_COLOR
 end box
 
 box Logic LOGIC_COLOR_T1
@@ -19,10 +19,10 @@ participant ":TextField" as TextField JAVAFX_COLOR
 -> CommandBox : handleKeyPressed(event)
 activate CommandBox
 
-CommandBox -> CommandExecutor : getPreviousCommandText()
-activate CommandExecutor
+CommandBox -> RecordedCommandExecutor : getPreviousCommandText()
+activate RecordedCommandExecutor
 
-CommandExecutor -> LogicManager : getPreviousCommandText()
+RecordedCommandExecutor -> LogicManager : getPreviousCommandText()
 activate LogicManager
 
 LogicManager -> CommandHistory : getPrevious()
@@ -31,11 +31,11 @@ activate CommandHistory
 CommandHistory --> LogicManager : commandText
 deactivate CommandHistory
 
-LogicManager --> CommandExecutor : commandText
+LogicManager --> RecordedCommandExecutor : commandText
 deactivate LogicManager
 
-CommandExecutor --> CommandBox : commandText
-deactivate CommandExecutor
+RecordedCommandExecutor --> CommandBox : commandText
+deactivate RecordedCommandExecutor
 
 CommandBox -> TextField : setText(commandText)
 activate TextField
