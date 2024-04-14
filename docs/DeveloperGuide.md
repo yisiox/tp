@@ -785,4 +785,3 @@ testers are expected to do more *exploratory* testing.
 5. **Feature Flaw** - Currently, using the `add` command for contacts with the same name is not allowed, but there can exist multiple people with the same name. In future versions, we will improve duplicate person detection and allow multiple contacts with the same name. 
 6. **Feature Flaw** - Currently, tags and assets have a very similar color scheme, which makes it hard to differentiate for users. In future versions, we will add more visual clarity tags and assets.
 7. **Feature Flaw** - Currently, the error message display for duplicate asset names in the `asset` command is inaccruate to the actual problem. In future versions, we will modify the error message specifically for this case.
-8. 
