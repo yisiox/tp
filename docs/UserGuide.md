@@ -45,17 +45,17 @@ referenced section immediately.
 A [glossary](#glossary) is provided in case you encounter any unfamiliar terms.
 
 <box type="info" seamless>
-    Look out for texts with icons similar to this, which would contain additional information, tips, or warnings.
+Look out for texts with icons similar to this, which would contain additional information, tips, or warnings.
 </box>
 
 #### New Users
 
-If this your first time using *AssetBook*, head to the [quick start](#quick-start) to learn how to set up the 
+If this your first time using *AssetBook*, head over to [quick start](#quick-start) to learn how to set up the 
 application and get started.
 After which, you may take a look at the [features](#features) of *AssetBook*, or simply follow this guide in order.
 
 <box type="info" seamless>
-    Don't worry if you don't have much technical know-how! We will guide you through step-by-step.
+Don't worry if you don't have much technical know-how! We will guide you through step-by-step.
 </box>
 
 #### Experienced Users
@@ -88,7 +88,7 @@ or skip to the [command summary](#command-summary).
     + [Finding Contacts](#finding-contacts-find)
     + [Undoing Commands](#undoing-commands-undo)
     + [Redoing Commands](#redoing-commands-redo)
-    + [Navigating Command History](#navigating-command-history-and)
+    + [Display Previous Commands](#display-previous-commands-and)
     + [Copying a Field from a Contact](#copying-a-field-from-a-contact-copy)
     + [Getting Help](#getting-help-help)
     + [Exiting the Application](#exiting-the-application-exit)
@@ -108,9 +108,7 @@ or skip to the [command summary](#command-summary).
 ### Setting Up
 
 <box type="info" seamless>
-
 The following instructions are for **Windows**, **MacOS** and **Linux**.
-
 </box>
 
 1. Ensure you have [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) installed on your device.
@@ -137,7 +135,7 @@ The following instructions are for **Windows**, **MacOS** and **Linux**.
 </p>
 
 <box type="tip" seamless>
-    Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#frequently-asked-questions">FAQ</a> useful.
+Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#frequently-asked-questions">FAQ</a> useful.
 </box>
 
 <div style="page-break-after: always;"></div>
@@ -321,9 +319,7 @@ A valid input by the user corresponding to the above will be
 `add n\John Doe e\johndoe@example.com a\574 Ang Mo Kio Ave 10 p\12345678 A\L293D`
 
 <box type="tip" seamless>
-
 Command words are not case-sensitive, i.e. `add`, `Add`, `ADD`, etc. are all valid.
-
 </box>
 
 <box type="info" seamless>
@@ -357,15 +353,11 @@ After successful execution of a command, some feedback will appear in the [comma
 If you enter something that the application did not expect or does not understand, an *error* message will show up instead.
 
 <box type="warning" seamless>
-
 **If you are using a PDF version of this document**, be careful when you copy and paste commands that span multiple lines, as space characters may be missing when copied over to the application.
-
 </box>
 
 <box type="warning" seamless>
-
 Note that the backslash `\` is reserved for prefixes. It is **not** allowed to be part of any field.
-
 </box>
 
 ---
@@ -446,7 +438,6 @@ If the command was not executed successfully, the proper format of the `add` com
 `TAG`
 * Tag(s) to categorize the contact into.
 * Only digits and alphabets are allowed.
-* Spaces are not allowed.
 
 `ASSET`
 * Asset(s) associated with contact.
@@ -455,9 +446,7 @@ If the command was not executed successfully, the proper format of the `add` com
 * Multiple assets can be specified at once. For example, a valid option is `A\asset1 A\asset2 A\asset3`.
 
 <box type="info" seamless>
-
 You may assign the same asset to multiple contacts, so remember to name different assets with unique names.
-
 </box>
 
 ---
@@ -472,9 +461,9 @@ Format: `delete INDEX`
 
 #### Example
 
-`delete 1` deletes the contact with index `1`.
+`delete 1` deletes the contact at index `1`.
 
-* `INDEX` refers to the unique contact index shown in the GUI.
+* `INDEX` refers to the unique contact index shown beside the contact names.
 
 ---
 
@@ -485,18 +474,16 @@ Edit existing contacts without recreating them.
 Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET]...`
 
 #### Example
-`edit 1 e\newemail@example.com` edits the contact with id `1`, changing its email to `newemail@example.com`.
+`edit 1 e\newemail@example.com` edits the contact with index `1`, changing its email to `newemail@example.com`.
 
-* Edits the contact with the specified `INDEX`. `INDEX` refers to the unique contact index shown in the GUI.
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
+* Edits the contact at the specified `INDEX`. `INDEX` refers to the unique contact index shown in the GUI.
+* At least one of the optional parameters must be provided.
+* Existing fields will be changed to the inputted fields.
 * You can remove all tags associated to the contact by typing `t\` without specifying any tags after it.
 * You can remove all assets associated to the contact by typing `A\` without specifying any assets after it.
 
 <box type="warning" seamless>
-
-Edit **replaces** the current assets associated to a contact. It does **not** add to the list of associated assets.
-
+Edit **replaces** the current tags and assets of a contact. It does **not** add on to existing tags and assets.
 </box>
 
 ---
@@ -524,9 +511,7 @@ Deletes all contacts.
 Format: `clear`
 
 <box type="tip" seamless>
-
-If you unintentionally deleted all contacts, you can use the `undo` command to revert this.
-
+If you unintentionally deleted all your contacts, you can use the `undo` command to bring them back.
 </box>
 
 ---
@@ -543,11 +528,13 @@ Displays all contacts.
 
 Format: `list`
 
+* Useful when you have filtered the contacts list with `find`.
+
 ---
 
 ### Finding Contacts: `find`
 
-Finds contacts by names, tags or assets.
+Finds contacts by name, tag or asset.
 
 Format: `find QUERY`
 
@@ -555,7 +542,7 @@ Format: `find QUERY`
 `find John` searches all contact names, tags and assets for the query `John`.
 
 * The query is case-insensitive.
-* All whitespaces in both the query and fields will be ignored.
+* Spaces in both query and fields will be ignored.
 * Each field is individually checked against the query.
 * A match is found if the field contains the entire query, i.e. the field `assets` contains `set`, but does not contain `settings`.
 
@@ -587,39 +574,39 @@ Format: `redo`
 If an asset name was changed, after `undo` was executed to verify what the previous asset name was, `redo` can be used to revert to the new asset name.
 
 <box type="warning" seamless>
-
 After executing an `undo` command, you cannot `redo` this if another modifying command was executed.
-
 </box>
 
 ---
 
 <div style="page-break-after: always;"></div>
 
-### Navigating Command History: `↑` and `↓`
+### Display Previous Commands: `↑` and `↓`
 
-Use keyboard shortcuts to navigate the command history.
+Displays previously executed commands, which can then be edited and executed again.
 
-Press the `↑` arrow key to view the previous command.
+Press the `↑` arrow key to show older commands.
 
-Press the `↓` arrow key to view the next command.
+Press the `↓` arrow key to show newer commands.
 
 <box type="warning" seamless>
-Only successfully executed commands are saved in the command history.
+Only successfully executed commands will be shown.
 </box>
 
 ---
 
 ### Copying a Field from a Contact: `copy`
 
-Copies a specific field to your clipboard for ease of pasting elsewhere.
+Copies a specific field to your clipboard, which you can paste elsewhere.
 
 Format: `copy INDEX PREFIX`
 
-#### Example
-`copy 1 p\` copies the phone number of the first contact displayed onto the clipboard.
-
 * `INDEX` refers to the unique contact index shown in the GUI.
+
+#### Example
+`copy 1 p\` copies the phone number of the contact with index `1` onto the clipboard.
+
+<br>
 
 #### Prefix Reference
 
@@ -646,7 +633,7 @@ Format: `help`
 
 ### Exiting the Application: `exit`
 
-Exits the application. Equivalent to pressing the cross in the top right corner.
+Exits the application. Equivalent to pressing `X` on the top right corner on Windows, and top left corner on MacOS.
 
 Format: `exit`
 
@@ -666,8 +653,9 @@ Advanced users are welcome to update data directly by editing that data file.
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, *AssetBook* will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+If your changes to the data file makes the format invalid, *AssetBook* will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the *AssetBook* to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+
 </box>
 
 ---
@@ -679,11 +667,14 @@ Furthermore, certain edits can cause the *AssetBook* to behave in unexpected way
 **Q**: My device is running MacOS, and the text is not displaying correctly. What should I do?<br>
 **A**: Try installing [this](https://www.azul.com/downloads/?version=java-11-lts&os=macos&architecture=arm-64-bit&package=jdk-fx) Java 11 version instead.
 
-**Q**: My device is running MacOS, and I am unable to open `assetbook.jar` by double-clicking. What should I do?
-**A**: Right click `assetbook.jar`, then select 'Open'. Select 'Open' on the pop-up to start the application.
+**Q**: My device is running MacOS, and I am unable to open `assetbook.jar` by double-clicking. What should I do?<br>
+**A**: Hold `Ctrl` and click on `assetbook.jar`. Select 'Open', and then 'Open' again to start the application.
+
+**Q**: My device is running Linux, and I am unable to open `assetbook.jar` by double-clicking. What should I do?<br>
+**A**: Open the terminal, enter `java -jar path/to/assetbook.jar`, replacing `path/to` with the location where `assetbook.jar` is saved.
 
 **Q**: My device is running an operating system that is not Windows, MacOS or Linux. Can I use *AssetBook*?<br>
-**A**: *AssetBook* may work on your device, but it is not guaranteed to work. If there is high demand, we may start supporting new operating systems!
+**A**: *AssetBook* may work on your device, but it is not guaranteed to work. If there is high demand, we may start supporting other operating systems!
 
 **Q**: Do I have to use Java 11 specifically?<br>
 **A**: While it may work with other versions of Java, *AssetBook* is developed specifically for Java 11. We cannot guarantee that it works on versions other than Java 11.
@@ -707,12 +698,12 @@ that may include symbols such as `/`, `'` and `-`. As such, the application may 
 A remedy is planned for the future to perform more robust checks on names.
 
 #### Scrolling
-The astute user will notice that ability to scroll with keyboard is missing from the application's features. This feature
-will be implemented in an upcoming release as soon as possible.
+An astute user may notice that the ability to scroll with the keyboard is missing from the application. This feature
+will be implemented as soon as possible in an upcoming release.
 
 #### More Asset Details
-Some users may require greater detail about the assets to be recorded. We plan to add features to support adding more
-details to assets such as serial number, location, etc.
+Some users may require assets to have more details recorded. We plan to add features that allow adding of more
+fields to assets such as serial number, location, etc.
 
 ---
 
@@ -726,12 +717,13 @@ Command          | Format                                                       
 **Delete**       | `delete INDEX`                                                                | `delete 1`
 **Edit contact** | `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET]...` | `edit 1 e\newemail@example.com`
 **Edit asset**   | `asset o\OLD_ASSET_NAME n\NEW_ASSET_NAME`                                     | `asset o\hammer n\screwdriver`
+**Clear**        | `clear`                                                                       | `clear`
 **List**         | `list`                                                                        | `list`
 **Find**         | `find QUERY`                                                                  | `find John`
 **Undo**         | `undo`                                                                        | `undo`
 **Redo**         | `redo`                                                                        | `redo`
-**Clear**        | `clear`                                                                       | `clear`
 **Copy**         | `copy INDEX PREFIX`                                                           | `copy 1 p\`
+**Help**         | `help`                                                                        | `help`
 **Exit**         | `exit`                                                                        | `exit`
 
 ---
@@ -756,7 +748,7 @@ A place where text is stored in the computer, and can be typically retrieved wit
 A specific text input entered into the command input box to interact with *AssetBook*.
 
 #### Field
-
+A detail that is part of a parameter, and is after the prefix. For example, `NAME` is a field of the `n\NAME` parameter.
 
 #### GUI
 Graphical User Interface. The window that appears when an application is launched.
@@ -765,7 +757,7 @@ Graphical User Interface. The window that appears when an application is launche
 Windows, MacOS and Linux are examples of operating systems.
 
 #### Parameter
-A detail that a command expects to be entered by the user. For example, name is a parameter of the `add` command.
+A detail that a command expects to be entered by the user. For example, `n\NAME` is a parameter of the `add` command.
 
 #### Prefix
-
+A detail that is part of a parameter, and is before the field. For example, `n\` is a prefix of the `n\NAME` parameter.
