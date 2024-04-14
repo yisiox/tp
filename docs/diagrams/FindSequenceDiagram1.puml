@@ -15,7 +15,7 @@ end box
 activate FindCommandClass
 
 create PersonMatchesQueryPredicate
-FindCommandClass -> PersonMatchesQueryPredicate : PersonMatchesQueryPredicate(["David"])
+FindCommandClass -> PersonMatchesQueryPredicate : PersonMatchesQueryPredicate("David")
 activate PersonMatchesQueryPredicate
 
 PersonMatchesQueryPredicate --> FindCommandClass : predicate

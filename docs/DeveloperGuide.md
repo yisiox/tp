@@ -212,7 +212,7 @@ associated with person.
 
 The `PersonMatchesQueryPredicate` class defines the algorithm that determines whether a `Person` matches the user's `query` string.
 
-The following sequence diagram shows how the command object is created:
+The following sequence diagram shows how the `command` object is created. Note that the leading whitespace in `" David"` is intentional due to the implementation of `AddressBookParser`.
 
 <puml src="diagrams/FindSequenceDiagram1.puml"/>
 <br><br>
