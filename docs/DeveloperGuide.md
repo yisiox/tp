@@ -210,9 +210,15 @@ associated with person.
 
 ### Find feature
 
-The following sequence diagram shows how a `find David` command is executed.
+The `PersonMatchesQueryPredicate` class defines the algorithm that determines whether a `Person` matches the user's `query` string.
 
-<puml src="diagrams/FindSequenceDiagram.puml" alt="Interactions between components for the `find David` Command" />
+The following sequence diagram shows how the command object is created:
+
+<puml src="diagrams/FindSequenceDiagram1.puml" alt="Interactions between components for the `find David` Command" />
+<br><br>
+
+The _filtered_ list of `Person` objects in `model` is then updated as such:
+<puml src="diagrams/FindSequenceDiagram2.puml" alt="Interactions between components for the `find David` Command" />
 <br><br>
 
 ### Edit Asset feature
