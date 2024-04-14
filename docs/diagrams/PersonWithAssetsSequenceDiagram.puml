@@ -22,7 +22,7 @@ note right: Note that Person and Assets also use factory \n methods, but it is n
 activate Person
 
 Person -> Person : createOtherFields()
-note over Person : Fictitious method representing creation \n of other person fields
+note right : Fictitious method representing \n creation of other person fields
 activate Person
 
 Person --> Person
