@@ -20,18 +20,18 @@ activate AddressBookParser
 
 ' Abstracted factory method call
 AddressBookParser -> AddressBookParser : createCommandUsingFactory("delete 1")
-activate AddressBookParser #FFBBBB
-note right: createCommandUsingFactory() is a simplified representation of the command creation process.
+activate AddressBookParser
+note right: createCommandUsingFactory() is a fictitious simplified representation of the command creation process.
 
 create DeleteCommand
-AddressBookParser -> DeleteCommand : new("1")
+AddressBookParser -> DeleteCommand
 activate DeleteCommand
 
-DeleteCommand --> AddressBookParser
+DeleteCommand --> AddressBookParser : command
 deactivate DeleteCommand
 
-AddressBookParser --> AddressBookParser
-deactivate AddressBookParser #FFBBBB
+AddressBookParser --> AddressBookParser : command
+deactivate AddressBookParser
 
 AddressBookParser --> LogicManager : command
 deactivate AddressBookParser
@@ -48,6 +48,6 @@ deactivate Model
 DeleteCommand --> LogicManager : result
 deactivate DeleteCommand
 
-[<--LogicManager
+[<--LogicManager : result
 deactivate LogicManager
 @enduml
