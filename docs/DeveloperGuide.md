@@ -69,7 +69,7 @@ The sections below give more details of each component.
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
-<puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
+<puml src="diagrams/UiClassDiagram.puml"/>
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
@@ -92,7 +92,7 @@ Here's a (partial) class diagram of the `Logic` component:
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
 
-<puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
+<puml src="diagrams/DeleteSequenceDiagram.puml"/>
 
 How the `Logic` component works:
 
@@ -157,7 +157,7 @@ Asset related functionality is supported by an `Asset` and `Assets` objects.
 
 The following class diagram details the relationship between classes involved under the model component.
 
-<puml src="diagrams/AssetClassDiagram.puml" alt="Asset Model Class Diagram" />
+<puml src="diagrams/AssetClassDiagram.puml"/>
 
 `Assets` and `Asset` objects are immutable and expose a static factory `of` method which parses `String` objects to
 return the respective class. The `Assets` class has a static `edit` method which facilitates creating a new `Assets`
@@ -214,18 +214,18 @@ The `PersonMatchesQueryPredicate` class defines the algorithm that determines wh
 
 The following sequence diagram shows how the command object is created:
 
-<puml src="diagrams/FindSequenceDiagram1.puml" alt="Interactions between components for the `find David` Command" />
+<puml src="diagrams/FindSequenceDiagram1.puml"/>
 <br><br>
 
 The _filtered_ list of `Person` objects in `model` is then updated as such:
-<puml src="diagrams/FindSequenceDiagram2.puml" alt="Interactions between components for the `find David` Command" />
+<puml src="diagrams/FindSequenceDiagram2.puml"/>
 <br><br>
 
 ### Edit Asset feature
 
 The following sequence diagram shows how a `edita old/Aircon new/Hammer` command is executed.
 
-<puml src="diagrams/EditAssetSequenceDiagram.puml" alt="Interactions between components for the `edita old/Aircon new/Hammer` Command" />
+<puml src="diagrams/EditAssetSequenceDiagram.puml"/>
 <br><br>
 
 The edit asset mechanism is implemented by the following operations:
@@ -252,15 +252,15 @@ Given below is an example usage scenario and how the undo/redo mechanism behaves
 
 Step 1. The user launches the application for the first time. The `persons` list will be initialized with the initial address book state (State 0), with the `undoStack` and `redoStack` empty.
 
-<puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
+<puml src="diagrams/UndoRedoState0.puml"/>
 
 Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls several other functions until it calls `save()`. This causes the state of the `persons` list **before** the `delete 5` command is executed (State 0) to be saved into the `undoStack`. The 5th person is then removed from the `persons` list (State 1).
 
-<puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
+<puml src="diagrams/UndoRedoState1.puml"/>
 
 Step 3. The user executes `add n/David ...` to add a new person. The `add` command also calls `save()`, causing another `persons` list state (State 1) to be saved into the `undoStack`, before adding the person (State 2).
 
-<puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
+<puml src="diagrams/UndoRedoState2.puml"/>
 
 <box type="info" seamless>
 
@@ -275,7 +275,7 @@ Step 4. The user now decides that adding the person was a mistake, and decides t
 
 Notice that the states are copied into the `persons` list instead of replacing it, resulting in the exact same object being used. This is to prevent synchronization issues and to reduce coupling with the GUI, allowing the GUI to use this same list object throughout the program's life.
 
-<puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
+<puml src="diagrams/UndoRedoState3.puml"/>
 
 
 <box type="info" seamless>
@@ -286,7 +286,7 @@ Notice that the states are copied into the `persons` list instead of replacing i
 
 The following sequence diagram shows how an undo operation goes through the `Logic` component:
 
-<puml src="diagrams/UndoSequenceDiagram-Logic.puml" alt="UndoSequenceDiagram-Logic" />
+<puml src="diagrams/UndoSequenceDiagram-Logic.puml"/>
 
 <box type="info" seamless>
 
@@ -296,7 +296,7 @@ The following sequence diagram shows how an undo operation goes through the `Log
 
 Similarly, how an undo operation goes through the `Model` component is shown below:
 
-<puml src="diagrams/UndoSequenceDiagram-Model.puml" alt="UndoSequenceDiagram-Model" />
+<puml src="diagrams/UndoSequenceDiagram-Model.puml"/>
 
 The `redo` command does the opposite — it calls `Model#redo()`, which will:
 1. Copy the `persons` list into the `undoStack`.
@@ -311,14 +311,14 @@ The `redo` command does the opposite — it calls `Model#redo()`, which will:
 
 Step 5. The user then decides to execute the command `list`. Commands that do not modify the `persons` list, such as `list`, will usually not call `AddressBook#save()`, `Model#undo()` or `Model#redo()`. Thus, the `undoStack` and `redoStack` remains unchanged.
 
-<puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
+<puml src="diagrams/UndoRedoState4.puml"/>
 
 Step 6. The user executes `clear`, which calls `AddressBook#save()`.
 Since there are still states in the `redoStack`, all states in the `redoStack` will be removed.
 
 Reason: It no longer makes sense to redo the `add n/David ...` command and ignore the `clear` command. This is the behavior that most modern desktop applications follow.
 
-<puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
+<puml src="diagrams/UndoRedoState5.puml"/>
 
 The following activity diagram summarizes what happens when a user executes a new command (excluding undo & redo):
 
