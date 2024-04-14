@@ -392,11 +392,6 @@ The following activity diagram summarizes what happens when a user executes a ne
         There would be no benefits of using a LinkedList here otherwise.
 </li>
 
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
