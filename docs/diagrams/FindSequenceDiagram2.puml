@@ -19,7 +19,10 @@ activate Model
 Model --> FindCommand
 deactivate Model
 
-<-- FindCommand:commandResult
+<-- FindCommand : result
 deactivate FindCommand
+
+<-[hidden]- FindCommand
+destroy FindCommand
 
 @enduml

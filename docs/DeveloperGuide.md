@@ -25,6 +25,12 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ## **Design**
 
+<box type="info" seamless>
+
+**Note:** The lifeline for *Commands* in all Sequence Diagrams should end at the destroy marker (X) (if they exist) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</box>
+
 ### Architecture
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
@@ -89,6 +95,8 @@ The `UI` component,
 Here's a (partial) class diagram of the `Logic` component:
 
 <puml src="diagrams/LogicClassDiagram.puml" width="550"/>
+
+---
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
 
@@ -271,17 +279,17 @@ Step 1. The user launches the application for the first time. The `persons` list
 
 <puml src="diagrams/UndoRedoState0.puml"/>
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls several other functions until it calls `save()`. This causes the state of the `persons` list **before** the `delete 5` command is executed (State 0) to be saved into the `undoStack`. The 5th person is then removed from the `persons` list (State 1).
+Step 2. The user executes the command `delete 5` to delete the 5th person in the address book. The `delete` command eventually calls `save()`, which causes the state of the `persons` list **before** `delete 5` is executed (State 0) to be saved into the `undoStack`. The 5th person is then removed from the `persons` list (State 1).
 
 <puml src="diagrams/UndoRedoState1.puml"/>
 
-Step 3. The user executes `add n/David ...` to add a new person. The `add` command also calls `save()`, causing another `persons` list state (State 1) to be saved into the `undoStack`, before adding the person (State 2).
+Step 3. The user executes `add n/David ...` to add a new person. The `add` command eventually calls `save()`, causing another `persons` list state (State 1) to be saved into the `undoStack`, before adding the person (State 2).
 
 <puml src="diagrams/UndoRedoState2.puml"/>
 
 <box type="info" seamless>
 
-**Note:** If a command fails its execution, or if the command does not modify `persons` list, it will not call `save()`, so the `persons` list state will not be saved into the `undoStack`.
+**Note:** If a command fails its execution, or if the command does not modify the `persons` list, it will not call `save()`. Hence, this `persons` list state will not be saved into the `undoStack`.
 
 </box>
 
@@ -305,12 +313,6 @@ The following sequence diagram shows how an undo operation goes through the `Log
 
 <puml src="diagrams/UndoSequenceDiagram-Logic.puml"/>
 
-<box type="info" seamless>
-
-**Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</box>
-
 Similarly, how an undo operation goes through the `Model` component is shown below:
 
 <puml src="diagrams/UndoSequenceDiagram-Model.puml"/>
@@ -330,10 +332,10 @@ Step 5. The user then decides to execute the command `list`. Commands that do no
 
 <puml src="diagrams/UndoRedoState4.puml"/>
 
-Step 6. The user executes `clear`, which calls `AddressBook#save()`.
-Since there are still states in the `redoStack`, all states in the `redoStack` will be removed.
+Step 6. The user executes `clear`, which eventually calls `save()`.
+Since there are still states in the `redoStack`, all states in the `redoStack` (State 2) will be removed.
 
-Reason: It no longer makes sense to redo the `add n/David ...` command and ignore the `clear` command. This is the behavior that most modern desktop applications follow.
+Reason: It no longer makes sense to redo the `add n/David ...` command (State 2), and ignore the `clear` command (State 3). This is the behavior that most modern desktop applications follow.
 
 <puml src="diagrams/UndoRedoState5.puml"/>
 
@@ -358,7 +360,7 @@ The following activity diagram summarizes what happens when a user executes a ne
     * Pros:
       * Saves history between different program launches.
     * Cons:
-      * May have performance issues with many storage accesses.
+      * May have performance issues with frequent storage access.
       * Increases coupling as `Model` will now need a reference to `Storage`.
 </li>
 
@@ -367,7 +369,7 @@ The following activity diagram summarizes what happens when a user executes a ne
       * Reduces memory footprint as only 1 String is used as compared to a many objects per Person.
       * Faster than JSON files as there are no accesses to storage.
     * Cons:
-      * May have performance issues as it has to be deserialized each time.
+      * May have performance issues as it needs to be deserialized each time.
 </li>
 
 * **Alternative 4:** Each command implements their own specific `undo()` and `redo()` methods
@@ -375,8 +377,8 @@ The following activity diagram summarizes what happens when a user executes a ne
       * Will use less memory (e.g. for `delete`, just save the person being deleted).
       * Best performance.
     * Cons:
-      * We must ensure that the implementation of each individual `undo` command is correct.
-        This would be especially difficult for commands that modify multiple people at once (e.g. `asset` editing commands)
+      * We must ensure that the implementation of each command's respective `undo` command is correct.
+        This would be especially difficult for commands that modify multiple people at once (e.g. `asset` command)
 </li>
 
 **Aspect: Data structure used to store undo & redo states:**
@@ -405,8 +407,8 @@ The following activity diagram summarizes what happens when a user executes a ne
       * Simple data structure.
     * Cons:
       * Time-consuming to implement: Unfortunately, the built-in LinkedList does not have a method to drop all nodes after a certain index.
-        Hence a custom data structure would have to be used in order to quickly drop nodes after a certain index.
-        There would be no benefits of using a LinkedList here otherwise.
+        Hence a custom data structure would have to be implemented in order to have this feature.
+        There will not be much benefits of using a LinkedList here otherwise.
 </li>
 
 ### Command History feature

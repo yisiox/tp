@@ -54,6 +54,9 @@ deactivate Model
 AddCommand --> LogicManager : result
 deactivate AddCommand
 
+AddCommand -[hidden]-> LogicManager
+destroy AddCommand
+
 [<--LogicManager : result
 deactivate LogicManager
 @enduml
