@@ -11,7 +11,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonMatchesQueryPredicate;
 
 /**
- * Finds and lists all persons in the address book such that certain fields match the predicate.
+ * Finds and lists all contacts in the address book such that certain fields match the predicate.
  * See {@code PersonMatchesQueryPredicate}.
  */
 public class FindCommand extends Command {
@@ -19,7 +19,7 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Finds all persons whose names, assets or tags contains "
+            + ": Finds all contacts whose names, assets or tags contains "
             + "the specified query (case-insensitive) and displays them as a list with index numbers.\n"
             + "All whitespaces are ignored.\n"
             + "Parameters: QUERY\n"
@@ -35,7 +35,7 @@ public class FindCommand extends Command {
     public String execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
-        return String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size());
+        return String.format(Messages.MESSAGE_CONTACTS_LISTED_OVERVIEW, model.getFilteredPersonList().size());
     }
 
     /**

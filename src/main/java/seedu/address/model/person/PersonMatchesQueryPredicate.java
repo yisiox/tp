@@ -18,9 +18,9 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
 
     /**
      * Processes the query string and constructs the object.
-     * @param query the query string.
-     * @throws NullPointerException if the query string is null.
-     * @throws AssertionError if the query string is empty.
+     * @param query The query string.
+     * @throws NullPointerException If the query string is null.
+     * @throws AssertionError If the query string is empty.
      */
     public PersonMatchesQueryPredicate(String query) {
         requireNonNull(query);
@@ -28,6 +28,9 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
         this.query = processString(query);
     }
 
+    /**
+     * Converts the input {@code str} to lowercase and removes all whitespaces.
+    */
     private static String processString(String str) {
         return str.toLowerCase().replaceAll(STRIP_WHITESPACE_REGEX, EMPTY_STRING);
     }
@@ -36,8 +39,8 @@ public class PersonMatchesQueryPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         return doesStringMatchQuery(person.getName().toString(), query)
-               || person.getTags().stream().anyMatch(tag -> doesStringMatchQuery(tag.get(), query)
-               || person.getAssets().stream().anyMatch(asset -> doesStringMatchQuery(asset.get(), query)));
+               || person.getTags().stream().anyMatch(tag -> doesStringMatchQuery(tag.get(), query))
+               || person.getAssets().stream().anyMatch(asset -> doesStringMatchQuery(asset.get(), query));
     }
 
     //@@author rizkidelta

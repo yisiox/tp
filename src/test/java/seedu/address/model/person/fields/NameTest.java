@@ -12,7 +12,8 @@ public class NameTest {
 
     private static final String WHITESPACE = " \t\r\n";
     private static final String INVALID_NAME = " ";
-    private static final String VALID_NAME = "Rachel Walker";
+    private static final String VALID_NAME_1 = "Rachel Walker";
+    private static final String VALID_NAME_2 = "Sarah Baker";
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -50,23 +51,21 @@ public class NameTest {
 
     @Test
     public void of_validValueWithoutWhitespace_returnsName() throws Exception {
-        Name expectedName = new Name(VALID_NAME);
-        assertEquals(expectedName, Name.of(VALID_NAME));
+        assertEquals(new Name(VALID_NAME_1), Name.of(VALID_NAME_1));
     }
 
     @Test
     public void of_validValueWithWhitespace_returnsTrimmedName() throws Exception {
-        String nameWithWhitespace = WHITESPACE + VALID_NAME + WHITESPACE;
-        Name expectedName = new Name(VALID_NAME);
-        assertEquals(expectedName, Name.of(nameWithWhitespace));
+        String nameWithWhitespace = WHITESPACE + VALID_NAME_1 + WHITESPACE;
+        assertEquals(new Name(VALID_NAME_1), Name.of(nameWithWhitespace));
     }
 
     @Test
     public void equals() {
-        Name name = new Name("Valid Name");
+        Name name = new Name(VALID_NAME_1);
 
         // same values -> returns true
-        Name name2 = new Name("Valid Name");
+        Name name2 = new Name(VALID_NAME_1);
         assertTrue(name.equals(name2));
         assertEquals(name.hashCode(), name2.hashCode());
 
@@ -81,7 +80,7 @@ public class NameTest {
         assertFalse(name.equals(5.0f));
 
         // different values -> returns false
-        Name otherName = new Name("Other Valid Name");
+        Name otherName = new Name(VALID_NAME_2);
         assertFalse(name.equals(otherName));
     }
 

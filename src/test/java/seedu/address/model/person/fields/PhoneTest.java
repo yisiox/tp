@@ -12,7 +12,8 @@ public class PhoneTest {
 
     private static final String WHITESPACE = " \t\r\n";
     private static final String INVALID_PHONE = "+6512345678 (home)";
-    private static final String VALID_PHONE = "+65 1234 5678, +98-4321-5432-42";
+    private static final String VALID_PHONE_1 = "+65 1234 5678, +98-4321-5432-42";
+    private static final String VALID_PHONE_2 = "999";
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -49,23 +50,21 @@ public class PhoneTest {
 
     @Test
     public void of_validValueWithoutWhitespace_returnsPhone() throws Exception {
-        Phone expectedPhone = new Phone(VALID_PHONE);
-        assertEquals(expectedPhone, Phone.of(VALID_PHONE));
+        assertEquals(new Phone(VALID_PHONE_1), Phone.of(VALID_PHONE_1));
     }
 
     @Test
     public void of_validValueWithWhitespace_returnsTrimmedPhone() throws Exception {
-        String phoneWithWhitespace = WHITESPACE + VALID_PHONE + WHITESPACE;
-        Phone expectedPhone = new Phone(VALID_PHONE);
-        assertEquals(expectedPhone, Phone.of(phoneWithWhitespace));
+        String phoneWithWhitespace = WHITESPACE + VALID_PHONE_1 + WHITESPACE;
+        assertEquals(new Phone(VALID_PHONE_1), Phone.of(phoneWithWhitespace));
     }
 
     @Test
     public void equals() {
-        Phone phone = new Phone("999");
+        Phone phone = new Phone(VALID_PHONE_1);
 
         // same values -> returns true
-        Phone phone2 = new Phone("999");
+        Phone phone2 = new Phone(VALID_PHONE_1);
         assertTrue(phone.equals(phone2));
         assertEquals(phone.hashCode(), phone2.hashCode());
 
@@ -80,7 +79,7 @@ public class PhoneTest {
         assertFalse(phone.equals(5.0f));
 
         // different values -> returns false
-        Phone otherPhone = new Phone("995");
+        Phone otherPhone = new Phone(VALID_PHONE_2);
         assertFalse(phone.equals(otherPhone));
     }
 

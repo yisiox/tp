@@ -45,6 +45,7 @@ public class Person {
         this.assets = assets;
     }
 
+    //@@author aureliony
     @JsonCreator
     private Person(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
                    @JsonProperty("email") String email, @JsonProperty("address") String address,

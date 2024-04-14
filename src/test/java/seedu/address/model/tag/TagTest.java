@@ -25,7 +25,7 @@ public class TagTest {
     }
 
     @Test
-    public void isValidTagName() {
+    public void constructor_validTagName_success() {
         assertDoesNotThrow(() -> new Tag("a"));
         assertDoesNotThrow(() -> new Tag("abc"));
         assertDoesNotThrow(() -> new Tag("validTag"));
@@ -35,12 +35,12 @@ public class TagTest {
 
     @Test
     public void equals() {
-        Tag tag = new Tag("a");
+        Tag tag = new Tag("tag1");
         assertTrue(tag.equals(tag));
         assertEquals(tag.hashCode(), tag.hashCode());
         assertFalse(tag.equals(null));
 
-        Tag otherTag = new Tag("b");
+        Tag otherTag = new Tag("tag2");
         assertFalse(tag.equals(otherTag));
     }
 
