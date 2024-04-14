@@ -181,6 +181,14 @@ The follow sequence diagram expands on the process of creating a person with ass
 
 <puml src="diagrams/PersonWithAssetsSequenceDiagram.puml"/>
 
+The edit asset mechanism is implemented by the following operations:
+
+1. Search through the entire `persons` list.
+2. Look through the `asset` list in each `person`.
+3. If the `asset` name names the `asset` name in the `o\` prefix, then change it to the `asset` name specified in the `n\` prefix. If the `asset` name does not match, do nothing.
+
+**Note:** If the `asset` name specified in the `o\` prefix does not exist within the application, the application will throw an error to inform the user that the command is invalid.
+
 #### Design Considerations
 
 **Aspect: How users create and update assets**
@@ -244,21 +252,6 @@ The following sequence diagram shows how the `command` object is created when th
 The _filtered_ list of `Person` objects in `model` is then updated as such:
 <puml src="diagrams/FindSequenceDiagram2.puml"/>
 <br><br>
-
-### Edit Asset feature
-
-The following sequence diagram shows how a `edita old/Aircon new/Hammer` command is executed.
-
-<puml src="diagrams/EditAssetSequenceDiagram.puml"/>
-<br><br>
-
-The edit asset mechanism is implemented by the following operations:
-
-1. Search through the entire `persons` list.
-2. Look through the `asset` list in each `person`.
-3. If the `asset` name names the `asset` name in the `old/` prefix, then change it to the `asset` name specified in the `new/` prefix. If the `asset` name does not match, do nothing.
-
-**Note:** If the `asset` name specified in the `old/` prefix does not exist within the application, the application will throw an error to inform the user that the command is invalid.
 
 ### Undo/Redo feature
 
