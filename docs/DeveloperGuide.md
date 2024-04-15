@@ -115,6 +115,8 @@ How the `Logic` component works:
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
 1. The result of the command execution is returned back from `Logic` as a `String`.
 
+<puml src="diagrams/ParserClasses.puml" width="600"/>
+
 How the parsing works:
 
 1. The `AddressBookParser` passes the first token to `CommandType` which dispatches the matching type of command.
