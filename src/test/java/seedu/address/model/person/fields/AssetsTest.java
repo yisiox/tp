@@ -2,6 +2,7 @@ package seedu.address.model.person.fields;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.Arrays;
@@ -57,8 +58,27 @@ class AssetsTest {
     }
 
     @Test
-    public void equals_null_false() {
-        assertFalse(new Assets(emptyAssetArray).equals(null));
+    public void equals() {
+        Assets assets = new Assets(VALID_ASSET_1);
+
+        // same values -> returns true
+        Assets assets2 = new Assets(VALID_ASSET_1);
+        assertTrue(assets.equals(assets2));
+        assertEquals(assets.hashCode(), assets2.hashCode());
+
+        // same object -> returns true
+        assertTrue(assets.equals(assets));
+        assertEquals(assets.hashCode(), assets.hashCode());
+
+        // null -> returns false
+        assertFalse(assets.equals(null));
+
+        // different types -> returns false
+        assertFalse(assets.equals(5.0f));
+
+        // different values -> returns false
+        Assets otherAssets = new Assets(VALID_ASSET_2);
+        assertFalse(assets.equals(otherAssets));
     }
 
 }
