@@ -696,6 +696,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
+* **AddressBook**: The underlying system that AssetBook is built on
 * **Asset**: An item of logistical significance, may be amenities or inventory
 * **Clipboard**: The computer's storage for data that is copied and that will be produced by the paste command
 * **Command**: Text that a user inputs to interact with the application
@@ -706,7 +707,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Person-In-Charge(PIC)**: A contact responsible for an asset
 * **Point-of-Contact(PoC)**: A contact representing a responsible entity like a department or external business
 * **Tag**: User added information associated to a contact e.g. `retired`, `temp staff`, ...
-* **AddressBook**: The underlying system that AssetBook is built on
 
 --------------------------------------------------------------------------------------------------------------------
 
