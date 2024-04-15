@@ -10,8 +10,6 @@ import java.util.stream.Stream;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-import seedu.address.model.asset.Asset;
-
 /**
  * Represents a collection of assets associated to a person in the address book.
  */

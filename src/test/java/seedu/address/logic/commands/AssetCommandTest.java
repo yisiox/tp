@@ -10,7 +10,7 @@ import static seedu.address.logic.commands.AssetCommand.MESSAGE_INVALID_ASSET_NA
 import static seedu.address.logic.commands.AssetCommand.MESSAGE_NOT_EDITED;
 import static seedu.address.logic.commands.AssetCommand.MESSAGE_SUCCESS;
 import static seedu.address.logic.commands.CommandTestUtil.assertParseFailure;
-import static seedu.address.model.asset.Asset.MESSAGE_CONSTRAINTS;
+import static seedu.address.model.person.fields.Asset.MESSAGE_CONSTRAINTS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
@@ -20,8 +20,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.asset.Asset;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.fields.Asset;
 import seedu.address.testutil.AssetBuilder;
 import seedu.address.testutil.PersonBuilder;
 

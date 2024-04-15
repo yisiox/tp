@@ -1,6 +1,6 @@
 package seedu.address.testutil;
 
-import seedu.address.model.asset.Asset;
+import seedu.address.model.person.fields.Asset;
 
 /**
  * A utility class to help with building Person objects.
