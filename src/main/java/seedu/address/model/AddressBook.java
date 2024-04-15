@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.asset.Asset;
 import seedu.address.model.exceptions.AddressBookException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.fields.Asset;
 
 /**
  * Wraps all data at the address-book level.

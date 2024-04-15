@@ -11,7 +11,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.util.ArgumentMultimap;
 import seedu.address.logic.util.ArgumentTokenizer;
 import seedu.address.model.Model;
-import seedu.address.model.asset.Asset;
+import seedu.address.model.person.fields.Asset;
 import seedu.address.model.person.fields.Prefix;
 
 /**

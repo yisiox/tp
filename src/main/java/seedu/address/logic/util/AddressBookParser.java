@@ -49,7 +49,7 @@ public abstract class AddressBookParser {
         try {
             commandType = CommandType.valueOf(commandWord.toUpperCase());
         } catch (IllegalArgumentException ie) {
-            logger.finer("This user input caused a ParseException: " + userInput);
+            logger.finer("This user command caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
 
@@ -57,7 +57,7 @@ public abstract class AddressBookParser {
         try {
             command = commandType.createCommand(arguments);
         } catch (IllegalArgumentException ie) {
-            logger.finer("This user input caused a ParseException: " + userInput);
+            logger.finer("These user command arguments caused a ParseException: " + userInput);
             throw new ParseException(ie.getMessage());
         }
 

@@ -8,8 +8,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.asset.Asset;
 import seedu.address.model.person.fields.Address;
+import seedu.address.model.person.fields.Asset;
 import seedu.address.model.person.fields.Assets;
 import seedu.address.model.person.fields.Email;
 import seedu.address.model.person.fields.Name;
