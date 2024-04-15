@@ -64,7 +64,7 @@ Don't worry if you don't have much technical know-how! We will guide you through
 
 #### Experienced Users
 
-If you are not a new user and are just looking to refresh your memory, you can utilise the [table of contents](#table-of-contents) 
+If you are not a new user and are just looking to refresh your memory, you can utilize the [table of contents](#table-of-contents) 
 or skip to the [command summary](#command-summary).
 
 ---
@@ -122,7 +122,7 @@ The following instructions are for **Windows**, **MacOS** and **Linux**.
 2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
 
 <p align="center">
-    <img src="images/setup-1.png" style="width: 90%;">
+    <img src="images/setup-1.png" style="width: 80%;">
 </p>
 
 3. Move `assetbook.jar` into the folder where you want *AssetBook* to store the contact information. New users may simply
@@ -132,6 +132,8 @@ The following instructions are for **Windows**, **MacOS** and **Linux**.
     <img src="images/setup-2.png" style="width: 15%;">
     <img src="images/setup-3.png" style="width: 80%;">
 </p>
+
+<div style="page-break-after: always;"></div>
 
 4. To launch the application, double-click on `assetbook.jar` and a GUI similar to the one below should appear. 
    Note that the application contains some sample data when launched for the first time. 
@@ -153,7 +155,7 @@ Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#frequentl
 Here are the components of the GUI.
 
 <p align="center">
-   <img src="images/navigating-gui.png" style="width: 85%;">
+   <img src="images/navigating-gui.png" style="width: 80%;">
 </p>
 
 1. **Command Input Box**
@@ -189,7 +191,7 @@ Let's get started by adding our first contact, John Doe, into *AssetBook*.
 1. **Click on the Command Input Box**:
    Begin by locating and clicking on the [command input box](#navigating-the-gui) near the bottom of the application.
 <p align="center">
-  <img src="images/tutorial-add-1.png" style="width: 90%;">
+  <img src="images/tutorial-add-1.png" style="width: 80%;">
 </p>
 
 <div style="page-break-after: always;"></div>
@@ -198,7 +200,7 @@ Let's get started by adding our first contact, John Doe, into *AssetBook*.
    Let's add your first contact, John, by copying the following command into the command input box:<br>
    `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`
 <p align="center">
-   <img src="images/tutorial-add-2.png" style="width: 90%;">
+   <img src="images/tutorial-add-2.png" style="width: 80%;">
 </p>
 
 3. **Execute the Command**:
@@ -209,7 +211,7 @@ Let's get started by adding our first contact, John Doe, into *AssetBook*.
 4. **Confirmation**:
    Check for a confirmation message to verify that John Doe has been added successfully.
 <p align="center">
-   <img src="images/tutorial-add-3.png" style="width: 90%;">
+   <img src="images/tutorial-add-3.png" style="width: 80%;">
 </p>
 
 ---
@@ -225,16 +227,18 @@ Now that you've successfully added John Doe to *AssetBook*, let's try to find hi
    Let's now find the contact, John, we just added by entering the following command:<br>
    `find John`
 <p align="center">
-    <img src="images/tutorial-find-1.png" style="width: 90%;">
+    <img src="images/tutorial-find-1.png" style="width: 80%;">
 </p>
 
 3. **Execute the Command**:
    After typing the command, simply press `Enter` to find the contact in *AssetBook*.
 
+<div style="page-break-after: always;"></div>
+
 4. **View the Results**:
    John Doe will be displayed in the contacts list, along with the total number of contacts matching 'John' found.
 <p align="center">
-   <img src="images/tutorial-find-2.png" style="width: 90%;">
+   <img src="images/tutorial-find-2.png" style="width: 80%;">
 </p>
 
 ---
@@ -251,7 +255,7 @@ Let's update John's email address.
    We can find out what John's index is by checking the number currently beside his name. The `find` command makes it easier by
    reducing the number of contacts displayed. Here, he has index 1.
 <p align="center">
-  <img src="images/tutorial-edit-1.png" style="width: 90%;">
+  <img src="images/tutorial-edit-1.png" style="width: 80%;">
 </p>
 
 <box type="tip" seamless>
@@ -269,7 +273,7 @@ We can edit John's email by typing the following command:<br>
 `edit 1 e\newemail@example.com`
 
 <p align="center">
-  <img src="images/tutorial-edit-2.png" style="width: 90%;">
+  <img src="images/tutorial-edit-2.png" style="width: 80%;">
 </p>
 
 4. **Execute the Command**:
@@ -280,7 +284,7 @@ We can edit John's email by typing the following command:<br>
 5. **Confirmation**:
    Look for a confirmation message, indicating that John's email has been successfully updated.
 <p align="center">
-   <img src="images/tutorial-edit-3.png" style="width: 90%;">
+   <img src="images/tutorial-edit-3.png" style="width: 80%;">
 </p>
 
 ---
@@ -298,16 +302,18 @@ Let's update our existing assets.
    `asset o\screwdriver n\screw`
 
 <p align="center">
-   <img src="images/tutorial-asset-1.png" style="width: 90%;">
+   <img src="images/tutorial-asset-1.png" style="width: 80%;">
 </p>
 
 3. **Execute the Command**:
    After entering the command, press `Enter`. This will update the asset details in *AssetBook*.
 
+<div style="page-break-after: always;"></div>
+
 4. **Confirmation**:
    Check for a confirmation message to ensure that the asset has been successfully updated.
 <p align="center">
-   <img src="images/tutorial-asset-2.png" style="width: 90%;">
+   <img src="images/tutorial-asset-2.png" style="width: 80%;">
 </p>
 
 ---
@@ -403,7 +409,7 @@ A contact can have any number of tags and assets (including 0).
   `add n\John Doe e\johndoe@example.com a\574 Ang Mo Kio Ave 10 p\12345678 A\L293D`
 
 <p align="center">
-    <img src="images/example-add-before.png" style="width: 90%;">
+    <img src="images/example-add-before.png" style="width: 80%;">
 </p>
 
 <div style="page-break-after: always;"></div>
@@ -414,7 +420,7 @@ If the command was executed successfully, the following message will appear:<br>
 `New contact added: John Doe; Phone: 12345678; Email: johndoe@example.com; Address: 574 Ang Mo Kio Ave 10; Tags: []; Assets: [[L293D]]`
 
 <p align="center">
-    <img src="images/example-add-after.png" style="width: 90%;">
+    <img src="images/example-add-after.png" style="width: 80%;">
 </p>
 
 <div style="page-break-after: always;"></div>
@@ -424,7 +430,7 @@ If the command was executed successfully, the following message will appear:<br>
 If the command was not executed successfully, the proper format of the `add` command will be shown to you instead.
 
 <p align="center">
-    <img src="images/example-add-after-fail.png" style="width: 90%;">
+    <img src="images/example-add-after-fail.png" style="width: 80%;">
 </p>
 
 <div style="page-break-after: always;"></div>
@@ -472,8 +478,6 @@ You may assign the same asset to multiple contacts, so remember to name differen
 </box>
 
 ---
-
-<div style="page-break-after: always;"></div>
 
 ### Deleting a Contact: `delete`
 
@@ -548,16 +552,6 @@ If you unintentionally deleted all your contacts, you can use the `undo` command
 
 This section contains the details for **non-modifying commands** and other useful shortcuts.
 
-### Listing all Contacts: `list`
-
-Displays all contacts.
-
-Format: `list`
-
-* Useful when you have filtered the contacts list with `find`.
-
----
-
 ### Finding Contacts: `find`
 
 Finds contacts by name, tag or asset.
@@ -570,7 +564,7 @@ Find contacts whose name, tags, or assets contain `jo`:<br>
 `find jo`
 
 <p align="center">
-    <img src="images/example-find.png" style="width: 90%;">
+    <img src="images/example-find.png" style="width: 80%;">
 </p>
 
 3 matches were found, each with `jo` found in a different field and at different positions.
@@ -582,7 +576,15 @@ Find contacts whose name, tags, or assets contain `jo`:<br>
 
 ---
 
-<div style="page-break-after: always;"></div>
+### Listing all Contacts: `list`
+
+Displays all contacts.
+
+Format: `list`
+
+* Useful when you have filtered the contacts list with `find`.
+
+---
 
 ### Undoing Commands: `undo`
 

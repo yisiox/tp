@@ -156,27 +156,17 @@ mark {
   .btn {
       font-size: 0.65rem !important;
   }
+  img {
+      zoom: 0.8;  /* might not work on some browsers */
+  }
 }
 
-h1,
+h2,
+h3,
 h4,
 h5,
 h6 {
-  color: darkslategray;
-}
-
-h2 {
-  font-weight: bold;
-  background-color: darkslategray;
-  color: #FFFFFF;
-  padding: 8px 8px 12px 8px;
-}
-
-h3 {
-  font-weight: bold;
-  background-color: darkolivegreen;
-  color: #FFFFFF;
-  padding: 8px 8px 12px 8px;
+  color: #e46c0a;
 }
 
 <style>
