@@ -12,7 +12,8 @@ public class AddressTest {
 
     private static final String WHITESPACE = " \t\r\n";
     private static final String INVALID_ADDRESS = " ";
-    private static final String VALID_ADDRESS = "123 Main Street #0505";
+    private static final String VALID_ADDRESS_1 = "123 Main Street #0505";
+    private static final String VALID_ADDRESS_2 = "456 Bishan Street 3";
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -47,23 +48,21 @@ public class AddressTest {
 
     @Test
     public void of_validValueWithoutWhitespace_returnsAddress() throws Exception {
-        Address expectedAddress = new Address(VALID_ADDRESS);
-        assertEquals(expectedAddress, Address.of(VALID_ADDRESS));
+        assertEquals(new Address(VALID_ADDRESS_1), Address.of(VALID_ADDRESS_1));
     }
 
     @Test
     public void of_validValueWithWhitespace_returnsTrimmedAddress() throws Exception {
-        String addressWithWhitespace = WHITESPACE + VALID_ADDRESS + WHITESPACE;
-        Address expectedAddress = new Address(VALID_ADDRESS);
-        assertEquals(expectedAddress, Address.of(addressWithWhitespace));
+        String addressWithWhitespace = WHITESPACE + VALID_ADDRESS_1 + WHITESPACE;
+        assertEquals(new Address(VALID_ADDRESS_1), Address.of(addressWithWhitespace));
     }
 
     @Test
     public void equals() {
-        Address address = new Address("Valid Address");
+        Address address = new Address(VALID_ADDRESS_1);
 
         // same values -> returns true
-        Address address2 = new Address("Valid Address");
+        Address address2 = new Address(VALID_ADDRESS_1);
         assertTrue(address.equals(address2));
         assertEquals(address.hashCode(), address2.hashCode());
 
@@ -78,7 +77,7 @@ public class AddressTest {
         assertFalse(address.equals(5.0f));
 
         // different values -> returns false
-        Address otherAddress = new Address("Other Valid Address");
+        Address otherAddress = new Address(VALID_ADDRESS_2);
         assertFalse(address.equals(otherAddress));
     }
 

@@ -38,6 +38,11 @@ public class MainApp extends Application {
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
+    private static final String ADDRESS_BOOK_LOAD_SUCCESSFUL =
+            "Data file loaded successfully.";
+    private static final String ADDRESS_BOOK_LOAD_UNSUCCESSFUL =
+            "WARNING!! Entering a command will override the old data file.";
+
     private Ui ui;
     private Storage storage;
     private Model model;
@@ -148,18 +153,17 @@ public class MainApp extends Application {
     /**
      * Reads the filepath stored within a {@code Storage} object and returns a {@code ReadOnlyAddressBook}.
      *
-     * @param storage the storage object.
-     * @return a read-only address book.
+     * @param storage The storage object.
+     * @return A read-only address book.
      */
     private ReadOnlyAddressBook initAddressBook(Storage storage) {
         ReadOnlyAddressBook initialAddressBook;
         try {
             initialAddressBook = storage.readInitialAddressBook();
-            initialWelcomeMessage = "Data file loaded successfully.";
+            initialWelcomeMessage = ADDRESS_BOOK_LOAD_SUCCESSFUL;
         } catch (DataLoadingException e) {
             initialAddressBook = new AddressBook();
-            initialWelcomeMessage = "WARNING!! Entering a command will override the old data file.\n"
-                    + e.getMessage();
+            initialWelcomeMessage = ADDRESS_BOOK_LOAD_UNSUCCESSFUL + "\n" + e.getMessage();
         }
         return initialAddressBook;
     }

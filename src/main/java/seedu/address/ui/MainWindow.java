@@ -16,11 +16,11 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.CommandHistoryException;
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.logic.Logic;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.util.exceptions.ParseException;
-import seedu.address.storage.exceptions.StorageException;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -93,7 +93,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Sets the accelerator of a MenuItem.
-     * @param keyCombination the KeyCombination value of the accelerator
+     * @param keyCombination The KeyCombination value of the accelerator.
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
         menuItem.setAccelerator(keyCombination);
@@ -195,13 +195,13 @@ public class MainWindow extends UiPart<Stage> {
     private class RecordedCommandExecutor implements CommandExecutor {
 
         @Override
-        public String execute(String commandText) throws CommandException, ParseException, StorageException {
+        public String execute(String commandText) throws CommandException, ParseException, DataLoadingException {
             String commandResult;
             try {
                 commandResult = logic.execute(commandText);
                 logger.info("Result: " + commandResult);
                 showMessage(commandResult);
-            } catch (CommandException | ParseException | StorageException e) {
+            } catch (CommandException | ParseException | DataLoadingException e) {
                 logger.info("An error occurred while executing command: " + commandText);
                 showMessage(e.getMessage());
                 throw e;

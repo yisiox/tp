@@ -13,4 +13,8 @@ public class DataLoadingException extends Exception {
         super(cause);
     }
 
+    public DataLoadingException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
 }
