@@ -45,7 +45,9 @@ referenced section immediately.
 A [glossary](#glossary) is provided in case you encounter any unfamiliar terms.
 
 <box type="info" seamless>
+
 Look out for texts with icons similar to this, which would contain additional information, tips, or warnings.
+
 </box>
 
 #### New Users
@@ -55,7 +57,9 @@ application and get started.
 After which, you may take a look at the [features](#features) of *AssetBook*, or simply follow this guide in order.
 
 <box type="info" seamless>
+
 Don't worry if you don't have much technical know-how! We will guide you through step-by-step.
+
 </box>
 
 #### Experienced Users
@@ -108,7 +112,9 @@ or skip to the [command summary](#command-summary).
 ### Setting Up
 
 <box type="info" seamless>
+
 The following instructions are for **Windows**, **MacOS** and **Linux**.
+
 </box>
 
 1. Ensure you have [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) installed on your device.
@@ -135,7 +141,9 @@ The following instructions are for **Windows**, **MacOS** and **Linux**.
 </p>
 
 <box type="tip" seamless>
+
 Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#frequently-asked-questions">FAQ</a> useful.
+
 </box>
 
 <div style="page-break-after: always;"></div>
@@ -156,7 +164,9 @@ Here are the components of the GUI.
 6. **Assets**
 
 <box type="tip" seamless>
+
 You can resize the command output box by dragging its top edge.
+
 </box>
 
 ---
@@ -245,7 +255,9 @@ Let's update John's email address.
 </p>
 
 <box type="tip" seamless>
+
 The index each contact has changes when you use the find command.
+
 </box>
 
 ---
@@ -319,7 +331,9 @@ A valid input by the user corresponding to the above will be
 `add n\John Doe e\johndoe@example.com a\574 Ang Mo Kio Ave 10 p\12345678 A\L293D`
 
 <box type="tip" seamless>
+
 Command words are not case-sensitive, i.e. `add`, `Add`, `ADD`, etc. are all valid.
+
 </box>
 
 <box type="info" seamless>
@@ -353,11 +367,15 @@ After successful execution of a command, some feedback will appear in the [comma
 If you enter something that the application did not expect or does not understand, an *error* message will show up instead.
 
 <box type="warning" seamless>
+
 **If you are using a PDF version of this document**, be careful when you copy and paste commands that span multiple lines, as space characters may be missing when copied over to the application.
+
 </box>
 
 <box type="warning" seamless>
+
 Note that the backslash `\` is reserved for prefixes. It is **not** allowed to be part of any field.
+
 </box>
 
 ---
@@ -375,7 +393,9 @@ Adds a new contact.
 Format: `add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`
 
 <box type="tip" seamless>
+
 A contact can have any number of tags and assets (including 0).
+
 </box>
 
 #### Example
@@ -446,7 +466,9 @@ If the command was not executed successfully, the proper format of the `add` com
 * Multiple assets can be specified at once. For example, a valid option is `A\asset1 A\asset2 A\asset3`.
 
 <box type="info" seamless>
+
 You may assign the same asset to multiple contacts, so remember to name different assets with unique names.
+
 </box>
 
 ---
@@ -483,7 +505,9 @@ Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET
 * You can remove all assets associated to the contact by typing `A\` without specifying any assets after it.
 
 <box type="warning" seamless>
+
 Edit **replaces** the current tags and assets of a contact. It does **not** add on to existing tags and assets.
+
 </box>
 
 ---
@@ -511,7 +535,9 @@ Deletes all contacts.
 Format: `clear`
 
 <box type="tip" seamless>
+
 If you unintentionally deleted all your contacts, you can use the `undo` command to bring them back.
+
 </box>
 
 ---
@@ -582,7 +608,9 @@ Format: `redo`
 If an asset name was changed, after `undo` was executed to verify what the previous asset name was, `redo` can be used to revert to the new asset name.
 
 <box type="warning" seamless>
+
 After executing an `undo` command, you cannot `redo` this if another modifying command was executed.
+
 </box>
 
 ---
@@ -598,7 +626,9 @@ Press the `↑` arrow key to show older commands.
 Press the `↓` arrow key to show newer commands.
 
 <box type="warning" seamless>
+
 Only successfully executed commands will be shown.
+
 </box>
 
 ---
