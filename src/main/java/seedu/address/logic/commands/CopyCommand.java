@@ -10,7 +10,9 @@ import static seedu.address.model.person.fields.Phone.PREFIX_PHONE;
 import static seedu.address.model.person.fields.Tags.PREFIX_TAG;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -41,6 +43,8 @@ public class CopyCommand extends Command {
 
     public static final String MESSAGE_NO_PARAM = "One field to copy must be provided.";
     public static final String MESSAGE_EXTRA_PARAM = "Only one field can be copied.";
+
+    private static final Logger logger = LogsCenter.getLogger(CopyCommand.class);
 
     private final Index index;
     private final boolean[] info;
@@ -78,21 +82,27 @@ public class CopyCommand extends Command {
         requireNonNull(personToCopy);
 
         if (info[0]) {
+            logger.finest("Copied name to clipboard");
             return personToCopy.getName().toString();
         }
         if (info[1]) {
+            logger.finest("Copied phone to clipboard");
             return personToCopy.getPhone().toString();
         }
         if (info[2]) {
+            logger.finest("Copied email to clipboard");
             return personToCopy.getEmail().toString();
         }
         if (info[3]) {
+            logger.finest("Copied address to clipboard");
             return personToCopy.getAddress().toString();
         }
         if (info[4]) {
+            logger.finest("Copied tags to clipboard");
             return personToCopy.getTags().toString();
         }
         if (info[5]) {
+            logger.finest("Copied assets to clipboard");
             return personToCopy.getAssets().toString();
         }
 

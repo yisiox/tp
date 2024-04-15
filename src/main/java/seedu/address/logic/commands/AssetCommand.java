@@ -4,14 +4,16 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.util.ArgumentMultimap;
 import seedu.address.logic.util.ArgumentTokenizer;
 import seedu.address.model.Model;
-import seedu.address.model.asset.Asset;
+import seedu.address.model.person.fields.Asset;
 import seedu.address.model.person.fields.Prefix;
 
 /**
@@ -33,6 +35,8 @@ public class AssetCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_INVALID_ASSET_NAME = "The asset name provided is invalid";
 
+    private static final Logger logger = LogsCenter.getLogger(AssetCommand.class);
+
     private final Asset target;
     private final Asset editedAsset;
 
@@ -52,9 +56,11 @@ public class AssetCommand extends Command {
         requireNonNull(model);
 
         if (target.equals(editedAsset)) {
+            logger.finer("Asset recognized as unedited: " + editedAsset);
             throw new CommandException(MESSAGE_NOT_EDITED);
         }
         if (!model.hasAsset(target)) {
+            logger.finer("Asset recognized as non-existing: " + editedAsset);
             throw new CommandException(MESSAGE_INVALID_ASSET_NAME);
         }
 

@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
@@ -19,6 +21,7 @@ public class RedoCommand extends Command {
 
     @Override
     public String execute(Model model) throws CommandException {
+        requireNonNull(model);
         if (!model.canRedo()) {
             throw new CommandException(MESSAGE_REDO_EXCEPTION);
         }

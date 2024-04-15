@@ -10,8 +10,6 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.asset.Asset;
-
 class AssetsTest {
 
     private static final String INVALID_ASSET = " ";

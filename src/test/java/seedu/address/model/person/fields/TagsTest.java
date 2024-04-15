@@ -10,8 +10,6 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.tag.Tag;
-
 class TagsTest {
 
     private static final String INVALID_TAG = "#friend";

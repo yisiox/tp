@@ -45,7 +45,9 @@ referenced section immediately.
 A [glossary](#glossary) is provided in case you encounter any unfamiliar terms.
 
 <box type="info" seamless>
+
 Look out for texts with icons similar to this, which would contain additional information, tips, or warnings.
+
 </box>
 
 #### New Users
@@ -55,12 +57,14 @@ application and get started.
 After which, you may take a look at the [features](#features) of *AssetBook*, or simply follow this guide in order.
 
 <box type="info" seamless>
+
 Don't worry if you don't have much technical know-how! We will guide you through step-by-step.
+
 </box>
 
 #### Experienced Users
 
-If you are not a new user and are just looking to refresh your memory, you can utilise the [table of contents](#table-of-contents) 
+If you are not a new user and are just looking to refresh your memory, you can utilize the [table of contents](#table-of-contents) 
 or skip to the [command summary](#command-summary).
 
 ---
@@ -84,8 +88,8 @@ or skip to the [command summary](#command-summary).
     + [Editing an Asset](#editing-an-asset-asset)
     + [Clear all Contacts](#clear-all-contacts-clear)
   + [Miscellaneous Shortcuts](#miscellaneous-shortcuts)
-    + [Listing all Contacts](#listing-all-contacts-list)
     + [Finding Contacts](#finding-contacts-find)
+    + [Listing all Contacts](#listing-all-contacts-list)
     + [Undoing Commands](#undoing-commands-undo)
     + [Redoing Commands](#redoing-commands-redo)
     + [Display Previous Commands](#display-previous-commands-and)
@@ -108,7 +112,9 @@ or skip to the [command summary](#command-summary).
 ### Setting Up
 
 <box type="info" seamless>
+
 The following instructions are for **Windows**, **MacOS** and **Linux**.
+
 </box>
 
 1. Ensure you have [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) installed on your device.
@@ -116,7 +122,7 @@ The following instructions are for **Windows**, **MacOS** and **Linux**.
 2. Download the latest `assetbook.jar` from [here](https://github.com/AY2324S2-CS2103T-W12-3/tp/releases).
 
 <p align="center">
-    <img src="images/setup-1.png" style="width: 90%;">
+    <img src="images/setup-1.png" style="width: 80%;">
 </p>
 
 3. Move `assetbook.jar` into the folder where you want *AssetBook* to store the contact information. New users may simply
@@ -127,6 +133,8 @@ The following instructions are for **Windows**, **MacOS** and **Linux**.
     <img src="images/setup-3.png" style="width: 80%;">
 </p>
 
+<div style="page-break-after: always;"></div>
+
 4. To launch the application, double-click on `assetbook.jar` and a GUI similar to the one below should appear. 
    Note that the application contains some sample data when launched for the first time. 
 
@@ -135,7 +143,9 @@ The following instructions are for **Windows**, **MacOS** and **Linux**.
 </p>
 
 <box type="tip" seamless>
+
 Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#frequently-asked-questions">FAQ</a> useful.
+
 </box>
 
 <div style="page-break-after: always;"></div>
@@ -145,7 +155,7 @@ Having trouble? You may find the <a href="{{ baseUrl }}/UserGuide.html#frequentl
 Here are the components of the GUI.
 
 <p align="center">
-   <img src="images/navigating-gui.png" style="width: 85%;">
+   <img src="images/navigating-gui.png" style="width: 80%;">
 </p>
 
 1. **Command Input Box**
@@ -156,7 +166,9 @@ Here are the components of the GUI.
 6. **Assets**
 
 <box type="tip" seamless>
+
 You can resize the command output box by dragging its top edge.
+
 </box>
 
 ---
@@ -179,7 +191,7 @@ Let's get started by adding our first contact, John Doe, into *AssetBook*.
 1. **Click on the Command Input Box**:
    Begin by locating and clicking on the [command input box](#navigating-the-gui) near the bottom of the application.
 <p align="center">
-  <img src="images/tutorial-add-1.png" style="width: 90%;">
+  <img src="images/tutorial-add-1.png" style="width: 80%;">
 </p>
 
 <div style="page-break-after: always;"></div>
@@ -188,7 +200,7 @@ Let's get started by adding our first contact, John Doe, into *AssetBook*.
    Let's add your first contact, John, by copying the following command into the command input box:<br>
    `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`
 <p align="center">
-   <img src="images/tutorial-add-2.png" style="width: 90%;">
+   <img src="images/tutorial-add-2.png" style="width: 80%;">
 </p>
 
 3. **Execute the Command**:
@@ -199,7 +211,7 @@ Let's get started by adding our first contact, John Doe, into *AssetBook*.
 4. **Confirmation**:
    Check for a confirmation message to verify that John Doe has been added successfully.
 <p align="center">
-   <img src="images/tutorial-add-3.png" style="width: 90%;">
+   <img src="images/tutorial-add-3.png" style="width: 80%;">
 </p>
 
 ---
@@ -215,16 +227,18 @@ Now that you've successfully added John Doe to *AssetBook*, let's try to find hi
    Let's now find the contact, John, we just added by entering the following command:<br>
    `find John`
 <p align="center">
-    <img src="images/tutorial-find-1.png" style="width: 90%;">
+    <img src="images/tutorial-find-1.png" style="width: 80%;">
 </p>
 
 3. **Execute the Command**:
    After typing the command, simply press `Enter` to find the contact in *AssetBook*.
 
+<div style="page-break-after: always;"></div>
+
 4. **View the Results**:
    John Doe will be displayed in the contacts list, along with the total number of contacts matching 'John' found.
 <p align="center">
-   <img src="images/tutorial-find-2.png" style="width: 90%;">
+   <img src="images/tutorial-find-2.png" style="width: 80%;">
 </p>
 
 ---
@@ -241,11 +255,13 @@ Let's update John's email address.
    We can find out what John's index is by checking the number currently beside his name. The `find` command makes it easier by
    reducing the number of contacts displayed. Here, he has index 1.
 <p align="center">
-  <img src="images/tutorial-edit-1.png" style="width: 90%;">
+  <img src="images/tutorial-edit-1.png" style="width: 80%;">
 </p>
 
 <box type="tip" seamless>
+
 The index each contact has changes when you use the find command.
+
 </box>
 
 ---
@@ -257,7 +273,7 @@ We can edit John's email by typing the following command:<br>
 `edit 1 e\newemail@example.com`
 
 <p align="center">
-  <img src="images/tutorial-edit-2.png" style="width: 90%;">
+  <img src="images/tutorial-edit-2.png" style="width: 80%;">
 </p>
 
 4. **Execute the Command**:
@@ -268,7 +284,7 @@ We can edit John's email by typing the following command:<br>
 5. **Confirmation**:
    Look for a confirmation message, indicating that John's email has been successfully updated.
 <p align="center">
-   <img src="images/tutorial-edit-3.png" style="width: 90%;">
+   <img src="images/tutorial-edit-3.png" style="width: 80%;">
 </p>
 
 ---
@@ -286,16 +302,18 @@ Let's update our existing assets.
    `asset o\screwdriver n\screw`
 
 <p align="center">
-   <img src="images/tutorial-asset-1.png" style="width: 90%;">
+   <img src="images/tutorial-asset-1.png" style="width: 80%;">
 </p>
 
 3. **Execute the Command**:
    After entering the command, press `Enter`. This will update the asset details in *AssetBook*.
 
+<div style="page-break-after: always;"></div>
+
 4. **Confirmation**:
    Check for a confirmation message to ensure that the asset has been successfully updated.
 <p align="center">
-   <img src="images/tutorial-asset-2.png" style="width: 90%;">
+   <img src="images/tutorial-asset-2.png" style="width: 80%;">
 </p>
 
 ---
@@ -319,7 +337,9 @@ A valid input by the user corresponding to the above will be
 `add n\John Doe e\johndoe@example.com a\574 Ang Mo Kio Ave 10 p\12345678 A\L293D`
 
 <box type="tip" seamless>
+
 Command words are not case-sensitive, i.e. `add`, `Add`, `ADD`, etc. are all valid.
+
 </box>
 
 <box type="info" seamless>
@@ -353,11 +373,15 @@ After successful execution of a command, some feedback will appear in the [comma
 If you enter something that the application did not expect or does not understand, an *error* message will show up instead.
 
 <box type="warning" seamless>
+
 **If you are using a PDF version of this document**, be careful when you copy and paste commands that span multiple lines, as space characters may be missing when copied over to the application.
+
 </box>
 
 <box type="warning" seamless>
+
 Note that the backslash `\` is reserved for prefixes. It is **not** allowed to be part of any field.
+
 </box>
 
 ---
@@ -375,7 +399,9 @@ Adds a new contact.
 Format: `add n\NAME p\PHONE e\EMAIL a\ADDRESS [t\TAG]... [A\ASSET]...`
 
 <box type="tip" seamless>
+
 A contact can have any number of tags and assets (including 0).
+
 </box>
 
 #### Example
@@ -383,7 +409,7 @@ A contact can have any number of tags and assets (including 0).
   `add n\John Doe e\johndoe@example.com a\574 Ang Mo Kio Ave 10 p\12345678 A\L293D`
 
 <p align="center">
-    <img src="images/example-add-before.png" style="width: 90%;">
+    <img src="images/example-add-before.png" style="width: 80%;">
 </p>
 
 <div style="page-break-after: always;"></div>
@@ -394,7 +420,7 @@ If the command was executed successfully, the following message will appear:<br>
 `New contact added: John Doe; Phone: 12345678; Email: johndoe@example.com; Address: 574 Ang Mo Kio Ave 10; Tags: []; Assets: [[L293D]]`
 
 <p align="center">
-    <img src="images/example-add-after.png" style="width: 90%;">
+    <img src="images/example-add-after.png" style="width: 80%;">
 </p>
 
 <div style="page-break-after: always;"></div>
@@ -404,7 +430,7 @@ If the command was executed successfully, the following message will appear:<br>
 If the command was not executed successfully, the proper format of the `add` command will be shown to you instead.
 
 <p align="center">
-    <img src="images/example-add-after-fail.png" style="width: 90%;">
+    <img src="images/example-add-after-fail.png" style="width: 80%;">
 </p>
 
 <div style="page-break-after: always;"></div>
@@ -446,12 +472,12 @@ If the command was not executed successfully, the proper format of the `add` com
 * Multiple assets can be specified at once. For example, a valid option is `A\asset1 A\asset2 A\asset3`.
 
 <box type="info" seamless>
+
 You may assign the same asset to multiple contacts, so remember to name different assets with unique names.
+
 </box>
 
 ---
-
-<div style="page-break-after: always;"></div>
 
 ### Deleting a Contact: `delete`
 
@@ -483,7 +509,9 @@ Format: `edit INDEX [n\NAME] [p\PHONE] [e\EMAIL] [a\ADDRESS] [t\TAG]... [A\ASSET
 * You can remove all assets associated to the contact by typing `A\` without specifying any assets after it.
 
 <box type="warning" seamless>
+
 Edit **replaces** the current tags and assets of a contact. It does **not** add on to existing tags and assets.
+
 </box>
 
 ---
@@ -511,7 +539,9 @@ Deletes all contacts.
 Format: `clear`
 
 <box type="tip" seamless>
+
 If you unintentionally deleted all your contacts, you can use the `undo` command to bring them back.
+
 </box>
 
 ---
@@ -521,16 +551,6 @@ If you unintentionally deleted all your contacts, you can use the `undo` command
 ## Miscellaneous Shortcuts
 
 This section contains the details for **non-modifying commands** and other useful shortcuts.
-
-### Listing all Contacts: `list`
-
-Displays all contacts.
-
-Format: `list`
-
-* Useful when you have filtered the contacts list with `find`.
-
----
 
 ### Finding Contacts: `find`
 
@@ -544,7 +564,7 @@ Find contacts whose name, tags, or assets contain `jo`:<br>
 `find jo`
 
 <p align="center">
-    <img src="images/example-find.png" style="width: 90%;">
+    <img src="images/example-find.png" style="width: 80%;">
 </p>
 
 3 matches were found, each with `jo` found in a different field and at different positions.
@@ -556,7 +576,15 @@ Find contacts whose name, tags, or assets contain `jo`:<br>
 
 ---
 
-<div style="page-break-after: always;"></div>
+### Listing all Contacts: `list`
+
+Displays all contacts.
+
+Format: `list`
+
+* Useful when you have filtered the contacts list with `find`.
+
+---
 
 ### Undoing Commands: `undo`
 
@@ -582,7 +610,9 @@ Format: `redo`
 If an asset name was changed, after `undo` was executed to verify what the previous asset name was, `redo` can be used to revert to the new asset name.
 
 <box type="warning" seamless>
+
 After executing an `undo` command, you cannot `redo` this if another modifying command was executed.
+
 </box>
 
 ---
@@ -598,7 +628,9 @@ Press the `↑` arrow key to show older commands.
 Press the `↓` arrow key to show newer commands.
 
 <box type="warning" seamless>
+
 Only successfully executed commands will be shown.
+
 </box>
 
 ---
@@ -705,10 +737,6 @@ The remedy is to delete the `preferences.json` file created by the application b
 At present, names allow any special character except `\`. This is to allow the user flexibility to include uncommon names
 that may include symbols such as `/`, `'` and `-`. As such, the application may accept all manner of gibberish for names.
 A remedy is planned for the future to perform more robust checks on names.
-
-#### Scrolling
-An astute user may notice that the ability to scroll with the keyboard is missing from the application. This feature
-will be implemented as soon as possible in an upcoming release.
 
 #### More Asset Details
 Some users may require assets to have more details recorded. We plan to add features that allow adding of more
