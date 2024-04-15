@@ -1,9 +1,9 @@
 package seedu.address.ui;
 
 import seedu.address.commons.exceptions.CommandHistoryException;
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.util.exceptions.ParseException;
-import seedu.address.storage.exceptions.StorageException;
 
 /**
  * Represents an API which supports command execution and history tracking.
@@ -15,7 +15,7 @@ public interface CommandExecutor {
      *
      * @see seedu.address.logic.Logic#execute(String)
      */
-    String execute(String commandText) throws CommandException, ParseException, StorageException;
+    String execute(String commandText) throws CommandException, ParseException, DataLoadingException;
 
     /**
      * Gets the previous command's text.

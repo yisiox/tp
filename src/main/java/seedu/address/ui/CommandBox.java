@@ -10,9 +10,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.CommandHistoryException;
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.util.exceptions.ParseException;
-import seedu.address.storage.exceptions.StorageException;
 
 /**
  * The UI component that is responsible for receiving user command inputs.
@@ -56,7 +56,7 @@ public class CommandBox extends UiPart<Region> {
         try {
             commandExecutor.execute(commandText);
             commandTextField.setText("");
-        } catch (CommandException | ParseException | StorageException e) {
+        } catch (CommandException | ParseException | DataLoadingException e) {
             setStyleToIndicateCommandFailure();
         }
     }
