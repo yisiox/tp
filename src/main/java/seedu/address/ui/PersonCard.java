@@ -7,9 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.asset.Asset;
 import seedu.address.model.person.Person;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.person.fields.Asset;
+import seedu.address.model.person.fields.Tag;
 
 /**
  * An UI component that displays information of a {@code Person}.

@@ -1,4 +1,4 @@
-package seedu.address.model.tag;
+package seedu.address.model.person.fields;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;

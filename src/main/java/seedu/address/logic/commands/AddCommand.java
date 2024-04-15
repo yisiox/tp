@@ -9,8 +9,10 @@ import static seedu.address.model.person.fields.Name.PREFIX_NAME;
 import static seedu.address.model.person.fields.Phone.PREFIX_PHONE;
 import static seedu.address.model.person.fields.Tags.PREFIX_TAG;
 
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -53,6 +55,8 @@ public class AddCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New contact added: %1$s";
     public static final String MESSAGE_DUPLICATE_CONTACT = "This contact already exists.";
 
+    private static final Logger logger = LogsCenter.getLogger(AddCommand.class);
+
     private final Person toAdd;
 
     /**
@@ -68,6 +72,7 @@ public class AddCommand extends Command {
         requireNonNull(model);
 
         if (model.hasPerson(toAdd)) {
+            logger.finer("Recognized as duplicate person: " + toAdd.toString());
             throw new CommandException(MESSAGE_DUPLICATE_CONTACT);
         }
 
@@ -81,6 +86,7 @@ public class AddCommand extends Command {
      * @throws IllegalArgumentException if the user input does not conform the expected format
      */
     public static AddCommand of(String args) throws IllegalArgumentException {
+        requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
                         PREFIX_ADDRESS, PREFIX_TAG, PREFIX_ASSET);
