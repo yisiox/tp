@@ -16,7 +16,7 @@ Welcome **logistics managers**! If you are someone who
 
 + Is a **fast typist**, tired of shuffling back and forth between a mouse and keyboard
 
-+ Is feeling **swamped by the tedium of contact management** on traditional office software...
++ Is feeling **swamped by the tedium of contact management** on traditional office software
 
 Rejoice because *AssetBook* is here!
 
