@@ -539,7 +539,15 @@ Finds contacts by name, tag or asset.
 Format: `find QUERY`
 
 #### Example
-`find John` searches all contact names, tags and assets for the query `John`.
+
+Find contacts whose name, tags, or assets contain `jo`:<br>
+`find jo`
+
+<p align="center">
+    <img src="images/example-find.png" style="width: 90%;">
+</p>
+
+3 matches were found, each with `jo` found in a different field and at different positions.
 
 * The query is case-insensitive.
 * Spaces in both query and fields will be ignored.
