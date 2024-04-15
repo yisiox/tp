@@ -8,11 +8,10 @@ package Logic as LogicPackage {
 
 Class AddressBookParser
 
-Class CommandType
+Class "<<enumeration>>\nCommandType" as CommandType
 Class XYZCommand
 Class "{abstract}\nCommand" as Command
-
-
+Class CommandHistory
 Class "<<interface>>\nLogic" as Logic
 Class LogicManager
 
@@ -22,7 +21,6 @@ Class ParserUtil
 }
 
 package Model {
-Class HiddenModel #FFFFFF
 }
 
 package Storage {
@@ -31,24 +29,27 @@ package Storage {
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Logic
 
-LogicManager .left.|> Logic
-LogicManager -->"1" AddressBookParser
+LogicManager .up.|> Logic
+LogicManager ..> AddressBookParser : parses with >
+LogicManager .down.> Command : executes >
+LogicManager -left-> CommandHistory
 
 AddressBookParser ..> CommandType : uses >
 
 CommandType .right.> XYZCommand : creates >
 
 XYZCommand -up-|> Command
-LogicManager ..> Command : executes >
 
 LogicManager --> Model
 LogicManager -right-> Storage
 
 Command .right.> Model
-note right of XYZCommand: XYZCommand = AddCommand, \nFindCommand, etc
 
 XYZCommand ..> ArgumentMultimap
 XYZCommand ..> ArgumentTokenizer
 XYZCommand ..> ParserUtil
 ArgumentTokenizer .left.> ArgumentMultimap
+
+ArgumentMultimap --> Model
+ArgumentTokenizer ..> Model
 @enduml

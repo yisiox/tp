@@ -11,7 +11,7 @@ show members
 
 package Model {
 class Asset {
-    -assetSerial: String
+    -assetName: String
     --
     +{static} of(String): Asset
 }
@@ -27,7 +27,7 @@ class Assets {
 }
 }
 
-Assets "1..*" -down-> "*" Asset
+Assets "1" -down-> "*" Asset
 
 Person -right->"1" Assets
 
