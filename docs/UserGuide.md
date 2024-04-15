@@ -774,9 +774,6 @@ Command          | Format                                                       
 #### Alphanumeric
 Consists of only letters and numbers.
 
-#### Asset
-An item or amenity of logistical significance.
-
 #### Character
 A single letter, number, or symbol. Examples: `a`, `1`, `&`, `-`.
 
