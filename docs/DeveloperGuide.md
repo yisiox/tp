@@ -410,8 +410,7 @@ _{Explain here how the data archiving feature will be implemented}_
 **Target user profile**:
 
 * logistics managers 
-* has a need to manage a significant number of contacts and their respective logistical assets
-* has a need to organise all assets
+* has a need to keep track of a significant number of contacts and assets they are responsible for
 * prefers desktop apps over other types
 * prefers typing to other forms of input
 * can type fast
@@ -725,9 +724,9 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+   1. Download the jar file and copy into an empty folder.
 
-   1. Double-click the jar file<br>
+   1. Double-click the jar file.<br>
       Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
@@ -742,12 +741,12 @@ testers are expected to do more *exploratory* testing.
 1. Adding a contact
 
     1. Test case: `add n\John Doe p\98765432 e\johnd@example.com a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`<br>
-       Expected: AssetBook displays a success message, and the newly added contact's details are shown
+       Expected: AssetBook displays a success message, and the newly added contact's details are shown.
 
     1. Test case: `add n\John Doe`<br>
-       Expected: AssetBook displays an error stating invalid command format, and no contact is added
+       Expected: AssetBook displays an error stating invalid command format, and no contact is added.
 
-    1. Other incorrect `add` commands to try: `add n\ p\ e\ a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver`, `...` <br>
+    1. Other incorrect `add` commands to try: `add n\ p\ e\ a\311, Clementi Ave 2, #02-25 t\friends t\owesMoney A\screwdriver` <br>
        Expected: Similar to previous.
 
 ### Deleting a contact
@@ -769,10 +768,10 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. Modify or delete data files
+   1. Modify or delete data files.
 
    1. Open AssetBook. If AssetBook is open, close and reopen it.<br>
-      Expected: AssetBook will detect missing/corrupted data files, and start with an empty list
+      Expected: AssetBook will detect missing/corrupted data files, show a warning to the user about the missing/corrupted data files, and start with an empty list.
 
 --------------------------------------------------------------------------------------------------------------------
 
