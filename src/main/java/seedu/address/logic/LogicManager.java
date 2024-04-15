@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.CommandHistoryException;
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.util.AddressBookParser;
@@ -14,7 +15,6 @@ import seedu.address.logic.util.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
-import seedu.address.storage.exceptions.StorageException;
 
 /**
  * The main LogicManager of the app.
@@ -37,7 +37,7 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public String execute(String commandText) throws CommandException, ParseException, StorageException {
+    public String execute(String commandText) throws CommandException, ParseException, DataLoadingException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         Command command = AddressBookParser.parseCommand(commandText);

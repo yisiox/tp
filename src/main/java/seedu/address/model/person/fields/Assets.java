@@ -65,8 +65,8 @@ public class Assets implements Field {
 
     /**
      * Changes name of an asset.
-     * @param target asset to be edited
-     * @param editedAsset new asset name
+     * @param target The asset to be edited.
+     * @param editedAsset The new asset name.
      */
     public Assets edit(Asset target, Asset editedAsset) {
         requireAllNonNull(target, editedAsset);
