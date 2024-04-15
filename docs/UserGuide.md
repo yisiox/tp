@@ -736,10 +736,6 @@ At present, names allow any special character except `\`. This is to allow the u
 that may include symbols such as `/`, `'` and `-`. As such, the application may accept all manner of gibberish for names.
 A remedy is planned for the future to perform more robust checks on names.
 
-#### Scrolling
-An astute user may notice that the ability to scroll with the keyboard is missing from the application. This feature
-will be implemented as soon as possible in an upcoming release.
-
 #### More Asset Details
 Some users may require assets to have more details recorded. We plan to add features that allow adding of more
 fields to assets such as serial number, location, etc.
