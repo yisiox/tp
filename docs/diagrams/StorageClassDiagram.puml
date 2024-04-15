@@ -4,6 +4,9 @@ skinparam arrowThickness 1.1
 skinparam arrowColor STORAGE_COLOR
 skinparam classBackgroundColor STORAGE_COLOR
 
+package Model {
+}
+
 package Storage as StoragePackage {
 
 package "UserPrefs Storage" #F4F6F6{
@@ -33,5 +36,9 @@ Storage -right-|> AddressBookStorage
 
 JsonUserPrefsStorage .up.|> UserPrefsStorage
 JsonAddressBookStorage .up.|> AddressBookStorage
+
+JsonAddressBookStorage ..> Model
+StorageManager ..> Model
+JsonUserPrefsStorage ..> Model
 
 @enduml

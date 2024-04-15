@@ -37,9 +37,12 @@ Model .right.> ReadOnlyUserPrefs
 Model .left.> ReadOnlyAddressBook
 ModelManager -left-> "1" AddressBook
 ModelManager -right-> "1" UserPrefs
+ModelManager ..> Asset
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-AddressBook *--> "1" UniquePersonList
+AddressBook *--> "persons 1" UniquePersonList
+AddressBook --> "~*" UniquePersonList : tracks\nundo\nwith >
+AddressBook --> "~*" UniquePersonList : tracks\nredo\nwith >
 UniquePersonList --> "~* all" Person
 Person *--> Name
 Person *--> Phone

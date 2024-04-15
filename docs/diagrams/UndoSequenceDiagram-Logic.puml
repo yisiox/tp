@@ -5,7 +5,7 @@ skinparam ArrowFontStyle plain
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
-participant "u:UndoCommand" as UndoCommand LOGIC_COLOR
+participant "command:UndoCommand" as UndoCommand LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
@@ -17,17 +17,25 @@ activate LogicManager
 LogicManager -> AddressBookParser : parseCommand("undo")
 activate AddressBookParser
 
+' Abstracted factory method call
+AddressBookParser -> AddressBookParser : createCommandUsingFactory("undo")
+note right: createCommandUsingFactory() is a fictitious command \n representing the command creation process for brevity
+activate AddressBookParser
+
 create UndoCommand
 AddressBookParser -> UndoCommand
 activate UndoCommand
 
-UndoCommand --> AddressBookParser
+UndoCommand --> AddressBookParser : command
 deactivate UndoCommand
 
-AddressBookParser --> LogicManager : u
+AddressBookParser --> AddressBookParser : command
 deactivate AddressBookParser
 
-LogicManager -> UndoCommand : execute(m)
+AddressBookParser --> LogicManager : command
+deactivate AddressBookParser
+
+LogicManager -> UndoCommand : execute(model)
 activate UndoCommand
 
 UndoCommand -> Model : undo()
@@ -38,9 +46,9 @@ deactivate Model
 
 UndoCommand --> LogicManager : result
 deactivate UndoCommand
-UndoCommand -[hidden]-> LogicManager : result
+UndoCommand -[hidden]-> LogicManager
 destroy UndoCommand
 
-[<--LogicManager
+[<--LogicManager : result
 deactivate LogicManager
 @enduml

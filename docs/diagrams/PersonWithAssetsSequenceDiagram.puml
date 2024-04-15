@@ -1,0 +1,43 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+skinparam SequenceGroupBodyBackgroundColor MODEL_COLOR_T1
+
+box Logic LOGIC_COLOR_T1
+participant "command:AddCommand" as AddCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "person:Person" as Person MODEL_COLOR
+participant "assets:Assets" as Assets MODEL_COLOR
+end box
+
+mainframe **sd**  create person with assets
+
+create Person
+AddCommand -> Person
+note right: Note that Person and Assets also use factory \n methods, but it is not shown here for brevity
+activate Person
+
+create Assets
+Person -> Assets
+activate Assets
+
+note right Assets: Assets may call the constructor of Asset zero or more \n times depending on the input, represented here by a \n fictitious method createAssetObjects()
+loop until all assets created
+Assets -> Assets : createAssetObject()
+activate Assets
+
+Assets --> Assets
+deactivate Assets
+
+Assets -[hidden]-> Assets
+end
+
+Assets --> Person : assets
+deactivate Assets
+
+Person --> AddCommand : person
+deactivate Person
+
+@enduml

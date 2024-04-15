@@ -1,0 +1,62 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+skinparam SequenceReferenceBackgroundColor white
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant "command:AddCommand" as AddCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "person:Person" as Person MODEL_COLOR
+participant "assets:Assets" as Assets MODEL_COLOR
+participant "model:Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("add ... A\\pen")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("add ... A\\pen")
+activate AddressBookParser
+
+' Abstracted factory method call
+AddressBookParser -> AddressBookParser : createCommandUsingFactory("add ... A\\pen")
+note right : createCommandUsingFactory() is the same \n fictitious command as explained in Logic
+activate AddressBookParser
+
+
+create AddCommand
+AddressBookParser -> AddCommand
+activate AddCommand
+
+ref over AddCommand, Person, Assets: create person with assets
+
+AddCommand --> AddressBookParser : command
+deactivate AddCommand
+
+AddressBookParser --> AddressBookParser : command
+deactivate AddressBookParser
+
+AddressBookParser --> LogicManager : command
+deactivate AddressBookParser
+
+LogicManager -> AddCommand : execute(model)
+activate AddCommand
+
+AddCommand -> Model : addPerson(person)
+activate Model
+
+Model --> AddCommand
+deactivate Model
+
+AddCommand --> LogicManager : result
+deactivate AddCommand
+
+AddCommand -[hidden]-> LogicManager
+destroy AddCommand
+
+[<--LogicManager : result
+deactivate LogicManager
+@enduml

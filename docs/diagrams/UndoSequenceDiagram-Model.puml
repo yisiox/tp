@@ -14,9 +14,15 @@ activate Model
 Model -> AddressBook : undo()
 activate AddressBook
 
-AddressBook -> AddressBook :savePersonsTo(redoStack)
+AddressBook -> AddressBook : savePersonsTo(redoStack)
 
-AddressBook -> persons : setPersons(personFromUndoStack)
+AddressBook -> AddressBook : getPersonsFrom(undoStack)
+activate AddressBook
+note right : getPersonsFrom() is a fictitious\ncommand to improve readability.\nIt is simply a stack.pop()\nmethod implementation-wise.
+AddressBook --> AddressBook : p
+deactivate AddressBook
+
+AddressBook -> persons : setPersons(p)
 activate persons
 persons --> AddressBook
 deactivate persons
