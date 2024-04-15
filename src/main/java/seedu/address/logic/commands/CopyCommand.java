@@ -22,7 +22,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
 /**
- * Copies the details of a person in the address book.
+ * Copies the details of a contact in the address book.
  */
 public class CopyCommand extends Command {
 
@@ -62,7 +62,7 @@ public class CopyCommand extends Command {
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         }
 
         Person personToCopy = lastShownList.get(index.getZeroBased());

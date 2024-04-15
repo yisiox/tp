@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class GuiSettingsTest {
 
     @Test
-    void testEquals() {
+    void equals() {
         GuiSettings guiSettings = new GuiSettings();
 
         assertFalse(guiSettings.equals(null));

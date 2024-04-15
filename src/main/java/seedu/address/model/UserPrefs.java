@@ -8,13 +8,14 @@ import java.util.Objects;
 
 import seedu.address.commons.core.GuiSettings;
 
+//@@author
 /**
  * Represents User's preferences.
  */
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path addressBookFilePath = Paths.get("data" , "assetbook.json");
+    private Path assetBookFilePath = Paths.get("data" , "assetbook.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -48,12 +49,12 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     }
 
     public Path getAddressBookFilePath() {
-        return addressBookFilePath;
+        return assetBookFilePath;
     }
 
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
-        this.addressBookFilePath = addressBookFilePath;
+        this.assetBookFilePath = addressBookFilePath;
     }
 
     @Override
@@ -69,20 +70,12 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
         UserPrefs otherUserPrefs = (UserPrefs) other;
         return guiSettings.equals(otherUserPrefs.guiSettings)
-                && addressBookFilePath.equals(otherUserPrefs.addressBookFilePath);
+                && assetBookFilePath.equals(otherUserPrefs.assetBookFilePath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, addressBookFilePath);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Gui Settings : " + guiSettings);
-        sb.append("\nLocal data file location : " + addressBookFilePath);
-        return sb.toString();
+        return Objects.hash(guiSettings, assetBookFilePath);
     }
 
 }

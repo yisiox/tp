@@ -44,7 +44,7 @@ public class Address implements Field {
      * Parses a {@code String address} into an {@code Address}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws IllegalArgumentException if the given {@code address} is invalid.
+     * @throws IllegalArgumentException If the given {@code address} is invalid.
      */
     public static Address of(String address) throws IllegalArgumentException {
         requireNonNull(address);
