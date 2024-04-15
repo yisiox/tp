@@ -14,7 +14,6 @@ import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.storage.exceptions.StorageException;
 
 /**
  * A class to access AddressBook data stored as a json file on the hard disk.
@@ -58,7 +57,7 @@ public class JsonAddressBookStorage implements AddressBookStorage {
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAddressBook addressBook) throws StorageException {
+    public void saveAddressBook(ReadOnlyAddressBook addressBook) throws DataLoadingException {
         saveAddressBook(addressBook, filePath);
     }
 
@@ -67,7 +66,7 @@ public class JsonAddressBookStorage implements AddressBookStorage {
      *
      * @param filePath location of the data. Cannot be null.
      */
-    public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws StorageException {
+    public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws DataLoadingException {
         requireNonNull(addressBook);
         requireNonNull(filePath);
 
@@ -75,9 +74,9 @@ public class JsonAddressBookStorage implements AddressBookStorage {
             FileUtil.createIfMissing(filePath);
             JsonUtil.saveJsonFile(addressBook, filePath);
         } catch (AccessDeniedException e) {
-            throw new StorageException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
+            throw new DataLoadingException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
         } catch (IOException ioe) {
-            throw new StorageException(String.format(FILE_OPS_ERROR_FORMAT, ioe.getMessage()), ioe);
+            throw new DataLoadingException(String.format(FILE_OPS_ERROR_FORMAT, ioe.getMessage()), ioe);
         }
 
     }

@@ -11,7 +11,6 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.exceptions.StorageException;
 
 /**
  * Manages storage of AddressBook data in local storage.
@@ -67,12 +66,12 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAddressBook addressBook) throws StorageException {
+    public void saveAddressBook(ReadOnlyAddressBook addressBook) throws DataLoadingException {
         saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws StorageException {
+    public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws DataLoadingException {
         logger.fine("Attempting to write to data file: " + filePath);
         addressBookStorage.saveAddressBook(addressBook, filePath);
     }
