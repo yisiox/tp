@@ -7,8 +7,6 @@
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
 ### Tang Yetong
@@ -41,7 +39,7 @@ versioning, maintaining the code, and vets all changes to the code.
 [[github](http://github.com/bryanyee33)]
 [[portfolio](team/bryanyee33.md)]
 
-* Roles: Backend Expert
+* Role: Backend Expert
 * Responsibilities: In charge of backend implementation and associated technical
 documentation.
 
@@ -66,5 +64,3 @@ maintains user documentation.
 * Role: Taskmaster & QA Expert
 * Responsibilities: In charge of overall coordination, tracking deadlines and 
 deliverables, testing of code, and ensuring code and documentation quality.
-
-
