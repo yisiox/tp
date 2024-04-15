@@ -26,10 +26,10 @@ deactivate CommandType
 CommandTypeClass -> AddressBookParser : type
 deactivate CommandTypeClass
 
-AddressBookParser -> CommandType : createCommand()
+AddressBookParser -> CommandType : createCommand(" 1")
 activate CommandType
 
-CommandType -> DeleteCommandClass : of("1")
+CommandType -> DeleteCommandClass : of(" 1")
 activate DeleteCommandClass
 
 create DeleteCommand

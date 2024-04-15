@@ -27,7 +27,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <box type="info" seamless>
 
-**Note:** The lifeline for *Commands* in all Sequence Diagrams should end at the destroy marker (X) (if they exist) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+**Note:** The lifeline for *Commands* in all Sequence Diagrams should end at the destroy marker (X) if they exist, but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>
 
@@ -96,6 +96,14 @@ Here's a (partial) class diagram of the `Logic` component:
 
 <puml src="diagrams/LogicClassDiagram.puml" width="550"/>
 
+<box type="info" seamless>
+
+**Note:**
+* `XYZCommand` refers to all `Command` classes i.e. `AddCommand`, `FindCommand`, etc.
+* Not all `Command` classes utilize `ArgumentMultimap`, `ArgumentTokenizer` or `ParserUtil` classes.
+
+</box>
+
 ---
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
@@ -104,18 +112,17 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 All `Command` objects are created via the enum factory pattern. The following sequence diagram expands on the actual command
 creation process encapsulated by `createCommandUsingFactory()` in the above diagram.
+Note that the leading whitespace in `" 1"` is an implementation detail of `AddressBookParser`.
 
 <puml src="diagrams/CommandFactorySequenceDiagram.puml"/>
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn uses an enum factory `CommandType` to create the relevant enum (e.g. `CommandType.DELETE`) with the input arguments.
-1. The `CommandType` enum calls the relevant command's factory method to create a command object (e.g. `DeleteCommand`).
+1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn uses an enum factory `CommandType` to create the relevant enum (e.g. `CommandType.DELETE`) from the parsed command word.
+1. The `CommandType` enum calls the relevant command's factory method to create a command object (e.g. `DeleteCommand`) with the parsed arguments.
 1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).<br>
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
 1. The result of the command execution is returned back from `Logic` as a `String`.
-
-<puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
 
@@ -131,14 +138,21 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores the address book data i.e. all `Person` objects (which are contained in a `UniquePersonList` object).
+* stores the currently 'selected' `Person` objects (e.g. results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores previous states of the `UniquePersonList` in a private `undoStack`.
+* stores previously undone states of the `UniquePersonList` in a private `redoStack`.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
+
 <box type="info" seamless>
 
-**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
+**Note:**
+
+* More details on the implementation of `undo` and `redo` can be found [here](#undo-redo-feature).
+
+* An alternative (arguably, more OOP) model is given below. It has a `Tag` list and an `Asset` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, and one `Asset` object per unique asset, instead of each `Person` needing their own `Tag` and `Asset` objects.<br>
 
 <puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
 
@@ -194,10 +208,10 @@ The follow sequence diagram expands on the process of creating a person with ass
 The edit asset mechanism is implemented by the following operations:
 
 1. Search through the entire `persons` list.
-2. Look through the `asset` list in each `person`.
-3. If the `asset` name names the `asset` name in the `o\` prefix, then change it to the `asset` name specified in the `n\` prefix. If the `asset` name does not match, do nothing.
+2. Look through the `assets` list of each `person`.
+3. If the `assetName` is equivalent to the name from the `o\` prefix, rename it to the `assetName` specified by the `n\` prefix. If the `assetName` does not match, do nothing.
 
-**Note:** If the `asset` name specified in the `o\` prefix does not exist within the application, the application will throw an error to inform the user that the command is invalid.
+**Note:** If the `assetName` specified by the `o\` prefix does not exist in the user input, the application will throw an error to inform the user that the command is invalid.
 
 #### Design Considerations
 
@@ -209,6 +223,8 @@ The edit asset mechanism is implemented by the following operations:
     * The user cannot make mistakes such as creating the same asset twice with different details.
   * Cons:
     * The user must use two separate commands to add an asset with details.
+</li>
+
 * **Alternative 2 (selected choice)**: The user specifies all details of the asset in `add`. Assets only have a name.
   * Pros:
     * Advanced users save time as only a single command is required to specify all details of multiple assets.
@@ -218,6 +234,8 @@ The edit asset mechanism is implemented by the following operations:
       This leads to the need to decide how best to handle each error. Throwing errors may frustrate the user while 
       making a guess of the user's intention may result in unintended changes made to the contacts.
     * The onus is on the user to uniquely name similar but distinct assets.
+</li>
+
 * **Alternative 3**: Have a dedicated set of commands to create and edit assets.
   * Pros:
     * The person related commands are not overloaded with the functionality to control assets.
@@ -225,6 +243,8 @@ The edit asset mechanism is implemented by the following operations:
   * Cons:
     * Harder to implement, a second set of commands is essentially required.
     * Not the focus of the application, which is contact management.
+</li>
+
 * **Alternative 4**: Repurpose the existing tags feature as assets.
   * Pros:
     * Little implementation work and lower chance of bugs.
@@ -232,6 +252,7 @@ The edit asset mechanism is implemented by the following operations:
   * Cons:
     * Limited flexibility in extending the feature.
     * Users lose the ability to tag contacts which is a natural feature to have.
+</li>
 
 **Aspect: How updating of assets is implemented**
 * **Alternative 1 (selected choice)**: All `Assets` and `Asset` objects are immutable; a linear search and replace
@@ -243,12 +264,15 @@ The edit asset mechanism is implemented by the following operations:
       proportion is already invested in saving after each operation, so this extra time per operation is not as
       significant.
     * More likely to have data inconsistency bugs.
+</li>
+
 * **Alternative 2**: `Asset` has a static hash table with some primary key.
   * Pros:
     * All persons sharing an asset will have it represented by the same object in memory, making it easy to update.
     * Less likelihood of data inconsistency bugs.
   * Cons:
     * This design is not immutable, meaning undo is excessively difficult to implement.
+</li>
 
 ### Find feature
 

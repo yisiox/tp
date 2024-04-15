@@ -13,7 +13,7 @@ activate LogicManager
 LogicManager -> CommandHistory : add(commandText)
 activate CommandHistory
 
-CommandHistory --> LogicManager : commandText
+CommandHistory --> LogicManager
 deactivate CommandHistory
 
 <-- LogicManager : commandResult

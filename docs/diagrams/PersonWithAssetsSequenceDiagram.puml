@@ -14,9 +14,6 @@ end box
 
 mainframe **sd**  create person with assets
 
-create AddCommand
-activate AddCommand
-
 create Person
 AddCommand -> Person
 note right: Note that Person and Assets also use factory \n methods, but it is not shown here for brevity
@@ -42,4 +39,5 @@ deactivate Assets
 
 Person --> AddCommand : person
 deactivate Person
+
 @enduml
