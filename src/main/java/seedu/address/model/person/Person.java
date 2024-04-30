@@ -58,6 +58,7 @@ public class Person {
         this.tags = new Tags(tagNames);
         this.assets = new Assets(assetNames);
     }
+    //@@author
 
     public Name getName() {
         return name;
